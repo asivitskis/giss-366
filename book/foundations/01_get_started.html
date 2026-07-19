@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. What is GIS? &#8212; Introduction to Geographic Information Systems</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/foundations/01_get_started';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-361/book/foundations/01_get_started.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Week 2 Lecture Notes" href="02_types_of_spatial_data.html" />
+    <link rel="prev" title="Visual Studio Code" href="../software/vscode.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to Geographic Information Systems - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Geographic Information Systems - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Geo_Libre.html">Geo Libre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/ESRI_ArcGIS.html">ESRI ArcGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/QGIS.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. What is GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_types_of_spatial_data.html">2. Week 2 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_coordinate_systems.html">3. Coordinate Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_acquiring_geospatial_data.html">4. Acquiring Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_vector_data_structures.html">5. Vector Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_raster_data_basics.html">6. Raster Data Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_attribute_data.html">7. Attribute Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Analysis and Cartography</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/leafmap.html">8. Leafmap</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01.html">Lab 1</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-361/main?urlpath=tree/book/foundations/01_get_started.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-361/blob/main/book/foundations/01_get_started.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-361" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-361/edit/main/book/foundations/01_get_started.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-361/issues/new?title=Issue%20on%20page%20%2Fbook/foundations/01_get_started.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/foundations/01_get_started.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>What is GIS?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-361-363-introduction-to-geographic-information-science-week-1-lecture-notes">1.1. GISS/GEOG 361/363: Introduction to Geographic Information Science - Week 1 Lecture Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-gis">1.2. Welcome to GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">1.3. Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-gis-really">1.4. 1. What Is GIS, Really?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gisystems-the-tools">1.4.1. GISystems: the tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#giscience-the-discipline">1.4.2. GIScience: the discipline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-systems-lens-on-place">1.4.3. A systems lens on “place”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geo-inquiry-process-how-this-course-is-organized">1.5. 2. The Geo-Inquiry Process: How This Course Is Organized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-gis-architecture-five-tiers">1.6. 3. Modern GIS Architecture: Five Tiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-vs-proprietary-a-question-of-access">1.7. 4. Open Source vs. Proprietary: A Question of Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-look-geolibre">1.8. 5. A First Look: GeoLibre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grounding-this-course-in-place-silver-city-and-the-gila-region">1.9. 6. Grounding This Course in Place: Silver City and the Gila Region</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-ready-for-practice-lab-0">1.10. 7. Getting Ready for Practice Lab 0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-move-on-quick-reflection">1.11. Before You Move On: Quick Reflection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">1.11.1. 📎 Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">1.12. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-two-optional-interactive-demos">1.13. Appendix: Two Optional Interactive Demos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-gis">
+<h1><span class="section-number">1. </span>What is GIS?<a class="headerlink" href="#what-is-gis" title="Link to this heading">#</a></h1>
+<section id="giss-geog-361-363-introduction-to-geographic-information-science-week-1-lecture-notes">
+<h2><span class="section-number">1.1. </span>GISS/GEOG 361/363: Introduction to Geographic Information Science - Week 1 Lecture Notes<a class="headerlink" href="#giss-geog-361-363-introduction-to-geographic-information-science-week-1-lecture-notes" title="Link to this heading">#</a></h2>
+<p><strong>Unit 1: What Is GIS?</strong> — GISystems vs. GIScience · Open source vs. proprietary software · Modern GIS architecture · The Geo-Inquiry Process</p>
+<p><em>Read this before you open Practice Lab 0. It gives you the ideas behind the buttons you’ll be clicking.</em></p>
+</section>
+<hr class="docutils" />
+<section id="welcome-to-gis">
+<h2><span class="section-number">1.2. </span>Welcome to GIS<a class="headerlink" href="#welcome-to-gis" title="Link to this heading">#</a></h2>
+<p>Hi, and welcome to Introduction to Geographic Information Science.</p>
+<p>This week, we start in a specific place: Silver City, New Mexico, and the wider Grant County / Gila National Forest region around it. We use this landscape all semester as a shared “practice place.” Everyone works with the same real place at first. That way, when we compare notes on a map or a tool, we’re all looking at the same ground.</p>
+<p>That choice is not just convenient. It reflects something this course believes: <strong>place is not a backdrop for learning GIS — it is part of the learning.</strong> A map of an unfamiliar city teaches you buttons and menus. A map of a place with real rivers, real fire history, and real people teaches you buttons, menus, <em>and</em> what a map can and can’t tell you about a place. We will hold both of those at once all semester.</p>
+<p>These notes set up the ideas behind <strong>Practice Lab 0</strong>. Read them first. The lab will make more sense, and you’ll spend your lab time exploring instead of guessing.</p>
+<!-- Optional: add a local photo here, e.g. <img src="images/week1_lecture_hero.jpg" alt="Gila National Forest near Silver City, NM" width="650px"> --></section>
+<section id="learning-goals">
+<h2><span class="section-number">1.3. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you will be able to:</p>
+<ul class="simple">
+<li><p>Explain the difference between <strong>GISystems</strong> (the software and hardware) and <strong>GIScience</strong> (the discipline of ideas underneath it) <em>(K01, EU1)</em></p></li>
+<li><p>Describe the <strong>Geo-Inquiry Process</strong> — Ask → Collect → Visualize → Create → Act — and explain why GIS courses tend to organize work this way</p></li>
+<li><p>Name the <strong>five tiers of modern GIS practice</strong> (desktop, database, scripting, web, cloud) and place a tool you’ve heard of (or will use this week) into at least one tier</p></li>
+<li><p>Explain, in your own words, why this course treats open-source and proprietary GIS as equally legitimate tools, and start forming your own answer to <strong>EQ1</strong>: <em>What does this technology let us do, where are its limits, and who is excluded when using it costs money?</em> <em>(EQ1, A01)</em></p></li>
+<li><p>Describe why this course anchors its early labs in one shared, real place — and what “critical pedagogy of place” means in practice</p></li>
+</ul>
+<p>This lecture does not require any software. Practice Lab 0, right after this, is where you’ll open GeoLibre and your chosen track (QGIS or ArcGIS Pro).</p>
+</section>
+<hr class="docutils" />
+<section id="what-is-gis-really">
+<h2><span class="section-number">1.4. </span>1. What Is GIS, Really?<a class="headerlink" href="#what-is-gis-really" title="Link to this heading">#</a></h2>
+<p>People use “GIS” to mean two different things, and mixing them up causes a lot of early confusion. This course keeps them separate on purpose.</p>
+<section id="gisystems-the-tools">
+<h3><span class="section-number">1.4.1. </span>GISystems: the tools<a class="headerlink" href="#gisystems-the-tools" title="Link to this heading">#</a></h3>
+<p>A <strong>Geographic Information <em>System</em></strong> is the software and hardware you actually click through: QGIS, ArcGIS Pro, GeoLibre, the GPS in your phone. A GISystem is a <em>tool</em>. Like any tool, it can be swapped out. You could lose access to QGIS tomorrow and still “do GIS” — just with a different tool in your hand.</p>
+</section>
+<section id="giscience-the-discipline">
+<h3><span class="section-number">1.4.2. </span>GIScience: the discipline<a class="headerlink" href="#giscience-the-discipline" title="Link to this heading">#</a></h3>
+<p><strong>Geographic Information <em>Science</em></strong> is the set of ideas underneath every one of those tools: how we represent a curved Earth on a flat screen, how we decide what counts as “close” to something, how error and uncertainty creep into a dataset, how a boundary line on a map can shape a real decision about real land. These ideas stay true no matter which software you’re using. Learn them once, and they travel with you to whatever tool you touch next — including tools that haven’t been invented yet.</p>
+<blockquote>
+<div><p><strong>A quick test:</strong> if a fact would still be true even if every GIS company on Earth vanished overnight, it’s GIScience. If it’s true only because of how one piece of software happens to be built, it’s GISystems.</p>
+</div></blockquote>
+<p>This course teaches both, but it leans on GIScience as the more durable one. Software interfaces change every few years. The underlying ideas — projection, scale, topology, spatial relationship — change much more slowly. <em>(K01, EU1)</em></p>
+</section>
+<section id="a-systems-lens-on-place">
+<h3><span class="section-number">1.4.3. </span>A systems lens on “place”<a class="headerlink" href="#a-systems-lens-on-place" title="Link to this heading">#</a></h3>
+<p>Here’s a habit of mind we’ll build all semester, starting today: <strong>a landscape is a system, not a stack.</strong></p>
+<p>It’s tempting to picture a place as a pile of independent layers — a roads layer, a rivers layer, a soils layer, a wildfire-risk layer — like transparent sheets stacked on an overhead projector. That mental model is useful for <em>drawing</em> a map. It’s a poor model for <em>understanding</em> a place.</p>
+<p>In a real landscape, those “layers” are not independent. Change the wildfire-risk layer (say, a large burn) and you also change: the soil (erosion), the rivers (sediment and flow), the roads (some become unsafe or unusable), and the people (evacuation, economic effects, decisions about where to rebuild). Pull one thread, and the whole web moves a little. That’s what it means to think about a place with <strong>complexity and systems thinking</strong>: watching for feedback, interdependence, and scale, instead of treating each layer as if it lives in its own world.</p>
+<p>We’ll return to this idea with real Gila-region wildfire data later in the semester. For now, just notice the habit: when you look at a map, ask not only <em>what is here</em>, but <em>what is this connected to, and what happens if it changes</em>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-geo-inquiry-process-how-this-course-is-organized">
+<h2><span class="section-number">1.5. </span>2. The Geo-Inquiry Process: How This Course Is Organized<a class="headerlink" href="#the-geo-inquiry-process-how-this-course-is-organized" title="Link to this heading">#</a></h2>
+<p>Every lab this semester — including Lab 0, right after this lecture — follows the same five-step structure, borrowed from National Geographic Education’s <strong>Geo-Inquiry Process</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>What it means</p></th>
+<th class="head"><p>What it looks like in Lab 0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Ask</strong></p></td>
+<td><p>Start with a real question, not a random click</p></td>
+<td><p>Reflect on what “GIS” already means to you, and who gets to use it</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Collect</strong></p></td>
+<td><p>Gather data, or get oriented in a tool</p></td>
+<td><p>Open GeoLibre, find Silver City, load one data layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Visualize</strong></p></td>
+<td><p>Look at what you collected and notice patterns</p></td>
+<td><p>Add a curated layer in your track (QGIS or ArcGIS Pro)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Create</strong></p></td>
+<td><p>Make something — however small</p></td>
+<td><p>Place and label one point on the map</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Act</strong></p></td>
+<td><p>Share what you made, and reflect on what it means</p></td>
+<td><p>Post your screenshots and a short reflection</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We use this same five-step shape whether the task is “open some software for the first time” (today) or “analyze wildfire severity across the Gila region” (Week 10). Getting comfortable with the <em>shape</em> now, while the stakes are low, means you won’t be learning a new process and a new tool at the same time later in the semester, when both will matter more.</p>
+</section>
+<hr class="docutils" />
+<section id="modern-gis-architecture-five-tiers">
+<h2><span class="section-number">1.6. </span>3. Modern GIS Architecture: Five Tiers<a class="headerlink" href="#modern-gis-architecture-five-tiers" title="Link to this heading">#</a></h2>
+<p>“GIS” used to mean one thing: desktop software. It doesn’t anymore. Modern GIS practice is spread across five overlapping tiers, and a working GIS professional (or student!) moves between them depending on the task:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tier</p></th>
+<th class="head"><p>What happens here</p></th>
+<th class="head"><p>Example tools</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Desktop</strong></p></td>
+<td><p>Point-and-click mapping, editing, and analysis on your own computer</p></td>
+<td><p>QGIS, ArcGIS Pro</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Database</strong></p></td>
+<td><p>Storing and querying large spatial datasets with structured queries</p></td>
+<td><p>PostGIS, Spatial SQL</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Scripting</strong></p></td>
+<td><p>Automating a workflow so it can run the same way twice</p></td>
+<td><p>Python, GDAL/OGR</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Web</strong></p></td>
+<td><p>Making a map or app that anyone can open in a browser, no install required</p></td>
+<td><p>GeoLibre, ArcGIS Online, StoryMaps</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cloud</strong></p></td>
+<td><p>Streaming and processing huge datasets without downloading them first</p></td>
+<td><p>Cloud-native formats (like the <code class="docutils literal notranslate"><span class="pre">.parquet</span></code> layer you’ll stream into GeoLibre in Lab 0), Google Earth Engine</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You’ll touch all five tiers before the semester ends — a little database work in Week 8, a little scripting throughout, and cloud-native data starting <em>today</em>, in Lab 0, when you stream a countries layer straight into GeoLibre without downloading anything first.</p>
+<p>The practical takeaway for this week: <strong>QGIS and ArcGIS Pro live in the same tier (Desktop).</strong> They are two different tools doing a similar job, which is exactly why this course treats them as parallel, equally valid choices rather than a “real” option and a backup.</p>
+</section>
+<hr class="docutils" />
+<section id="open-source-vs-proprietary-a-question-of-access">
+<h2><span class="section-number">1.7. </span>4. Open Source vs. Proprietary: A Question of Access<a class="headerlink" href="#open-source-vs-proprietary-a-question-of-access" title="Link to this heading">#</a></h2>
+<p>This brings us to one of the course’s essential questions, which will follow you all semester:</p>
+<blockquote>
+<div><p><strong>EQ1 — What does this technology let us do, where are its limits, and who is excluded when using it costs money?</strong></p>
+</div></blockquote>
+<p>Here are the two tools you’ll compare in Lab 0:</p>
+<ul class="simple">
+<li><p><strong>QGIS</strong> is <strong>open source</strong>: the code is free, public, and built collaboratively by a global community. Anyone with a computer can install it and use every feature, forever, at no cost.</p></li>
+<li><p><strong>ArcGIS Pro</strong> is <strong>proprietary</strong>: it’s built and owned by a company (Esri), licensed to WNMU, and made available to you <em>because</em> the university pays for that access.</p></li>
+</ul>
+<p>Neither is “the real GIS,” and neither is a downgrade of the other. Both produce professional, industry-used results. The difference that matters most for EQ1 is <strong>who gets to walk through the door.</strong> A student, a small nonprofit, or a community group anywhere in the world can open QGIS tomorrow with no budget at all. The same is not true of a several-thousand-dollar-a-year enterprise license.</p>
+<p>This is not just a technical detail — it’s part of the course’s <strong>GeoEthics strand</strong>, alongside critical cartography and data sovereignty. Later in the semester, we’ll ask who gets to make maps, whose knowledge of a place counts as “data,” and who is left out of the conversation entirely. Today’s version of that question is smaller but points the same direction: <em>if a tool costs money, who doesn’t get to use it?</em></p>
+<p>You don’t need a final answer this week. Lab 0 asks you to write down a first-pass answer, and you’ll revisit it after you’ve actually used one (or both) tools with your own hands. <em>(EQ1, A01)</em></p>
+</section>
+<hr class="docutils" />
+<section id="a-first-look-geolibre">
+<h2><span class="section-number">1.8. </span>5. A First Look: GeoLibre<a class="headerlink" href="#a-first-look-geolibre" title="Link to this heading">#</a></h2>
+<p>Before Lab 0 asks you to do anything with GeoLibre, it can help to simply <em>see</em> it. GeoLibre is a free, browser-based GIS viewer — nothing to install, no account needed. It’s today’s example of the <strong>Web tier</strong> from Section 3.</p>
+<p>The optional code cell below embeds the live GeoLibre app right in this notebook, the same way Lab 0 does. You don’t need to do anything with it here — just take a look, get oriented to the layout, and save your real exploring for the lab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL -- preview the GeoLibre web app right inside this notebook.</span>
+<span class="c1"># Nothing to configure here. If it doesn&#39;t load, that&#39;s normal in some hosted</span>
+<span class="c1"># notebook environments (Colab, some JupyterHubs block embedded pages) --</span>
+<span class="c1"># just open https://web.geolibre.app/ directly in a browser tab instead.</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://web.geolibre.app/&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="500"
+            src="https://web.geolibre.app/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>If the embedded map above doesn’t load, open <strong><a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a></strong> in a normal browser tab — that always works. In Lab 0, you’ll do your real work there rather than inside this notebook.</p>
+</section>
+<hr class="docutils" />
+<section id="grounding-this-course-in-place-silver-city-and-the-gila-region">
+<h2><span class="section-number">1.9. </span>6. Grounding This Course in Place: Silver City and the Gila Region<a class="headerlink" href="#grounding-this-course-in-place-silver-city-and-the-gila-region" title="Link to this heading">#</a></h2>
+<p>We could have taught this unit with a generic, made-up town. We didn’t, and that choice is deliberate.</p>
+<p><strong>Critical pedagogy of place</strong> asks us to treat the local landscape as more than scenery for an assignment. It asks: whose histories are layered into this ground, what has changed here and why, and what does it mean to represent this specific place on a map, well or poorly? Southwestern New Mexico is not an empty backdrop. It carries deep Mogollon and Mimbres history, visible today at sites like the Gila Cliff Dwellings, and later Chiricahua Apache homeland and history as well. A first-time visitor’s map of this region, made without that context, can easily get real things wrong or leave them out entirely — which is exactly the question Lab 0 asks you to sit with in its Ask step.</p>
+<p>This is also where <strong>culturally sustaining pedagogy</strong> comes in: learning GIS here isn’t only about learning to read <em>this</em> region’s story well. It’s about building the habit of asking that same question about <em>any</em> place — including the one that matters most to you, which is exactly what your semester-long Place-Based Geospatial Inquiry Project (starting next week) will ask you to do.</p>
+<p>For now, in Silver City and the Gila, we’re all standing on the same shared ground while we learn the tools. Starting next week, you’ll choose your own.</p>
+</section>
+<hr class="docutils" />
+<section id="getting-ready-for-practice-lab-0">
+<h2><span class="section-number">1.10. </span>7. Getting Ready for Practice Lab 0<a class="headerlink" href="#getting-ready-for-practice-lab-0" title="Link to this heading">#</a></h2>
+<p>A few things to know before you open the lab notebook:</p>
+<ul class="simple">
+<li><p><strong>This lab is ungraded practice.</strong> Its job is to get you comfortable moving around GIS software before Lab 1, which is graded, and before your Place-Based Geospatial Inquiry Project, which starts next week.</p></li>
+<li><p><strong>Everyone starts in GeoLibre.</strong> No installs, no login.</p></li>
+<li><p><strong>Then you pick one track</strong> — 🗺️ Track Q (QGIS) or 💼 Track A (ArcGIS Pro) — and stay in it through the rest of the lab. If you’re not sure which to pick, Track Q works on any computer for free, which makes it a safe default.</p></li>
+<li><p><strong>You’ll take three screenshots</strong> along the way. Save them as you go — it’s much easier than trying to reconstruct your steps afterward.</p></li>
+<li><p><strong>Expect some friction, and that’s fine.</strong> GIS software has a learning curve, and figuring out where a button lives is itself part of the skill. This course treats troubleshooting as a skill you’re building on purpose, not a sign that something’s wrong.</p></li>
+</ul>
+<p>When you’re ready, open <strong>Lab 0</strong> and start with its Ask step — the same reflection questions this lecture just introduced you to.</p>
+</section>
+<hr class="docutils" />
+<section id="before-you-move-on-quick-reflection">
+<h2><span class="section-number">1.11. </span>Before You Move On: Quick Reflection<a class="headerlink" href="#before-you-move-on-quick-reflection" title="Link to this heading">#</a></h2>
+<p>Take two minutes with these — you’ll expand on them in Lab 0, so a rough first pass is all you need here.</p>
+<ul class="simple">
+<li><p>In your own words, what’s one thing that separates GIScience from a GISystem?</p></li>
+<li><p>Pick one of the five tiers (desktop, database, scripting, web, cloud). Where have you already encountered it, even outside of a GIS class?</p></li>
+<li><p>What’s your gut-level answer to EQ1 right now, before you’ve used any of the tools? You’ll come back to this after Lab 0.</p></li>
+</ul>
+<p><strong>Your answers (double-click this cell to edit):</strong></p>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<hr class="docutils" />
+<section id="resources">
+<h3><span class="section-number">1.11.1. </span>📎 Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>National Geographic Education — Geo-Inquiry Process: <a class="reference external" href="https://www.nationalgeographic.org/education/geo-inquiry/">https://www.nationalgeographic.org/education/geo-inquiry/</a></p></li>
+<li><p>GeoLibre — <a class="reference external" href="https://geolibre.app/">https://geolibre.app/</a> (docs &amp; tutorials) · <a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a> (live app)</p></li>
+<li><p>QGIS — <a class="reference external" href="https://qgis.org/">https://qgis.org/</a></p></li>
+<li><p>ArcGIS Pro / Online — see course LMS for WNMU access details</p></li>
+<li><p>NM RGIS Clearinghouse (our regional data source all semester) — <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a></p></li>
+<li><p>D’Ignazio, C. &amp; Klein, L. (2020). <em>Data Feminism.</em> MIT Press — free online at <a class="reference external" href="http://data-feminism.mit.edu">data-feminism.mit.edu</a> (supports this course’s GeoEthics strand)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2><span class="section-number">1.12. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>GIS is two things at once: a set of tools (GISystems) and a discipline of ideas (GIScience) that outlasts any one tool. This course organizes its work through the Geo-Inquiry Process — Ask, Collect, Visualize, Create, Act — and treats modern GIS as spread across five tiers, from desktop software to cloud-native data. Open-source and proprietary tools are both legitimate paths through that landscape, but they aren’t equally accessible, and that gap is part of what this course asks you to think critically about. All of it starts, this week, grounded in one real place: Silver City and the Gila region — not because this place is special above all others, but because starting somewhere real, together, is how this course means to teach GIS from day one.</p>
+<p>You’re ready for <strong>Practice Lab 0.</strong></p>
+</section>
+<hr class="docutils" />
+<section id="appendix-two-optional-interactive-demos">
+<h2><span class="section-number">1.13. </span>Appendix: Two Optional Interactive Demos<a class="headerlink" href="#appendix-two-optional-interactive-demos" title="Link to this heading">#</a></h2>
+<p>Everything above this line is all you need for this week. The two cells below are optional extras — small, self-contained demos of ideas from this lecture, built in Python. Skip them, come back later, or run them now if you’re curious. Nothing here is graded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL -- a small, from-scratch diagram illustrating &quot;landscape as system, not stack&quot;</span>
+<span class="c1"># (Section 1). No extra installs needed -- matplotlib is enough.</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Wildfire</span><span class="se">\n</span><span class="s2">Risk&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span>
+    <span class="s2">&quot;Soils&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s2">&quot;Rivers&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="s2">&quot;Roads&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+    <span class="s2">&quot;People&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Wildfire</span><span class="se">\n</span><span class="s2">Risk&quot;</span><span class="p">,</span> <span class="s2">&quot;Soils&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Wildfire</span><span class="se">\n</span><span class="s2">Risk&quot;</span><span class="p">,</span> <span class="s2">&quot;Rivers&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Soils&quot;</span><span class="p">,</span> <span class="s2">&quot;Rivers&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Wildfire</span><span class="se">\n</span><span class="s2">Risk&quot;</span><span class="p">,</span> <span class="s2">&quot;Roads&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Roads&quot;</span><span class="p">,</span> <span class="s2">&quot;People&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Rivers&quot;</span><span class="p">,</span> <span class="s2">&quot;People&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Wildfire</span><span class="se">\n</span><span class="s2">Risk&quot;</span><span class="p">,</span> <span class="s2">&quot;People&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
+    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">],</span> <span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">2200</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4C72B0&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;A landscape as a connected system, not a stack of layers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d2d00cbb6ccbc17954409a288583f2c99eda9f0c4b057961a931cc6c308aa101.png" src="../../_images/d2d00cbb6ccbc17954409a288583f2c99eda9f0c4b057961a931cc6c308aa101.png" />
+</div>
+</div>
+<p>This is a deliberately simple sketch — five “layers” from a real Gila-region question, drawn as a connected web instead of independent stacks. Notice that <em>Wildfire Risk</em> touches almost everything else. In systems terms, that makes it a <strong>high-leverage node</strong>: a change there ripples outward further than a change almost anywhere else in the diagram. We’ll build a version of this with real Gila-region wildfire data later in the course.</p>
+<p>That’s it for Week 1 lecture notes. When you’re ready, head to <strong>Practice Lab 0</strong> and start with its Ask step.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-361",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/foundations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../software/vscode.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visual Studio Code</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_types_of_spatial_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Week 2 Lecture Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-361-363-introduction-to-geographic-information-science-week-1-lecture-notes">1.1. GISS/GEOG 361/363: Introduction to Geographic Information Science - Week 1 Lecture Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-gis">1.2. Welcome to GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">1.3. Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-gis-really">1.4. 1. What Is GIS, Really?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gisystems-the-tools">1.4.1. GISystems: the tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#giscience-the-discipline">1.4.2. GIScience: the discipline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-systems-lens-on-place">1.4.3. A systems lens on “place”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geo-inquiry-process-how-this-course-is-organized">1.5. 2. The Geo-Inquiry Process: How This Course Is Organized</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-gis-architecture-five-tiers">1.6. 3. Modern GIS Architecture: Five Tiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-vs-proprietary-a-question-of-access">1.7. 4. Open Source vs. Proprietary: A Question of Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-look-geolibre">1.8. 5. A First Look: GeoLibre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grounding-this-course-in-place-silver-city-and-the-gila-region">1.9. 6. Grounding This Course in Place: Silver City and the Gila Region</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-ready-for-practice-lab-0">1.10. 7. Getting Ready for Practice Lab 0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-move-on-quick-reflection">1.11. Before You Move On: Quick Reflection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">1.11.1. 📎 Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">1.12. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-two-optional-interactive-demos">1.13. Appendix: Two Optional Interactive Demos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

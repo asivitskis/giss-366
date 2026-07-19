@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 0 &#8212; Introduction to Geographic Information Systems</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/labs/lab_00';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-361/book/labs/lab_00.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 1" href="lab_01.html" />
+    <link rel="prev" title="Submission Instructions" href="instructions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to Geographic Information Systems - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Geographic Information Systems - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Geo_Libre.html">Geo Libre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/ESRI_ArcGIS.html">ESRI ArcGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/QGIS.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/01_get_started.html">1. What is GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_types_of_spatial_data.html">2. Week 2 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_coordinate_systems.html">3. Coordinate Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/04_acquiring_geospatial_data.html">4. Acquiring Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/05_vector_data_structures.html">5. Vector Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/06_raster_data_basics.html">6. Raster Data Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/07_attribute_data.html">7. Attribute Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Analysis and Cartography</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/leafmap.html">8. Leafmap</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">Lab 1</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-361/main?urlpath=tree/book/labs/lab_00.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-361/blob/main/book/labs/lab_00.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-361" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-361/edit/main/book/labs/lab_00.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-361/issues/new?title=Issue%20on%20page%20%2Fbook/labs/lab_00.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/labs/lab_00.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 0</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-lab-getting-started-with-gis">Practice Lab - Getting Started with GIS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-361-363-introduction-to-geographic-information-science">GISS/GEOG 361/363 · Introduction to Geographic Information Science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-we-re-working-silver-city-southwestern-new-mexico">Where We’re Working: Silver City &amp; Southwestern New Mexico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-notebook-is-organized-the-geo-inquiry-process">How This Notebook Is Organized: the Geo-Inquiry Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-the-platforms-and-tracks">A Note on the Platforms and Tracks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2️: Collect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-choose-your-track">🔀 Checkpoint: Choose Your Track</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-practice-ungraded">What to turn in (practice — ungraded)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">📎 Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-python-code-optional">Appendix: Python Code (Optional)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-step-3-visualize-a-first-look-with-leafmap">Behind Step 3 (Visualize): A First Look with leafmap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-step-4-create-adding-a-marker-and-saving-a-map">Behind Step 4 (Create): Adding a Marker and Saving a Map</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-0">
+<h1>Lab 0<a class="headerlink" href="#lab-0" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="practice-lab-getting-started-with-gis">
+<h1>Practice Lab - Getting Started with GIS<a class="headerlink" href="#practice-lab-getting-started-with-gis" title="Link to this heading">#</a></h1>
+<section id="giss-geog-361-363-introduction-to-geographic-information-science">
+<h2>GISS/GEOG 361/363 · Introduction to Geographic Information Science<a class="headerlink" href="#giss-geog-361-363-introduction-to-geographic-information-science" title="Link to this heading">#</a></h2>
+<p><strong>Unit 1 Focus:</strong> What is GIS? GISystems vs. GIScience · Open source vs. proprietary software · Modern GIS architecture</p>
+<p><em>This is a practice lab — ungraded. The goal is to get comfortable navigating GIS software before Week 2, when your first graded lab and your Place-Based Geospatial Inquiry Project both begin.</em></p>
+</section>
+<hr class="docutils" />
+<section id="where-we-re-working-silver-city-southwestern-new-mexico">
+<h2>Where We’re Working: Silver City &amp; Southwestern New Mexico<a class="headerlink" href="#where-we-re-working-silver-city-southwestern-new-mexico" title="Link to this heading">#</a></h2>
+<p>Throughout the semester, GISS/GEOG 361/363 will use the WNMU home region — Silver City, Grant County, and the Gila National Forest — as a shared “practice place” for labs, before you choose your own place for your Place-Based Geospatial Inquiry Project starting in Week 2. Working with one real, richly documented region lets everyone compare notes on the <em>same</em> landscape while learning the tools.</p>
+<!-- Optional: add a local photo here, e.g. <img src="images/week1_hero.jpg" alt="Gila National Forest near Silver City, NM" width="650px"> -->
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>By the end of this practice lab, you will be able to:</p>
+<ul class="simple">
+<li><p>Explain the difference between GISystems (the software/hardware) and GIScience (the discipline) <em>(K01)</em></p></li>
+<li><p>Open, navigate, and add a basemap and a data layer in <strong>GeoLibre</strong> (web), and complete a full mapping workflow in <strong>one desktop platform of your choice</strong> — QGIS (open-source) or ArcGIS Pro (proprietary) <em>(S01, S10)</em></p></li>
+<li><p>Compare the experience of a browser-based tool and a desktop tool, and start forming your own view on open-source vs. proprietary trade-offs <em>(EQ1, A01)</em></p></li>
+<li><p>Locate Silver City, NM and the Gila region in each platform, and produce one labeled map</p></li>
+</ul>
+</section>
+<section id="how-this-notebook-is-organized-the-geo-inquiry-process">
+<h2>How This Notebook Is Organized: the Geo-Inquiry Process<a class="headerlink" href="#how-this-notebook-is-organized-the-geo-inquiry-process" title="Link to this heading">#</a></h2>
+<p>This course structures every lab around the <strong>Geo-Inquiry Process</strong> (National Geographic Education): <strong>Ask → Collect → Visualize → Create → Act.</strong> It’s the same five-step structure you’ll see all semester, so getting familiar with it now — on something as low-stakes as “open some software” — pays off later when the stakes (and the data) get bigger.</p>
+</section>
+<section id="a-note-on-the-platforms-and-tracks">
+<h2>A Note on the Platforms and Tracks<a class="headerlink" href="#a-note-on-the-platforms-and-tracks" title="Link to this heading">#</a></h2>
+<p>Every step below opens in <strong>GeoLibre</strong> — a free, browser-based tool with nothing to install, so everyone starts from the same place. After that, the lab splits into two <strong>tracks</strong>, and you’ll pick <strong>one</strong> and stay in it through Visualize and Create:</p>
+<ul class="simple">
+<li><p>🗺️ <strong>Track Q — QGIS</strong> (free, open-source, install required)</p></li>
+<li><p>💼 <strong>Track A — ArcGIS Pro</strong> (provided via WNMU license, Windows or virtual desktop)</p></li>
+</ul>
+<p>One full track is a complete, real GIS workflow, and that’s the point. Choosing a tool based on what you have access to, rather than which one is “the real GIS,” is exactly the habit this course wants you to build. If you have access to both platforms and you’re curious, running the second track afterward is a great <em>optional</em> way to build the comparison the reflection questions ask about.</p>
+</section>
+<section id="before-you-begin">
+<h2>Before You Begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Cost / Access</p></th>
+<th class="head"><p>Install?</p></th>
+<th class="head"><p>Role in this lab</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>GeoLibre</strong></p></td>
+<td><p>Free, no account</p></td>
+<td><p>None — runs in your browser (desktop/mobile apps also available)</p></td>
+<td><p>Everyone’s starting point (Collect)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QGIS</strong> <em>(Track Q)</em></p></td>
+<td><p>Free, open-source</p></td>
+<td><p>Download &amp; install (<a class="reference external" href="https://qgis.org/download/">qgis.org</a>)</p></td>
+<td><p>Full workflow, works on any OS</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ArcGIS Pro</strong> <em>(Track A)</em></p></td>
+<td><p>Provided via WNMU license</p></td>
+<td><p>Windows only — install locally, or use the campus lab / virtual desktop</p></td>
+<td><p>Full workflow, industry-standard</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Choosing a track:</strong> Track Q (QGIS) works for every student, on any computer, at no cost — pick it if you’re not sure yet. Track A (ArcGIS Pro) needs a Windows machine or the campus lab/virtual desktop; pick it if that access is already set up for you. Neither track is the “backup” option — the syllabus treats them as equally real, equally supported GIS.</p>
+<p><strong>Links</strong></p>
+<ul class="simple">
+<li><p>GeoLibre (web app): <a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a> <em>(or the live viewer at <a class="reference external" href="https://viewer.geolibre.app/">https://viewer.geolibre.app/</a>)</em></p></li>
+<li><p>GeoLibre docs &amp; tutorials: <a class="reference external" href="https://geolibre.app/">https://geolibre.app/</a></p></li>
+<li><p>QGIS download: <a class="reference external" href="https://qgis.org/download/">https://qgis.org/download/</a></p></li>
+<li><p>ArcGIS Pro / ArcGIS Online: access details posted in the course LMS (Week 1 announcement)</p></li>
+<li><p>NM RGIS Clearinghouse (our regional data source all semester): <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a></p></li>
+</ul>
+<p>If you’re running this notebook locally rather than in a hosted environment (Colab / Binder / JupyterHub), the only Python package this <em>specific</em> notebook needs is optional. If you are curious about the small amount of Python behind a few of the steps below, it is collected in an optional appendix at the very end of this notebook, so it will not get in your way here.</p>
+</section>
+<section id="step-1-ask">
+<h2>Step 1: Ask<a class="headerlink" href="#step-1-ask" title="Link to this heading">#</a></h2>
+<p>Before opening any software, sit with a couple of questions.</p>
+<blockquote>
+<div><p><strong>What is GIS, really?</strong> A <em>Geographic Information <strong>System</strong></em> is the software/hardware you click through — QGIS, ArcGIS Pro, GeoLibre. <strong>Geographic Information <em>Science</em></strong> is the broader discipline underneath it: the ideas about space, data, and representation that stay true no matter which system you’re using <em>(K01, EU1)</em>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>EQ1 — What does this technology let us do, where are its limits, and who is excluded when using it costs money?</strong></p>
+</div></blockquote>
+<p>Take a minute and jot down your first-pass answers (edit the cell below):</p>
+<ul class="simple">
+<li><p>What do you already associate with “GIS” or “mapping software,” even if you’ve never used it?</p></li>
+<li><p>If a powerful GIS tool costs several thousand dollars a year to license, who does — and doesn’t — get to use it?</p></li>
+<li><p>Southwestern New Mexico (Grant County, the Gila region) is a real place with real people. What might a first-time visitor’s map of this region get wrong, or leave out?</p></li>
+</ul>
+<p>We’ll come back to that last question all semester — it’s the seed of the GeoEthics strand of this course.</p>
+<p><strong>Your answers (double-click this cell to edit):</strong></p>
+<ul class="simple">
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="step-2-collect">
+<h2>Step 2️: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
+<p>“Collecting” today means: get oriented, open a basemap, and load one ready-made data layer — all inside GeoLibre, before you branch into your track. No downloads to your own computer yet — that’s Week 4’s lab (K04, S03).</p>
+<details>
+<summary><b>GeoLibre (Web) — click to expand</b></summary>
+<ol class="arabic simple">
+<li><p>Open <strong><a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a></strong> in a new browser tab (no login needed).</p></li>
+<li><p>When prompted, choose the <strong>Beginner</strong> interface — you can change this later in Settings → Interface.</p></li>
+<li><p>Use the <strong>basemap</strong> control to switch between a street map and satellite/aerial imagery.</p></li>
+<li><p>Use the search box (or pan/zoom manually) to navigate to <strong>Silver City, New Mexico</strong>.</p></li>
+<li><p>Use <strong>Add Data → URL</strong> (or drag-and-drop) to load this public, cloud-native world-countries layer — nothing to download first, GeoLibre streams it directly:
+<code class="docutils literal notranslate"><span class="pre">https://data.source.coop/giswqs/opengeos/countries.parquet</span></code></p></li>
+<li><p>Zoom from the <strong>United States</strong>, to <strong>New Mexico</strong>, to <strong>Grant County / Silver City</strong>. Notice that the level of visual detail available doesn’t really change — you’re just choosing how far to zoom.</p></li>
+<li><p>Use the <strong>Identify</strong> tool on the United States polygon to see what attribute data comes attached to it.</p></li>
+</ol>
+</details>
+<p><em>Optional:</em> the code cell below embeds the same web app right in this notebook, so you can try it without leaving the page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL — view the GeoLibre web app right inside this notebook.</span>
+<span class="c1"># You can also just open https://web.geolibre.app/ in a normal browser tab — that always works,</span>
+<span class="c1"># and is the more reliable option if your notebook environment blocks embedded pages.</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://web.geolibre.app/&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="600"
+            src="https://web.geolibre.app/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<blockquote>
+<div><p>If the embedded map above doesn’t load (some hosted notebook environments block embedded pages), that’s normal — just open <strong><a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a></strong> directly in a browser tab instead.</p>
+</div></blockquote>
+<p><strong>Save a screenshot now</strong> — your GeoLibre view of Silver City with the countries layer loaded. Save it somewhere you’ll find it again and label it <em>Screenshot 1</em>; you’ll turn it in during the Act step.</p>
+</section>
+<hr class="docutils" />
+<section id="checkpoint-choose-your-track">
+<h2>🔀 Checkpoint: Choose Your Track<a class="headerlink" href="#checkpoint-choose-your-track" title="Link to this heading">#</a></h2>
+<p>From here, pick <strong>Track Q (QGIS)</strong> or <strong>Track A (ArcGIS Pro)</strong> and stay in that track through both Visualize and Create. Expand only the track you’re using — you can leave the other one collapsed and come back to it later if you want the optional comparison.</p>
+<blockquote>
+<div><p><strong>Not sure which to pick?</strong> Track Q works for everyone, everywhere, for free — a safe default. Track A is a great pick if ArcGIS Pro access is already set up for you through the campus lab, a virtual desktop, or your own Windows machine.</p>
+</div></blockquote>
+</section>
+<section id="step-3-visualize">
+<h2>Step 3: Visualize<a class="headerlink" href="#step-3-visualize" title="Link to this heading">#</a></h2>
+<p>Now let’s load a <em>real, curated</em> dataset and see what your track’s platform brings to the table.</p>
+<details>
+<summary><b>Track Q — QGIS: click to expand</b></summary>
+<ol class="arabic simple">
+<li><p>Open QGIS and start a <strong>New Project</strong>. Add a basemap using <strong>XYZ Tiles</strong> (built in) or install the <strong>QuickMapServices</strong> plugin (Plugins → Manage and Install Plugins) for one-click satellite/street basemaps.</p></li>
+<li><p>Check the <strong>CRS indicator</strong> in the bottom-right status bar to see what coordinate system your project is in (we’ll dig into this in Week 3).</p></li>
+<li><p>Zoom from the whole country down to Grant County, NM, the same way you did in GeoLibre.</p></li>
+<li><p><strong>Signature feature:</strong> use <strong>Layer → Add Layer → Add ArcGIS Feature Server Layer</strong>, and search the connection dialog for a public wildfire or forest-related service (try the keyword “wildfire” or “forest”). Add one layer near the Gila region. This works because many federal and state agencies publish open data through Esri’s map-service format — QGIS can read it even though it isn’t Esri software. That’s a small, real example of <em>open standards</em> letting different tools share the same data.</p></li>
+<li><p>Open the new layer’s <strong>attribute table</strong> (right-click the layer → Open Attribute Table) to see what information came attached to it.</p></li>
+</ol>
+</details>
+<details>
+<summary><b>Track A — ArcGIS Pro: click to expand</b></summary>
+<ol class="arabic simple">
+<li><p>Open ArcGIS Pro and start a <strong>New Map</strong> project. In the <strong>Map</strong> tab, use <strong>Basemap</strong> to add a Topographic or World Imagery basemap (streamed from ArcGIS Online).</p></li>
+<li><p>Zoom from the country level down to Grant County, NM.</p></li>
+<li><p><strong>Signature feature:</strong> in the <strong>Catalog</strong> pane, open <strong>Living Atlas</strong> and search for a wildfire-risk or forest-type layer relevant to the Gila region. Add it to your map — Living Atlas is a curated library of ready-made layers that ships with ArcGIS Online, one of the things a license gets you.</p></li>
+<li><p>Lower the layer’s transparency partway so the basemap still shows through, then use the <strong>Explore/Identify</strong> tool to click a feature and see its attributes.</p></li>
+</ol>
+</details>
+<p>📸 <strong>Save a screenshot now</strong> — your track’s map with the new layer visible. Label it <em>Screenshot 2</em>.</p>
+</section>
+<section id="step-4-create">
+<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
+<p>Time to make something, however small — one labeled marker at Western New Mexico University / downtown Silver City, in the same track you just used.</p>
+<details>
+<summary><b>Track Q — QGIS: click to expand</b></summary>
+<ol class="arabic simple">
+<li><p>Create a new point layer (<strong>Layer → Create Layer → New Shapefile/GeoPackage Layer</strong>) and digitize a single point at WNMU / downtown Silver City.</p></li>
+<li><p>Label it (e.g., “WNMU — GISS 361”), then open <strong>Project → New Print Layout</strong> to lay out and export a simple PNG.</p></li>
+</ol>
+</details>
+<details>
+<summary><b>Track A — ArcGIS Pro: click to expand</b></summary>
+<ol class="arabic simple">
+<li><p>Add a point via <strong>Edit → Create Features</strong>, placing a marker at WNMU / downtown Silver City.</p></li>
+<li><p>Label it, then use <strong>Share → Export Map</strong> (or build a <strong>Layout</strong>) to export a simple image.</p></li>
+</ol>
+</details>
+<p>📸 <strong>Save a screenshot now</strong> — your labeled marker map. Label it <em>Screenshot 3</em> — this is the main image you’ll turn in for Act.</p>
+</section>
+<section id="step-5-act">
+<h2>Step 5: Act<a class="headerlink" href="#step-5-act" title="Link to this heading">#</a></h2>
+<p>The “Act” step is about sharing what you made and reflecting on what it means — not just producing an image and moving on.</p>
+<section id="what-to-turn-in-practice-ungraded">
+<h3>What to turn in (practice — ungraded)<a class="headerlink" href="#what-to-turn-in-practice-ungraded" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Your three screenshots:</p>
+<ul class="simple">
+<li><p><strong>Screenshot 1</strong> — GeoLibre, oriented on Silver City with the countries layer loaded (Collect).</p></li>
+<li><p><strong>Screenshot 2</strong> — your track’s map with its new layer visible (Visualize).</p></li>
+<li><p><strong>Screenshot 3</strong> — your track’s labeled marker map (Create).</p></li>
+</ul>
+</li>
+<li><p>A short written reflection (3–5 sentences) answering:</p>
+<ul class="simple">
+<li><p>Which felt more intuitive: the zero-install browser tool (GeoLibre) or your desktop track (QGIS or ArcGIS Pro)? Why?</p></li>
+<li><p>What could your desktop track do that GeoLibre couldn’t — or the other way around?</p></li>
+<li><p>Revisit <strong>EQ1</strong>: GeoLibre and QGIS cost nothing to use; ArcGIS Pro is licensed through WNMU. Now that you’ve worked hands-on with at least one free tool and (maybe) one licensed one, has your answer changed about who gets left out when a GIS tool costs money? If you only had access to the free tools all semester, would you still be able to do real GIS work?</p></li>
+<li><p><em>(Optional, if you tried the second track too)</em> What was one thing that felt easier in the track you didn’t use for Create?</p></li>
+</ul>
+</li>
+</ol>
+<p>Post your screenshots + reflection to this week’s discussion space in Canvas. This is a practice activity, not graded — but it sets you up for <strong>Lab 1</strong> next week.</p>
+</section>
+<section id="looking-ahead">
+<h3>Looking Ahead<a class="headerlink" href="#looking-ahead" title="Link to this heading">#</a></h3>
+<p>Next week you’ll start <strong>Project Topic Ideation A</strong> — the first low-stakes checkpoint toward your semester-long Place-Based Geospatial Inquiry Project. Start thinking now about a place that matters to you (it doesn’t have to be Silver City!) and a question about it you’re genuinely curious about.</p>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h3>📎 Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>GeoLibre — <a class="reference external" href="https://geolibre.app/">https://geolibre.app/</a> (docs &amp; tutorials) · <a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a> (live app) · <a class="github reference external" href="https://github.com/opengeos/GeoLibre">opengeos/GeoLibre</a></p></li>
+<li><p>QGIS — <a class="reference external" href="https://qgis.org/">https://qgis.org/</a></p></li>
+<li><p>ArcGIS Pro / Online — see course LMS for WNMU access details</p></li>
+<li><p>NM RGIS Clearinghouse — <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">leafmap</span></code> (Python) — <a class="reference external" href="https://leafmap.org/">https://leafmap.org/</a></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="appendix-python-code-optional">
+<h2>Appendix: Python Code (Optional)<a class="headerlink" href="#appendix-python-code-optional" title="Link to this heading">#</a></h2>
+<p>Everything above this line is all you need for this practice lab. The cells below are optional, and their code is collapsed by default. They show the small amount of Python running quietly behind a few of the steps above, in case you are curious.</p>
+<p>Nothing here is required, and nothing here is graded. You are welcome to open and run these cells, skip them entirely, or come back to them later in the semester once we start writing Python together in class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL -- environment check</span>
+<span class="c1"># This notebook is mostly a guided walkthrough of software you&#39;ll open outside of Jupyter</span>
+<span class="c1"># (QGIS, ArcGIS Pro, and GeoLibre&#39;s web app). The only Python package used later in this</span>
+<span class="c1"># notebook is `leafmap`. If a later cell errors on `import leafmap`, uncomment and run:</span>
+<span class="c1"># !pip install leafmap -q</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> ready.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python 3.12.6 ready.
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>If the embedded map above doesn’t load (some hosted notebook environments block embedded pages), that’s normal — just open <strong><a class="reference external" href="https://web.geolibre.app/">https://web.geolibre.app/</a></strong> directly in a browser tab instead.</p>
+</div></blockquote>
+<section id="behind-step-3-visualize-a-first-look-with-leafmap">
+<h3>Behind Step 3 (Visualize): A First Look with leafmap<a class="headerlink" href="#behind-step-3-visualize-a-first-look-with-leafmap" title="Link to this heading">#</a></h3>
+<p>Later in the semester you will build maps with Python directly. This cell is just a preview: it draws a simple map centered on Silver City using <code class="docutils literal notranslate"><span class="pre">leafmap</span></code>, an open-source Python mapping library we will use again later in the course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL -- a first taste of Python-based mapping (we&#39;ll do much more with this later in the semester)</span>
+<span class="c1"># If leafmap isn&#39;t installed, uncomment the line below:</span>
+<span class="c1"># !pip install leafmap -q</span>
+
+<span class="kn">import</span> <span class="nn">leafmap</span>
+
+<span class="n">silver_city</span> <span class="o">=</span> <span class="p">(</span><span class="mf">32.7701</span><span class="p">,</span> <span class="o">-</span><span class="mf">108.2803</span><span class="p">)</span>  <span class="c1"># (latitude, longitude)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">silver_city</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "62f9a09ea9184a98a7ee7e2afc437301"}</script></div>
+</div>
+</section>
+<section id="behind-step-4-create-adding-a-marker-and-saving-a-map">
+<h3>Behind Step 4 (Create): Adding a Marker and Saving a Map<a class="headerlink" href="#behind-step-4-create-adding-a-marker-and-saving-a-map" title="Link to this heading">#</a></h3>
+<p>This is the same idea as Step 4 above – marking WNMU / downtown Silver City and saving an image – done here in a few lines of Python instead of by hand in GeoLibre, QGIS, or ArcGIS Pro.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL -- add a labeled marker and save a shareable HTML map</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">silver_city</span><span class="p">,</span> <span class="n">popup</span><span class="o">=</span><span class="s2">&quot;Western New Mexico University -- GISS 361/363&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s2">&quot;week1_first_map.html&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved week1_first_map.html -- open it in a browser to see your first exported map.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TraitError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># OPTIONAL -- add a labeled marker and save a shareable HTML map</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">m</span><span class="o">.</span><span class="n">add_marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">silver_city</span><span class="p">,</span> <span class="n">popup</span><span class="o">=</span><span class="s2">&quot;Western New Mexico University -- GISS 361/363&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">m</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s2">&quot;week1_first_map.html&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved week1_first_map.html -- open it in a browser to see your first exported map.&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/leafmap/leafmap.py:320,</span> in <span class="ni">Map.add_marker</span><span class="nt">(self, location, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="n">location</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">320</span>     <span class="n">marker</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/ipyleaflet/leaflet.py:537,</span> in <span class="ni">Marker.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">537</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Marker</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="bp">self</span><span class="o">.</span><span class="n">on_msg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_leaflet_event</span><span class="p">)</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/ipyleaflet/leaflet.py:211,</span> in <span class="ni">Layer.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">211</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Layer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="bp">self</span><span class="o">.</span><span class="n">on_msg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_mouse_events</span><span class="p">)</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:478,</span> in <span class="ni">Widget.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Public constructor&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;model_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">478</span> <span class="nb">super</span><span class="p">(</span><span class="n">Widget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> <span class="n">Widget</span><span class="o">.</span><span class="n">_call_widget_constructed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span> <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/traitlets/traitlets.py:1355,</span> in <span class="ni">HasTraits.__init__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_trait</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1355</span>         <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span>         <span class="n">changes</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Bunch</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1357</span>             <span class="n">name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span>             <span class="n">old</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1361</span>             <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1362</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1363</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1364</span>         <span class="c1"># passthrough args that don&#39;t set traits to super</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/traitlets/traitlets.py:716,</span> in <span class="ni">TraitType.__set__</span><span class="nt">(self, obj, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_only</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>     <span class="k">raise</span> <span class="n">TraitError</span><span class="p">(</span><span class="s1">&#39;The &quot;</span><span class="si">%s</span><span class="s1">&quot; trait is read-only.&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">716</span> <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/traitlets/traitlets.py:690,</span> in <span class="ni">TraitType.set</span><span class="nt">(self, obj, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span> <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">HasTraits</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">S</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">690</span>     <span class="n">new_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/traitlets/traitlets.py:722,</span> in <span class="ni">TraitType._validate</span><span class="nt">(self, obj, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span>     <span class="k">return</span> <span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;validate&quot;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">722</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">723</span> <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">_cross_validation_lock</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cross_validate</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/traitlets/traitlets.py:2311,</span> in <span class="ni">Instance.validate</span><span class="nt">(self, obj, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2309</span>     <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2310</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2311</span>     <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="nn">File ~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/traitlets/traitlets.py:831,</span> in <span class="ni">TraitType.error</span><span class="nt">(self, obj, value, error, info)</span>
+<span class="g g-Whitespace">    </span><span class="mi">825</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span>     <span class="n">e</span> <span class="o">=</span> <span class="s2">&quot;The &#39;</span><span class="si">{}</span><span class="s2">&#39; trait expected </span><span class="si">{}</span><span class="s2">, not </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">828</span>         <span class="n">info</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span>         <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">830</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">831</span> <span class="k">raise</span> <span class="n">TraitError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="ne">TraitError</span>: The &#39;popup&#39; trait of a Marker instance expected a Widget or None, not the str &#39;Western New Mexico University -- GISS 361/363&#39;.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-361",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="instructions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Submission Instructions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_01.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 0</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-lab-getting-started-with-gis">Practice Lab - Getting Started with GIS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-361-363-introduction-to-geographic-information-science">GISS/GEOG 361/363 · Introduction to Geographic Information Science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-we-re-working-silver-city-southwestern-new-mexico">Where We’re Working: Silver City &amp; Southwestern New Mexico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-notebook-is-organized-the-geo-inquiry-process">How This Notebook Is Organized: the Geo-Inquiry Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-the-platforms-and-tracks">A Note on the Platforms and Tracks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2️: Collect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-choose-your-track">🔀 Checkpoint: Choose Your Track</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-practice-ungraded">What to turn in (practice — ungraded)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">📎 Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-python-code-optional">Appendix: Python Code (Optional)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-step-3-visualize-a-first-look-with-leafmap">Behind Step 3 (Visualize): A First Look with leafmap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-step-4-create-adding-a-marker-and-saving-a-map">Behind Step 4 (Create): Adding a Marker and Saving a Map</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

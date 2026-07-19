@@ -1,0 +1,114 @@
+Traceback (most recent call last):
+  File "/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/uv-python-dir/cpython-3.12.6-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+gdf = gpd.read_parquet(filename)
+gdf.head()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mArrowInvalid[0m                              Traceback (most recent call last)
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/geopandas/io/arrow.py:653[0m, in [0;36m_read_parquet_schema_and_metadata[0;34m(path, filesystem)[0m
+[1;32m    652[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 653[0m     schema [38;5;241m=[39m [43mparquet[49m[38;5;241;43m.[39;49m[43mParquetDataset[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mfilesystem[49m[38;5;241;43m=[39;49m[43mfilesystem[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m[38;5;241m.[39mschema
+[1;32m    654[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/parquet/core.py:1371[0m, in [0;36mParquetDataset.__init__[0;34m(self, path_or_paths, filesystem, schema, filters, read_dictionary, memory_map, buffer_size, partitioning, ignore_prefixes, pre_buffer, coerce_int96_timestamp_unit, decryption_properties, thrift_string_size_limit, thrift_container_size_limit, page_checksum_verification, use_legacy_dataset)[0m
+[1;32m   1368[0m     partitioning [38;5;241m=[39m ds[38;5;241m.[39mHivePartitioning[38;5;241m.[39mdiscover(
+[1;32m   1369[0m         infer_dictionary[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[0;32m-> 1371[0m [38;5;28mself[39m[38;5;241m.[39m_dataset [38;5;241m=[39m [43mds[49m[38;5;241;43m.[39;49m[43mdataset[49m[43m([49m[43mpath_or_paths[49m[43m,[49m[43m [49m[43mfilesystem[49m[38;5;241;43m=[39;49m[43mfilesystem[49m[43m,[49m
+[1;32m   1372[0m [43m                           [49m[43mschema[49m[38;5;241;43m=[39;49m[43mschema[49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[43mparquet_format[49m[43m,[49m
+[1;32m   1373[0m [43m                           [49m[43mpartitioning[49m[38;5;241;43m=[39;49m[43mpartitioning[49m[43m,[49m
+[1;32m   1374[0m [43m                           [49m[43mignore_prefixes[49m[38;5;241;43m=[39;49m[43mignore_prefixes[49m[43m)[49m
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/dataset.py:794[0m, in [0;36mdataset[0;34m(source, schema, format, filesystem, partitioning, partition_base_dir, exclude_invalid_files, ignore_prefixes)[0m
+[1;32m    793[0m [38;5;28;01mif[39;00m _is_path_like(source):
+[0;32m--> 794[0m     [38;5;28;01mreturn[39;00m [43m_filesystem_dataset[49m[43m([49m[43msource[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    795[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(source, ([38;5;28mtuple[39m, [38;5;28mlist[39m)):
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/dataset.py:486[0m, in [0;36m_filesystem_dataset[0;34m(source, schema, filesystem, partitioning, format, partition_base_dir, exclude_invalid_files, selector_ignore_prefixes)[0m
+[1;32m    484[0m factory [38;5;241m=[39m FileSystemDatasetFactory(fs, paths_or_selector, [38;5;28mformat[39m, options)
+[0;32m--> 486[0m [38;5;28;01mreturn[39;00m [43mfactory[49m[38;5;241;43m.[39;49m[43mfinish[49m[43m([49m[43mschema[49m[43m)[49m
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/_dataset.pyx:3089[0m, in [0;36mpyarrow._dataset.DatasetFactory.finish[0;34m()[0m
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/error.pxi:155[0m, in [0;36mpyarrow.lib.pyarrow_internal_check_status[0;34m()[0m
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/error.pxi:92[0m, in [0;36mpyarrow.lib.check_status[0;34m()[0m
+
+[0;31mArrowInvalid[0m: Error creating dataset. Could not read schema from 'cities.parquet'. Is this a 'parquet' file?: Could not open Parquet input source 'cities.parquet': Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.
+
+During handling of the above exception, another exception occurred:
+
+[0;31mArrowInvalid[0m                              Traceback (most recent call last)
+Cell [0;32mIn[34], line 1[0m
+[0;32m----> 1[0m gdf [38;5;241m=[39m [43mgpd[49m[38;5;241;43m.[39;49m[43mread_parquet[49m[43m([49m[43mfilename[49m[43m)[49m
+[1;32m      2[0m gdf[38;5;241m.[39mhead()
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/geopandas/io/arrow.py:751[0m, in [0;36m_read_parquet[0;34m(path, columns, storage_options, bbox, **kwargs)[0m
+[1;32m    747[0m filesystem, path [38;5;241m=[39m _get_filesystem_path(
+[1;32m    748[0m     path, filesystem[38;5;241m=[39mfilesystem, storage_options[38;5;241m=[39mstorage_options
+[1;32m    749[0m )
+[1;32m    750[0m path [38;5;241m=[39m _expand_user(path)
+[0;32m--> 751[0m schema, metadata [38;5;241m=[39m [43m_read_parquet_schema_and_metadata[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mfilesystem[49m[43m)[49m
+[1;32m    753[0m geo_metadata [38;5;241m=[39m _validate_and_decode_metadata(metadata)
+[1;32m    755[0m bbox_filter [38;5;241m=[39m (
+[1;32m    756[0m     _get_parquet_bbox_filter(geo_metadata, bbox) [38;5;28;01mif[39;00m bbox [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m
+[1;32m    757[0m )
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/geopandas/io/arrow.py:655[0m, in [0;36m_read_parquet_schema_and_metadata[0;34m(path, filesystem)[0m
+[1;32m    653[0m     schema [38;5;241m=[39m parquet[38;5;241m.[39mParquetDataset(path, filesystem[38;5;241m=[39mfilesystem, [38;5;241m*[39m[38;5;241m*[39mkwargs)[38;5;241m.[39mschema
+[1;32m    654[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[0;32m--> 655[0m     schema [38;5;241m=[39m [43mparquet[49m[38;5;241;43m.[39;49m[43mread_schema[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mfilesystem[49m[38;5;241;43m=[39;49m[43mfilesystem[49m[43m)[49m
+[1;32m    657[0m metadata [38;5;241m=[39m schema[38;5;241m.[39mmetadata
+[1;32m    659[0m [38;5;66;03m# read metadata separately to get the raw Parquet FileMetaData metadata[39;00m
+[1;32m    660[0m [38;5;66;03m# (pyarrow doesn't properly exposes those in schema.metadata for files[39;00m
+[1;32m    661[0m [38;5;66;03m# created by GDAL - https://issues.apache.org/jira/browse/ARROW-16688)[39;00m
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/parquet/core.py:2345[0m, in [0;36mread_schema[0;34m(where, memory_map, decryption_properties, filesystem)[0m
+[1;32m   2342[0m     file_ctx [38;5;241m=[39m where [38;5;241m=[39m filesystem[38;5;241m.[39mopen_input_file(where)
+[1;32m   2344[0m [38;5;28;01mwith[39;00m file_ctx:
+[0;32m-> 2345[0m     file [38;5;241m=[39m [43mParquetFile[49m[43m([49m
+[1;32m   2346[0m [43m        [49m[43mwhere[49m[43m,[49m[43m [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[43mmemory_map[49m[43m,[49m
+[1;32m   2347[0m [43m        [49m[43mdecryption_properties[49m[38;5;241;43m=[39;49m[43mdecryption_properties[49m[43m)[49m
+[1;32m   2348[0m     [38;5;28;01mreturn[39;00m file[38;5;241m.[39mschema[38;5;241m.[39mto_arrow_schema()
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/parquet/core.py:317[0m, in [0;36mParquetFile.__init__[0;34m(self, source, metadata, common_metadata, read_dictionary, memory_map, buffer_size, pre_buffer, coerce_int96_timestamp_unit, decryption_properties, thrift_string_size_limit, thrift_container_size_limit, filesystem, page_checksum_verification)[0m
+[1;32m    314[0m     [38;5;28mself[39m[38;5;241m.[39m_close_source [38;5;241m=[39m [38;5;28;01mTrue[39;00m  [38;5;66;03m# We opened it here, ensure we close it.[39;00m
+[1;32m    316[0m [38;5;28mself[39m[38;5;241m.[39mreader [38;5;241m=[39m ParquetReader()
+[0;32m--> 317[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mreader[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m
+[1;32m    318[0m [43m    [49m[43msource[49m[43m,[49m[43m [49m[43muse_memory_map[49m[38;5;241;43m=[39;49m[43mmemory_map[49m[43m,[49m
+[1;32m    319[0m [43m    [49m[43mbuffer_size[49m[38;5;241;43m=[39;49m[43mbuffer_size[49m[43m,[49m[43m [49m[43mpre_buffer[49m[38;5;241;43m=[39;49m[43mpre_buffer[49m[43m,[49m
+[1;32m    320[0m [43m    [49m[43mread_dictionary[49m[38;5;241;43m=[39;49m[43mread_dictionary[49m[43m,[49m[43m [49m[43mmetadata[49m[38;5;241;43m=[39;49m[43mmetadata[49m[43m,[49m
+[1;32m    321[0m [43m    [49m[43mcoerce_int96_timestamp_unit[49m[38;5;241;43m=[39;49m[43mcoerce_int96_timestamp_unit[49m[43m,[49m
+[1;32m    322[0m [43m    [49m[43mdecryption_properties[49m[38;5;241;43m=[39;49m[43mdecryption_properties[49m[43m,[49m
+[1;32m    323[0m [43m    [49m[43mthrift_string_size_limit[49m[38;5;241;43m=[39;49m[43mthrift_string_size_limit[49m[43m,[49m
+[1;32m    324[0m [43m    [49m[43mthrift_container_size_limit[49m[38;5;241;43m=[39;49m[43mthrift_container_size_limit[49m[43m,[49m
+[1;32m    325[0m [43m    [49m[43mpage_checksum_verification[49m[38;5;241;43m=[39;49m[43mpage_checksum_verification[49m[43m,[49m
+[1;32m    326[0m [43m[49m[43m)[49m
+[1;32m    327[0m [38;5;28mself[39m[38;5;241m.[39mcommon_metadata [38;5;241m=[39m common_metadata
+[1;32m    328[0m [38;5;28mself[39m[38;5;241m.[39m_nested_paths_by_prefix [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_build_nested_paths()
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/_parquet.pyx:1501[0m, in [0;36mpyarrow._parquet.ParquetReader.open[0;34m()[0m
+
+File [0;32m~/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/pyarrow/error.pxi:92[0m, in [0;36mpyarrow.lib.check_status[0;34m()[0m
+
+[0;31mArrowInvalid[0m: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.
+
