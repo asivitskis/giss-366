@@ -1,0 +1,271 @@
+# Lab 1
+# Symbolizing Data, Building Basic Maps, and Working with Layers
+### GISS/GEOG 361/363 · Introduction to Geographic Information Science
+
+**Unit 2 Focus:** Types of spatial data — vector vs. raster · Data sources · Introduction to symbology · Cloud-native formats
+
+*This is your first graded lab. It builds directly on Practice Lab 0 — same region, same tools, same track.*
+
+---
+
+## Where We're Working: The Land Ownership Mosaic Near Silver City
+
+This week we zoom into one of the most visually striking datasets in the region: the patchwork of land ownership around Silver City and the Gila National Forest. U.S. Forest Service, Bureau of Land Management (BLM), New Mexico State Trust Land, and private and mining-company parcels are all checkerboarded together across the same few square miles — a real, mapped example of the vector data and symbology concepts from this week's lecture.
+
+<!-- Optional: add a local photo here, e.g. <img src="images/week2_hero.jpg" alt="Land ownership checkerboard near Silver City, NM" width="650px"> -->
+
+## Learning Goals
+
+By the end of this lab, you will be able to:
+- Distinguish vector and raster data by working hands-on with one of each — a parcel-based ownership layer (vector) and a national land-cover layer (raster)
+- Apply **categorized symbology** to a real dataset, choosing a distinct, colorblind-safe color per land-ownership category
+- Add a national comparison layer (PAD-US or NLCD) alongside the local ownership mosaic, and work with multiple layers in the same map
+- Build a basic, readable map with a legend, title, and the other elements a reader needs to understand what they're looking at
+- Continue forming your answer to **EQ1** — who controls this land, and what does that checkerboard pattern reveal or obscure? *(EQ1, A01)*
+
+## How This Notebook Is Organized: the Geo-Inquiry Process
+
+Same five-step shape as Lab 0: **Ask → Collect → Visualize → Create → Act.** This week the data is real and locally meaningful, so each step carries a bit more weight than it did in the practice lab.
+
+## A Note on the Platforms and Tracks
+
+Stay in the same track you used in Lab 0 if you can — 🗺️ **Track Q (QGIS)** or 💼 **Track A (ArcGIS Pro)** — so you're building on skills you already have a feel for, not starting over. If you want to switch tracks this week, that's fine too; just know you'll be doing a bit more first-time navigating.
+
+Everything below still opens with a quick stop in **GeoLibre**, this time to practice styling a layer before you do the same thing for real in your track.
+
+## Before You Begin
+
+| Platform | Cost / Access | Install? | Role in this lab |
+|---|---|---|---|
+| **GeoLibre** | Free, no account | None — runs in your browser | Symbology warm-up (Collect) |
+| **QGIS** *(Track Q)* | Free, open-source | Download & install ([qgis.org](https://qgis.org/download/)) | Full workflow |
+| **ArcGIS Pro** *(Track A)* | Provided via WNMU license | Windows only — install locally, or use the campus lab / virtual desktop | Full workflow |
+
+**Links**
+- GeoLibre (web app): https://web.geolibre.app/
+- QGIS download: https://qgis.org/download/
+- ArcGIS Pro / ArcGIS Online: access details posted in the course LMS
+- NM RGIS Clearinghouse (this week's local ownership data): https://rgis.unm.edu/
+- BLM New Mexico Surface Management Agency data (live feature service, used below): https://gis.blm.gov/nmarcgis/rest/services/Lands/BLM_NM_Lands_Surface_Management_Agency/FeatureServer/0
+- USGS PAD-US (Protected Areas Database) overview: https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview
+- NLCD (National Land Cover Database) overview: https://www.mrlc.gov/
+
+As in Lab 0, this notebook's only optional Python dependency is `leafmap`, used in the appendix at the end. Nothing here is required to complete the lab.
+
+## Step 1: Ask
+
+Before you touch any software, sit with a few questions — the same habit Lab 0 started.
+
+> **Recall EQ1:** *What does this technology let us do, where are its limits, and who is excluded when using it costs money?* This week adds a second layer to that question: **who controls this land, and how did that come to be?**
+
+Take a minute and jot down your first-pass answers (edit the cell below):
+- Look at a map of Grant County's land ownership (even just a quick mental picture from last week's lecture). What do you expect a "checkerboard" of ownership to look like before you actually load the data?
+- If a wildfire or a wildlife corridor doesn't care about property lines, what problems might that create for the people who manage this land?
+- What's one thing you'd want to know about *how* a land-ownership dataset was built before you trusted it enough to make decisions with it?
+
+**Your answers (double-click this cell to edit):**
+
+-
+-
+-
+
+---
+
+## Step 2️: Collect
+
+This week's Collect step is a symbology warm-up. You already know how to open a basemap and add a layer from Lab 0 — now practice *styling* one, in the same free, no-install tool, before you do the real version in your track.
+
+<details>
+<summary><b>GeoLibre (Web) — click to expand</b></summary>
+
+1. Open **https://web.geolibre.app/** (or pick up where you left off in Lab 0).
+2. Re-load the countries layer from Lab 0 if it isn't still open: `https://data.source.coop/giswqs/opengeos/countries.parquet`
+3. Open that layer's **Style** panel. Switch it from single symbol to **categorized** (sometimes labeled "unique values") using whatever category field is available (e.g. continent or region).
+4. Notice what changes: instead of one color for every country, you now get one color per category — this is exactly the symbology strategy you'll use on land ownership in a moment.
+5. *Optional, and it may not work:* try adding this week's local dataset directly, using **Add Data → URL** with the BLM ownership feature service below. Not every web viewer can read an Esri feature service the same way a desktop GIS can, so if it doesn't load, that's fine — you'll get a full working version in your track's Visualize step next.
+   `https://gis.blm.gov/nmarcgis/rest/services/Lands/BLM_NM_Lands_Surface_Management_Agency/FeatureServer/0`
+
+</details>
+
+*Optional:* the code cell below embeds the GeoLibre web app right in this notebook, same as Lab 0.
+
+
+```python
+# OPTIONAL -- view the GeoLibre web app right inside this notebook.
+# You can also just open https://web.geolibre.app/ in a normal browser tab -- that always works,
+# and is the more reliable option if your notebook environment blocks embedded pages.
+
+from IPython.display import IFrame
+
+IFrame(src="https://web.geolibre.app/", width="100%", height=600)
+```
+
+> If the embedded map above doesn't load (some hosted notebook environments block embedded pages), that's normal — just open **https://web.geolibre.app/** directly in a browser tab instead.
+
+**Save a screenshot now** — your GeoLibre countries layer with categorized symbology applied. Label it *Screenshot 1*; you'll turn it in during the Act step.
+
+---
+
+## 🔀 Checkpoint: Choose Your Track
+
+Pick **Track Q (QGIS)** or **Track A (ArcGIS Pro)** and stay in it through both Visualize and Create — ideally the same track you used in Lab 0.
+
+## Step 3: Visualize
+
+Now let's load this week's *real, local* dataset — the land ownership mosaic — and symbolize it properly.
+
+<details>
+<summary><b>Track Q — QGIS: click to expand</b></summary>
+
+1. Open QGIS and start a **New Project** (or reopen last week's).
+2. Use **Layer → Add Layer → Add ArcGIS Feature Server Layer**, and add this connection:
+   `https://gis.blm.gov/nmarcgis/rest/services/Lands/BLM_NM_Lands_Surface_Management_Agency/FeatureServer`
+   If that specific URL doesn't connect for you, search the connection dialog for the keyword **"surface management"** or **"land ownership"** instead — a similar public service should turn up.
+3. Zoom to Grant County / Silver City, the same way you did in Lab 0.
+4. Open the layer's **Properties → Symbology** tab. Change it from **Single Symbol** to **Categorized**, and set the **Value** field to whichever attribute names the managing agency (it may be called something like `ADMIN_AGENCY`, `OWNER`, or `MGMT_AGNCY` — check the attribute table to find the exact field name in this service). Click **Classify** to generate one color per category (USFS, BLM, State Trust, private, etc.).
+5. Pick a colorblind-safe palette for those categories — [ColorBrewer](https://colorbrewer2.org/) has ready-made qualitative palettes built for exactly this.
+6. **Signature feature — add the national comparison layer:** using the same **Add ArcGIS Feature Server Layer** connection, search for **"PAD-US"** or **"protected areas"** and add a national ownership/protection layer near the Gila region. Set it partly transparent so both layers are visible at once.
+
+</details>
+
+<details>
+<summary><b>Track A — ArcGIS Pro: click to expand</b></summary>
+
+1. Open ArcGIS Pro and start a **New Map** (or reopen last week's).
+2. In the **Catalog** pane, use **Add Data → Data From Path** and paste in the same feature service URL:
+   `https://gis.blm.gov/nmarcgis/rest/services/Lands/BLM_NM_Lands_Surface_Management_Agency/FeatureServer/0`
+   If that doesn't connect, search **Living Atlas** for **"surface management"** or **"land ownership New Mexico"** instead.
+3. Zoom to Grant County / Silver City.
+4. Open the layer's **Symbology** pane. Change it from single symbol to **Unique Values**, and set the field to whichever attribute names the managing agency (check the attribute table for the exact field name). ArcGIS Pro will auto-generate one color per category.
+5. Pick a colorblind-safe palette from the symbology pane's color scheme options, or bring in a [ColorBrewer](https://colorbrewer2.org/) qualitative palette manually.
+6. **Signature feature — add the national comparison layer:** search **Living Atlas** for **"PAD-US"** (protected areas, vector) or **"NLCD"** / **"land cover"** (raster) and add it to your map. Lower its transparency so both layers show through.
+
+</details>
+
+📸 **Save a screenshot now** — your track's categorized ownership map with the national comparison layer visible. Label it *Screenshot 2*.
+
+## Step 4: Create
+
+Time to turn what you loaded into an actual, readable map — not just data sitting on a screen.
+
+<details>
+<summary><b>Track Q — QGIS: click to expand</b></summary>
+
+1. Open **Project → New Print Layout**.
+2. Add a **Legend** (it should already reflect your categorized ownership colors), a **Title** ("Land Ownership Near Silver City, NM" or similar), and a **Scale Bar**.
+3. Make sure your legend labels are readable — rename any cryptic field codes (e.g. `USFS` instead of a raw agency code) using the legend's item properties.
+4. Export a simple PNG or PDF.
+
+</details>
+
+<details>
+<summary><b>Track A — ArcGIS Pro: click to expand</b></summary>
+
+1. Open the **Insert** tab and create a **New Layout**.
+2. Add a **Legend**, a **Title**, and a **Scale Bar** from the Insert tab's map surrounds.
+3. Clean up the legend labels so they read clearly (e.g. "U.S. Forest Service" instead of a raw code).
+4. Use **Share → Export Map** to export a simple image.
+
+</details>
+
+📸 **Save a screenshot now** — your finished, labeled map with legend, title, and scale bar. Label it *Screenshot 3* — this is the main image you'll turn in for Act.
+
+## Step 5: Act
+
+### What to turn in (Lab 1 — graded)
+
+1. Your three screenshots:
+   - **Screenshot 1** — GeoLibre, countries layer with categorized symbology (Collect).
+   - **Screenshot 2** — your track's ownership map with the national comparison layer visible (Visualize).
+   - **Screenshot 3** — your finished, labeled map with legend, title, and scale bar (Create).
+2. A short written reflection (4–6 sentences) answering:
+   - Which category did categorized symbology handle well, and did any category feel like it was hiding more detail than it showed (for example, does "private" lump together very different kinds of owners)?
+   - Compare the local ownership layer (vector, parcel-based) with your national comparison layer. If you chose NLCD, how did switching to a raster change what the map could and couldn't tell you? If you chose PAD-US, how did the national view compare to the local detail?
+   - Revisit this week's version of **EQ1**: now that you've mapped the checkerboard yourself, what's one thing about who controls this land that the map makes clear — and one thing it leaves out entirely?
+
+Post your screenshots + reflection to this week's discussion space in Canvas.
+
+### Looking Ahead
+
+You should already be thinking about **Project Topic Ideation A**, due this week — the first checkpoint toward your semester-long Place-Based Geospatial Inquiry Project. Next week (Lab 2) moves into coordinate systems, projections, and datums — the reason two accurate maps of the same place can still disagree about exactly where something sits.
+
+---
+### 📎 Resources
+
+- NM RGIS Clearinghouse — https://rgis.unm.edu/
+- BLM New Mexico Surface Management Agency (feature service used above) — https://gis.blm.gov/nmarcgis/rest/services/Lands/BLM_NM_Lands_Surface_Management_Agency/FeatureServer/0
+- USGS PAD-US Data Overview — https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview
+- NLCD / MRLC — https://www.mrlc.gov/
+- ColorBrewer — colorblind-safe, print-safe map color palettes — https://colorbrewer2.org/
+- QGIS — https://qgis.org/
+- ArcGIS Pro / Online — see course LMS for WNMU access details
+
+---
+## Appendix: Python Code (Optional)
+
+Everything above this line is all you need for this lab. The cells below are optional, and their code is collapsed by default. They show the small amount of Python that could do a simplified version of this week's symbology work, in case you're curious.
+
+Nothing here is required, and nothing here is graded.
+
+
+```python
+# OPTIONAL -- environment check
+# This notebook is mostly a guided walkthrough of software you'll open outside of Jupyter
+# (QGIS, ArcGIS Pro, and GeoLibre's web app). The only Python package used later in this
+# notebook is `leafmap`. If a later cell errors on `import leafmap`, uncomment and run:
+# !pip install leafmap -q
+
+import sys
+print(f"Python {sys.version.split()[0]} ready.")
+```
+
+### Behind Step 3 (Visualize): A First Look with leafmap
+
+This cell previews categorized symbology in Python: it draws a simple map centered on Silver City using `leafmap`, the same open-source library from Lab 0, and adds the BLM surface-management feature service as a live layer.
+
+
+```python
+# OPTIONAL -- a first taste of Python-based categorized symbology
+# If leafmap isn't installed, uncomment the line below:
+# !pip install leafmap -q
+
+import leafmap
+
+silver_city = (32.7701, -108.2803)  # (latitude, longitude)
+
+m = leafmap.Map(center=silver_city, zoom=10)
+m.add_basemap("Esri.WorldImagery")
+
+# BLM New Mexico Surface Management Agency -- the same feature service used in Track Q/A above
+blm_url = "https://gis.blm.gov/nmarcgis/rest/services/Lands/BLM_NM_Lands_Surface_Management_Agency/FeatureServer/0"
+try:
+    m.add_features(blm_url, layer_name="Surface Management Agency")
+except Exception as e:
+    print("Live service didn't load in this environment -- that's fine, this is optional.")
+    print(f"({e})")
+
+m
+```
+
+### Behind Step 4 (Create): A Simple Categorized Color Map
+
+Symbology software does this step for you with a few clicks, but it can help to see the idea in raw code: assigning a distinct color to each category by hand, the same logic QGIS or ArcGIS Pro applies automatically when you choose "Categorized" or "Unique Values."
+
+
+```python
+# OPTIONAL -- the idea behind categorized symbology, in a few lines of plain Python
+# No real data needed here -- just the color-assignment logic itself.
+
+owners = ["USFS", "BLM", "State Trust", "Private"]
+colorbrewer_qualitative = ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3"]  # colorblind-safe (ColorBrewer "Set2")
+
+owner_colors = dict(zip(owners, colorbrewer_qualitative))
+
+for owner, color in owner_colors.items():
+    print(f"{owner:12s} -> {color}")
+
+print("\nThis dictionary is exactly what QGIS/ArcGIS build for you under the hood")
+print("when you choose 'Categorized' or 'Unique Values' symbology.")
+```
+
+That's it for Lab 1. When you're ready, head into **Project Topic Ideation A** and start thinking about the place you want to investigate for your own inquiry project.
