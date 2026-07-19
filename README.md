@@ -6,10 +6,6 @@ Welcome to the official course website for "_Web Mapping and Web GIS_," offered 
 
 Web mapping is now the primary interface through which most people encounter geographic information — dashboards, embedded maps, StoryMaps, mobile field apps — and the barrier to publishing one has collapsed to minutes. That accessibility raises the stakes for web GIS literacy rather than lowering them: a practitioner needs to understand not just how to make a map appear, but the architecture underneath it, who it reaches, and what happens once it is public. This course builds directly on Introduction to Geographic Information Science (GISS 361/363), extending its place-based foundation into the networked, client-server-database systems that web GIS runs on. AI-assisted and no-code tools are accelerating how fast a functional web map can be published, but they cannot substitute for situated judgment about audience, access, and the ethical stakes of putting a place's data on the open web.
 
-## Textbook
-
-Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. Independently published. ISBN 979-8286979455. <https://amazon.com/dp/B0FFW34LL3>
-
 ## What You'll Learn
 
 - **Web GIS Architecture & Technology Foundations**: Build and deploy interactive web GIS applications across both proprietary tools (ArcGIS Online, Experience Builder, Enterprise) and open-source, cloud-native tools (GeoServer, MapLibre GL JS, Leaflet, PMTiles, GeoParquet) — and learn to choose between them based on the task at hand, not just habit.
@@ -23,6 +19,16 @@ By the end of the course, you'll be able to design, build, and deploy interactiv
 ## Course Resources
 
 All course materials, including lecture videos, are freely available on the course website: [giss-366.gishub.org](https://giss-366.gishub.org).
+
+## Textbooks
+
+*We will engage with readings and interactive examples from the following open source resources:*
+
+ - Dorman, M. (2020). Introduction to web mapping. Chapman and Hall/CRC. <https://bgu-geography.com/web-mapping/index.html>
+
+ - Duckham, Matt; Sun, Qian (Chayn); Worboys, Michael F. (2024) GIS: A Computing Perspective, Third Edition, CRC Press, doi:10.1201/9780429168093 <https://github.com/mduckham/gisacp3e>
+
+ - Roth RE, CM Sack, G Baldrica-Franklin, Y Chen, R Donohue, L Houtman, T Prestby, R Tolochko, and N Underwood. 2020. Web Mapping: A Workbook for Interactive Cartography and Visualization on the Open Web. Version 0.1. University of Wisconsin Cartography Laboratory: Madison, WI. DOI: 10.5281/zenodo.5565480 <https://github.com/uwcartlab/webmapping>
 
 ## Lecture Videos
 
