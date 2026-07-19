@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title: Introduction to Geographic Information Systems # The title of the book. Will be placed in the left navbar.
+title: WebMapping & Web GIS # The title of the book. Will be placed in the left navbar.
 author: Alex Sivitskis # The author of the book
 copyright: "2026" # Copyright year to be placed in the footer
 logo: logo.png # A path to the book logo
@@ -43,7 +43,7 @@ launch_buttons:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/asivitskis/giss-361 # Online location of your book
+  url: https://github.com/asivitskis/giss-366 # Online location of your book
   # path_to_book: docs # Optional path to your book, relative to the repository root
   branch: main # Which branch of the repository should be used when creating links (optional)
 
@@ -51,7 +51,7 @@ repository:
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   favicon: "fav.ico"
-  baseurl: https://asivitskis.github.io/giss-361  # The base URL where your book will be hosted.
+  baseurl: https://asivitskis.github.io/giss-366  # The base URL where your book will be hosted.
   use_repository_button: true
   use_issues_button: true
   use_edit_page_button: true
@@ -63,7 +63,7 @@ sphinx:
     html_extra_path: ["CNAME"]
     html_theme_options:
       use_download_button: true
-      repository_url: https://github.com/asivitskis/giss-361
+      repository_url: https://github.com/asivitskis/giss-366
       repository_branch: main # Specify the correct branch for theme options
       use_issues_button: true
       use_repository_button: true

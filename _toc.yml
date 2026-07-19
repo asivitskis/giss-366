@@ -16,27 +16,23 @@ parts:
   - caption: Software
     chapters:
       - file: book/software/overview
-      - file: book/software/Geo_Libre
-      - file: book/software/ESRI_ArcGIS
-      - file: book/software/QGIS
+      - file: book/software/arcgis_online
+      - file: book/software/leaflet
+      - file: book/software/maplibre
       - file: book/software/vscode
-  - caption: GIS Foundations
+  - caption: Foundations
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/foundations/01_get_started
-      - file: book/foundations/02_types_of_spatial_data
-      - file: book/foundations/03_coordinate_systems
-      - file: book/foundations/04_acquiring_geospatial_data
-      - file: book/foundations/05_vector_data_structures
-      - file: book/foundations/06_raster_data_basics
-      - file: book/foundations/07_attribute_data
-      
-  - caption: GIS Analysis and Cartography
+      - file: book/foundations/01_what_is_webgis
+      - file: book/foundations/02_open_web_standards
+      - file: book/foundations/03_proprietary_publishing
+      - file: book/foundations/04_web_fundamentals
+  - caption: Building & Querying
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/geospatial/leafmap
+      - file: book/build/leafmap
   - caption: Labs
     numbered: false
     maxdepth: 2
