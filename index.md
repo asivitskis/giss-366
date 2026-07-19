@@ -1,6 +1,6 @@
-# Introduction to Geographic Information Systems
+# Web Mapping and Web GIS
 
-Welcome to the official course website for "_Introduction to Geographic Information Systems_," offered at Western New Mexico University.
+Welcome to the official course website for "_Web Mapping and Web GIS_," offered at Western New Mexico University.
 
 ## Course Overview
 
