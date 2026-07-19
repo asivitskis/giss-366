@@ -32,7 +32,7 @@ parts:
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/build/leafmap
+      - file: book/create/leafmap
   - caption: Labs
     numbered: false
     maxdepth: 2
