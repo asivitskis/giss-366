@@ -1,4 +1,4 @@
-# Web Mapping and Web GIS — GISS/GEOG 366/368
+# Web Mapping and Web GIS
 
 Welcome to the official course website for **GISS/GEOG 366/368: WebMapping & Web GIS**,
 offered at Western New Mexico University, Fall 2026.
