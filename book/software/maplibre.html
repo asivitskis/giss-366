@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Vector Data Structures &#8212; Introduction to Geographic Information Systems</title>
+    <title>QGIS &#8212; WebMapping &amp; Web GIS</title>
   
   
   
@@ -57,13 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/foundations/05_vector_data_structures';</script>
-    <link rel="canonical" href="https://asivitskis.github.io/giss-361/book/foundations/05_vector_data_structures.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/software/maplibre';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/software/maplibre.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. Raster Data Basics" href="06_raster_data_basics.html" />
-    <link rel="prev" title="4. Acquiring Geospatial Data" href="04_acquiring_geospatial_data.html" />
+    <link rel="next" title="Visual Studio Code" href="vscode.html" />
+    <link rel="prev" title="Geo Libre" href="leaflet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,8 +155,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to Geographic Information Systems - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Geographic Information Systems - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
   
   
 </a></div>
@@ -183,27 +183,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../software/Geo_Libre.html">Geo Libre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../software/ESRI_ArcGIS.html">ESRI ArcGIS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../software/QGIS.html">QGIS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arcgis_online.html">ESRI ArcGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaflet.html">Geo Libre</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Visual Studio Code</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Foundations</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_get_started.html">1. What is GIS?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_types_of_spatial_data.html">2. Week 2 Lecture Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_coordinate_systems.html">3. Coordinate Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_acquiring_geospatial_data.html">4. Acquiring Geospatial Data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Vector Data Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_raster_data_basics.html">6. Raster Data Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_attribute_data.html">7. Attribute Data</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Analysis and Cartography</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../geospatial/leafmap.html">8. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_open_web_standards.html">1. Unit 2: Open Web Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_proprietary_publishing.html">2. Unit 3: Proprietary Publishing Pathway</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -266,7 +257,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-361/main?urlpath=tree/book/foundations/05_vector_data_structures.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/software/maplibre.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -284,7 +275,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/asivitskis/giss-361/blob/main/book/foundations/05_vector_data_structures.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/software/maplibre.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +324,7 @@
       
       
       
-      <li><a href="https://github.com/asivitskis/giss-361" target="_blank"
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +341,7 @@
       
       
       
-      <li><a href="https://github.com/asivitskis/giss-361/edit/main/book/foundations/05_vector_data_structures.ipynb" target="_blank"
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/software/maplibre.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -367,7 +358,7 @@
       
       
       
-      <li><a href="https://github.com/asivitskis/giss-361/issues/new?title=Issue%20on%20page%20%2Fbook/foundations/05_vector_data_structures.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/software/maplibre.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -397,7 +388,24 @@
       
       
       
-      <li><a href="../../_sources/book/foundations/05_vector_data_structures.ipynb" target="_blank"
+      <li><a href="../../_sources/book/software/maplibre.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../_sources/book/software/maplibre.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -407,7 +415,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -481,7 +489,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vector Data Structures</h1>
+    <h1>QGIS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -491,8 +499,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.1. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">5.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-conda-in-windows-terminal">Accessing Conda in Windows Terminal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-commands">Common Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-managing-environments">Creating and Managing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-managing-packages">Installing and Managing Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba-faster-package-management">Using Mamba (Faster Package Management)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -504,19 +519,137 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="vector-data-structures">
-<h1><span class="section-number">5. </span>Vector Data Structures<a class="headerlink" href="#vector-data-structures" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/03_data_structures.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section id="overview">
-<h2><span class="section-number">5.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>[content to be loaded]</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="qgis">
+<h1>QGIS<a class="headerlink" href="#qgis" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://docs.anaconda.com/miniconda">Miniconda</a> is a free minimal installer for conda. It is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib, and a few others.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>To install Miniconda, download the installer from the <a class="reference external" href="https://docs.anaconda.com/miniconda">Miniconda website</a> and run the installer. The installer will ask you to accept the license agreement, choose the installation directory, and add the conda path to your shell profile.</p>
 </section>
-<section id="learning-objectives">
-<h2><span class="section-number">5.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
-<p>By the end of this lecture, you should be able to:</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<p>After installing Miniconda, you can open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> to create a new environment and install packages required for this course using the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+conda<span class="w"> </span>activate<span class="w"> </span>geo
+conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>leafmap
+</pre></div>
+</div>
+</section>
+<section id="accessing-conda-in-windows-terminal">
+<h2>Accessing Conda in Windows Terminal<a class="headerlink" href="#accessing-conda-in-windows-terminal" title="Link to this heading">#</a></h2>
+<p>If you did not add Conda to your PATH during installation, you can do it manually:</p>
+<ol class="arabic simple">
+<li><p><strong>Open the Start Menu</strong> and search for “Environment Variables.”</p></li>
+<li><p><strong>Click on “Edit the system environment variables.”</strong></p></li>
+<li><p>In the System Properties window, click on <strong>“Environment Variables.”</strong></p></li>
+<li><p>Under “System Variables,” find the <strong><code class="docutils literal notranslate"><span class="pre">Path</span></code></strong> variable and select it.</p></li>
+<li><p>Click <strong>“Edit”</strong> and then <strong>“New.”</strong></p></li>
+<li><p>Add the following paths to the list:</p>
 <ul class="simple">
-<li></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;YourUsername&gt;\miniconda3\Scripts</span></code></p></li>
 </ul>
+</li>
+<li><p>Click <strong>“OK”</strong> to close all windows.</p></li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/427ea290-8ea8-42a5-b070-854696f71fc5" /></p>
+</section>
+<section id="common-commands">
+<h2>Common Commands<a class="headerlink" href="#common-commands" title="Link to this heading">#</a></h2>
+<p>Here are some common commands to manage environments and packages using conda:</p>
+<section id="creating-and-managing-environments">
+<h3>Creating and Managing Environments<a class="headerlink" href="#creating-and-managing-environments" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Create a new environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with your desired environment name and <code class="docutils literal notranslate"><span class="pre">python=3.11</span></code> with the version of Python you need.</p>
+</li>
+<li><p><strong>Activate an environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+</pre></div>
+</div>
+</li>
+<li><p><strong>Deactivate the current environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+</li>
+<li><p><strong>List all environments:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
+</pre></div>
+</div>
+</li>
+<li><p><strong>Remove an environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>--all
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="installing-and-managing-packages">
+<h3>Installing and Managing Packages<a class="headerlink" href="#installing-and-managing-packages" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Install a package in the current environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install a package in a specific environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>pandas
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install packages from the conda-forge channel:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install multiple packages at once:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
+</pre></div>
+</div>
+</li>
+<li><p><strong>Update all packages in an environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>--all
+</pre></div>
+</div>
+</li>
+<li><p><strong>Search for a package:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>scikit-learn
+</pre></div>
+</div>
+</li>
+<li><p><strong>List all installed packages in the current environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>list
+</pre></div>
+</div>
+</li>
+<li><p><strong>Remove a package:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>numpy
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="using-mamba-faster-package-management">
+<h3>Using Mamba (Faster Package Management)<a class="headerlink" href="#using-mamba-faster-package-management" title="Link to this heading">#</a></h3>
+<p>After installing Mamba, you can use it for faster package management:</p>
+<ul>
+<li><p><strong>Install mamba in the base environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install packages using mamba:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>leafmap
+</pre></div>
+</div>
+</li>
+</ul>
+<p>These commands should help you effectively manage your Python environments and packages using Miniconda.</p>
+</section>
 </section>
 </section>
 
@@ -524,7 +657,7 @@ document.write(`
     {
         requestKernel: true,
         binderOptions: {
-            repo: "asivitskis/giss-361",
+            repo: "asivitskis/giss-366",
             ref: "main",
         },
         codeMirrorConfig: {
@@ -533,7 +666,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./book/foundations"
+            path: "./book/software"
         },
         predefinedOutput: true
     }
@@ -551,20 +684,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="04_acquiring_geospatial_data.html"
+       href="leaflet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Acquiring Geospatial Data</p>
+        <p class="prev-next-title">Geo Libre</p>
       </div>
     </a>
     <a class="right-next"
-       href="06_raster_data_basics.html"
+       href="vscode.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Raster Data Basics</p>
+        <p class="prev-next-title">Visual Studio Code</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -584,8 +717,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.1. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">5.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-conda-in-windows-terminal">Accessing Conda in Windows Terminal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-commands">Common Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-managing-environments">Creating and Managing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-managing-packages">Installing and Managing Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba-faster-package-management">Using Mamba (Faster Package Management)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
