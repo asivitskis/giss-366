@@ -1,9 +1,8 @@
 # Textbooks
+*We will engage with readings and interactive examples from the following open source resources:*
 
-Below is a list of recommended textbooks for learning Python and geospatial programming. They are all freely available online.
+ - Dorman, M. (2020). Introduction to web mapping. Chapman and Hall/CRC. <https://bgu-geography.com/web-mapping/index.html>
 
-- Swaroop CH (2024). _A Byte of Python_. <https://github.com/swaroopch/byte-of-python>
-- Ujaval Gandhi (2024). _Python Foundation for Spatial Analysis_. <https://courses.spatialthoughts.com/python-foundation.html>
-- Dave Whipp (2023). _Geo-Python 2023_. <https://geo-python-site.readthedocs.io>
-- Michael Dorman (2023). _Introduction to Geospatial Programming with Python_. <https://geobgu.xyz/py/index.html>
-- Qiusheng Wu (2023). _Earth Engine and Geemap: Geospatial Data Science with Python_. <https://book.geemap.org>
+ - Duckham, M., Sun, Q., Worboys, M.F., (2024) GIS: A Computing Perspective, Third Edition, CRC Press, doi:10.1201/9780429168093 <https://github.com/mduckham/gisacp3e>
+
+ - Roth R.E., Sack, C., Baldrica-Franklin, G., Chen, Y., Donohue, R., Houtman, L., Prestby, T., Tolochko, R., and Underwood, N. (2020). Web Mapping: A Workbook for Interactive Cartography and Visualization on the Open Web. Version 0.1. University of Wisconsin Cartography Laboratory: Madison, WI. DOI: 10.5281/zenodo.5565480 <https://github.com/uwcartlab/webmapping>
