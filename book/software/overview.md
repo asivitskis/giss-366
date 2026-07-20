@@ -13,6 +13,8 @@ kernelspec:
 
 # Overview
 
+[update incoming with additional WebGIS software and WNNMU ArcGIS Online Access]
+
 ## Software Tools
 
 - [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/)
