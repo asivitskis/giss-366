@@ -1,3 +1,7 @@
 # Acknowledgments
 
-This website was originally adapted from the GEOG 312 course website by Qiusheng Wu (CC BY 4.0) and has been substantially modified for GISS 361: Introduction to Geographic Information Science at Western New Mexico University.
+This site was built using [Jupyter Book](https://jupyterbook.org) and originally adapted
+in part from course materials by [Qiusheng Wu](https://github.com/giswqs)
+(GEOG-312/GEOG-510, University of Tennessee), used under CC BY 4.0.
+
+[add more acknowledgements]

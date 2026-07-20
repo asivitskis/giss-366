@@ -186,7 +186,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ESRI ArcGIS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Geo Libre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">QGIS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
 
@@ -490,8 +490,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">1.1. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. 1.1 From Desktop to Web</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. 1.2 Client-Server Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself-a-live-open-source-web-map">1.3.1. Try it yourself: a live open-source web map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself-an-embedded-arcgis-online-web-map-app">1.3.2. Try it yourself: an embedded ArcGIS Online web map/app</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.3.1. Example 1: a live open-source web map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.3.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.3.3. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
@@ -600,8 +600,8 @@ document.write(`
 <p><text x="380" y="235" text-anchor="middle" font-size="12" fill="#666">Every pan and zoom repeats this loop — the browser asks for only the tiles it needs, and caches what it already has.</text>
 </svg></p>
 <p><strong>Live demo idea (in class):</strong> open <a class="reference external" href="https://www.openstreetmap.org">openstreetmap.org</a>, open your browser’s Developer Tools (F12 or right-click → Inspect), switch to the <strong>Network</strong> tab, and pan/zoom the map. Watch the individual tile requests fire in real time — this is EQ1 made visible. We’ll do this together tonight if time allows; it’s also a great one to repeat on your own before Lab 0.</p>
-<section id="try-it-yourself-a-live-open-source-web-map">
-<h3><span class="section-number">1.3.1. </span>Try it yourself: a live open-source web map<a class="headerlink" href="#try-it-yourself-a-live-open-source-web-map" title="Link to this heading">#</a></h3>
+<section id="example-1-a-live-open-source-web-map">
+<h3><span class="section-number">1.3.1. </span>Example 1: a live open-source web map<a class="headerlink" href="#example-1-a-live-open-source-web-map" title="Link to this heading">#</a></h3>
 <p>The cell below uses <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> (a Python wrapper around the open-source <strong>Leaflet</strong> JavaScript library) to build an actual interactive, tile-based web map — right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have <code class="docutils literal notranslate"><span class="pre">folium</span></code> installed, this will render inline; otherwise, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">folium</span></code> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -709,11 +709,11 @@ document.write(`
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
 </section>
-<section id="try-it-yourself-an-embedded-arcgis-online-web-map-app">
-<h3><span class="section-number">1.3.2. </span>Try it yourself: an embedded ArcGIS Online web map/app<a class="headerlink" href="#try-it-yourself-an-embedded-arcgis-online-web-map-app" title="Link to this heading">#</a></h3>
+<section id="example-2-an-embedded-arcgis-online-web-map-app">
+<h3><span class="section-number">1.3.2. </span>Example 2: an embedded ArcGIS Online web map/app<a class="headerlink" href="#example-2-an-embedded-arcgis-online-web-map-app" title="Link to this heading">#</a></h3>
 <p>ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an <code class="docutils literal notranslate"><span class="pre">&lt;iframe&gt;</span></code>. In ArcGIS Online, open a web map or app, choose <strong>Share → Embed</strong>, and copy the generated <code class="docutils literal notranslate"><span class="pre">&lt;iframe&gt;</span></code> code — it will look like the placeholder below. Swap in a live public web map’s item ID before lecture.</p>
 <blockquote>
-<div><p><strong>Instructor note:</strong> replace <code class="docutils literal notranslate"><span class="pre">YOUR_ITEM_ID_HERE</span></code> with a real, publicly-shared ArcGIS Online web map item ID before Tuesday’s lecture (e.g., a relevant Esri Living Atlas layer, or a map from the department’s ArcGIS Online organization).</p>
+<div><p><strong>UPDATES INCOMING FROM WNMU AGOL:</strong> potential Survey123 class layer + hosted and embedded AGOL map.</p>
 </div></blockquote>
 <iframe
   src="https://www.arcgis.com/apps/Embed/index.html?webmap=YOUR_ITEM_ID_HERE&extent=-98,25,-71,49&zoom=true&scale=true"
@@ -880,8 +880,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">1.1. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. 1.1 From Desktop to Web</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. 1.2 Client-Server Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself-a-live-open-source-web-map">1.3.1. Try it yourself: a live open-source web map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself-an-embedded-arcgis-online-web-map-app">1.3.2. Try it yourself: an embedded ArcGIS Online web map/app</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.3.1. Example 1: a live open-source web map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.3.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.3.3. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
