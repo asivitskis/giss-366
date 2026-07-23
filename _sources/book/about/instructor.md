@@ -19,7 +19,7 @@ kernelspec:
 
 <div style="max-width: 800px;">
 
-Alex Sivitskis is an Assistant Professor of Geographical Information Systems and Science in the Department of Natural Resources at Western New Mexico University (WNMU) in Silver City, New Mexico. He teaches online GIS courses spanning lecture and lab instruction. Alex's interdisciplinary research bridges remote sensing and geoarchaeology with place-based education, drawing on frameworks like critical pedagogy of place and culturally sustaining pedagogy to build custom open-source geospatial tools for education and community-based research.
+Alex Sivitskis is an Assistant Professor of Geographical Information Systems and Science in the Department of Natural Science at Western New Mexico University (WNMU) in Silver City, New Mexico. He teaches online GIS courses spanning lecture and lab instruction. Alex's interdisciplinary research bridges remote sensing and geoarchaeology with place-based education, drawing on frameworks like critical pedagogy of place and culturally sustaining pedagogy to build custom open-source geospatial tools for education and community-based research.
 
 </div>
 
