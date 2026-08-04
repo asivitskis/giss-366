@@ -15,7 +15,13 @@ Web mapping is now the primary interface through which most people encounter geo
 
 By the end of the course, you'll be able to design, build, and deploy interactive web maps with confidence: serving data through open standards and cloud-native formats, building client-side applications in Leaflet, MapLibre GL JS, and the ArcGIS Maps SDK, and hosting a finished product for a real audience. You'll walk away with a public-facing web GIS project grounded in a real place and question — and the ability to explain why you built it the way you did.
 
-![GIS Programming Course](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiOk6u_bARED4B6D2QLpkX8bC3mKSzqF1gGqFyJjBm2Q&s)
+## Our Study Area
+
+This course will ground many of our labs and examples in the landscapes of southwestern New Mexico. The forests, watersheds, and settlements around Silver City, land that carries the histories of communities alongside today's patchwork of federal, state, and private stewardship. Throughout the semester, you'll return to a guiding question: what can a place teach us when we learn to read it geographically? Explore the map below and start noticing what you see — and what it makes you wonder.
+
+<iframe width="100%" height="500" frameborder="0" style="border:1px solid #ccc; border-radius:6px;" allow="local-network-access; geolocation" title="Southwestern NM Regional Map" src="https://wnmugis.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=05d72cefd31e459d8d6ec8b31e435c88&theme=light&heading=true&legend=true&scroll=false&center=-108.25275033008064,32.794118708373404&scale=144447.638572" ></iframe>
+
+*Interactive regional map — pan and zoom to explore, or [open in full screen](https://arcg.is/1vHPWj1).*
 
 ## Course Resources
 
