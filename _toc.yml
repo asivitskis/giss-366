@@ -40,7 +40,7 @@ parts:
       - file: book/labs/instructions
       - file: book/labs/lab_00
       - file: book/labs/lab_01
- - caption: Final Project
+  - caption: Final Project
     numbered: false
     maxdepth: 2
     chapters:
