@@ -1,73 +1,67 @@
 # Lab 0
-# Practice Lab - Getting Started with GIS
-### GISS/GEOG 361/363 · Introduction to Geographic Information Science
+# Environment Setup — ArcGIS Online & Open-Source Web GIS
+### GISS/GEOG 366/368 · Web Mapping & Web GIS
 
-**Unit 1 Focus:** What is GIS? GISystems vs. GIScience · Open source vs. proprietary software · Modern GIS architecture
+**Unit 1 Focus:** What is Web GIS? · Client-server architecture · Proprietary (ArcGIS Online) and open-source/cloud-native pathways, side by side
 
-*This is a practice lab — ungraded. The goal is to get comfortable navigating GIS software before Week 2, when your first graded lab and your Place-Based Geospatial Inquiry Project both begin.*
+*This is a practice lab — ungraded. The goal is a working dual-stack environment before Lab 1's graded work begins next week.*
 
 ---
 
 ## Where We're Working: Silver City & Southwestern New Mexico
 
-Throughout the semester, GISS/GEOG 361/363 will use the WNMU home region — Silver City, Grant County, and the Gila National Forest — as a shared "practice place" for labs, before you choose your own place for your Place-Based Geospatial Inquiry Project starting in Week 2. Working with one real, richly documented region lets everyone compare notes on the *same* landscape while learning the tools.
-
-<!-- Optional: add a local photo here, e.g. <img src="images/week1_hero.jpg" alt="Gila National Forest near Silver City, NM" width="650px"> -->
+This course uses the WNMU home region including Silver City, Grant County, and the Gila National Forest as a shared reference point for early labs. You'll pick your own place and audience for the semester's Public Web GIS Inquiry starting in Week 11, but for now, one shared, real place lets everyone compare notes while getting the tools working.
 
 ## Learning Goals
 
 By the end of this practice lab, you will be able to:
-- Explain the difference between GISystems (the software/hardware) and GIScience (the discipline) *(K01)*
-- Open, navigate, and add a basemap and a data layer in **GeoLibre** (web), and complete a full mapping workflow in **one desktop platform of your choice** — QGIS (open-source) or ArcGIS Pro (proprietary) *(S01, S10)*
-- Compare the experience of a browser-based tool and a desktop tool, and start forming your own view on open-source vs. proprietary trade-offs *(EQ1, A01)*
-- Locate Silver City, NM and the Gila region in each platform, and produce one labeled map
+- Explain, in your own words, what happens between a browser and a server when a web map loads *(K01)*
+- Sign in to WNMU's **ArcGIS Online** organizational account and confirm it works
+- Set up the beginnings of an **open-source web GIS dev environment** — a GitHub account, VS Code, and a working local Python — that you'll build on all semester.
+- Use your browser's **Developer Tools** to watch a real web map make network requests, connecting today's lecture to something you can see for yourself
+- Know your first move when you get stuck on setup: docs → search the exact error → course discussion board *(K16, A01)*
 
 ## How This Notebook Is Organized: the Geo-Inquiry Process
 
-This course structures every lab around the **Geo-Inquiry Process** (National Geographic Education): **Ask → Collect → Visualize → Create → Act.** It's the same five-step structure you'll see all semester, so getting familiar with it now — on something as low-stakes as "open some software" — pays off later when the stakes (and the data) get bigger.
+Like GISS 361/363, every lab in this course follows the **Geo-Inquiry Process** (National Geographic Education): **Ask → Collect → Visualize → Create → Act.** You've likely seen this before — here it's applied to environment setup instead of a mapping question, which is about as low-stakes as it gets.
 
-## A Note on the Platforms and Tracks
+## A Note on "Tech Stacks"
 
-Every step below opens in **GeoLibre** — a free, browser-based tool with nothing to install, so everyone starts from the same place. After that, the lab splits into two **tracks**, and you'll pick **one** and stay in it through Visualize and Create:
-
-- 🗺️ **Track Q — QGIS** (free, open-source, install required)
-- 💼 **Track A — ArcGIS Pro** (provided via WNMU license, Windows or virtual desktop)
-
-One full track is a complete, real GIS workflow, and that's the point. Choosing a tool based on what you have access to, rather than which one is "the real GIS," is exactly the habit this course wants you to build. If you have access to both platforms and you're curious, running the second track afterward is a great *optional* way to build the comparison the reflection questions ask about.
+ This course treats proprietary (ArcGIS Online) and open-source/cloud-native (GitHub, static hosting, MapLibre/Leaflet) publishing as **parallel, equally real pathways** that you'll use *both* of, all semester. Learning both of these pathways can position you well for future geospatial career applications. Today, you're setting up **both** environments, side by side. Some labs later on will let you choose which stack to go deeper on, but the infrastructure for both starts today.
 
 ## Before You Begin
 
-| Platform | Cost / Access | Install? | Role in this lab |
+| Tool | Cost / Access | Install? | Role this semester |
 |---|---|---|---|
-| **GeoLibre** | Free, no account | None — runs in your browser (desktop/mobile apps also available) | Everyone's starting point (Collect) |
-| **QGIS** *(Track Q)* | Free, open-source | Download & install ([qgis.org](https://qgis.org/download/)) | Full workflow, works on any OS |
-| **ArcGIS Pro** *(Track A)* | Provided via WNMU license | Windows only — install locally, or use the campus lab / virtual desktop | Full workflow, industry-standard |
-
-**Choosing a track:** Track Q (QGIS) works for every student, on any computer, at no cost — pick it if you're not sure yet. Track A (ArcGIS Pro) needs a Windows machine or the campus lab/virtual desktop; pick it if that access is already set up for you. Neither track is the "backup" option — the syllabus treats them as equally real, equally supported GIS.
+| **ArcGIS Online** | Provided via WNMU organizational account | None — runs in your browser | Proprietary pathway: Lab 2 onward |
+| **GitHub** | Free account | None — web-based, plus a local `git` install later | Hosts your open-source pathway work and (eventually) your final project site |
+| **VS Code** | Free | Download & install ([code.visualstudio.com](https://code.visualstudio.com/)) | Where you'll write HTML/CSS/JS starting Week 4 |
+| **A modern browser with Dev Tools** | Free | Chrome recommended, Firefox fine | How you'll inspect every web map's network traffic all semester |
+| **Python 3** | Free | Usually already on your machine, or via this notebook's host | Built-in local web server later; `leafmap`/`folium` for quick previews |
 
 **Links**
-- GeoLibre (web app): https://web.geolibre.app/ *(or the live viewer at https://viewer.geolibre.app/)*
-- GeoLibre docs & tutorials: https://geolibre.app/
-- QGIS download: https://qgis.org/download/
-- ArcGIS Pro / ArcGIS Online: access details posted in the course LMS (Week 1 announcement)
+- ArcGIS Online sign-in: access details are posted in the course LMS (Week 1 announcement) — request access this week if you don't have it yet
+- GitHub: https://github.com/join
+- VS Code download: https://code.visualstudio.com/download
+- Course content site (bookmark this): https://asivitskis.github.io/giss-366
 - NM RGIS Clearinghouse (our regional data source all semester): https://rgis.unm.edu/
 
-If you're running this notebook locally rather than in a hosted environment (Colab / Binder / JupyterHub), the only Python package this *specific* notebook needs is optional. If you are curious about the small amount of Python behind a few of the steps below, it is collected in an optional appendix at the very end of this notebook, so it will not get in your way here.
+If you're running this notebook locally rather than in a hosted environment (Colab / Binder / JupyterHub), the only Python package this *specific* notebook needs is optional (`leafmap`). If you're curious about the small amount of Python behind the last couple of steps, it's collected in an optional appendix at the very end, so it won't get in your way here.
 
 ## Step 1: Ask
 
-Before opening any software, sit with a couple of questions.
+Before opening any software, sit with a couple of questions from our lecture.
 
-> **What is GIS, really?** A *Geographic Information **System*** is the software/hardware you click through — QGIS, ArcGIS Pro, GeoLibre. **Geographic Information *Science*** is the broader discipline underneath it: the ideas about space, data, and representation that stay true no matter which system you're using *(K01, EU1)*.
+> **The big idea:** every web map you'll ever use is a **client** (your browser) asking a **server** (or a file sitting in cloud storage) for something, and getting a response back. That loop — and who gets left out of it — is what this course keeps coming back to.
 
-> **EQ1 — What does this technology let us do, where are its limits, and who is excluded when using it costs money?**
+> **EQ1 — What is actually happening between my browser and the server when this map loads, and who is excluded when the license, bandwidth, or device it requires isn't available to them?**
 
 Take a minute and jot down your first-pass answers (edit the cell below):
-- What do you already associate with "GIS" or "mapping software," even if you've never used it?
-- If a powerful GIS tool costs several thousand dollars a year to license, who does — and doesn't — get to use it?
-- Southwestern New Mexico (Grant County, the Gila region) is a real place with real people. What might a first-time visitor's map of this region get wrong, or leave out?
+- Before tonight, what did you picture happening "under the hood" when a web map loaded — if you pictured anything at all?
+- ArcGIS Online requires an institutional license; GitHub Pages hosting is free to anyone with an account. What kind of person, project, or place might that cost difference actually determine — able to publish a web map, or not?
+- Southwestern New Mexico (Grant County, the Gila region) is a real place with real people and — like any rural, resource-limited area — real gaps in broadband access. Who might a web map of this region simply fail to reach, no matter how well-designed it is?
 
-We'll come back to that last question all semester — it's the seed of the GeoEthics strand of this course.
+We'll come back to that last question all semester — it's the seed of the Digital GeoEthics strand running through this course.
 
 **Your answers (double-click this cell to edit):**
 
@@ -77,154 +71,143 @@ We'll come back to that last question all semester — it's the seed of the GeoE
 
 ---
 
-## Step 2️: Collect
+## Step 2: Collect
 
-"Collecting" today means: get oriented, open a basemap, and load one ready-made data layer — all inside GeoLibre, before you branch into your track. No downloads to your own computer yet — that's Week 4's lab (K04, S03).
+"Collecting" today means getting your accounts and access in place — nothing built yet.
 
 <details>
-<summary><b>GeoLibre (Web) — click to expand</b></summary>
+<summary><b>Proprietary pathway — ArcGIS Online: click to expand</b></summary>
 
-1. Open **https://web.geolibre.app/** in a new browser tab (no login needed).
-2. When prompted, choose the **Beginner** interface — you can change this later in Settings → Interface.
-3. Use the **basemap** control to switch between a street map and satellite/aerial imagery.
-4. Use the search box (or pan/zoom manually) to navigate to **Silver City, New Mexico**.
-5. Use **Add Data → URL** (or drag-and-drop) to load this public, cloud-native world-countries layer — nothing to download first, GeoLibre streams it directly:
-   `https://data.source.coop/giswqs/opengeos/countries.parquet`
-6. Zoom from the **United States**, to **New Mexico**, to **Grant County / Silver City**. Notice that the level of visual detail available doesn't really change — you're just choosing how far to zoom.
-7. Use the **Identify** tool on the United States polygon to see what attribute data comes attached to it.
+1. Go to the ArcGIS Online sign-in link posted in the course LMS (Week 1 announcement).
+2. Sign in with your WNMU credentials. If you don't have access yet, request it now — this is the single most common Lab 0 delay, so don't wait until Thursday.
+3. Once signed in, find your **Content** page and your **Organization** page in the top navigation. You don't need to do anything with them yet — just confirm they load.
+4. Check your profile settings for your **display name** and **organization role** (Viewer, Creator, etc.). Note your role below — it determines what you can publish later in the course.
 
 </details>
 
-*Optional:* the code cell below embeds the same web app right in this notebook, so you can try it without leaving the page.
+<details>
+<summary><b>Open-source pathway — GitHub: click to expand</b></summary>
 
+1. If you don't already have one, create a free account at https://github.com/join.
+2. Once signed in, visit the course content site: https://asivitskis.github.io/giss-366 — this is where lecture notebooks and lab instructions will live all semester (Canvas is for grading and submission only).
+3. Confirm you can see your GitHub username in the top-right corner when signed in.
 
-```python
-# OPTIONAL — view the GeoLibre web app right inside this notebook.
-# You can also just open https://web.geolibre.app/ in a normal browser tab — that always works,
-# and is the more reliable option if your notebook environment blocks embedded pages.
+</details>
 
-from IPython.display import IFrame
+**Your ArcGIS Online organization role (double-click to edit):**
 
-IFrame(src="https://web.geolibre.app/", width="100%", height=600)
-```
-
-> If the embedded map above doesn't load (some hosted notebook environments block embedded pages), that's normal — just open **https://web.geolibre.app/** directly in a browser tab instead.
-
-**Save a screenshot now** — your GeoLibre view of Silver City with the countries layer loaded. Save it somewhere you'll find it again and label it *Screenshot 1*; you'll turn it in during the Act step.
+-
 
 ---
-
-## 🔀 Checkpoint: Choose Your Track
-
-From here, pick **Track Q (QGIS)** or **Track A (ArcGIS Pro)** and stay in that track through both Visualize and Create. Expand only the track you're using — you can leave the other one collapsed and come back to it later if you want the optional comparison.
-
-> **Not sure which to pick?** Track Q works for everyone, everywhere, for free — a safe default. Track A is a great pick if ArcGIS Pro access is already set up for you through the campus lab, a virtual desktop, or your own Windows machine.
 
 ## Step 3: Visualize
 
-Now let's load a *real, curated* dataset and see what your track's platform brings to the table.
+Now let's make the client-server loop as something you can actually *see*, using your browser's built-in **Developer Tools**.
 
 <details>
-<summary><b>Track Q — QGIS: click to expand</b></summary>
+<summary><b>Watching a web map talk to a server: click to expand</b></summary>
 
-1. Open QGIS and start a **New Project**. Add a basemap using **XYZ Tiles** (built in) or install the **QuickMapServices** plugin (Plugins → Manage and Install Plugins) for one-click satellite/street basemaps.
-2. Check the **CRS indicator** in the bottom-right status bar to see what coordinate system your project is in (we'll dig into this in Week 3).
-3. Zoom from the whole country down to Grant County, NM, the same way you did in GeoLibre.
-4. **Signature feature:** use **Layer → Add Layer → Add ArcGIS Feature Server Layer**, and search the connection dialog for a public wildfire or forest-related service (try the keyword "wildfire" or "forest"). Add one layer near the Gila region. This works because many federal and state agencies publish open data through Esri's map-service format — QGIS can read it even though it isn't Esri software. That's a small, real example of *open standards* letting different tools share the same data.
-5. Open the new layer's **attribute table** (right-click the layer → Open Attribute Table) to see what information came attached to it.
+1. Open a web map in a new browser tab — either **your ArcGIS Online home page** (it loads a basemap by default) or a public example like https://earth.nullschool.net.
+2. Open **Developer Tools**:
+   - Chrome/Edge: right-click anywhere on the page → **Inspect**, or press `F12`
+   - Firefox: right-click → **Inspect**, or press `F12`
+3. Click the **Network** tab inside Dev Tools. Refresh the page.
+4. Watch the list fill in. Pan or zoom the map and keep watching — you should see new requests appear for each new area you bring into view.
+5. Click on a couple of individual requests. Look for:
+   - The **request URL** — does it look like a request for a *tile* (a small square image or block of data), a style file, or something else?
+   - The **response size** — usually a few KB per tile, not megabytes. This is exactly the "chop the world into small requestable pieces" idea from tonight's lecture.
+   - The **type/format** — `png`/`jpg` (raster tile), or something like `pbf`/`mvt` (vector tile)?
+
+This is the same request/response loop from tonight's diagram — `GET tile → response: a few KB of data` — happening in real time, dozens of times, every time you touch a web map.
 
 </details>
 
-<details>
-<summary><b>Track A — ArcGIS Pro: click to expand</b></summary>
+📸 **Save a screenshot now** — your Network tab with at least a few tile requests visible. Label it *Screenshot 1*; you'll turn it in during Act.
 
-1. Open ArcGIS Pro and start a **New Map** project. In the **Map** tab, use **Basemap** to add a Topographic or World Imagery basemap (streamed from ArcGIS Online).
-2. Zoom from the country level down to Grant County, NM.
-3. **Signature feature:** in the **Catalog** pane, open **Living Atlas** and search for a wildfire-risk or forest-type layer relevant to the Gila region. Add it to your map — Living Atlas is a curated library of ready-made layers that ships with ArcGIS Online, one of the things a license gets you.
-4. Lower the layer's transparency partway so the basemap still shows through, then use the **Explore/Identify** tool to click a feature and see its attributes.
+**What you noticed (double-click to edit):**
+- Request URL pattern:
+- Raster or vector tiles (or both)?
+- Roughly how big was one tile response?
 
-</details>
-
-📸 **Save a screenshot now** — your track's map with the new layer visible. Label it *Screenshot 2*.
-
+---
 
 ## Step 4: Create
 
-Time to make something, however small — one labeled marker at Western New Mexico University / downtown Silver City, in the same track you just used.
+Time to make something small in each environment — just enough to prove both pathways are working.
 
 <details>
-<summary><b>Track Q — QGIS: click to expand</b></summary>
+<summary><b>Proprietary pathway — ArcGIS Online: click to expand</b></summary>
 
-1. Create a new point layer (**Layer → Create Layer → New Shapefile/GeoPackage Layer**) and digitize a single point at WNMU / downtown Silver City.
-2. Label it (e.g., "WNMU — GISS 361"), then open **Project → New Print Layout** to lay out and export a simple PNG.
+1. From your ArcGIS Online home page, choose **Map** (or **Create → Map**) to open the Map Viewer.
+2. Use the basemap gallery to pick any basemap you like — Topographic and Imagery are good starting points.
+3. Use the search bar to navigate to **Silver City, New Mexico**.
+4. Save the map (**Save → Save As**) with a title like `GISS 366 – Lab 0 – [Your Name]`. Saving is what confirms your account can actually create and store content, not just view it.
 
 </details>
 
 <details>
-<summary><b>Track A — ArcGIS Pro: click to expand</b></summary>
+<summary><b>Open-source pathway — dev environment: click to expand</b></summary>
 
-1. Add a point via **Edit → Create Features**, placing a marker at WNMU / downtown Silver City.
-2. Label it, then use **Share → Export Map** (or build a **Layout**) to export a simple image.
+1. Install **VS Code** if you haven't already: https://code.visualstudio.com/download.
+2. Open VS Code and install the **Python** extension (Extensions icon in the sidebar → search "Python" → Install).
+3. On GitHub, create a new repository — name it something like `giss-366-labs`. You can make it public or private; either is fine for now. This will hold your work all semester.
+4. Confirm Python 3 is available on your machine. The code cell below does this check for you if you're running this notebook locally.
 
 </details>
 
-📸 **Save a screenshot now** — your labeled marker map. Label it *Screenshot 3* — this is the main image you'll turn in for Act.
-
-## Step 5: Act
-
-The "Act" step is about sharing what you made and reflecting on what it means — not just producing an image and moving on.
-
-### What to turn in (practice — ungraded)
-
-1. Your three screenshots:
-   - **Screenshot 1** — GeoLibre, oriented on Silver City with the countries layer loaded (Collect).
-   - **Screenshot 2** — your track's map with its new layer visible (Visualize).
-   - **Screenshot 3** — your track's labeled marker map (Create).
-2. A short written reflection (3–5 sentences) answering:
-   - Which felt more intuitive: the zero-install browser tool (GeoLibre) or your desktop track (QGIS or ArcGIS Pro)? Why?
-   - What could your desktop track do that GeoLibre couldn't — or the other way around?
-   - Revisit **EQ1**: GeoLibre and QGIS cost nothing to use; ArcGIS Pro is licensed through WNMU. Now that you've worked hands-on with at least one free tool and (maybe) one licensed one, has your answer changed about who gets left out when a GIS tool costs money? If you only had access to the free tools all semester, would you still be able to do real GIS work?
-   - *(Optional, if you tried the second track too)* What was one thing that felt easier in the track you didn't use for Create?
-
-Post your screenshots + reflection to this week's discussion space in Canvas. This is a practice activity, not graded — but it sets you up for **Lab 1** next week.
-
-### Looking Ahead
-
-Next week you'll start **Project Topic Ideation A** — the first low-stakes checkpoint toward your semester-long Place-Based Geospatial Inquiry Project. Start thinking now about a place that matters to you (it doesn't have to be Silver City!) and a question about it you're genuinely curious about.
+📸 **Save a screenshot now** — your saved ArcGIS Online map of Silver City. Label it *Screenshot 2* — this is the main image you'll turn in for Act.
 
 ---
-### 📎 Resources
-
-- GeoLibre — https://geolibre.app/ (docs & tutorials) · https://web.geolibre.app/ (live app) · https://github.com/opengeos/GeoLibre
-- QGIS — https://qgis.org/
-- ArcGIS Pro / Online — see course LMS for WNMU access details
-- NM RGIS Clearinghouse — https://rgis.unm.edu/
-- `leafmap` (Python) — https://leafmap.org/
-
----
-## Appendix: Python Code (Optional)
-
-Everything above this line is all you need for this practice lab. The cells below are optional, and their code is collapsed by default. They show the small amount of Python running quietly behind a few of the steps above, in case you are curious.
-
-Nothing here is required, and nothing here is graded. You are welcome to open and run these cells, skip them entirely, or come back to them later in the semester once we start writing Python together in class.
 
 
 ```python
-# OPTIONAL -- environment check
-# This notebook is mostly a guided walkthrough of software you'll open outside of Jupyter
-# (QGIS, ArcGIS Pro, and GeoLibre's web app). The only Python package used later in this
-# notebook is `leafmap`. If a later cell errors on `import leafmap`, uncomment and run:
+# OPTIONAL — environment check
+# This notebook is mostly a guided walkthrough of tools you'll open outside of Jupyter
+# (ArcGIS Online, GitHub, VS Code, and your browser's Dev Tools). The only Python package
+# used later in this notebook is `leafmap`. If a later cell errors on `import leafmap`, uncomment and run:
 # !pip install leafmap -q
 
 import sys
 print(f"Python {sys.version.split()[0]} ready.")
 ```
 
-> If the embedded map above doesn't load (some hosted notebook environments block embedded pages), that's normal — just open **https://web.geolibre.app/** directly in a browser tab instead.
+## Step 5: Act
 
-### Behind Step 3 (Visualize): A First Look with leafmap
+The "Act" step is about confirming both environments work and reflecting on what today's setup means for the semester ahead — not just checking boxes.
 
-Later in the semester you will build maps with Python directly. This cell is just a preview: it draws a simple map centered on Silver City using `leafmap`, an open-source Python mapping library we will use again later in the course.
+### What to turn in (practice — ungraded)
+
+1. Your two screenshots:
+   - **Screenshot 1** — your browser's Network tab showing tile requests (Visualize).
+   - **Screenshot 2** — your saved ArcGIS Online map of Silver City (Create).
+2. A short written reflection (3–5 sentences) answering:
+   - Before tonight, did you think of a web map as something "static" (like a picture) or something "live" (constantly asking a server for more)? Has that changed?
+   - Revisit **EQ1**: now that you've set up an account that costs WNMU an organizational license (ArcGIS Online) *and* an account that's free to anyone (GitHub), what's one concrete way that cost difference could shape who gets to publish a web map about a place like Grant County?
+   - What's one thing that didn't work smoothly today, and what was your first troubleshooting move — docs, a web search of the exact error, or the course discussion board *(K16)*?
+
+Post your screenshots + reflection to this week's discussion space in Canvas. This is a practice activity, not graded — but it's a hard prerequisite for Lab 1.
+
+### Looking Ahead
+
+Next week's **Lab 1** has you publishing and consuming a live WMS/WFS service with GeoServer — your first taste of the open standards that let proprietary and open-source tools talk to each other. Having both environments working today is what makes that possible.
+
+---
+### Resources
+
+- Course content site — https://asivitskis.github.io/giss-366
+- ArcGIS Online — access via course LMS
+- GitHub — https://github.com/
+- VS Code — https://code.visualstudio.com/
+- NM RGIS Clearinghouse — https://rgis.unm.edu/
+- Dorman, M. *Introduction to Web Mapping* — Preface
+- `leafmap` (Python) — https://leafmap.org/
+
+---
+## Appendix: Python Code (Optional)
+
+Everything above this line is all you need for this practice lab. The cells below are optional and collapsed by default in most notebook viewers. They give a first, tiny taste of the Python-based mapping you'll do later in the open-source pathway.
+
+Nothing here is required, and nothing here is graded.
 
 
 ```python
@@ -241,14 +224,13 @@ m.add_basemap("Esri.WorldImagery")
 m
 ```
 
-### Behind Step 4 (Create): Adding a Marker and Saving a Map
 
-This is the same idea as Step 4 above -- marking WNMU / downtown Silver City and saving an image -- done here in a few lines of Python instead of by hand in GeoLibre, QGIS, or ArcGIS Pro.
+    Map(center=[32.7701, -108.2803], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoom_in_title', '…
+
 
 
 ```python
-# OPTIONAL -- add a labeled marker and save a shareable HTML map
-m.add_marker(location=silver_city, popup="Western New Mexico University -- GISS 361/363")
+# OPTIONAL -- save this first map as a shareable HTML file, and confirm you can find it afterward
 m.to_html("week1_first_map.html")
-print("Saved week1_first_map.html -- open it in a browser to see your first exported map.")
+print("Saved week1_first_map.html -- open it in a browser to see your first exported web map.")
 ```

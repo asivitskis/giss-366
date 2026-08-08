@@ -25,8 +25,8 @@ parts:
     maxdepth: 2
     chapters:
       - file: book/foundations/01_what_is_webgis
-      - file: book/foundations/02_open_web_standards
-      - file: book/foundations/03_proprietary_publishing
+      - file: book/foundations/02_agol_publishing
+      - file: book/foundations/03_open_web_standards
       - file: book/foundations/04_web_fundamentals
   - caption: Building & Querying
     numbered: true
@@ -39,7 +39,8 @@ parts:
     chapters:
       - file: book/labs/instructions
       - file: book/labs/lab_00
-      - file: book/labs/lab_01
+      - file: book/labs/lab_01_agol
+      - file: book/labs/lab_02_geoserver
   - caption: Final Project
     numbered: false
     maxdepth: 2
