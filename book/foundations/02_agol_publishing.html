@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. ESRI and the ArcGIS Online Environment &#8212; WebMapping &amp; Web GIS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/foundations/02_agol_publishing';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/foundations/02_agol_publishing.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Open Web Standards" href="03_open_web_standards.html" />
+    <link rel="prev" title="1. What is Web GIS?" href="01_what_is_webgis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ESRI ArcGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_what_is_webgis.html">1. What is Web GIS?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. ESRI and the ArcGIS Online Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_open_web_standards.html">3. Open Web Standards</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building &amp; Querying</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../create/leafmap.html">4. Leafmap</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01_agol.html">Lab 1</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_02_geoserver.html">Lab 2</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../final-project/00-project-overview.html">Final Project: Public Web GIS Inquiry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final-project/01-part1-define-collect.html">Part 1: Define &amp; Begin Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final-project/02-part2-architecture-data.html">Part 2: Architecture &amp; Data Check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final-project/03-part3-analysis-editing.html">Part 3: Editing &amp; Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final-project/04-part4-results-interpretation.html">Part 4: Results &amp; Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final-project/05-part5a-presentation.html">Part 5a: Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final-project/06-part5b-final-submission.html">Part 5b: Final Submission</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/foundations/02_agol_publishing.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/foundations/02_agol_publishing.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/foundations/02_agol_publishing.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/foundations/02_agol_publishing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/foundations/02_agol_publishing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ESRI and the ArcGIS Online Environment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">2.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arcgis-online-a-quick-orientation-and-refresher">2.2. 2.0 ArcGIS Online: A Quick Orientation (and Refresher)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hosted-feature-layers-what-they-are">2.3. 2.1 Hosted Feature Layers: What They Are</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-and-publishing-data">2.4. 2.2 Uploading and Publishing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-popups-symbology-and-sharing">2.5. 2.3 Configuring Popups, Symbology, and Sharing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-can-see-this-map">2.6. 2.4 Who Can See This Map?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">2.6.1. 5-minute discussion (breakout or whole-class)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">2.7. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">2.8. Lab 1: Publishing a Hosted Feature Layer and POI Webmap</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="esri-and-the-arcgis-online-environment">
+<h1><span class="section-number">2. </span>ESRI and the ArcGIS Online Environment<a class="headerlink" href="#esri-and-the-arcgis-online-environment" title="Link to this heading">#</a></h1>
+<p><strong>Week 2 | Lecture + Lab 1: Hosted Feature Layer + POI Webmap in ArcGIS Online</strong></p>
+<hr class="docutils" />
+<section id="learning-objectives">
+<h2><span class="section-number">2.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Describe the core components of the ArcGIS Online platform — organizational accounts, licensing roles, Content, and Map Viewer — and how it differs from ArcGIS Pro and ArcGIS Enterprise</p></li>
+<li><p>Upload and publish geospatial data as a hosted feature layer in ArcGIS Online</p></li>
+<li><p>Configure layer properties, popups, and symbology in Map Viewer</p></li>
+<li><p>Build a simple point-of-interest webmap and share it with a defined audience</p></li>
+<li><p>Describe the cost, control, and access tradeoffs of hosted proprietary services</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="arcgis-online-a-quick-orientation-and-refresher">
+<h2><span class="section-number">2.2. </span>2.0 ArcGIS Online: A Quick Orientation (and Refresher)<a class="headerlink" href="#arcgis-online-a-quick-orientation-and-refresher" title="Link to this heading">#</a></h2>
+<p>If you’ve taken an intro GIS course, ArcGIS Online (AGOL) probably isn’t brand new to you — you’ve likely opened a map someone else built, maybe added a layer or two, and clicked around Map Viewer. That’s a fine starting point, but it’s a <em>consumer’s</em> view of the platform. This week you’re switching roles: from someone who opens maps to someone who publishes them. Before diving into hosted feature layers in 2.1, it’s worth making sure everyone has the same mental map of what AGOL actually is.</p>
+<p><strong>Where AGOL sits in the Esri product family.</strong> Esri sells three related but distinct things, and it’s easy to conflate them:</p>
+<ul class="simple">
+<li><p><strong>ArcGIS Pro</strong> — desktop software installed on your own machine, used for heavier-duty analysis, cartography, and data prep. Nothing here is on the web by default.</p></li>
+<li><p><strong>ArcGIS Online (AGOL)</strong> — what we’re using this semester: a cloud-based, Esri-hosted SaaS platform. You sign in through a browser, and everything — storage, compute, hosting — runs on Esri’s infrastructure. This is today’s topic.</p></li>
+<li><p><strong>ArcGIS Enterprise</strong> — the same general software stack as AGOL, but installed on servers <em>your organization</em> owns and runs. If AGOL is the hosted, Esri-run option, ArcGIS Enterprise is Esri’s self-hosted option — the proprietary-world sibling to the GeoServer instance you’ll stand up next week. Filing this away now will make Week 3’s self-hosted/hosted comparison land more precisely: the divide isn’t “open-source vs. Esri,” it’s “who runs the server,” and Esri has an answer on both sides of that line.</p></li>
+</ul>
+<p><strong>Organizational accounts and licensing roles.</strong> You’re not signing up for a personal AGOL account — you’re signing into WNMU’s <em>organization</em>, a shared instance with its own users, groups, and content, all under one subscription. Within an organization, every user has a <strong>role</strong> that determines what they’re allowed to do:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Role</p></th>
+<th class="head"><p>Can do</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Viewer</strong></p></td>
+<td><p>Open and interact with maps and apps shared with them; no publishing</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Editor</strong></p></td>
+<td><p>Edit features in existing layers; still can’t publish new ones</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Creator</strong></p></td>
+<td><p>Publish hosted feature layers, build maps and apps — this is the minimum role for everything in this course</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Publisher</strong></p></td>
+<td><p>Everything Creator can do, plus registering external data stores</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Administrator</strong></p></td>
+<td><p>Manages the organization itself — users, roles, security settings</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you can’t publish a hosted feature layer in Lab 1, your account role is the first thing to check.</p>
+<p><strong>The pieces you’ll actually touch.</strong> AGOL’s interface can feel sprawling at first, but almost everything this semester routes through three places:</p>
+<ul class="simple">
+<li><p><strong>Content</strong> — your (and your organization’s) library of published <em>items</em>. An item might be a hosted feature layer, a web map, or a web app — each with its own metadata, sharing settings, and owner. Think of this as the AGOL equivalent of a file browser, except every “file” is also a live web service.</p></li>
+<li><p><strong>Map Viewer</strong> — where you’ll spend most of your time: adding layers, symbolizing them, configuring popups, and assembling a finished web map. This is today’s main workspace.</p></li>
+<li><p><strong>Groups</strong> — a way of bundling content and people together for sharing purposes (e.g., sharing a layer with just your project team rather than the whole organization or the public). We won’t lean on this heavily today, but you’ll see it again if you collaborate on the final project.</p></li>
+</ul>
+<p><strong>If this is all familiar</strong> — great, 2.1 is where things get new: publishing your <em>own</em> data as a hosted feature layer, rather than just viewing someone else’s. <strong>If this is mostly new</strong> — also fine; everything from here forward assumes only what’s in this section, not prior AGOL experience.</p>
+</section>
+<hr class="docutils" />
+<section id="hosted-feature-layers-what-they-are">
+<h2><span class="section-number">2.3. </span>2.1 Hosted Feature Layers: What They Are<a class="headerlink" href="#hosted-feature-layers-what-they-are" title="Link to this heading">#</a></h2>
+<p>When you publish a <strong>hosted feature layer</strong> in ArcGIS Online, your data doesn’t sit on a server you administer — it’s uploaded into Esri’s cloud infrastructure and stored in a managed, multi-tenant data store that Esri operates on your behalf. Esri, not you, owns the uptime, the backups, the scaling, and the patching.</p>
+<p>This is about the friendliest possible on-ramp to the idea of “publishing” a layer: you upload a file, and moments later it’s a live, queryable web service. Next week (Week 3), you’ll do this same kind of publishing yourself, by hand, on a self-hosted GeoServer instance — you’ll own the machine, point it at a shapefile or a PostGIS table, and be responsible for keeping the WMS/WFS endpoints it generates online. Keep today’s experience in mind; the contrast will be immediate.</p>
+<p>For now, here’s what “hosted” actually means in practice:</p>
+<ul class="simple">
+<li><p><strong>Persistence.</strong> A hosted feature layer keeps running for as long as your organization holds a valid ArcGIS Online subscription and has enough <strong>credits</strong> — Esri’s consumption-based currency that hosted storage and services draw against. (A self-hosted server, by contrast, keeps running for as long as <em>you</em> keep it running and paying for it — you’ll feel that difference directly next week.)</p></li>
+<li><p><strong>Control.</strong> With a hosted feature layer, the canonical copy of your data lives inside Esri’s platform; you interact with it through the ArcGIS REST API and Map Viewer, not through direct file access. You never touch the raw files the way you will once you’re managing your own GeoServer instance.</p></li>
+<li><p><strong>What happens if the license lapses.</strong> If an ArcGIS Online organizational subscription expires or an account is deactivated, hosted content doesn’t necessarily disappear immediately, but it does become inaccessible to the public and unusable for editing or new publishing — effectively frozen behind a paywall you no longer have access to. Next week, you’ll see the opposite case: if you stop paying for a self-hosted <em>server</em>, the underlying shapefile or database is still just a file on disk, sitting wherever it always was, fully usable with any other GIS software.</p></li>
+</ul>
+<p>None of this makes hosted feature layers a worse choice — for a class project, a small organization without IT staff, or a map that needs to go from zero to shared-with-the-world in ten minutes, the fact that Esri runs the server for you is the entire point. But it’s worth naming clearly, because it’s a tradeoff you’ll meet again directly in Week 3, and once more with cloud-native formats in Week 6: convenience and managed infrastructure in exchange for giving up direct control of where the data actually lives.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>ArcGIS Online (hosted feature layer)</strong></p></th>
+<th class="head"><p><strong>GeoServer (self-hosted — preview of Week 3)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Who runs the server</p></td>
+<td><p>Esri</p></td>
+<td><p>You (or your organization’s IT)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Where data physically lives</p></td>
+<td><p>Esri’s managed cloud data store</p></td>
+<td><p>Wherever you put the shapefile/PostGIS database</p></td>
+</tr>
+<tr class="row-even"><td><p>Cost model</p></td>
+<td><p>Subscription + consumable <strong>credits</strong></p></td>
+<td><p>Free software; you pay for your own hardware/hosting</p></td>
+</tr>
+<tr class="row-odd"><td><p>If you stop paying</p></td>
+<td><p>Content becomes inaccessible; you don’t hold a portable local copy</p></td>
+<td><p>Server goes down, but the original files are untouched and portable</p></td>
+</tr>
+<tr class="row-even"><td><p>Setup effort</p></td>
+<td><p>Upload a file; AGOL infers schema and publishes automatically</p></td>
+<td><p>You configure Store → Layer → Style by hand</p></td>
+</tr>
+<tr class="row-odd"><td><p>Control over infrastructure</p></td>
+<td><p>None — you interact only through Esri’s interfaces and REST API</p></td>
+<td><p>Full — you can migrate, back up, or inspect data directly</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The two aren’t really competing on <em>capability</em> so much as on <em>who takes on the responsibility of running the server</em> — a tension you’ll meet head-on next week, and again with cloud-native formats in Week 6.</p>
+</section>
+<section id="uploading-and-publishing-data">
+<h2><span class="section-number">2.4. </span>2.2 Uploading and Publishing Data<a class="headerlink" href="#uploading-and-publishing-data" title="Link to this heading">#</a></h2>
+<p>The publish-from-upload workflow in ArcGIS Online is about as compressed as publishing gets: upload a file, and AGOL handles schema detection, storage, and endpoint creation automatically. Next week you’ll do the manual version of this same chain — Store → Layer → Style — by hand in GeoServer, and see exactly how much AGOL is quietly doing for you here.</p>
+<p><strong>Formats AGOL accepts for upload:</strong></p>
+<ul class="simple">
+<li><p><strong>CSV</strong> — a spreadsheet with either latitude/longitude columns, or street addresses AGOL can geocode into points during upload</p></li>
+<li><p><strong>Shapefile</strong> — must be zipped (the .shp, .shx, .dbf, and .prj files together) before upload; AGOL will not accept the individual files loose</p></li>
+<li><p><strong>GeoJSON</strong> — uploaded directly, geometry and attributes intact</p></li>
+<li><p><strong>File Geodatabase</strong> (zipped) and <strong>GPX</strong> are also accepted, though CSV, shapefile, and GeoJSON cover most classroom use cases</p></li>
+</ul>
+<p><strong>The workflow, step by step:</strong></p>
+<ol class="arabic simple">
+<li><p>In Map Viewer (or Content → New Item), choose <strong>Add → Add Layer from File</strong> and select your zipped shapefile, CSV, or GeoJSON.</p></li>
+<li><p>AGOL inspects the file, infers the geometry type and field schema, and — for CSVs with address fields rather than coordinates — runs a geocoding pass to convert addresses into points, consuming credits in the process.</p></li>
+<li><p>You’re prompted to confirm the layer name and whether to publish it as a <strong>hosted feature layer</strong> (queryable, editable, symbolizable) versus adding it as a temporary file layer that only exists in this one map session.</p></li>
+<li><p>Once published, AGOL generates an <strong>Item</strong> in your Content: a single published, requestable resource with its own metadata, sharing settings, and REST endpoint, generated automatically instead of configured by hand. Next week you’ll meet GeoServer’s parallel concept — a <em>Layer</em> — which you’ll set up yourself.</p></li>
+</ol>
+<p><strong>Where the data actually goes:</strong> once published, your original CSV or shapefile is no longer the live copy. AGOL has ingested it into its own hosted feature service, backed by Esri’s cloud data store — conceptually similar to how a database will act as a <em>Store</em> once you set up GeoServer next week, except here you never see or manage that underlying database directly. Every edit made afterward (in Map Viewer, in the Esri field apps, or via the REST API) writes to that hosted copy, not back to your original file.</p>
+</section>
+<section id="configuring-popups-symbology-and-sharing">
+<h2><span class="section-number">2.5. </span>2.3 Configuring Popups, Symbology, and Sharing<a class="headerlink" href="#configuring-popups-symbology-and-sharing" title="Link to this heading">#</a></h2>
+<p>Publishing a layer gets your data onto the map; it doesn’t make that map <em>readable</em>. Two people can publish the same point-of-interest layer and end up with completely different maps depending on how they handle symbology and popups. Next week you’ll do this same conceptual job by hand, writing an SLD file for a WMS layer in GeoServer — here it’s all driven through a UI instead.</p>
+<p><strong>Symbology in Map Viewer.</strong> Click a layer’s <em>Styles</em> pane and you’ll typically choose from:</p>
+<ul class="simple">
+<li><p><strong>Location (single symbol)</strong> — every feature drawn identically; good for a simple POI layer where the points themselves are the message</p></li>
+<li><p><strong>Unique values</strong> — one color/icon per distinct category in a field (e.g., a different marker for “restaurant” vs. “park” vs. “trailhead”)</p></li>
+<li><p><strong>Counts and amounts (graduated colors/symbols)</strong> — symbol size or color intensity scales with a numeric field, the standard choropleth/proportional-symbol move</p></li>
+</ul>
+<p>This is a friendlier on-ramp than writing SLD by hand, but it’s doing the same conceptual job: deciding, at the server/platform level, how a feature should look before anyone requests it.</p>
+<p><strong>Popups.</strong> By default AGOL shows every attribute field in a raw popup table — rarely what you want in a finished map. Under a layer’s <em>Popup</em> settings you can pick which fields display, give them human-readable aliases (<code class="docutils literal notranslate"><span class="pre">poi_type</span></code> → “Type”), reorder them, and format numbers, dates, or URLs. This is the layer of polish that turns “here’s the data” into “here’s a map someone unfamiliar with your fields can actually use.”</p>
+<p><strong>Basemap.</strong> Map Viewer ships with a gallery of Esri basemaps (topographic, streets, imagery, a muted “light gray canvas” good for thematic overlays). Choosing one is mostly an aesthetic/contextual decision, but it’s worth remembering that most of these are themselves services published by Esri — you’re consuming a hosted layer the same way an external client would consume yours.</p>
+<p><strong>Sharing.</strong> Once the map looks right, the <em>Share</em> button offers three levels, and this is where the decision stops being cosmetic and starts being consequential:</p>
+<ul class="simple">
+<li><p><strong>Private (owner only)</strong> — visible only to you, useful while a map is still a draft</p></li>
+<li><p><strong>Organization</strong> — visible to everyone signed into your ArcGIS Online organization, but not the open internet</p></li>
+<li><p><strong>Public (everyone)</strong> — visible to anyone with the link, discoverable in AGOL’s public search, and embeddable elsewhere</p></li>
+</ul>
+<p>The sharing level isn’t a neutral technical setting bolted on at the end — it’s a design decision made at publish time, the same way choosing between WMS and WFS will determine who can do what with a layer once you get to GeoServer next week. Choosing “Public” for a map with sensitive locations (a domestic violence shelter, a culturally significant site, an at-risk species’ habitat) is a different act than choosing it for a public bus-stop inventory, even though the button looks identical.</p>
+</section>
+<section id="who-can-see-this-map">
+<h2><span class="section-number">2.6. </span>2.4 Who Can See This Map?<a class="headerlink" href="#who-can-see-this-map" title="Link to this heading">#</a></h2>
+<p>Setting a map’s sharing level to “Public” feels like flipping a switch, but it’s worth being precise about what actually happens: the data doesn’t become public in some abstract, ownerless sense — it becomes publicly accessible <em>on Esri’s servers, under Esri’s terms of service, subject to Esri’s uptime</em>. “Public” here means “public through a specific company’s infrastructure,” not “public” the way an open standard published from a self-hosted server — like the GeoServer instance you’ll stand up next week — is public. The map is still, at every layer, running on someone else’s platform, discoverable through someone else’s search index, and governed by a Terms of Service document your organization didn’t write.</p>
+<p>That distinction matters most for exactly the kind of data where the stakes are highest:</p>
+<ul class="simple">
+<li><p><strong>Community and tribal data.</strong> Indigenous communities and other groups practicing data sovereignty may have strong reasons <em>not</em> to want culturally sensitive locations sitting on a commercial vendor’s cloud, regardless of the sharing setting — the concern isn’t only “can strangers see this,” it’s “whose infrastructure holds this, and under what terms can that access be revoked or that data be used.”</p></li>
+<li><p><strong>Sensitive locations.</strong> Habitat data for an endangered species, the address of a shelter, or precise home locations in a community survey can all be technically “correct” to map and still cause real harm if shared publicly — poaching, harassment, or exposure are real downstream risks, not hypothetical ones.</p></li>
+<li><p><strong>Persistence and revocability.</strong> Because the data lives on Esri’s platform (Section 2.1), the people who created a public map don’t have unilateral control over its long-term availability — an account suspension, a lapsed license, or a platform policy change can affect access in ways a self-hosted server sitting on infrastructure you control would not. You’ll be the one controlling that infrastructure yourself starting next week.</p></li>
+</ul>
+<p>None of this means “never share publicly” — plenty of data (bus routes, public parks, zoning boundaries) is precisely the kind of information that <em>should</em> be as open and discoverable as possible. The point is that the sharing decision deserves the same scrutiny as any other design decision in this course: who is this data about, who benefits from it being visible, and who might be put at risk by that same visibility?</p>
+<p><strong>Hold onto this question</strong> — it’s the seed for Discussion 1 in Week 4, where we’ll dig into open data, community consent, and what “open” actually obligates a publisher to consider.</p>
+<section id="minute-discussion-breakout-or-whole-class">
+<h3><span class="section-number">2.6.1. </span>5-minute discussion (breakout or whole-class)<a class="headerlink" href="#minute-discussion-breakout-or-whole-class" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Who benefits most from an organization choosing a hosted, proprietary platform like AGOL to publish geospatial data — and who might be excluded or put at risk by that choice? Hold onto your answer: next week, once you’ve stood up your own GeoServer instance, we’ll ask this same question about a self-hosted, open-standard alternative, and compare notes.</p></li>
+<li><p>If your organization’s ArcGIS Online subscription lapsed tomorrow, what would happen to a public map you’d shared widely? Compare that to what you’d guess would happen to a WMS layer served from a self-hosted server you personally administered. Which failure mode worries you more, and why?</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="readings-resources">
+<h2><span class="section-number">2.7. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.arcgis.com/en/projects/get-started-with-arcgis-online/">Esri Learn: Publish a hosted feature layer</a></p></li>
+<li><p><a class="reference external" href="https://doc.arcgis.com/en/arcgis-online/share-maps/share-map.htm">ArcGIS Online: Share your map (Esri documentation)</a></p></li>
+<li><p><a class="reference external" href="https://rgis.unm.edu">NM RGIS data clearinghouse</a> — find a NM dataset to use in Lab 1</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">
+<h2><span class="section-number">2.8. </span>Lab 1: Publishing a Hosted Feature Layer and POI Webmap<a class="headerlink" href="#lab-1-publishing-a-hosted-feature-layer-and-poi-webmap" title="Link to this heading">#</a></h2>
+<p>See <a class="reference internal" href="#../labs/lab_01.md"><span class="xref myst">Lab 1</span></a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-366",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/foundations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_what_is_webgis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>What is Web GIS?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_open_web_standards.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Open Web Standards</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">2.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arcgis-online-a-quick-orientation-and-refresher">2.2. 2.0 ArcGIS Online: A Quick Orientation (and Refresher)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hosted-feature-layers-what-they-are">2.3. 2.1 Hosted Feature Layers: What They Are</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-and-publishing-data">2.4. 2.2 Uploading and Publishing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-popups-symbology-and-sharing">2.5. 2.3 Configuring Popups, Symbology, and Sharing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-can-see-this-map">2.6. 2.4 Who Can See This Map?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">2.6.1. 5-minute discussion (breakout or whole-class)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">2.7. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">2.8. Lab 1: Publishing a Hosted Feature Layer and POI Webmap</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
