@@ -75,7 +75,7 @@ sphinx:
           thebe: true,
         }
     bibtex_reference_style: author_year
-    exclude_patterns: [".venv"]
+    exclude_patterns: [".venv", ".github/**", "**.ipynb_checkpoints", "**/.ipynb_checkpoints/**"]
 
 # Define the name of the latex output file for PDF builds
 # latex:
