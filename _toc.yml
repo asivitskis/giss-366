@@ -16,13 +16,7 @@ parts:
   - caption: Software
     chapters:
       - file: book/software/overview
-      - file: book/software/setup-checklist
-      - file: book/software/vscode
-      - file: book/software/github
-      - file: book/software/qigs
-      - file: book/software/arcgis-online
-      - file: book/software/leaflet
-      - file: book/software/maplibre
+      - file: book/software/arcgis_online
   - caption: Foundations
     numbered: true
     maxdepth: 2
