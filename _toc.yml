@@ -18,6 +18,8 @@ parts:
       - file: book/software/overview
       - file: book/software/arcgis_online
       - file: book/software/vscode
+      - file: book/software/github
+      - file: book/software/qigs
   - caption: Foundations
     numbered: true
     maxdepth: 2
