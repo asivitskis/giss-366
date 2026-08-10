@@ -1,149 +1,71 @@
----
-jupytext:
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.16.2
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
+# MapLibre GL JS
 
-# QGIS
+[MapLibre GL JS](https://maplibre.org/) is an open-source JavaScript library for building interactive maps using **vector tiles** and GPU-accelerated rendering. It's a community-driven fork of Mapbox GL JS (created after Mapbox moved to a proprietary license), and it has become a leading open-source choice for modern, high-performance, vector-based web mapping.
 
-[Miniconda](https://docs.anaconda.com/miniconda) is a free minimal installer for conda. It is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib, and a few others.
+## No Installation Required
 
-## Installation
+Like Leaflet, MapLibre GL JS is a **JavaScript library**, not a desktop application. You include it in your web mapping project via a CDN or npm — you don't "install" it onto your computer.
 
-To install Miniconda, download the installer from the [Miniconda website](https://docs.anaconda.com/miniconda) and run the installer. The installer will ask you to accept the license agreement, choose the installation directory, and add the conda path to your shell profile.
+### Option 1: CDN (recommended for this course)
 
-## Usage
+Add the following to the `<head>` of your HTML file:
 
-After installing Miniconda, you can open the **Anaconda Prompt** or **Terminal** to create a new environment and install packages required for this course using the following commands:
-
-```bash
-conda create -n geo python=3.11
-conda activate geo
-conda install -n base mamba -c conda-forge
-mamba install -c conda-forge geemap leafmap
+```html
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
 ```
 
-## Accessing Conda in Windows Terminal
+This works well for the HTML/CSS/JavaScript labs in this course and can be previewed locally with the **Live Server** extension in VS Code (see the [Visual Studio Code](vscode) page).
 
-If you did not add Conda to your PATH during installation, you can do it manually:
+### Option 2: npm (for more advanced/bundled projects)
 
-1. **Open the Start Menu** and search for "Environment Variables."
-2. **Click on "Edit the system environment variables."**
-3. In the System Properties window, click on **"Environment Variables."**
-4. Under "System Variables," find the **`Path`** variable and select it.
-5. Click **"Edit"** and then **"New."**
-6. Add the following paths to the list:
-   - `C:\Users\<YourUsername>\miniconda3\Scripts`
-7. Click **"OK"** to close all windows.
+```bash
+npm install maplibre-gl
+```
 
-![image](https://github.com/user-attachments/assets/427ea290-8ea8-42a5-b070-854696f71fc5)
+```javascript
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+```
 
-## Common Commands
+## Minimal Example
 
-Here are some common commands to manage environments and packages using conda:
+```html
+<div id="map" style="height: 400px;"></div>
+<script>
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://demotiles.maplibre.org/style.json', // free demo vector style
+    center: [-108.28, 32.7], // Silver City, NM
+    zoom: 12
+  });
 
-### Creating and Managing Environments
+  new maplibregl.Marker()
+    .setLngLat([-108.28, 32.7])
+    .setPopup(new maplibregl.Popup().setText('Western New Mexico University'))
+    .addTo(map);
+</script>
+```
 
-- **Create a new environment:**
+## MapLibre vs. Leaflet
 
-  ```bash
-  conda create -n myenv python=3.11
-  ```
+| | Leaflet | MapLibre GL JS |
+| :---- | :---- | :---- |
+| Rendering | DOM/Canvas, raster tiles by default | WebGL (GPU-accelerated), vector tiles by default |
+| Best for | Simple, lightweight maps and quick prototypes | Smooth zoom/rotation, large datasets, custom vector styling |
+| Learning curve | Gentler | Steeper, but more powerful |
+| Data format | GeoJSON, raster tile layers | Vector tiles (MVT), GeoJSON sources, style specification (JSON) |
 
-  Replace `myenv` with your desired environment name and `python=3.11` with the version of Python you need.
+We introduce both libraries so you can make an informed choice of tool based on a project's needs — part of the course's broader goal of treating open-source and proprietary/alternative stacks as parallel, legitimate options.
 
-- **Activate an environment:**
+## What We'll Use It For
 
-  ```bash
-  conda activate myenv
-  ```
+- Exploring **vector tiles** and modern cloud-native formats (PMTiles, COG) later in the course
+- Custom map styling beyond what raster tile basemaps allow
+- Building more advanced, performant interactive maps for your final project if your project calls for it
 
-- **Deactivate the current environment:**
+## References
 
-  ```bash
-  conda deactivate
-  ```
-
-- **List all environments:**
-
-  ```bash
-  conda env list
-  ```
-
-- **Remove an environment:**
-  ```bash
-  conda remove -n myenv --all
-  ```
-
-### Installing and Managing Packages
-
-- **Install a package in the current environment:**
-
-  ```bash
-  conda install numpy
-  ```
-
-- **Install a package in a specific environment:**
-
-  ```bash
-  conda install -n myenv pandas
-  ```
-
-- **Install packages from the conda-forge channel:**
-
-  ```bash
-  conda install -c conda-forge geopandas
-  ```
-
-- **Install multiple packages at once:**
-
-  ```bash
-  conda install scipy matplotlib seaborn
-  ```
-
-- **Update all packages in an environment:**
-
-  ```bash
-  conda update --all
-  ```
-
-- **Search for a package:**
-
-  ```bash
-  conda search scikit-learn
-  ```
-
-- **List all installed packages in the current environment:**
-
-  ```bash
-  conda list
-  ```
-
-- **Remove a package:**
-  ```bash
-  conda remove numpy
-  ```
-
-### Using Mamba (Faster Package Management)
-
-After installing Mamba, you can use it for faster package management:
-
-- **Install mamba in the base environment:**
-
-  ```bash
-  conda install -n base mamba -c conda-forge
-  ```
-
-- **Install packages using mamba:**
-  ```bash
-  mamba install -c conda-forge geemap leafmap
-  ```
-
-These commands should help you effectively manage your Python environments and packages using Miniconda.
+- [MapLibre GL JS Documentation](https://maplibre.org/maplibre-gl-js/docs/)
+- [MapLibre Style Specification](https://maplibre.org/maplibre-style-spec/)
+- [MapLibre GitHub Repository](https://github.com/maplibre/maplibre-gl-js)
