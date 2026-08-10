@@ -17,6 +17,7 @@ parts:
     chapters:
       - file: book/software/overview
       - file: book/software/arcgis_online
+      - file: book/software/vscode
   - caption: Foundations
     numbered: true
     maxdepth: 2
