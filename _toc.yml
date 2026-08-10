@@ -20,6 +20,8 @@ parts:
       - file: book/software/vscode
       - file: book/software/github
       - file: book/software/qigs
+      - file: book/software/leaflet
+      - file: book/software/maplibre
   - caption: Foundations
     numbered: true
     maxdepth: 2
