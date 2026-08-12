@@ -494,15 +494,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">1.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. 1.1 From Desktop to Web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. 1.2 Client-Server Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. From Desktop to Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. Client-Server Architecture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.3.1. Example 1: a live open-source web map</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.3.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.3.3. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.4. 1.3 The Modern Web GIS Landscape</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.5. 1.4 The Final Project: Public Web GIS Inquiry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.4. The Modern Web GIS Landscape</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.5. The Final Project: Public Web GIS Inquiry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">1.6. Readings &amp; Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-prep-for-lab-0">1.7. Before Thursday: Prep for Lab 0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-0-environment-setup">1.8. Lab 0: Environment Setup</a></li>
@@ -535,7 +535,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="from-desktop-to-web">
-<h2><span class="section-number">1.2. </span>1.1 From Desktop to Web<a class="headerlink" href="#from-desktop-to-web" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>From Desktop to Web<a class="headerlink" href="#from-desktop-to-web" title="Link to this heading">#</a></h2>
 <p>For most of GIS’s history, geographic data lived inside desktop software — ArcMap, ArcGIS Pro, QGIS — running on a single computer. If you wanted to share a map, you shared a file: a shapefile, a geodatabase, a printed PDF. The data and the software that could read it had to sit on the same machine, or at least the same local network. That’s a real limitation. A field ecologist’s beautifully built map of rare plant observations was really only visible to whoever could open the right software with the right file.</p>
 <p>Web mapping changes the delivery mechanism, not the underlying discipline. A <strong>web map</strong> is an interactive display of geographic information delivered as a web page — reachable from any device with a browser and an internet connection, no specialized software required. That accessibility is the whole point: your audience is no longer “people with ArcGIS Pro installed,” it’s <em>anyone with a link</em>.</p>
 <p>The architectural shift that makes this possible is often summarized as <strong>going from files to services</strong>:</p>
@@ -570,7 +570,7 @@ document.write(`
 <p>Web maps now show up everywhere: data journalism (ship-traffic trackers, election maps), real-time dashboards (live weather, flight tracking, wildfire monitoring), searchable data catalogs, computational tools (route planners, solar-position calculators), and collaborative/crowdsourced platforms like OpenStreetMap. By the end of this course you’ll have built examples across several of these categories yourself.</p>
 </section>
 <section id="client-server-architecture">
-<h2><span class="section-number">1.3. </span>1.2 Client-Server Architecture<a class="headerlink" href="#client-server-architecture" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>Client-Server Architecture<a class="headerlink" href="#client-server-architecture" title="Link to this heading">#</a></h2>
 <p>Every web map you have ever used is powered by the same basic exchange: a <strong>client</strong> (your browser) asks a <strong>server</strong> (or a file sitting in storage) for something, and gets a response back. Understanding this loop is the single most important idea in this course — it’s the foundation Essential Question EQ1 asks you to keep interrogating all semester: <em>what is actually happening between my browser and the server when this map loads?</em></p>
 <p><strong>Why tiles?</strong> Your browser can’t just load a 500 MB shapefile and render it instantly — that would freeze the page. Long ago, the solution the mapping industry converged on (Google popularized it) was to chop the world into small square <strong>tiles</strong> that change at each zoom level, and load only the tiles currently in view. As you pan, the browser requests the tiles for the new area; as you zoom, it requests a new, more (or less) detailed set. Already-seen tiles get cached locally, so revisiting an area doesn’t require another trip to the server.</p>
 <p>There are two flavors of tile:</p>
@@ -738,7 +738,7 @@ document.write(`
 </section>
 </section>
 <section id="the-modern-web-gis-landscape">
-<h2><span class="section-number">1.4. </span>1.3 The Modern Web GIS Landscape<a class="headerlink" href="#the-modern-web-gis-landscape" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>The Modern Web GIS Landscape<a class="headerlink" href="#the-modern-web-gis-landscape" title="Link to this heading">#</a></h2>
 <p>There are two broad ways to build and publish a web map today, and this course treats both as <strong>parallel, professionally-valued pathways</strong> — not a primary tool and an optional workaround. You’ll get hands-on with both stacks across the semester.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -775,7 +775,7 @@ document.write(`
 <p>This dual-stack philosophy is why nearly every lab in this course — starting in Week 2 — offers an open-source/cloud-native version and a proprietary version of the same core skill.</p>
 </section>
 <section id="the-final-project-public-web-gis-inquiry">
-<h2><span class="section-number">1.5. </span>1.4 The Final Project: Public Web GIS Inquiry<a class="headerlink" href="#the-final-project-public-web-gis-inquiry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>The Final Project: Public Web GIS Inquiry<a class="headerlink" href="#the-final-project-public-web-gis-inquiry" title="Link to this heading">#</a></h2>
 <p>Starting in <strong>Week 11</strong>, you’ll design, build, and deploy your own public-facing web map and technical report, grounded in a real place, a real question, and — ideally — a real audience beyond this class. It’s introduced this early, in Week 1, for a reason: <strong>every design decision you make this semester will eventually be tested against that audience.</strong></p>
 <p>A few things to start thinking about now (no need to decide anything yet — Topic Ideation checkpoints in Weeks 2, 5, and 9 will walk you through this incrementally):</p>
 <ul class="simple">
@@ -882,15 +882,15 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">1.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. 1.1 From Desktop to Web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. 1.2 Client-Server Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. From Desktop to Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. Client-Server Architecture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.3.1. Example 1: a live open-source web map</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.3.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.3.3. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.4. 1.3 The Modern Web GIS Landscape</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.5. 1.4 The Final Project: Public Web GIS Inquiry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.4. The Modern Web GIS Landscape</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.5. The Final Project: Public Web GIS Inquiry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">1.6. Readings &amp; Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-prep-for-lab-0">1.7. Before Thursday: Prep for Lab 0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-0-environment-setup">1.8. Lab 0: Environment Setup</a></li>
