@@ -1,6 +1,6 @@
 # Lab 0
 # Environment Setup — ArcGIS Online & Open-Source Web GIS
-### GISS/GEOG 366/368 · Web Mapping & Web GIS
+## GISS/GEOG 366/368 · Web Mapping & Web GIS
 
 **Unit 1 Focus:** What is Web GIS? · Client-server architecture · Proprietary (ArcGIS Online) and open-source/cloud-native pathways, side by side
 
