@@ -34,7 +34,7 @@ parts:
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/create/leafmap
+      - file: book/create/building_web_apps
   - caption: Labs
     numbered: false
     maxdepth: 2
@@ -48,10 +48,4 @@ parts:
     maxdepth: 2
     chapters:
       - file: book/final-project/00-project-overview
-      - file: book/final-project/01-part1-define-collect
-      - file: book/final-project/02-part2-architecture-data
-      - file: book/final-project/03-part3-analysis-editing
-      - file: book/final-project/04-part4-results-interpretation
-      - file: book/final-project/05-part5a-presentation
-      - file: book/final-project/06-part5b-final-submission
      
