@@ -16,7 +16,7 @@ By the end of this unit, you will be able to:
 
 ---
 
-## 2.0 ArcGIS Online: A Quick Orientation (and Refresher)
+## ArcGIS Online: A Quick Orientation (and Refresher)
 
 If you've taken an intro GIS course, ArcGIS Online (AGOL) probably isn't brand new to you — you've likely opened a map someone else built, maybe added a layer or two, and clicked around Map Viewer. That's a fine starting point, but it's a *consumer's* view of the platform. This week you're switching roles: from someone who opens maps to someone who publishes them. Before diving into hosted feature layers in 2.1, it's worth making sure everyone has the same mental map of what AGOL actually is.
 
@@ -48,7 +48,7 @@ If you can't publish a hosted feature layer in Lab 1, your account role is the f
 
 ---
 
-## 2.1 Hosted Feature Layers: What They Are
+## Hosted Feature Layers: What They Are
 
 When you publish a **hosted feature layer** in ArcGIS Online, your data doesn't sit on a server you administer — it's uploaded into Esri's cloud infrastructure and stored in a managed, multi-tenant data store that Esri operates on your behalf. Esri, not you, owns the uptime, the backups, the scaling, and the patching.
 
@@ -73,7 +73,7 @@ None of this makes hosted feature layers a worse choice — for a class project,
 
 The two aren't really competing on *capability* so much as on *who takes on the responsibility of running the server* &#8212; a tension you'll meet head-on next week, and again with cloud-native formats in Week 6.
 
-## 2.2 Uploading and Publishing Data
+## Uploading and Publishing Data
 
 The publish-from-upload workflow in ArcGIS Online is about as compressed as publishing gets: upload a file, and AGOL handles schema detection, storage, and endpoint creation automatically. Next week you'll do the manual version of this same chain &#8212; Store &#8594; Layer &#8594; Style &#8212; by hand in GeoServer, and see exactly how much AGOL is quietly doing for you here.
 
@@ -93,7 +93,7 @@ The publish-from-upload workflow in ArcGIS Online is about as compressed as publ
 
 **Where the data actually goes:** once published, your original CSV or shapefile is no longer the live copy. AGOL has ingested it into its own hosted feature service, backed by Esri's cloud data store &#8212; conceptually similar to how a database will act as a *Store* once you set up GeoServer next week, except here you never see or manage that underlying database directly. Every edit made afterward (in Map Viewer, in the Esri field apps, or via the REST API) writes to that hosted copy, not back to your original file.
 
-## 2.3 Configuring Popups, Symbology, and Sharing
+## Configuring Popups, Symbology, and Sharing
 
 Publishing a layer gets your data onto the map; it doesn't make that map *readable*. Two people can publish the same point-of-interest layer and end up with completely different maps depending on how they handle symbology and popups. Next week you'll do this same conceptual job by hand, writing an SLD file for a WMS layer in GeoServer &#8212; here it's all driven through a UI instead.
 
@@ -117,7 +117,7 @@ This is a friendlier on-ramp than writing SLD by hand, but it's doing the same c
 
 The sharing level isn't a neutral technical setting bolted on at the end &#8212; it's a design decision made at publish time, the same way choosing between WMS and WFS will determine who can do what with a layer once you get to GeoServer next week. Choosing "Public" for a map with sensitive locations (a domestic violence shelter, a culturally significant site, an at-risk species' habitat) is a different act than choosing it for a public bus-stop inventory, even though the button looks identical.
 
-## 2.4 Who Can See This Map?
+## Who Can See This Map?
 
 Setting a map's sharing level to "Public" feels like flipping a switch, but it's worth being precise about what actually happens: the data doesn't become public in some abstract, ownerless sense &#8212; it becomes publicly accessible *on Esri's servers, under Esri's terms of service, subject to Esri's uptime*. "Public" here means "public through a specific company's infrastructure," not "public" the way an open standard published from a self-hosted server &#8212; like the GeoServer instance you'll stand up next week &#8212; is public. The map is still, at every layer, running on someone else's platform, discoverable through someone else's search index, and governed by a Terms of Service document your organization didn't write.
 

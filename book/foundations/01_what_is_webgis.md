@@ -264,11 +264,9 @@ You'll choose your deployment platform later — ArcGIS Online, GitHub Pages + M
 ## Readings & Resources
 
 - [What is GIS? (Esri overview)](https://www.esri.com/en-us/what-is-gis/overview)
-- Fu, P. (2022). *Getting to Know Web GIS*, 5th Ed. — Chapter 1
 - Dorman, M. *Introduction to Web Mapping* — Preface (course reading; on the concept of web maps and why JavaScript underlies nearly all of them)
 - [MapLibre GL JS documentation: Getting Started](https://maplibre.org/maplibre-gl-js/docs/)
 - [Leaflet Quick Start Guide](https://leafletjs.com/examples/quick-start/)
-- *Modern GIS Accelerator* video series, Section 3.0–3.2a: *Building for the Web* / *How Web Maps Actually Work* / *ArcGIS Online vs. Open Web Mapping* (course LMS) — optional preview of tiling and PMTiles concepts we'll return to in Week 6
 
 ---
 
