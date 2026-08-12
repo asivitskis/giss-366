@@ -22,7 +22,7 @@ parts:
       - file: book/software/qigs
       - file: book/software/leaflet
       - file: book/software/maplibre
-  - caption: Foundations
+  - caption: Part 1 - WebGIS Foundations
     numbered: true
     maxdepth: 2
     chapters:
@@ -30,7 +30,7 @@ parts:
       - file: book/foundations/02_agol_publishing
       - file: book/foundations/03_open_web_standards
       - file: book/foundations/04_web_fundamentals
-  - caption: Building & Querying
+  - caption: Part 2 - WebGIS Development
     numbered: true
     maxdepth: 2
     chapters:
