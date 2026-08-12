@@ -20,7 +20,7 @@ By the end of this unit, you will be able to:
 ---
 
 
-## 1.1 From Desktop to Web
+## From Desktop to Web
 
 For most of GIS's history, geographic data lived inside desktop software — ArcMap, ArcGIS Pro, QGIS — running on a single computer. If you wanted to share a map, you shared a file: a shapefile, a geodatabase, a printed PDF. The data and the software that could read it had to sit on the same machine, or at least the same local network. That's a real limitation. A field ecologist's beautifully built map of rare plant observations was really only visible to whoever could open the right software with the right file.
 
@@ -40,7 +40,7 @@ Web maps are also **interactive**: viewers can turn layers on and off, zoom to w
 Web maps now show up everywhere: data journalism (ship-traffic trackers, election maps), real-time dashboards (live weather, flight tracking, wildfire monitoring), searchable data catalogs, computational tools (route planners, solar-position calculators), and collaborative/crowdsourced platforms like OpenStreetMap. By the end of this course you'll have built examples across several of these categories yourself.
 
 
-## 1.2 Client-Server Architecture
+## Client-Server Architecture
 
 Every web map you have ever used is powered by the same basic exchange: a **client** (your browser) asks a **server** (or a file sitting in storage) for something, and gets a response back. Understanding this loop is the single most important idea in this course — it's the foundation Essential Question EQ1 asks you to keep interrogating all semester: *what is actually happening between my browser and the server when this map loads?*
 
@@ -229,7 +229,7 @@ Compare the two maps you just interacted with — one open-source, one proprieta
 Keep this question in the back of your mind all semester — Discussion 1 in Week 4 comes back to it directly.
 
 
-## 1.3 The Modern Web GIS Landscape
+## The Modern Web GIS Landscape
 
 There are two broad ways to build and publish a web map today, and this course treats both as **parallel, professionally-valued pathways** — not a primary tool and an optional workaround. You'll get hands-on with both stacks across the semester.
 
@@ -246,7 +246,7 @@ Neither column is "the real one" and the other a shortcut. A practitioner who on
 This dual-stack philosophy is why nearly every lab in this course — starting in Week 2 — offers an open-source/cloud-native version and a proprietary version of the same core skill.
 
 
-## 1.4 The Final Project: Public Web GIS Inquiry
+## The Final Project: Public Web GIS Inquiry
 
 Starting in **Week 11**, you'll design, build, and deploy your own public-facing web map and technical report, grounded in a real place, a real question, and — ideally — a real audience beyond this class. It's introduced this early, in Week 1, for a reason: **every design decision you make this semester will eventually be tested against that audience.**
 

@@ -95,7 +95,7 @@ The publish-from-upload workflow in ArcGIS Online is about as compressed as publ
 
 ## Configuring Popups, Symbology, and Sharing
 
-Publishing a layer gets your data onto the map; it doesn't make that map *readable*. Two people can publish the same point-of-interest layer and end up with completely different maps depending on how they handle symbology and popups. Next week you'll do this same conceptual job by hand, writing an SLD file for a WMS layer in GeoServer &#8212; here it's all driven through a UI instead.
+Publishing a layer gets your data onto the map; it doesn't make that map *readable*. Two people can publish the same point-of-interest layer and end up with completely different maps depending on how they handle symbology and popups. Next week you'll do this same conceptual job by hand, writing an SLD file for a WMS layer in GeoServer &#8212; here it's all driven through a UI instead. 
 
 **Symbology in Map Viewer.** Click a layer's *Styles* pane and you'll typically choose from:
 
