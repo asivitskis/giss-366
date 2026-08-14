@@ -11,7 +11,7 @@ jupytext:
 
 This course uses a mix of desktop software, web-based platforms, and JavaScript libraries. You will **not** need to install everything — some tools live on your computer, others run in your browser. This page covers what to install before the course begins and what you'll encounter later in the semester.
 
-## Install Before the Course Begins
+## Install First Week of Course (or before)
 
 - **[Visual Studio Code](vscode)** — *required.* Primary code editor for HTML, CSS, JavaScript, GeoJSON, and other web GIS files. Also install the **Live Server** extension to preview web maps locally.
 - **[QGIS](qgis)** — *required.* Free, open-source desktop GIS for preparing, inspecting, editing, and exporting the geographic data used in your web maps. Install the **Long Term Release (LTR)** version unless told otherwise.
@@ -39,7 +39,7 @@ You do **not** need prior programming or web development experience — HTML, CS
 
 ---
 
-## Setup Checklist (Before Week 1)
+## Setup Checklist (By Week 1)
 
 Work through these in order — later steps depend on earlier ones (Git needs to be installed before you can use it in VS Code). Budget **45–60 minutes** total.
 
@@ -50,5 +50,5 @@ Work through these in order — later steps depend on earlier ones (Git needs to
 5. **QGIS (LTR)** — install and verify by adding a vector layer (`Layer → Add Layer → Add Vector Layer`).
 6. **ArcGIS Online** — sign in at [arcgis.com](https://www.arcgis.com/) with your **WNMU** credentials. Verify: your organization's name appears top-right. This depends on WNMU provisioning your account, so start it early — if it doesn't work, email your instructor right away rather than waiting.
 
-> **Don't wait until the night before Lab 0.** ArcGIS Online access especially can take a few days to come through, so start this checklist a few days before the semester begins. If something's still broken by Week 1, that's what Lab 0's setup time and office hours are for.
-asdas 
+
+ 

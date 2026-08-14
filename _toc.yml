@@ -19,7 +19,7 @@ parts:
       - file: book/software/arcgis_online
       - file: book/software/vscode
       - file: book/software/github
-      - file: book/software/qigs
+      - file: book/software/qqis
       - file: book/software/leaflet
       - file: book/software/maplibre
   - caption: Part 1 - WebGIS Foundations
