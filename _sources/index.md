@@ -7,6 +7,11 @@ offered at Western New Mexico University, Fall 2026.
 
 Web mapping has become the primary interface through which most people encounter geographic information, from dashboards to embedded maps, StoryMaps, and mobile field apps. At the same time, the barrier to publishing these web-based products is increasingly being lowered. That accessibility raises the stakes for web GIS literacy rather than lowering them: a practitioner needs to understand not just how to make a map appear, but the architecture underneath it, who it reaches, and what happens once it is public. This course builds directly on Introduction to Geographic Information Science (GISS 361/363), extending its place-based foundation into the networked, client-server-database systems that web GIS runs on. AI-assisted and no-code tools are accelerating how fast a functional web map can be published, but they cannot substitute for situated judgment about audience, access, and the ethical stakes of putting a place's data on the open web.
 
+Overview Video:
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%">
+	<iframe src="https://wnmu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=273aff89-9788-4105-9528-b4a60134fd81&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="GISS 366 Overview"></iframe>
+</div>
+
 ## What You'll Learn
 
 - **Web GIS Architecture & Technology Foundations**: Build and deploy interactive web GIS applications across both proprietary tools (ArcGIS Online, Experience Builder, Enterprise) and open-source, cloud-native tools (GeoServer, MapLibre GL JS, Leaflet, PMTiles, GeoParquet) — and learn to choose between them based on the task at hand, not just habit.
