@@ -42,10 +42,10 @@ We'll install QGIS through **OSGeo4W** rather than the standalone QGIS installer
 
 ## Verify Your Setup
 
-- [ ] QGIS opens and shows the standard interface
-- [ ] `Layer → Add Layer → Add Vector Layer` successfully adds a sample vector layer
-- [ ] `gdalinfo --version` returns a version string from the OSGeo4W Shell (Windows) or your terminal (Mac/Linux)
-- [ ] The Processing Toolbox lists GDAL algorithms (`Settings → Options → Processing → Providers`, confirm GDAL is enabled)
+- QGIS opens and shows the standard interface
+- `Layer → Add Layer → Add Vector Layer` successfully adds a sample vector layer
+- `gdalinfo --version` returns a version string from the OSGeo4W Shell (Windows) or your terminal (Mac/Linux)
+- The Processing Toolbox lists GDAL algorithms (`Settings → Options → Processing → Providers`, confirm GDAL is enabled)
 
 > **Troubleshooting:** If QGIS opens but the Processing Toolbox is missing GDAL tools, check that GDAL is enabled under Processing Providers. If `gdalinfo` isn't recognized outside the OSGeo4W Shell, that's expected — regular Command Prompt / PowerShell don't have OSGeo4W's paths set up automatically.
 
