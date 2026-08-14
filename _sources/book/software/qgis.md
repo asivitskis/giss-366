@@ -1,12 +1,3 @@
----
-jupytext:
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-  jupytext_version: 1.16.2
----
-
 # QGIS
 
 [QGIS](https://qgis.org/) is a free, open-source desktop GIS application. In this course you'll use it to prepare, inspect, edit, and export the geographic data (shapefiles, GeoJSON, CSVs) that feeds into your web maps.
