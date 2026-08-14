@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Leaflet &#8212; WebMapping &amp; Web GIS</title>
+    <title>QGIS &#8212; WebMapping &amp; Web GIS</title>
   
   
   
@@ -57,13 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/software/leaflet';</script>
-    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/software/leaflet.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/software/qgis';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/software/qgis.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="MapLibre GL JS" href="maplibre.html" />
-    <link rel="prev" title="QGIS" href="qgis.html" />
+    <link rel="next" title="Leaflet" href="leaflet.html" />
+    <link rel="prev" title="Git &amp; GitHub" href="github.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,8 +188,8 @@
 <li class="toctree-l1"><a class="reference internal" href="arcgis_online.html">ArcGIS Online</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="github.html">Git &amp; GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qgis.html">QGIS</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Leaflet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaflet.html">Leaflet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">MapLibre GL JS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1 - WebGIS Foundations</span></p>
@@ -286,7 +286,7 @@
       
       
       
-      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/software/leaflet.md" target="_blank"
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/software/qgis.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +303,7 @@
       
       
       
-      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/software/leaflet.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/software/qgis.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +333,7 @@
       
       
       
-      <li><a href="../../_sources/book/software/leaflet.md" target="_blank"
+      <li><a href="../../_sources/book/software/qgis.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -417,7 +417,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Leaflet</h1>
+    <h1>QGIS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -427,14 +427,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-installation-required">No Installation Required</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-cdn-recommended-for-this-course">Option 1: CDN (recommended for this course)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-npm-for-more-advanced-bundled-projects">Option 2: npm (for more advanced/bundled projects)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-ll-use-it-for">What We’ll Use It For</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts-to-know">Core Concepts to Know</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-your-setup">Verify Your Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -447,94 +441,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="leaflet">
-<h1>Leaflet<a class="headerlink" href="#leaflet" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://leafletjs.com/">Leaflet</a> is a lightweight, open-source JavaScript library for building interactive web maps. It’s one of the most widely used libraries in web cartography because it’s small, fast, mobile-friendly, and has a simple, well-documented API.</p>
-<section id="no-installation-required">
-<h2>No Installation Required<a class="headerlink" href="#no-installation-required" title="Link to this heading">#</a></h2>
-<p>Leaflet is a <strong>JavaScript library</strong>, not a desktop application — you don’t download and install it the way you install VS Code or QGIS. Instead, you include it directly in your HTML/JavaScript project, either by linking to a Content Delivery Network (CDN) or by installing it as an npm package if you’re using a build tool.</p>
-<section id="option-1-cdn-recommended-for-this-course">
-<h3>Option 1: CDN (recommended for this course)<a class="headerlink" href="#option-1-cdn-recommended-for-this-course" title="Link to this heading">#</a></h3>
-<p>Add the following to the <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> of your HTML file:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/leaflet@1.9.4/dist/leaflet.css&quot;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/leaflet@1.9.4/dist/leaflet.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-<p>This is the simplest approach for the HTML/CSS/JavaScript labs in this course and requires no build process — just open your file with the <strong>Live Server</strong> extension in VS Code (see the <a class="reference internal" href="vscode.html"><span class="doc std std-doc">Visual Studio Code</span></a> page).</p>
-</section>
-<section id="option-2-npm-for-more-advanced-bundled-projects">
-<h3>Option 2: npm (for more advanced/bundled projects)<a class="headerlink" href="#option-2-npm-for-more-advanced-bundled-projects" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>leaflet
-</pre></div>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">L</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;leaflet&#39;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="s1">&#39;leaflet/dist/leaflet.css&#39;</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="minimal-example">
-<h2>Minimal Example<a class="headerlink" href="#minimal-example" title="Link to this heading">#</a></h2>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 400px;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="s1">&#39;map&#39;</span><span class="p">).</span><span class="nx">setView</span><span class="p">([</span><span class="mf">32.7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">108.28</span><span class="p">],</span><span class="w"> </span><span class="mf">13</span><span class="p">);</span><span class="w"> </span><span class="c1">// Silver City, NM</span>
-
-<span class="w">  </span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">(</span><span class="s1">&#39;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">attribution</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;copy; OpenStreetMap contributors&#39;</span>
-<span class="w">  </span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">L</span><span class="p">.</span><span class="nx">marker</span><span class="p">([</span><span class="mf">32.7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">108.28</span><span class="p">]).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">bindPopup</span><span class="p">(</span><span class="s1">&#39;Western New Mexico University&#39;</span><span class="p">);</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="what-we-ll-use-it-for">
-<h2>What We’ll Use It For<a class="headerlink" href="#what-we-ll-use-it-for" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Building your first interactive web maps (Lab 3–4)</p></li>
-<li><p>Loading and styling <strong>GeoJSON</strong> data exported from QGIS</p></li>
-<li><p>Adding markers, popups, layers, and basic interactivity</p></li>
-<li><p>Comparing an open-source library workflow against the proprietary ArcGIS Online pathway</p></li>
-</ul>
-</section>
-<section id="core-concepts-to-know">
-<h2>Core Concepts to Know<a class="headerlink" href="#core-concepts-to-know" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="qgis">
+<h1>QGIS<a class="headerlink" href="#qgis" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://qgis.org/">QGIS</a> is a free, open-source desktop GIS application. In this course you’ll use it to prepare, inspect, edit, and export the geographic data (shapefiles, GeoJSON, CSVs) that feeds into your web maps.</p>
+<p>Install the <strong>Long Term Release (LTR)</strong> unless you’re told otherwise — it’s more stable than the latest release, which matters more for coursework than having the newest features.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>We’ll install QGIS through <strong>OSGeo4W</strong> rather than the standalone QGIS installer. OSGeo4W bundles QGIS together with <strong>GDAL</strong>, the geospatial data library our later scripting labs rely on, so getting both from the same installer keeps their versions in sync and avoids conflicts.</p>
+<ol class="arabic">
+<li><p><strong>Download the installer.</strong> Go to <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">trac.osgeo.org/osgeo4w</a> and download <code class="docutils literal notranslate"><span class="pre">osgeo4w-setup.exe</span></code>. (macOS/Linux: see the note below.)</p></li>
+<li><p><strong>Choose Advanced Install.</strong> Run the installer and select <strong>Advanced Install</strong>, not Express — Express only installs a fixed package set and won’t let you confirm GDAL is included. Choose <strong>Install from Internet</strong>, accept the default download directory, and pick a nearby download site when prompted.</p></li>
+<li><p><strong>Select your packages.</strong> In the package list, search for and set each of these to <strong>Install</strong> (click the version column until it shows a version number instead of “Skip”):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Concept</p></th>
-<th class="head text-left"><p>What it does</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Package</p></th>
+<th class="head text-left"><p>Category</p></th>
+<th class="head text-left"><p>Why</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">L.map()</span></code></p></td>
-<td class="text-left"><p>Initializes the map and attaches it to a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">qgis-ltr</span></code></p></td>
+<td class="text-left"><p>Desktop</p></td>
+<td class="text-left"><p>The Long Term Release of QGIS (use plain <code class="docutils literal notranslate"><span class="pre">qgis</span></code> only if told to use the latest release)</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">L.tileLayer()</span></code></p></td>
-<td class="text-left"><p>Adds a basemap (raster tiles)</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gdal</span></code></p></td>
+<td class="text-left"><p>Libs</p></td>
+<td class="text-left"><p>Command-line GDAL/OGR tools, kept in sync with QGIS’s version</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">L.marker()</span></code> / <code class="docutils literal notranslate"><span class="pre">L.circleMarker()</span></code></p></td>
-<td class="text-left"><p>Adds point features</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">L.geoJSON()</span></code></p></td>
-<td class="text-left"><p>Loads and styles GeoJSON data</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.bindPopup()</span></code></p></td>
-<td class="text-left"><p>Attaches an interactive popup to a feature</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.addTo(map)</span></code></p></td>
-<td class="text-left"><p>Adds any layer or feature to the map</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">python3-gdal</span></code></p></td>
+<td class="text-left"><p>Libs</p></td>
+<td class="text-left"><p>Python bindings for GDAL — needed for later scripting labs</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Selecting <code class="docutils literal notranslate"><span class="pre">qgis-ltr</span></code> will automatically pull in its own required dependencies — you don’t need to hand-pick every library.</p>
+</li>
+<li><p><strong>Finish the install.</strong> Click through to install. This downloads and installs everything — budget 10–20 minutes depending on your connection. Leave it running in the background.</p></li>
+<li><p><strong>Verify GDAL from the OSGeo4W Shell.</strong> From the Start Menu, open <strong>OSGeo4W Shell</strong> (not a regular command prompt — it sets up the environment paths GDAL needs) and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalinfo</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>You should see a version string like <code class="docutils literal notranslate"><span class="pre">GDAL</span> <span class="pre">3.x.x</span></code>. If you instead see “command not found,” the <code class="docutils literal notranslate"><span class="pre">gdal</span></code> package likely wasn’t selected in Step 3 — rerun the installer and check it.</p>
+</li>
+<li><p><strong>Launch QGIS.</strong> From the Start Menu, look for <strong>QGIS Desktop</strong> under the OSGeo4W folder (not a bare “QGIS” shortcut — the OSGeo4W version ensures it’s using the GDAL you just installed).</p></li>
+</ol>
+<blockquote>
+<div><p><strong>macOS / Linux:</strong> OSGeo4W is Windows-only. On a Mac, install QGIS from <a class="reference external" href="https://qgis.org/download/">qgis.org/download</a> (the official macOS installer bundles GDAL already) or via Homebrew with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">qgis</span></code>. On Linux, install via your distribution’s package manager or the <a class="reference external" href="https://qgis.org/download/">QGIS APT/DNF repositories</a>, which include GDAL as a dependency.</p>
+</div></blockquote>
+</section>
+<section id="verify-your-setup">
+<h2>Verify Your Setup<a class="headerlink" href="#verify-your-setup" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>QGIS opens and shows the standard interface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Layer</span> <span class="pre">→</span> <span class="pre">Add</span> <span class="pre">Layer</span> <span class="pre">→</span> <span class="pre">Add</span> <span class="pre">Vector</span> <span class="pre">Layer</span></code> successfully adds a sample vector layer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--version</span></code> returns a version string from the OSGeo4W Shell (Windows) or your terminal (Mac/Linux)</p></li>
+<li><p>The Processing Toolbox lists GDAL algorithms (<code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">→</span> <span class="pre">Options</span> <span class="pre">→</span> <span class="pre">Processing</span> <span class="pre">→</span> <span class="pre">Providers</span></code>, confirm GDAL is enabled)</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Troubleshooting:</strong> If QGIS opens but the Processing Toolbox is missing GDAL tools, check that GDAL is enabled under Processing Providers. If <code class="docutils literal notranslate"><span class="pre">gdalinfo</span></code> isn’t recognized outside the OSGeo4W Shell, that’s expected — regular Command Prompt / PowerShell don’t have OSGeo4W’s paths set up automatically.</p>
+</div></blockquote>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://leafletjs.com/reference.html">Leaflet Documentation</a></p></li>
-<li><p><a class="reference external" href="https://leafletjs.com/examples.html">Leaflet Tutorials</a></p></li>
-<li><p><a class="reference external" href="https://github.com/Leaflet/Leaflet">Leaflet GitHub Repository</a></p></li>
+<li><p><a class="reference external" href="https://docs.qgis.org/">QGIS Documentation</a></p></li>
+<li><p><a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W Documentation</a></p></li>
+<li><p><a class="reference external" href="https://gdal.org/">GDAL Documentation</a></p></li>
 </ul>
 </section>
 </section>
@@ -570,20 +543,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="qgis.html"
+       href="github.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">QGIS</p>
+        <p class="prev-next-title">Git &amp; GitHub</p>
       </div>
     </a>
     <a class="right-next"
-       href="maplibre.html"
+       href="leaflet.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MapLibre GL JS</p>
+        <p class="prev-next-title">Leaflet</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -603,14 +576,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-installation-required">No Installation Required</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-cdn-recommended-for-this-course">Option 1: CDN (recommended for this course)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-npm-for-more-advanced-bundled-projects">Option 2: npm (for more advanced/bundled projects)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-ll-use-it-for">What We’ll Use It For</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts-to-know">Core Concepts to Know</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-your-setup">Verify Your Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
