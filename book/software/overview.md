@@ -21,7 +21,7 @@ This course uses a mix of desktop software, web-based platforms, and JavaScript 
 
 No desktop installation needed — just an account and a browser.
 
-- **[ArcGIS Online](arcgis-online)** — *required account.* Cloud-based GIS platform for publishing data, creating hosted feature layers and web maps, and exploring no-code and SDK-based app development. Sign in with your **WNMU** account. You do **not** need ArcGIS Pro unless specifically instructed.
+- **[ArcGIS Online](arcgis_online)** — *required account.* Cloud-based GIS platform for publishing data, creating hosted feature layers and web maps, and exploring no-code and SDK-based app development. Sign in with your **WNMU** account. You do **not** need ArcGIS Pro unless specifically instructed.
 - **[GitHub](github)** — *required account.* Hosts your Git repositories and published web projects, and connects to the Git software on your computer.
 
 ## Web Mapping Libraries
