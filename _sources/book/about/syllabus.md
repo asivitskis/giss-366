@@ -13,4 +13,6 @@ kernelspec:
 
 # Syllabus
 
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vRX8ZrNYnxD7n1GtU1IVlP3LUK1UoYLwrJPXxxUKFb0HS6nLAOFbZ4eOMdMQZVWKlQSGlJVgSCnnGb4/pub?embedded=true" width="100%" height=800></iframe>
+# Syllabus
+
+<iframe src="https://drive.google.com/file/d/1qOBCOocFr-tIP2INGmGaTb6O4ox5Ly_o/preview" width="100%" height=800></iframe>
