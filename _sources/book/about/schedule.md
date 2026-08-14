@@ -13,4 +13,4 @@ kernelspec:
 
 # Schedule
 
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vSBvjlpfUZ3WJrMTR__2XqhuMzswx_Ywx_TNLMbtxtMsmqSNJw_iWnvS-S91ypNcgK0aAjir2l7wphs/pub?embedded=true" width="100%" height=800></iframe>
+<iframe src="https://drive.google.com/file/d/1fYeismQ_0ZqVhPgpPT4eRT_hin9YaTDy/preview" width="100%" height=800></iframe>
