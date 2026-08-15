@@ -13,6 +13,8 @@ This course uses a mix of web-based platforms, desktop software, and JavaScript 
 
 Please note: all required software is accessible via WNMU library computers for any student who would prefer to use those machines. Please reach out to the instructor for additional assistance and support. Access to technology should not be a concern for anyone to complete this course, we got you covered!
 
+[software installation guide video coming soon!]
+
 ## Web-Based Accounts (sign up within the first week of course)
 
 No desktop installation needed for these tools, just an account and a browser.

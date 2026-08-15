@@ -4,13 +4,13 @@ title: Final Project — Public Web GIS Inquiry
 
 # Final Project: Public Web GIS Inquiry
 
-**Weight:** 30% of course grade (300 pts) · **Weeks 11–16**
+**Weight:** 35% of course grade (350 pts) · **Weeks 11–16**
 
-Beginning Week 11, you will design, build, and deploy a public-facing webmap and technical report grounded in a real audience and question. Projects are encouraged to engage with real-world issues and community partners — emergency response, environmental monitoring, public health, planning, journalism, or community organizing.
+Beginning Week 11, you will design, build, and deploy a public-facing webmap and technical report grounded in a real audience and question. Projects are encouraged to engage with real-world issues and community partners. Topics could include emergency response, environmental monitoring, public health, planning, journalism, or community organizing.
 
-You are explicitly invited to name who your map's audience is and is not reaching, and what data-sovereignty or access tradeoffs your architecture choices made. **The goal is not a flawless deployment but a meaningful, well-documented product.** Select rubric items are co-designed with the class for each deliverable — watch for those conversations in the linked weeks below.
+You are explicitly invited to name who your map's audience is and is not reaching, and what data-sovereignty or access tradeoffs your architecture choices made. **The goal is not a flawless deployment but a meaningful, well-documented product.** Select rubric items will be co-designed with the class for each deliverable. We'll share more about the assessment structure as we approach these milestones. 
 
-This project is built to work equally well with a proprietary stack (ArcGIS Online) or an open-source/cloud-native stack (GeoServer, Leaflet or MapLibre GL JS, PostGIS, PMTiles/COG). Every part of the guidance below gives you both pathways. You may also mix stacks — for example, publishing data through GeoServer and building your app in Experience Builder, or hosting on ArcGIS Online while styling vector tiles in MapLibre.
+This project is built to work equally well with a proprietary stack (ArcGIS Online) or an open-source/cloud-native stack (GeoServer, Leaflet or MapLibre GL JS, PostGIS, PMTiles/COG). Every part of the guidance below gives you both pathways. You may also mix stacks. For example, publishing data through GeoServer and building your app in Experience Builder, or hosting on ArcGIS Online while styling vector tiles in MapLibre.
 
 ## Milestones
 
@@ -18,12 +18,12 @@ This project is built to work equally well with a proprietary stack (ArcGIS Onli
 | --- | --- | --- | --- | --- |
 | 2 | Ideation Topic A | In-class reflection | ungraded | *(in Week 2 lecture)* |
 | 9 | Ideation Topic B | In-class reflection | ungraded | *(in Week 9 lecture)* |
-| 11 | Part 1 — Define & Begin Data Collection | Written plan (1–2 pp) | 30 | [Part 1: Define & Collect](01-part1-define-collect.md) |
-| 12 | Part 2 — Architecture & Data Check | Map + notes | 40 | [Part 2: Architecture & Data Check](02-part2-architecture-data.md) |
+| 11 | Part 1 — Define & Begin Data Collection | Written plan (1–2 pp) | 40 | [Part 1: Define & Collect](01-part1-define-collect.md) |
+| 12 | Part 2 — Architecture & Data Check | Map + notes | 50 | [Part 2: Architecture & Data Check](02-part2-architecture-data.md) |
 | 13 | Part 3 — Editing & Analysis | Working app | 50 | [Part 3: Analysis & Editing](03-part3-analysis-editing.md) |
-| 14 | Part 4 — Results & Interpretation | Draft report | 40 | [Part 4: Results & Interpretation](04-part4-results-interpretation.md) |
-| 15 | Part 5a — Presentation | Slide deck | 50 | [Part 5a: Presentation](05-part5a-presentation.md) |
-| 16 | Part 5b — Final Submission | Full package | 90 | [Part 5b: Final Submission](06-part5b-final-submission.md) |
+| 14 | Part 4 — Results & Interpretation | Draft report | 50 | [Part 4: Results & Interpretation](04-part4-results-interpretation.md) |
+| 15 | Part 5a — Presentation | Slide deck | 60 | [Part 5a: Presentation](05-part5a-presentation.md) |
+| 16 | Part 5b — Final Submission | Full package | 100 | [Part 5b: Final Submission](06-part5b-final-submission.md) |
 
 Each part builds directly on the one before it — nothing here asks you to redo prior work, only to extend and refine it. Skipping a step tends to show up as scramble two weeks later.
 
