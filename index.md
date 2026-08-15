@@ -7,22 +7,22 @@ offered at Western New Mexico University, Fall 2026.
 
 Web mapping has become the primary interface through which most people encounter geographic information, from dashboards to embedded maps, StoryMaps, and mobile field apps. At the same time, the barrier to publishing these web-based products is increasingly being lowered. That accessibility raises the stakes for web GIS literacy rather than lowering them: a practitioner needs to understand not just how to make a map appear, but the architecture underneath it, who it reaches, and what happens once it is public. This course builds directly on Introduction to Geographic Information Science (GISS 361/363), extending its place-based foundation into the networked, client-server-database systems that web GIS runs on. AI-assisted and no-code tools are accelerating how fast a functional web map can be published, but they cannot substitute for situated judgment about audience, access, and the ethical stakes of putting a place's data on the open web.
 
-Check out an Overview Video below:
+Check out an Overview Video below for more information:
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%">
 	<iframe src="https://wnmu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=273aff89-9788-4105-9528-b4a60134fd81&autoplay=false&offerviewer=false&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="GISS 366 Overview"></iframe>
 </div>
 
 ## What You'll Learn
 
-- **Web GIS Architecture & Technology Foundations**: Build and deploy interactive web GIS applications across both proprietary tools (ArcGIS Online, Experience Builder, Enterprise) and open-source, cloud-native tools (GeoServer, MapLibre GL JS, Leaflet, PMTiles, GeoParquet) — and learn to choose between them based on the task at hand, not just habit.
+- **Web GIS Architecture & Technology Foundations**: Build and deploy interactive web GIS applications across both proprietary tools (ArcGIS Online, Experience Builder, Enterprise) and open-source, cloud-native tools (GeoServer, MapLibre GL JS, Leaflet, PMTiles, GeoParquet). Learn to choose between these stacks based on the task at hand, not just habit.
 - **WebGIS Design & Systems Thinking**: Learn to see a web map as a living system, not a finished product. Client, server, data, and network all interact through scale, feedback, and latency, and every design choice you make shapes how the map performs and who it actually reaches.
 - **Digital GeoEthics**: Bring a critical eye to geospatial technology once it's public, considering how data sovereignty, privacy, surveillance, accessibility, and security are all decisions with consequence.
 
-By the end of the course, you'll be able to design, build, and deploy interactive web maps with confidence: serving data through open standards and cloud-native formats, building client-side applications in Leaflet, MapLibre GL JS, and the ArcGIS Maps SDK, and hosting a finished product for a real audience. You'll walk away with a public-facing web GIS project grounded in a real place and question — and the ability to explain why you built it the way you did.
+By the end of the course, you'll be able to design, build, and deploy interactive web maps with confidence: serving data through open standards and cloud-native formats, building client-side applications in Leaflet, MapLibre GL JS, and the ArcGIS Maps SDK, and hosting a finished product for a real audience. You'll walk away with a public-facing web GIS project grounded in a real place and question. Importantly, you'll have the ability to explain why you built it the way you did.
 
 ## Our Study Area
 
-This course will ground many of our labs and examples in the landscapes of southwestern New Mexico. The forests, watersheds, and settlements around Silver City, land that carries the histories of communities alongside today's patchwork of federal, state, and private stewardship. Throughout the semester, you'll return to a guiding question: what can a place teach us when we learn to read it geographically? Explore the map below and start noticing what you see — and what it makes you wonder.
+This course will ground many of our labs and examples in the landscapes of southwestern New Mexico. The forests, watersheds, and settlements around Silver City, all interacting as land that carries the histories of communities alongside today's patchwork of federal, state, and private stewardship. Throughout the semester, you'll return to a guiding question: what can a place teach us when we learn to read it geographically? Explore the map below and start considering what you notice, what you wonder, and what it reminds you of:
 
 <iframe width="100%" height="500" frameborder="0" style="border:1px solid #ccc; border-radius:6px;" allow="local-network-access; geolocation" title="Southwestern NM Regional Map" src="https://wnmugis.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=05d72cefd31e459d8d6ec8b31e435c88&theme=light&heading=true&legend=true&scroll=false&center=-108.25275033008064,32.794118708373404&scale=144447.638572" ></iframe>
 
