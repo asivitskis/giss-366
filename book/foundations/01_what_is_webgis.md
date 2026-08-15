@@ -207,7 +207,7 @@ m
 
 ### Example 2: an embedded ArcGIS Online web map/app
 
-ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an `<iframe>`. In ArcGIS Online, open a web map or app, choose **Share → Embed**, and copy the generated `<iframe>` code — it will look like the placeholder below. Swap in a live public web map's item ID before lecture.
+ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an `<iframe>`. In ArcGIS Online, open a web map or app, choose **Share → Embed**, and copy the generated `<iframe>` code.
 
 > **UPDATES INCOMING FROM WNMU AGOL:** potential Survey123 class layer + hosted and embedded AGOL map.
 
