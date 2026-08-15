@@ -4,13 +4,13 @@
 
 ## Access
 
-**No installation needed.** You will access ArcGIS Online at [https://www.arcgis.com/](https://www.arcgis.com/) using your **WNMU-provided ArcGIS Online account**.
+**No installation needed.** You will access ArcGIS Online at [WNMU's ArcGIS Online Homepage](https://wnmugis.maps.arcgis.com/home/index.html) using your **WNMU-provided ArcGIS Online account**.
 
-> Do not sign up for a personal/free ArcGIS Online account for this course — use your WNMU organizational account so your work is properly licensed and stored within our institution's organization.
+> Do not sign up for a personal/free ArcGIS Online account for this course, use your WNMU organizational account so your work is properly licensed and stored within our institution's organization.
 
 If you haven't received your account credentials, contact your instructor before the first lab that requires ArcGIS Online.
 
-> **Note:** You do **not** need to install ArcGIS Pro (the desktop application) for this course unless specifically instructed otherwise. ArcGIS Online and ArcGIS Pro are different products — this course uses the online platform only.
+> **Note:** You do **not** need to install ArcGIS Pro (the desktop application) for this course unless specifically instructed otherwise. ArcGIS Online and ArcGIS Pro are different products. This course uses the online platform only.
 
 ## What We'll Use It For
 
