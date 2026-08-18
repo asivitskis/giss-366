@@ -499,18 +499,19 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">1.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. From Desktop to Web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. Client-Server Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.3.1. Example 1: a live open-source web map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.3.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.3.3. 5-minute discussion (breakout or whole-class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-mapping-and-web-gis-examples">1.2. Web Mapping and Web GIS Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.2.1. Example 1: a live open-source web map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.2.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.2.3. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.4. The Modern Web GIS Landscape</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.5. The Final Project: Public Web GIS Inquiry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">1.6. Readings &amp; Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-prep-for-lab-0">1.7. Before Thursday: Prep for Lab 0</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-0-environment-setup">1.8. Lab 0: Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. Client-Server Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.4. From Desktop to Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.5. The Modern Web GIS Landscape</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.6. The Final Project: Public Web GIS Inquiry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">1.7. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-prep-for-lab-0">1.8. Before Thursday: Prep for Lab 0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-0-environment-setup">1.9. Lab 0: Environment Setup</a></li>
 </ul>
             </nav>
         </div>
@@ -531,7 +532,7 @@ document.write(`
 <p>By the end of this unit, you will be able to:</p>
 <ul class="simple">
 <li><p>Describe what Web GIS is and how it differs from desktop GIS</p></li>
-<li><p>Explain the client-server model underlying every web map — what a browser requests, and what a server (or a file in cloud storage) sends back</p></li>
+<li><p>Explain the client-server model underlying every web map: including what a browser requests, and what a server (or a file in cloud storage) sends back</p></li>
 <li><p>Compare the proprietary (ArcGIS) and open-source/cloud-native publishing landscapes as <strong>parallel pathways</strong> through this course, not a primary tool and a fallback</p></li>
 <li><p>Explain how <em>where</em> a web map’s data lives (a managed platform, a self-hosted server, or static cloud storage) shapes its cost, control, and who can access it</p></li>
 <li><p>Know where to go when you get stuck on a web GIS problem — documentation, forums, and the course community</p></li>
@@ -539,81 +540,12 @@ document.write(`
 </ul>
 </section>
 <hr class="docutils" />
-<section id="from-desktop-to-web">
-<h2><span class="section-number">1.2. </span>From Desktop to Web<a class="headerlink" href="#from-desktop-to-web" title="Link to this heading">#</a></h2>
-<p>For most of GIS’s history, geographic data lived inside desktop software — ArcMap, ArcGIS Pro, QGIS — running on a single computer. If you wanted to share a map, you shared a file: a shapefile, a geodatabase, a printed PDF. The data and the software that could read it had to sit on the same machine, or at least the same local network. That’s a real limitation. A field ecologist’s beautifully built map of rare plant observations was really only visible to whoever could open the right software with the right file.</p>
-<p>Web mapping changes the delivery mechanism, not the underlying discipline. A <strong>web map</strong> is an interactive display of geographic information delivered as a web page — reachable from any device with a browser and an internet connection, no specialized software required. That accessibility is the whole point: your audience is no longer “people with ArcGIS Pro installed,” it’s <em>anyone with a link</em>.</p>
-<p>The architectural shift that makes this possible is often summarized as <strong>going from files to services</strong>:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>Desktop GIS</p></th>
-<th class="head"><p>Web GIS</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Data</p></td>
-<td><p>A local file you open (<code class="docutils literal notranslate"><span class="pre">.shp</span></code>, <code class="docutils literal notranslate"><span class="pre">.gdb</span></code>)</p></td>
-<td><p>A service or resource you <em>request</em> over the network</p></td>
-</tr>
-<tr class="row-odd"><td><p>Software</p></td>
-<td><p>Installed on your machine</p></td>
-<td><p>Runs partly in the browser, partly on a server (or in a static file)</p></td>
-</tr>
-<tr class="row-even"><td><p>Audience</p></td>
-<td><p>Whoever has the software + the file</p></td>
-<td><p>Whoever has a browser + a link</p></td>
-</tr>
-<tr class="row-odd"><td><p>Availability</p></td>
-<td><p>Only while you have the file open</p></td>
-<td><p>Live, as long as the service/host is up</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Web maps are also <strong>interactive</strong>: viewers can turn layers on and off, zoom to what they care about, click a feature to inspect its attributes, and — in some cases — submit or edit content themselves. And critically, most web maps are <em>powered by</em> the web rather than just <em>published on</em> it: at least some of what you see is being loaded live from somewhere else (a tile server, an API, a cloud storage bucket) every time you interact with the map. That dependency on the network is exactly what we unpack next.</p>
-<p>Web maps now show up everywhere: data journalism (ship-traffic trackers, election maps), real-time dashboards (live weather, flight tracking, wildfire monitoring), searchable data catalogs, computational tools (route planners, solar-position calculators), and collaborative/crowdsourced platforms like OpenStreetMap. By the end of this course you’ll have built examples across several of these categories yourself.</p>
-</section>
-<section id="client-server-architecture">
-<h2><span class="section-number">1.3. </span>Client-Server Architecture<a class="headerlink" href="#client-server-architecture" title="Link to this heading">#</a></h2>
-<p>Every web map you have ever used is powered by the same basic exchange: a <strong>client</strong> (your browser) asks a <strong>server</strong> (or a file sitting in storage) for something, and gets a response back. Understanding this loop is the single most important idea in this course — it’s the foundation Essential Question EQ1 asks you to keep interrogating all semester: <em>what is actually happening between my browser and the server when this map loads?</em></p>
-<p><strong>Why tiles?</strong> Your browser can’t just load a 500 MB shapefile and render it instantly — that would freeze the page. Long ago, the solution the mapping industry converged on (Google popularized it) was to chop the world into small square <strong>tiles</strong> that change at each zoom level, and load only the tiles currently in view. As you pan, the browser requests the tiles for the new area; as you zoom, it requests a new, more (or less) detailed set. Already-seen tiles get cached locally, so revisiting an area doesn’t require another trip to the server.</p>
-<p>There are two flavors of tile:</p>
-<ul class="simple">
-<li><p><strong>Raster tiles</strong> — pre-rendered PNG/JPEG images, baked at creation time. Fast to display, but the styling is fixed: to change a road’s color, someone has to re-render the entire tile set. No built-in interactivity — you’d need a separate layer just to make a tile clickable. Classic example: older Google Maps basemaps; still common in parts of the Esri ecosystem.</p></li>
-<li><p><strong>Vector tiles</strong> — small packets of raw geometry and attribute data (in a format called protocol buffers), sent to the browser <em>without</em> any styling baked in. The browser applies styling rules on the fly, which means colors, filters, hover effects, and click behavior can all change instantly, with no server round-trip. This is what nearly every modern web map — including the ones you’ll build in this course — uses under the hood.</p></li>
-</ul>
-<p><strong>Where do the tiles live?</strong> Historically, tiles had to be served by a running server — a computer that’s always on, listening for requests (think: a GeoServer instance, or Google’s own infrastructure). That’s different from <strong>storage</strong>, which is just a file sitting somewhere on the web with nothing actively “running.” One of the biggest recent shifts in web GIS is the emergence of formats like <strong>PMTiles</strong>, which package an entire tile set into a single file that can sit in plain cloud storage. The browser fetches only the specific bytes it needs using an HTTP <em>range request</em> — no server required at all. We’ll return to this in Week 6, but it’s worth knowing now: the gap between “I need a server” and “I need a file” has been closing fast, and it’s reshaping what a hobbyist or a small budget can build.</p>
-<p>Here’s the request/response loop in its simplest form:</p>
-<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto; font-family: -apple-system, Helvetica, Arial, sans-serif;">
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#444"/>
-    </marker>
-  </defs>
-  <!-- Browser box -->
-  <rect x="30" y="70" width="180" height="110" rx="10" fill="#eaf2fb" stroke="#3b6ea5" stroke-width="2"/>
-  <text x="120" y="115" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f3d5c">Browser</text>
-  <text x="120" y="138" text-anchor="middle" font-size="12" fill="#1f3d5c">(the client)</text>
-  <text x="120" y="160" text-anchor="middle" font-size="11" fill="#1f3d5c">HTML + CSS + JS</text>
-  <!-- Server/storage box -->
-  <rect x="550" y="70" width="180" height="110" rx="10" fill="#fdeee0" stroke="#c17a2e" stroke-width="2"/>
-  <text x="640" y="108" text-anchor="middle" font-size="16" font-weight="bold" fill="#6b3d0f">Tile server</text>
-  <text x="640" y="128" text-anchor="middle" font-size="16" font-weight="bold" fill="#6b3d0f">or static storage</text>
-  <text x="640" y="152" text-anchor="middle" font-size="11" fill="#6b3d0f">(GeoServer, S3, PMTiles file...)</text>
-  <!-- Arrow: request -->
-  <line x1="212" y1="105" x2="546" y2="105" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="380" y="90" text-anchor="middle" font-size="12" fill="#333">GET tile: zoom 11, x=602, y=70</text>
-  <!-- Arrow: response -->
-  <line x1="546" y1="150" x2="212" y2="150" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="380" y="170" text-anchor="middle" font-size="12" fill="#333">Response: a few KB of tile data</text>
-  <!-- Caption -->
-<p><text x="380" y="235" text-anchor="middle" font-size="12" fill="#666">Every pan and zoom repeats this loop — the browser asks for only the tiles it needs, and caches what it already has.</text>
-</svg></p>
-<p><strong>Live demo idea (in class):</strong> open <a class="reference external" href="https://www.openstreetmap.org">openstreetmap.org</a>, open your browser’s Developer Tools (F12 or right-click → Inspect), switch to the <strong>Network</strong> tab, and pan/zoom the map. Watch the individual tile requests fire in real time — this is EQ1 made visible. We’ll do this together tonight if time allows; it’s also a great one to repeat on your own before Lab 0.</p>
+<section id="web-mapping-and-web-gis-examples">
+<h2><span class="section-number">1.2. </span>Web Mapping and Web GIS Examples<a class="headerlink" href="#web-mapping-and-web-gis-examples" title="Link to this heading">#</a></h2>
+<p>Explore the example web maps below to compare - what do you notice and what do you wonder?</p>
 <section id="example-1-a-live-open-source-web-map">
-<h3><span class="section-number">1.3.1. </span>Example 1: a live open-source web map<a class="headerlink" href="#example-1-a-live-open-source-web-map" title="Link to this heading">#</a></h3>
-<p>The cell below uses <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> (a Python wrapper around the open-source <strong>Leaflet</strong> JavaScript library) to build an actual interactive, tile-based web map — right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have <code class="docutils literal notranslate"><span class="pre">folium</span></code> installed, this will render inline; otherwise, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">folium</span></code> first.</p>
+<h3><span class="section-number">1.2.1. </span>Example 1: a live open-source web map<a class="headerlink" href="#example-1-a-live-open-source-web-map" title="Link to this heading">#</a></h3>
+<p>The cell below uses <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> (a Python wrapper around the open-source <strong>Leaflet</strong> JavaScript library) to build an actual interactive, tile-based web map right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have <code class="docutils literal notranslate"><span class="pre">folium</span></code> installed, this will render inline; otherwise, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">folium</span></code> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A minimal open-source, tile-based web map — Leaflet under the hood via folium</span>
@@ -659,7 +591,7 @@ document.write(`
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_70df0809bca673ce65327d398df37c6a {
+                #map_975b5c849c07c5e37232189a503c9530 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -673,23 +605,20 @@ document.write(`
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_70df0809bca673ce65327d398df37c6a&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_975b5c849c07c5e37232189a503c9530&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_70df0809bca673ce65327d398df37c6a = L.map(
-                &quot;map_70df0809bca673ce65327d398df37c6a&quot;,
+            var map_975b5c849c07c5e37232189a503c9530 = L.map(
+                &quot;map_975b5c849c07c5e37232189a503c9530&quot;,
                 {
                     center: [32.7754, -108.2829],
                     crs: L.CRS.EPSG3857,
-                    ...{
-  &quot;zoom&quot;: 12,
-  &quot;zoomControl&quot;: true,
-  &quot;preferCanvas&quot;: false,
-}
-
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
                 }
             );
 
@@ -697,31 +626,20 @@ document.write(`
 
         
     
-            var tile_layer_c16b543e160babdbf227dd20b5fd0c2c = L.tileLayer(
+            var tile_layer_d2a8c36396141b210a8a20f2f475a476 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {
-  &quot;minZoom&quot;: 0,
-  &quot;maxZoom&quot;: 19,
-  &quot;maxNativeZoom&quot;: 19,
-  &quot;noWrap&quot;: false,
-  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
-  &quot;subdomains&quot;: &quot;abc&quot;,
-  &quot;detectRetina&quot;: false,
-  &quot;tms&quot;: false,
-  &quot;opacity&quot;: 1,
-}
-
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_c16b543e160babdbf227dd20b5fd0c2c.addTo(map_70df0809bca673ce65327d398df37c6a);
+            tile_layer_d2a8c36396141b210a8a20f2f475a476.addTo(map_975b5c849c07c5e37232189a503c9530);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
 </section>
 <section id="example-2-an-embedded-arcgis-online-web-map-app">
-<h3><span class="section-number">1.3.2. </span>Example 2: an embedded ArcGIS Online web map/app<a class="headerlink" href="#example-2-an-embedded-arcgis-online-web-map-app" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.2.2. </span>Example 2: an embedded ArcGIS Online web map/app<a class="headerlink" href="#example-2-an-embedded-arcgis-online-web-map-app" title="Link to this heading">#</a></h3>
 <p>ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an <code class="docutils literal notranslate"><span class="pre">&lt;iframe&gt;</span></code>. In ArcGIS Online, open a web map or app, choose <strong>Share → Embed</strong>, and copy the generated <code class="docutils literal notranslate"><span class="pre">&lt;iframe&gt;</span></code> code.</p>
 <blockquote>
 <div><p><strong>UPDATES INCOMING FROM WNMU AGOL:</strong> potential Survey123 class layer + hosted and embedded AGOL map.</p>
@@ -732,18 +650,91 @@ document.write(`
 </iframe>
 </section>
 <section id="minute-discussion-breakout-or-whole-class">
-<h3><span class="section-number">1.3.3. </span>5-minute discussion (breakout or whole-class)<a class="headerlink" href="#minute-discussion-breakout-or-whole-class" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.2.3. </span>5-minute discussion (breakout or whole-class)<a class="headerlink" href="#minute-discussion-breakout-or-whole-class" title="Link to this heading">#</a></h3>
 <p>Compare the two maps you just interacted with — one open-source, one proprietary.</p>
 <ol class="arabic simple">
 <li><p>What did each one <em>feel</em> like to use? Faster, slower, more/less polished?</p></li>
-<li><p>Neither map required you to install anything — but each one still depends on infrastructure you can’t see. What do you think that infrastructure is, for each?</p></li>
-<li><p><strong>EQ1 preview:</strong> who might be excluded from using either of these maps — by device, bandwidth, or account access — and does that differ between the two?</p></li>
+<li><p>Neither map required you to install anything, but each one still depends on infrastructure you can’t see. What do you think that infrastructure is, for each?</p></li>
+<li><p><strong>EQ1 preview:</strong> who might be excluded from using either of these maps by their device, bandwidth, or account access, and does that differ between the two?</p></li>
 </ol>
-<p>Keep this question in the back of your mind all semester — Discussion 1 in Week 4 comes back to it directly.</p>
+<p>Keep this last question in the back of your mind as we’ll keep revisiting it all semester.</p>
 </section>
+</section>
+<section id="client-server-architecture">
+<h2><span class="section-number">1.3. </span>Client-Server Architecture<a class="headerlink" href="#client-server-architecture" title="Link to this heading">#</a></h2>
+<p>Every web map you have ever used is powered by the same basic exchange: a <strong>client</strong> (your browser) asks a <strong>server</strong> (or a file sitting in storage) for something, and gets a response back. Understanding this loop is the single most important idea in this course — it’s the foundation Essential Question EQ1 asks you to keep interrogating all semester: <em>what is actually happening between my browser and the server when this map loads?</em></p>
+<p><strong>Why tiles?</strong> Your browser can’t just load a 500 MB shapefile and render it instantly — that would freeze the page. Long ago, the solution the mapping industry converged on (Google popularized it) was to chop the world into small square <strong>tiles</strong> that change at each zoom level, and load only the tiles currently in view. As you pan, the browser requests the tiles for the new area; as you zoom, it requests a new, more (or less) detailed set. Already-seen tiles get cached locally, so revisiting an area doesn’t require another trip to the server.</p>
+<p>There are two flavors of tile:</p>
+<ul class="simple">
+<li><p><strong>Raster tiles</strong> — pre-rendered PNG/JPEG images, baked at creation time. Fast to display, but the styling is fixed: to change a road’s color, someone has to re-render the entire tile set. No built-in interactivity — you’d need a separate layer just to make a tile clickable. Classic example: older Google Maps basemaps; still common in parts of the Esri ecosystem.</p></li>
+<li><p><strong>Vector tiles</strong> — small packets of raw geometry and attribute data (in a format called protocol buffers), sent to the browser <em>without</em> any styling baked in. The browser applies styling rules on the fly, which means colors, filters, hover effects, and click behavior can all change instantly, with no server round-trip. This is what nearly every modern web map — including the ones you’ll build in this course — uses under the hood.</p></li>
+</ul>
+<p><strong>Where do the tiles live?</strong> Historically, tiles had to be served by a running server — a computer that’s always on, listening for requests (think: a GeoServer instance, or Google’s own infrastructure). That’s different from <strong>storage</strong>, which is just a file sitting somewhere on the web with nothing actively “running.” One of the biggest recent shifts in web GIS is the emergence of formats like <strong>PMTiles</strong>, which package an entire tile set into a single file that can sit in plain cloud storage. The browser fetches only the specific bytes it needs using an HTTP <em>range request</em> — no server required at all. We’ll return to this in Week 6, but it’s worth knowing now: the gap between “I need a server” and “I need a file” has been closing fast, and it’s reshaping what a hobbyist or a small budget can build.</p>
+<p>Here’s the request/response loop in its simplest form:</p>
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto; font-family: -apple-system, Helvetica, Arial, sans-serif;">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#444"/>
+    </marker>
+  </defs>
+  <!-- Browser box -->
+  <rect x="30" y="70" width="180" height="110" rx="10" fill="#eaf2fb" stroke="#3b6ea5" stroke-width="2"/>
+  <text x="120" y="115" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f3d5c">Browser</text>
+  <text x="120" y="138" text-anchor="middle" font-size="12" fill="#1f3d5c">(the client)</text>
+  <text x="120" y="160" text-anchor="middle" font-size="11" fill="#1f3d5c">HTML + CSS + JS</text>
+  <!-- Server/storage box -->
+  <rect x="550" y="70" width="180" height="110" rx="10" fill="#fdeee0" stroke="#c17a2e" stroke-width="2"/>
+  <text x="640" y="108" text-anchor="middle" font-size="16" font-weight="bold" fill="#6b3d0f">Tile server</text>
+  <text x="640" y="128" text-anchor="middle" font-size="16" font-weight="bold" fill="#6b3d0f">or static storage</text>
+  <text x="640" y="152" text-anchor="middle" font-size="11" fill="#6b3d0f">(GeoServer, S3, PMTiles file...)</text>
+  <!-- Arrow: request -->
+  <line x1="212" y1="105" x2="546" y2="105" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="380" y="90" text-anchor="middle" font-size="12" fill="#333">GET tile: zoom 11, x=602, y=70</text>
+  <!-- Arrow: response -->
+  <line x1="546" y1="150" x2="212" y2="150" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="380" y="170" text-anchor="middle" font-size="12" fill="#333">Response: a few KB of tile data</text>
+  <!-- Caption -->
+<p><text x="380" y="235" text-anchor="middle" font-size="12" fill="#666">Every pan and zoom repeats this loop — the browser asks for only the tiles it needs, and caches what it already has.</text>
+</svg></p>
+<p><strong>Quick Demo:</strong> open <a class="reference external" href="https://www.openstreetmap.org">openstreetmap.org</a>, open your browser’s Developer Tools (F12 or right-click → Inspect), switch to the <strong>Network</strong> tab, and pan/zoom the map. Watch the individual tile requests fire in real time. We’ll do this together tonight if time allows; it’s also a great one to repeat on your own before Lab 0.</p>
+</section>
+<section id="from-desktop-to-web">
+<h2><span class="section-number">1.4. </span>From Desktop to Web<a class="headerlink" href="#from-desktop-to-web" title="Link to this heading">#</a></h2>
+<p>For most of GIS’s history, geographic data lived inside desktop software — ArcMap, ArcGIS Pro, QGIS — running on a single computer. If you wanted to share a map, you shared a file: a shapefile, a geodatabase, a printed PDF. The data and the software that could read it had to sit on the same machine, or at least the same local network. That’s a real limitation. A field ecologist’s beautifully built map of rare plant observations was really only visible to whoever could open the right software with the right file.</p>
+<p>Web mapping changes the delivery mechanism, not the underlying discipline. A <strong>web map</strong> is an interactive display of geographic information delivered as a web page — reachable from any device with a browser and an internet connection, no specialized software required. That accessibility is the whole point: your audience is no longer “people with ArcGIS Pro installed,” it’s <em>anyone with a link</em>.</p>
+<p>The architectural shift that makes this possible is often summarized as <strong>going from files to services</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Desktop GIS</p></th>
+<th class="head"><p>Web GIS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Data</p></td>
+<td><p>A local file you open (<code class="docutils literal notranslate"><span class="pre">.shp</span></code>, <code class="docutils literal notranslate"><span class="pre">.gdb</span></code>)</p></td>
+<td><p>A service or resource you <em>request</em> over the network</p></td>
+</tr>
+<tr class="row-odd"><td><p>Software</p></td>
+<td><p>Installed on your machine</p></td>
+<td><p>Runs partly in the browser, partly on a server (or in a static file)</p></td>
+</tr>
+<tr class="row-even"><td><p>Audience</p></td>
+<td><p>Whoever has the software + the file</p></td>
+<td><p>Whoever has a browser + a link</p></td>
+</tr>
+<tr class="row-odd"><td><p>Availability</p></td>
+<td><p>Only while you have the file open</p></td>
+<td><p>Live, as long as the service/host is up</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Web maps are also <strong>interactive</strong>: viewers can turn layers on and off, zoom to what they care about, click a feature to inspect its attributes, and — in some cases — submit or edit content themselves. And critically, most web maps are <em>powered by</em> the web rather than just <em>published on</em> it: at least some of what you see is being loaded live from somewhere else (a tile server, an API, a cloud storage bucket) every time you interact with the map. That dependency on the network is exactly what we unpack next.</p>
+<p>Web maps now show up everywhere: data journalism (ship-traffic trackers, election maps), real-time dashboards (live weather, flight tracking, wildfire monitoring), searchable data catalogs, computational tools (route planners, solar-position calculators), and collaborative/crowdsourced platforms like OpenStreetMap. By the end of this course you’ll have built examples across several of these categories yourself.</p>
 </section>
 <section id="the-modern-web-gis-landscape">
-<h2><span class="section-number">1.4. </span>The Modern Web GIS Landscape<a class="headerlink" href="#the-modern-web-gis-landscape" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>The Modern Web GIS Landscape<a class="headerlink" href="#the-modern-web-gis-landscape" title="Link to this heading">#</a></h2>
 <p>There are two broad ways to build and publish a web map today, and this course treats both as <strong>parallel, professionally-valued pathways</strong> — not a primary tool and an optional workaround. You’ll get hands-on with both stacks across the semester.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -780,19 +771,19 @@ document.write(`
 <p>This dual-stack philosophy is why nearly every lab in this course — starting in Week 2 — offers an open-source/cloud-native version and a proprietary version of the same core skill.</p>
 </section>
 <section id="the-final-project-public-web-gis-inquiry">
-<h2><span class="section-number">1.5. </span>The Final Project: Public Web GIS Inquiry<a class="headerlink" href="#the-final-project-public-web-gis-inquiry" title="Link to this heading">#</a></h2>
-<p>Starting in <strong>Week 11</strong>, you’ll design, build, and deploy your own public-facing web map and technical report, grounded in a real place, a real question, and — ideally — a real audience beyond this class. It’s introduced this early, in Week 1, for a reason: <strong>every design decision you make this semester will eventually be tested against that audience.</strong></p>
-<p>A few things to start thinking about now (no need to decide anything yet — Topic Ideation checkpoints in Weeks 2, 5, and 9 will walk you through this incrementally):</p>
+<h2><span class="section-number">1.6. </span>The Final Project: Public Web GIS Inquiry<a class="headerlink" href="#the-final-project-public-web-gis-inquiry" title="Link to this heading">#</a></h2>
+<p>Starting in <strong>Week 11</strong>, you’ll design, build, and deploy your own public-facing web map and technical report, grounded in a real place, a real question. Ideally (if you so choose) it can provide a product of value for a real audience beyond this class. It’s introduced this early, in Week 1, for a reason: <strong>every design decision you make this semester will eventually be tested against that audience.</strong></p>
+<p>A few things to start thinking about now (no need to decide anything yet, our Topic Ideation checkpoints in Weeks 2, 5, and 9 will walk you through this incrementally):</p>
 <ul class="simple">
 <li><p>What place do you want to work with?</p></li>
 <li><p>Who is the audience — and just as importantly, who is <em>not</em> the audience, and why?</p></li>
 <li><p>What question is this map actually trying to answer for that audience?</p></li>
 </ul>
-<p>You’ll choose your deployment platform later — ArcGIS Online, GitHub Pages + MapLibre/Leaflet, or another approved stack — but the audience question comes first, and it comes from you, not the tool.</p>
+<p>You’ll choose your deployment platform later (ArcGIS Online, GitHub Pages + MapLibre/Leaflet, or another approved stack) but the audience question comes first, and it comes from you, not the tool.</p>
 </section>
 <hr class="docutils" />
 <section id="readings-resources">
-<h2><span class="section-number">1.6. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.7. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.esri.com/en-us/what-is-gis/overview">What is GIS? (Esri overview)</a></p></li>
 <li><p>Dorman, M. <em>Introduction to Web Mapping</em> — Preface (course reading; on the concept of web maps and why JavaScript underlies nearly all of them)</p></li>
@@ -802,23 +793,20 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="before-thursday-prep-for-lab-0">
-<h2><span class="section-number">1.7. </span>Before Thursday: Prep for Lab 0<a class="headerlink" href="#before-thursday-prep-for-lab-0" title="Link to this heading">#</a></h2>
-<p>Lab 0 is <strong>ungraded</strong>, but it’s a hard prerequisite — it exists to make sure everyone has a working environment before graded work starts in Week 2. Please complete the following on your own time before Thursday’s lab session:</p>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Confirm you can log in to the department’s <strong>ArcGIS Online</strong> organizational account (or request access if you don’t have it yet)</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Create a free <strong>GitHub</strong> account, if you don’t already have one</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Install a plain-text code editor — <strong>Visual Studio Code</strong> is recommended</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Verify you have a modern browser with working Developer Tools (Chrome recommended for this course; Firefox is fine too)</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Verify Python 3 is available on your machine (we’ll use its built-in local web server occasionally, plus <code class="docutils literal notranslate"><span class="pre">folium</span></code> for exercises like the one above)</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Revisit the <strong>Network tab demo</strong> from tonight on your own — try it on a different web map (e.g., your local GIS department’s site, or <a class="reference external" href="https://earth.nullschool.net">earth.nullschool.net</a>) and notice how the tile requests differ</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Skim Fu, Ch. 1 and the Leaflet Quick Start guide linked above</p></li>
+<h2><span class="section-number">1.8. </span>Before Thursday: Prep for Lab 0<a class="headerlink" href="#before-thursday-prep-for-lab-0" title="Link to this heading">#</a></h2>
+<p>Lab 0 is <strong>ungraded</strong>, but it’s a hard prerequisite. It exists to make sure everyone has a working environment before graded work starts in Week 2. Please complete the following on your own time before Thursday’s lab session:</p>
+<ul class="simple">
+<li><p>Confirm you can log in to the department’s <strong>ArcGIS Online</strong> organizational account (or request access if you don’t have it yet)</p></li>
+<li><p>Create a free <strong>GitHub</strong> account, if you don’t already have one</p></li>
+<li><p>Install a plain-text code editor — <strong>Visual Studio Code</strong> is recommended</p></li>
+<li><p>Verify you have a modern browser with working Developer Tools (Chrome recommended for this course; Firefox is fine too)</p></li>
 </ul>
-<p>This is also your first chance to practice <strong>K16</strong>: if you get stuck on setup, the first move isn’t to struggle silently — try the tool’s official documentation, then a web search of the exact error message, then the course discussion board. Getting comfortable asking for help in public GIS/dev spaces is a skill this course builds deliberately, starting now.</p>
+<p>This is also your first chance to practice a core course skill: if you get stuck on setup, the first move isn’t to struggle silently. Try the tool’s official documentation, then a web search of the exact error message, then the course discussion board. Getting comfortable asking for help in public GIS/dev spaces is a skill this course builds deliberately, starting now.</p>
 </section>
 <hr class="docutils" />
 <section id="lab-0-environment-setup">
-<h2><span class="section-number">1.8. </span>Lab 0: Environment Setup<a class="headerlink" href="#lab-0-environment-setup" title="Link to this heading">#</a></h2>
-<p>See <a class="reference internal" href="../labs/lab_00.html"><span class="std std-doc">Lab 0</span></a> — this lab is <strong>ungraded</strong> (Prior Knowledge Diagnostic PK1). It confirms you have a working dual-stack environment — ArcGIS Online access <em>and</em> an open-source dev setup — before the graded work begins in Week 2.</p>
+<h2><span class="section-number">1.9. </span>Lab 0: Environment Setup<a class="headerlink" href="#lab-0-environment-setup" title="Link to this heading">#</a></h2>
+<p>See <a class="reference internal" href="../labs/lab_00.html"><span class="std std-doc">Lab 0</span></a> This lab is <strong>ungraded</strong>. It confirms you have a working dual-stack environment including ArcGIS Online access <em>and</em> an open-source dev setup before the graded work begins in Week 2.</p>
 </section>
 </section>
 
@@ -887,18 +875,19 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">1.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.2. From Desktop to Web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. Client-Server Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.3.1. Example 1: a live open-source web map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.3.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.3.3. 5-minute discussion (breakout or whole-class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-mapping-and-web-gis-examples">1.2. Web Mapping and Web GIS Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-live-open-source-web-map">1.2.1. Example 1: a live open-source web map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-an-embedded-arcgis-online-web-map-app">1.2.2. Example 2: an embedded ArcGIS Online web map/app</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">1.2.3. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.4. The Modern Web GIS Landscape</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.5. The Final Project: Public Web GIS Inquiry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">1.6. Readings &amp; Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-prep-for-lab-0">1.7. Before Thursday: Prep for Lab 0</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-0-environment-setup">1.8. Lab 0: Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-architecture">1.3. Client-Server Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-desktop-to-web">1.4. From Desktop to Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modern-web-gis-landscape">1.5. The Modern Web GIS Landscape</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-project-public-web-gis-inquiry">1.6. The Final Project: Public Web GIS Inquiry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">1.7. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-prep-for-lab-0">1.8. Before Thursday: Prep for Lab 0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-0-environment-setup">1.9. Lab 0: Environment Setup</a></li>
 </ul>
   </nav></div>
 
