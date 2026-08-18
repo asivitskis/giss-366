@@ -171,7 +171,7 @@ You'll choose your deployment platform later (ArcGIS Online, GitHub Pages + MapL
 ## Readings & Resources
 
 - [What is GIS? (Esri overview)](https://www.esri.com/en-us/what-is-gis/overview)
-- Dorman, M. *Introduction to Web Mapping* — Preface (course reading; on the concept of web maps and why JavaScript underlies nearly all of them)
+- [Dorman, M. *Introduction to Web Mapping*](https://bgu-geography.com/web-mapping/index.html) — Preface (course reading; on the concept of web maps and why JavaScript underlies nearly all of them)
 - [MapLibre GL JS documentation: Getting Started](https://maplibre.org/maplibre-gl-js/docs/)
 - [Leaflet Quick Start Guide](https://leafletjs.com/examples/quick-start/)
 
