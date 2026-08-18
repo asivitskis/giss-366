@@ -545,7 +545,7 @@ document.write(`
 <p>Explore the example web maps below to compare - what do you notice and what do you wonder?</p>
 <section id="example-1-a-live-open-source-web-map">
 <h3><span class="section-number">1.2.1. </span>Example 1: a live open-source web map<a class="headerlink" href="#example-1-a-live-open-source-web-map" title="Link to this heading">#</a></h3>
-<p>The cell below uses <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> (a Python wrapper around the open-source <strong>Leaflet</strong> JavaScript library) to build an actual interactive, tile-based web map right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have <code class="docutils literal notranslate"><span class="pre">folium</span></code> installed, this will render inline; otherwise, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">folium</span></code> first.</p>
+<p>The cell below uses <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> (a Python wrapper around the open-source <strong>Leaflet</strong> JavaScript library) to build an actual interactive, tile-based web map right here in the notebook. Run it, then pan and zoom. If you have <code class="docutils literal notranslate"><span class="pre">folium</span></code> installed, this will render inline; otherwise, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">folium</span></code> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A minimal open-source, tile-based web map — Leaflet under the hood via folium</span>
@@ -591,7 +591,7 @@ document.write(`
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_b1fa13b594d5bd5fd99a3404fedd2af3 {
+                #map_b6a1a5ec7b49b5b72aa7b0f755937217 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -605,14 +605,14 @@ document.write(`
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_b1fa13b594d5bd5fd99a3404fedd2af3&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_b6a1a5ec7b49b5b72aa7b0f755937217&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_b1fa13b594d5bd5fd99a3404fedd2af3 = L.map(
-                &quot;map_b1fa13b594d5bd5fd99a3404fedd2af3&quot;,
+            var map_b6a1a5ec7b49b5b72aa7b0f755937217 = L.map(
+                &quot;map_b6a1a5ec7b49b5b72aa7b0f755937217&quot;,
                 {
                     center: [32.7754, -108.2829],
                     crs: L.CRS.EPSG3857,
@@ -626,13 +626,13 @@ document.write(`
 
         
     
-            var tile_layer_b88ed95805a52518cca088cfef7a05b7 = L.tileLayer(
+            var tile_layer_0207327581a607aa4bee1fac38853e99 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_b88ed95805a52518cca088cfef7a05b7.addTo(map_b1fa13b594d5bd5fd99a3404fedd2af3);
+            tile_layer_0207327581a607aa4bee1fac38853e99.addTo(map_b6a1a5ec7b49b5b72aa7b0f755937217);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
