@@ -26,7 +26,7 @@ Explore the example web maps below to compare - what do you notice and what do y
 
 ### Example 1: a live open-source web map
 
-The cell below uses [folium](https://python-visualization.github.io/folium/) (a Python wrapper around the open-source **Leaflet** JavaScript library) to build an actual interactive, tile-based web map right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have `folium` installed, this will render inline; otherwise, `pip install folium` first.
+The cell below uses [folium](https://python-visualization.github.io/folium/) (a Python wrapper around the open-source **Leaflet** JavaScript library) to build an actual interactive, tile-based web map right here in the notebook. Run it, then pan and zoom. If you have `folium` installed, this will render inline; otherwise, `pip install folium` first.
 
 
 
