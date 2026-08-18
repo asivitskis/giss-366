@@ -54,9 +54,15 @@ ArcGIS Online web maps and apps can be embedded directly in a page (or a noteboo
 
 
 <iframe
-  src="https://www.arcgis.com/apps/Embed/index.html?webmap=YOUR_ITEM_ID_HERE&extent=-98,25,-71,49&zoom=true&scale=true"
-  width="100%" height="450" frameborder="0" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen>
+    width="100%"
+    height="500"
+    frameborder="0"
+    style="border:1px solid #ccc; border-radius:6px;"
+    allow="local-network-access; geolocation"
+    title="Southwestern NM Regional Map"
+    src="https://arcg.is/18WL481">
 </iframe>
+
 
 
 ### 5-minute discussion (breakout or whole-class)
