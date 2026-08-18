@@ -10,7 +10,7 @@
 By the end of this unit, you will be able to:
 
 - Describe what Web GIS is and how it differs from desktop GIS
-- Explain the client-server model underlying every web map — what a browser requests, and what a server (or a file in cloud storage) sends back
+- Explain the client-server model underlying every web map: including what a browser requests, and what a server (or a file in cloud storage) sends back
 - Compare the proprietary (ArcGIS) and open-source/cloud-native publishing landscapes as **parallel pathways** through this course, not a primary tool and a fallback
 - Explain how *where* a web map's data lives (a managed platform, a self-hosted server, or static cloud storage) shapes its cost, control, and who can access it
 - Know where to go when you get stuck on a web GIS problem — documentation, forums, and the course community
@@ -20,25 +20,54 @@ By the end of this unit, you will be able to:
 ---
 
 
-## From Desktop to Web
+## Web Mapping and Web GIS Examples
 
-For most of GIS's history, geographic data lived inside desktop software — ArcMap, ArcGIS Pro, QGIS — running on a single computer. If you wanted to share a map, you shared a file: a shapefile, a geodatabase, a printed PDF. The data and the software that could read it had to sit on the same machine, or at least the same local network. That's a real limitation. A field ecologist's beautifully built map of rare plant observations was really only visible to whoever could open the right software with the right file.
+Explore the example web maps below to compare - what do you notice and what do you wonder?
 
-Web mapping changes the delivery mechanism, not the underlying discipline. A **web map** is an interactive display of geographic information delivered as a web page — reachable from any device with a browser and an internet connection, no specialized software required. That accessibility is the whole point: your audience is no longer "people with ArcGIS Pro installed," it's *anyone with a link*.
+### Example 1: a live open-source web map
 
-The architectural shift that makes this possible is often summarized as **going from files to services**:
+The cell below uses [folium](https://python-visualization.github.io/folium/) (a Python wrapper around the open-source **Leaflet** JavaScript library) to build an actual interactive, tile-based web map right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have `folium` installed, this will render inline; otherwise, `pip install folium` first.
 
-| | Desktop GIS | Web GIS |
-|---|---|---|
-| Data | A local file you open (`.shp`, `.gdb`) | A service or resource you *request* over the network |
-| Software | Installed on your machine | Runs partly in the browser, partly on a server (or in a static file) |
-| Audience | Whoever has the software + the file | Whoever has a browser + a link |
-| Availability | Only while you have the file open | Live, as long as the service/host is up |
 
-Web maps are also **interactive**: viewers can turn layers on and off, zoom to what they care about, click a feature to inspect its attributes, and — in some cases — submit or edit content themselves. And critically, most web maps are *powered by* the web rather than just *published on* it: at least some of what you see is being loaded live from somewhere else (a tile server, an API, a cloud storage bucket) every time you interact with the map. That dependency on the network is exactly what we unpack next.
 
-Web maps now show up everywhere: data journalism (ship-traffic trackers, election maps), real-time dashboards (live weather, flight tracking, wildfire monitoring), searchable data catalogs, computational tools (route planners, solar-position calculators), and collaborative/crowdsourced platforms like OpenStreetMap. By the end of this course you'll have built examples across several of these categories yourself.
+```python
+# A minimal open-source, tile-based web map — Leaflet under the hood via folium
+# This is the same request/response pattern shown in the diagram above, just built with a few lines of Python.
 
+import folium
+
+m = folium.Map(
+    location=[32.7754, -108.2829],  # WNMU Campus, Silver City NM
+    zoom_start=12,
+    tiles="OpenStreetMap",
+)
+
+m
+
+```
+
+### Example 2: an embedded ArcGIS Online web map/app
+
+ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an `<iframe>`. In ArcGIS Online, open a web map or app, choose **Share → Embed**, and copy the generated `<iframe>` code.
+
+> **UPDATES INCOMING FROM WNMU AGOL:** potential Survey123 class layer + hosted and embedded AGOL map.
+
+
+<iframe
+  src="https://www.arcgis.com/apps/Embed/index.html?webmap=YOUR_ITEM_ID_HERE&extent=-98,25,-71,49&zoom=true&scale=true"
+  width="100%" height="450" frameborder="0" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen>
+</iframe>
+
+
+### 5-minute discussion (breakout or whole-class)
+
+Compare the two maps you just interacted with — one open-source, one proprietary.
+
+1. What did each one *feel* like to use? Faster, slower, more/less polished?
+2. Neither map required you to install anything, but each one still depends on infrastructure you can't see. What do you think that infrastructure is, for each?
+3. **EQ1 preview:** who might be excluded from using either of these maps by their device, bandwidth, or account access, and does that differ between the two?
+
+Keep this last question in the back of your mind as we'll keep revisiting it all semester.
 
 ## Client-Server Architecture
 
@@ -88,145 +117,27 @@ Here's the request/response loop in its simplest form:
 </svg>
 
 
-**Live demo idea (in class):** open [openstreetmap.org](https://www.openstreetmap.org), open your browser's Developer Tools (F12 or right-click → Inspect), switch to the **Network** tab, and pan/zoom the map. Watch the individual tile requests fire in real time — this is EQ1 made visible. We'll do this together tonight if time allows; it's also a great one to repeat on your own before Lab 0.
+**Quick Demo:** open [openstreetmap.org](https://www.openstreetmap.org), open your browser's Developer Tools (F12 or right-click → Inspect), switch to the **Network** tab, and pan/zoom the map. Watch the individual tile requests fire in real time. We'll do this together tonight if time allows; it's also a great one to repeat on your own before Lab 0.
 
 
-### Example 1: a live open-source web map
+## From Desktop to Web
 
-The cell below uses [folium](https://python-visualization.github.io/folium/) (a Python wrapper around the open-source **Leaflet** JavaScript library) to build an actual interactive, tile-based web map — right here in the notebook. Run it, then pan and zoom: every move you make is triggering the exact request/response loop diagrammed above. If you have `folium` installed, this will render inline; otherwise, `pip install folium` first.
+For most of GIS's history, geographic data lived inside desktop software — ArcMap, ArcGIS Pro, QGIS — running on a single computer. If you wanted to share a map, you shared a file: a shapefile, a geodatabase, a printed PDF. The data and the software that could read it had to sit on the same machine, or at least the same local network. That's a real limitation. A field ecologist's beautifully built map of rare plant observations was really only visible to whoever could open the right software with the right file.
 
+Web mapping changes the delivery mechanism, not the underlying discipline. A **web map** is an interactive display of geographic information delivered as a web page — reachable from any device with a browser and an internet connection, no specialized software required. That accessibility is the whole point: your audience is no longer "people with ArcGIS Pro installed," it's *anyone with a link*.
 
+The architectural shift that makes this possible is often summarized as **going from files to services**:
 
-```python
-# A minimal open-source, tile-based web map — Leaflet under the hood via folium
-# This is the same request/response pattern shown in the diagram above, just built with a few lines of Python.
+| | Desktop GIS | Web GIS |
+|---|---|---|
+| Data | A local file you open (`.shp`, `.gdb`) | A service or resource you *request* over the network |
+| Software | Installed on your machine | Runs partly in the browser, partly on a server (or in a static file) |
+| Audience | Whoever has the software + the file | Whoever has a browser + a link |
+| Availability | Only while you have the file open | Live, as long as the service/host is up |
 
-import folium
+Web maps are also **interactive**: viewers can turn layers on and off, zoom to what they care about, click a feature to inspect its attributes, and — in some cases — submit or edit content themselves. And critically, most web maps are *powered by* the web rather than just *published on* it: at least some of what you see is being loaded live from somewhere else (a tile server, an API, a cloud storage bucket) every time you interact with the map. That dependency on the network is exactly what we unpack next.
 
-m = folium.Map(
-    location=[32.7754, -108.2829],  # WNMU Campus, Silver City NM
-    zoom_start=12,
-    tiles="OpenStreetMap",
-)
-
-m
-
-```
-
-
-
-
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-
-    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
-
-        &lt;script&gt;
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        &lt;/script&gt;
-
-    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
-    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
-
-            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
-            &lt;style&gt;
-                #map_70df0809bca673ce65327d398df37c6a {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            &lt;/style&gt;
-
-&lt;/head&gt;
-&lt;body&gt;
-
-
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_70df0809bca673ce65327d398df37c6a&quot; &gt;&lt;/div&gt;
-
-&lt;/body&gt;
-&lt;script&gt;
-
-
-            var map_70df0809bca673ce65327d398df37c6a = L.map(
-                &quot;map_70df0809bca673ce65327d398df37c6a&quot;,
-                {
-                    center: [32.7754, -108.2829],
-                    crs: L.CRS.EPSG3857,
-                    ...{
-  &quot;zoom&quot;: 12,
-  &quot;zoomControl&quot;: true,
-  &quot;preferCanvas&quot;: false,
-}
-
-                }
-            );
-
-
-
-
-
-            var tile_layer_c16b543e160babdbf227dd20b5fd0c2c = L.tileLayer(
-                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {
-  &quot;minZoom&quot;: 0,
-  &quot;maxZoom&quot;: 19,
-  &quot;maxNativeZoom&quot;: 19,
-  &quot;noWrap&quot;: false,
-  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
-  &quot;subdomains&quot;: &quot;abc&quot;,
-  &quot;detectRetina&quot;: false,
-  &quot;tms&quot;: false,
-  &quot;opacity&quot;: 1,
-}
-
-            );
-
-
-            tile_layer_c16b543e160babdbf227dd20b5fd0c2c.addTo(map_70df0809bca673ce65327d398df37c6a);
-
-&lt;/script&gt;
-&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
-
-
-
-### Example 2: an embedded ArcGIS Online web map/app
-
-ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an `<iframe>`. In ArcGIS Online, open a web map or app, choose **Share → Embed**, and copy the generated `<iframe>` code.
-
-> **UPDATES INCOMING FROM WNMU AGOL:** potential Survey123 class layer + hosted and embedded AGOL map.
-
-
-<iframe
-  src="https://www.arcgis.com/apps/Embed/index.html?webmap=YOUR_ITEM_ID_HERE&extent=-98,25,-71,49&zoom=true&scale=true"
-  width="100%" height="450" frameborder="0" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen>
-</iframe>
-
-
-### 5-minute discussion (breakout or whole-class)
-
-Compare the two maps you just interacted with — one open-source, one proprietary.
-
-1. What did each one *feel* like to use? Faster, slower, more/less polished?
-2. Neither map required you to install anything — but each one still depends on infrastructure you can't see. What do you think that infrastructure is, for each?
-3. **EQ1 preview:** who might be excluded from using either of these maps — by device, bandwidth, or account access — and does that differ between the two?
-
-Keep this question in the back of your mind all semester — Discussion 1 in Week 4 comes back to it directly.
+Web maps now show up everywhere: data journalism (ship-traffic trackers, election maps), real-time dashboards (live weather, flight tracking, wildfire monitoring), searchable data catalogs, computational tools (route planners, solar-position calculators), and collaborative/crowdsourced platforms like OpenStreetMap. By the end of this course you'll have built examples across several of these categories yourself.
 
 
 ## The Modern Web GIS Landscape
@@ -248,15 +159,15 @@ This dual-stack philosophy is why nearly every lab in this course — starting i
 
 ## The Final Project: Public Web GIS Inquiry
 
-Starting in **Week 11**, you'll design, build, and deploy your own public-facing web map and technical report, grounded in a real place, a real question, and — ideally — a real audience beyond this class. It's introduced this early, in Week 1, for a reason: **every design decision you make this semester will eventually be tested against that audience.**
+Starting in **Week 11**, you'll design, build, and deploy your own public-facing web map and technical report, grounded in a real place, a real question. Ideally (if you so choose) it can provide a product of value for a real audience beyond this class. It's introduced this early, in Week 1, for a reason: **every design decision you make this semester will eventually be tested against that audience.**
 
-A few things to start thinking about now (no need to decide anything yet — Topic Ideation checkpoints in Weeks 2, 5, and 9 will walk you through this incrementally):
+A few things to start thinking about now (no need to decide anything yet, our Topic Ideation checkpoints in Weeks 2, 5, and 9 will walk you through this incrementally):
 
 - What place do you want to work with?
 - Who is the audience — and just as importantly, who is *not* the audience, and why?
 - What question is this map actually trying to answer for that audience?
 
-You'll choose your deployment platform later — ArcGIS Online, GitHub Pages + MapLibre/Leaflet, or another approved stack — but the audience question comes first, and it comes from you, not the tool.
+You'll choose your deployment platform later (ArcGIS Online, GitHub Pages + MapLibre/Leaflet, or another approved stack) but the audience question comes first, and it comes from you, not the tool.
 
 ---
 
@@ -273,22 +184,19 @@ You'll choose your deployment platform later — ArcGIS Online, GitHub Pages + M
 
 ## Before Thursday: Prep for Lab 0
 
-Lab 0 is **ungraded**, but it's a hard prerequisite — it exists to make sure everyone has a working environment before graded work starts in Week 2. Please complete the following on your own time before Thursday's lab session:
+Lab 0 is **ungraded**, but it's a hard prerequisite. It exists to make sure everyone has a working environment before graded work starts in Week 2. Please complete the following on your own time before Thursday's lab session:
 
-- [ ] Confirm you can log in to the department's **ArcGIS Online** organizational account (or request access if you don't have it yet)
-- [ ] Create a free **GitHub** account, if you don't already have one
-- [ ] Install a plain-text code editor — **Visual Studio Code** is recommended
-- [ ] Verify you have a modern browser with working Developer Tools (Chrome recommended for this course; Firefox is fine too)
-- [ ] Verify Python 3 is available on your machine (we'll use its built-in local web server occasionally, plus `folium` for exercises like the one above)
-- [ ] Revisit the **Network tab demo** from tonight on your own — try it on a different web map (e.g., your local GIS department's site, or [earth.nullschool.net](https://earth.nullschool.net)) and notice how the tile requests differ
-- [ ] Skim Fu, Ch. 1 and the Leaflet Quick Start guide linked above
-
-This is also your first chance to practice **K16**: if you get stuck on setup, the first move isn't to struggle silently — try the tool's official documentation, then a web search of the exact error message, then the course discussion board. Getting comfortable asking for help in public GIS/dev spaces is a skill this course builds deliberately, starting now.
+- Confirm you can log in to the department's **ArcGIS Online** organizational account (or request access if you don't have it yet)
+- Create a free **GitHub** account, if you don't already have one
+- Install a plain-text code editor — **Visual Studio Code** is recommended
+- Verify you have a modern browser with working Developer Tools (Chrome recommended for this course; Firefox is fine too)
+  
+This is also your first chance to practice a core course skill: if you get stuck on setup, the first move isn't to struggle silently. Try the tool's official documentation, then a web search of the exact error message, then the course discussion board. Getting comfortable asking for help in public GIS/dev spaces is a skill this course builds deliberately, starting now.
 
 ---
 
 
 ## Lab 0: Environment Setup
 
-See [Lab 0](../labs/lab_00.md) — this lab is **ungraded** (Prior Knowledge Diagnostic PK1). It confirms you have a working dual-stack environment — ArcGIS Online access *and* an open-source dev setup — before the graded work begins in Week 2.
+See [Lab 0](../labs/lab_00.md) This lab is **ungraded**. It confirms you have a working dual-stack environment including ArcGIS Online access *and* an open-source dev setup before the graded work begins in Week 2.
 
