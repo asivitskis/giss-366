@@ -50,10 +50,8 @@ m
 
 ArcGIS Online web maps and apps can be embedded directly in a page (or a notebook) as an `<iframe>`. In ArcGIS Online, open a web map or app, choose **Share → Embed**, and copy the generated `<iframe>` code.
 
-> **UPDATES INCOMING FROM WNMU AGOL:** potential Survey123 class layer + hosted and embedded AGOL map.
 
-
-<iframe src="https://wnmugis.maps.arcgis.com/apps/instant/basic/index.html?appid=287fafce307c4cda8d072d6186cde8b2" width="400" height="600" frameborder="0" style="border:0" allowfullscreen>iFrames are not supported on this page.</iframe>
+<iframe src="https://wnmugis.maps.arcgis.com/apps/instant/basic/index.html?appid=287fafce307c4cda8d072d6186cde8b2" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen>iFrames are not supported on this page.</iframe>
 
 
 
