@@ -2,6 +2,12 @@
 
 [Git](https://git-scm.com/) is a version control system that tracks changes to files over time, letting you save snapshots of your project, undo mistakes, and collaborate without overwriting each other's work. [GitHub](https://github.com/) is a cloud platform for hosting Git repositories, and it doubles as a free static web host — which is how we will deploy the web mapping projects you build in this course (via **GitHub Pages**).
 
+## Creating a GitHub Account
+
+1. Go to ['https://github.com/'](https://github.com/) and sign up for a free account.
+2. Use a professional username — this account, and the repositories on it, may become part of your public portfolio for employers and graduate programs.
+3. (Optional but recommended) Apply for the [GitHub Student Developer Pack](https://education.github.com/pack) if you're not already enrolled in it, for extra free tools.
+
 ## Installing Git
 
 **Download:** [https://git-scm.com/downloads](https://git-scm.com/downloads)
@@ -15,12 +21,6 @@ Confirm installation by opening a terminal (or Git Bash on Windows) and running:
 ```bash
 git --version
 ```
-
-## Creating a GitHub Account
-
-1. Go to [https://github.com/](https://github.com/) and sign up for a free account.
-2. Use a professional username — this account, and the repositories on it, may become part of your public portfolio for employers and graduate programs.
-3. (Optional but recommended) Apply for the [GitHub Student Developer Pack](https://education.github.com/pack) if you're not already enrolled in it, for extra free tools.
 
 ## Connecting Git to GitHub
 
