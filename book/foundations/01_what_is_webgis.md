@@ -53,8 +53,6 @@ ArcGIS Online web maps and apps can be embedded directly in a page (or a noteboo
 
 <iframe src="https://wnmugis.maps.arcgis.com/apps/instant/basic/index.html?appid=287fafce307c4cda8d072d6186cde8b2" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen>iFrames are not supported on this page.</iframe>
 
-
-
 ### 5-minute discussion (breakout or whole-class)
 
 Compare the two maps you just interacted with — one open-source, one proprietary.
@@ -171,7 +169,7 @@ You'll choose your deployment platform later (ArcGIS Online, GitHub Pages + MapL
 ## Readings & Resources
 
 - [What is GIS? (Esri overview)](https://www.esri.com/en-us/what-is-gis/overview)
-- [Dorman, M. *Introduction to Web Mapping*](https://bgu-geography.com/web-mapping/index.html) — Preface (course reading; on the concept of web maps and why JavaScript underlies nearly all of them)
+- [Dorman, M. *Introduction to Web Mapping* — Preface](https://bgu-geography.com/web-mapping/index.html) (course reading; on the concept of web maps and why JavaScript underlies nearly all of them)
 - [MapLibre GL JS documentation: Getting Started](https://maplibre.org/maplibre-gl-js/docs/)
 - [Leaflet Quick Start Guide](https://leafletjs.com/examples/quick-start/)
 
@@ -182,9 +180,9 @@ You'll choose your deployment platform later (ArcGIS Online, GitHub Pages + MapL
 
 Lab 0 is **ungraded**, but it's a hard prerequisite. It exists to make sure everyone has a working environment before graded work starts in Week 2. Please complete the following on your own time before Thursday's lab session:
 
-- Confirm you can log in to the department's **ArcGIS Online** organizational account (or request access if you don't have it yet)
-- Create a free **GitHub** account, if you don't already have one
-- Install a plain-text code editor — **Visual Studio Code** is recommended
+- Confirm you can log in to the department's [**ArcGIS Online**](../software/arcgis_online.md) organizational account (or request access if you don't have it yet)
+- Create a free [**GitHub**](../software/github.md) account, if you don't already have one
+- Install a plain-text code editor — [**Visual Studio Code**](../software/vscode.md) is recommended
 - Verify you have a modern browser with working Developer Tools (Chrome recommended for this course; Firefox is fine too)
   
 This is also your first chance to practice a core course skill: if you get stuck on setup, the first move isn't to struggle silently. Try the tool's official documentation, then a web search of the exact error message, then the course discussion board. Getting comfortable asking for help in public GIS/dev spaces is a skill this course builds deliberately, starting now.
