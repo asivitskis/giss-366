@@ -100,8 +100,8 @@ Tonight we'll walk through this together: every account and install you need, li
 
 1. Install **VS Code** if you haven't already: https://code.visualstudio.com/download.
 2. Open VS Code and install two extensions (Extensions icon in the sidebar, or `Ctrl+Shift+X` / `Cmd+Shift+X`):
-   - **Python** — search "Python" (by Microsoft), Install. You'll use this starting Week 8.
-   - **Live Preview** — search "Live Preview" (by Microsoft), Install. This is what lets you view an HTML file as a live local web page, with no server setup of your own.
+   - **Python** - search "Python" (by Microsoft), Install. You'll use this starting Week 8.
+   - **Live Server** - search "Live Server" (by Ritwick Dey), Install. This is what lets you view an HTML file as a live local web page, with no server setup of your own.
 3.  Somewhere on your computer, create a new file labeled `giss-366`. Your documents folder works fine. This will be our base of operations for the full semester.
 
 </details>
@@ -210,16 +210,6 @@ Now let's build toward WebGIS from the open-source side: hand-author the client 
 <body>
   <div id="map"></div>
   <script>
-    // Try swapping the "style" line below for a different look.
-    // OpenFreeMap's free hosted styles (no key, no account): https://openfreemap.org/quick_start/
-    //   'https://tiles.openfreemap.org/styles/liberty'   <- general-purpose, labeled
-    //   'https://tiles.openfreemap.org/styles/bright'    <- higher-contrast, saturated
-    //   'https://tiles.openfreemap.org/styles/positron'  <- light, minimal, good for overlays
-    //   'https://tiles.openfreemap.org/styles/dark'      <- dark background, good for data viz
-    //
-    // Full style spec reference (what you can change and how):
-    // https://maplibre.org/maplibre-style-spec/
-
     const map = new maplibregl.Map({
       container: 'map',
       style: 'https://tiles.openfreemap.org/styles/liberty', // <-- swap this string
