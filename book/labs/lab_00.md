@@ -50,7 +50,7 @@ This course treats proprietary (ArcGIS Online) and open-source/cloud-native (Git
 | **Python 3** | Free | Usually already on your machine, or via this notebook's host | Backup local web server if you skip Live Preview; `leafmap`/`folium` for the optional appendix |
 
 **Links**
-- WNMU ArcGIS Online sign-in: Request access this week if you don't have it yet.
+- WNMU ArcGIS Online sign-in: https://wnmugis.maps.arcgis.com/home/index.html (Request access this week if you don't have it yet).
 - GitHub: https://github.com/join
 - VS Code download: https://code.visualstudio.com/download
 - Course content site (optional): https://asivitskis.github.io/giss-366
@@ -80,7 +80,7 @@ Tonight we'll walk through this together: every account and install you need, li
 <details>
 <summary><b>Proprietary pathway: ArcGIS Online (click to expand)</b></summary>
 
-1. Go to the ArcGIS Online sign-in link posted in the course LMS (Week 1 announcement).
+1. Go to the WNMU ArcGIS Online sign-in page: https://wnmugis.maps.arcgis.com/home/index.html
 2. Sign in with your WNMU credentials. If you don't have access yet, request it now. This is the single most common Lab 0 delay, so don't wait until Thursday.
 3. Once signed in, find your **Content** page and your **Organization** page in the top navigation. You don't need to do anything with them yet, just confirm they load.
 4. Check your profile settings for your **display name** and **organization role** (Viewer, Creator, etc.). Note your role below; it determines what you can publish later in the course.
