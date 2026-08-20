@@ -45,7 +45,7 @@ This course treats proprietary (ArcGIS Online) and open-source/cloud-native (Git
 |---|---|---|---|
 | **ArcGIS Online** | Provided via WNMU organizational account | None; runs in your browser | Proprietary pathway: Lab 1 onward |
 | **GitHub** | Free account | None; web-based for now, a local `git` install comes later | Hosts your open-source pathway work and (eventually) your final project site |
-| **VS Code** | Free | Download & install ([code.visualstudio.com](https://code.visualstudio.com/)), plus the **Python** and **Live Preview** extensions | Where you'll write HTML/CSS/JS all semester — tonight's the first time you'll open it |
+| **VS Code** | Free | Download & install ([code.visualstudio.com](https://code.visualstudio.com/)), plus the **Python** and **Live Server** extensions | Where you'll write HTML/CSS/JS all semester — tonight's the first time you'll open it |
 | **A modern browser with Dev Tools** | Free | Chrome recommended, Firefox fine | How you'll inspect every web map's network traffic all semester |
 | **Python 3** | Free | Usually already on your machine, or via this notebook's host | Backup local web server if you skip Live Preview; `leafmap`/`folium` for the optional appendix |
 
@@ -103,6 +103,7 @@ Tonight we'll walk through this together: every account and install you need, li
    - **Python** - search "Python" (by Microsoft), Install. You'll use this starting Week 8.
    - **Live Server** - search "Live Server" (by Ritwick Dey), Install. This is what lets you view an HTML file as a live local web page, with no server setup of your own.
 3.  Somewhere on your computer, create a new file labeled `giss-366`. Your documents folder works fine. This will be our base of operations for the full semester.
+4.  Optional - if you want to disable AI assistance, you can do so by going to Settings, typing @id:chat.disableAIFeatures, and ticking the appropriate button. 
 
 </details>
 
