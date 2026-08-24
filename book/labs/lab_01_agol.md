@@ -47,7 +47,6 @@ Today you're doing two different things that happen to share a notebook: (1) the
 
 > **A note on why this will look easier than Lab 2:** AGOL infers your schema and publishes automatically the moment you upload a file, so today the technical friction stays low and the harder questions live at the *design* layer — how you symbolize the data, what you let people click on, and, in Step 4, who you let see it and why. Hang onto that "this was pretty painless" feeling: in Lab 2 you'll stand up the same kind of publishing on a self-hosted GeoServer instance, by hand, and EQ3 there will ask you to unpack exactly what AGOL was doing for you automatically today.
 
-> **[INSTRUCTOR NOTE — before class]** Confirm every student has an active WNMU AGOL account before class (Named User license, Creator or Publisher role — anything below that can't publish hosted feature layers). If your org uses SSO, test the login flow once yourself beforehand; a broken SSO redirect is a much harder thing to debug live on the first lab of the semester.
 
 ## Step 1: Ask
 
