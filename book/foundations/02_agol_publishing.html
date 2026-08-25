@@ -508,7 +508,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">2.7. Readings &amp; Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">2.8. Lab 1: Publishing a Hosted Feature Layer and POI Webmap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-for-lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">2.8. Preparing for Lab 1: Publishing a Hosted Feature Layer and POI Webmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nm-public-data-option">2.8.1. NM Public Data Option</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-data-option">2.8.2. Personal Data Option</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -538,7 +542,7 @@ document.write(`
 <hr class="docutils" />
 <section id="arcgis-online-a-quick-orientation-and-refresher">
 <h2><span class="section-number">2.2. </span>ArcGIS Online: A Quick Orientation (and Refresher)<a class="headerlink" href="#arcgis-online-a-quick-orientation-and-refresher" title="Link to this heading">#</a></h2>
-<p>If you’ve taken an intro GIS course, ArcGIS Online (AGOL) probably isn’t brand new to you. You’ve likely opened a map someone else built, maybe added a layer or two, and clicked around Map Viewer. That’s a fine starting point, but it’s a <em>consumer’s</em> view of the platform. This week you’re switching roles: from someone who opens maps to someone who publishes them. Before diving into hosted feature layers in 2.1, it’s worth making sure everyone has the same mental map of what AGOL actually is.</p>
+<p>If you’ve taken an intro GIS course, ArcGIS Online (AGOL) probably isn’t brand new to you. You’ve likely opened a map someone else built, maybe added a layer or two, and clicked around Map Viewer. That’s a fine starting point, but it’s a <em>consumer’s</em> view of the platform. This week you’re switching roles: from someone who opens maps to someone who publishes them. Before diving into hosted feature layers in 2.3, it’s worth making sure everyone has the same mental map of what AGOL actually is.</p>
 <p><strong>Where AGOL sits in the Esri product family.</strong> Esri sells three related but distinct things, and it’s easy to conflate them:</p>
 <ul class="simple">
 <li><p><strong>ArcGIS Pro</strong>: desktop software installed on your own machine, used for heavier-duty analysis, cartography, and data prep. Nothing here is on the web by default.</p></li>
@@ -578,7 +582,7 @@ document.write(`
 <li><p><strong>Map Viewer</strong>: where you’ll spend most of your time: adding layers, symbolizing them, configuring popups, and assembling a finished web map. This is today’s main workspace.</p></li>
 <li><p><strong>Groups</strong>: a way of bundling content and people together for sharing purposes (e.g., sharing a layer with just your project team rather than the whole organization or the public). We won’t lean on this heavily today, but you’ll see it again if you collaborate on the final project.</p></li>
 </ul>
-<p><strong>If this is all familiar,</strong> great: 2.1 is where things get new, publishing your <em>own</em> data as a hosted feature layer, rather than just viewing someone else’s. <strong>If this is mostly new,</strong> also fine; everything from here forward assumes only what’s in this section, not prior AGOL experience.</p>
+<p><strong>If this is all familiar,</strong> great: 2.3 is where things get new, publishing your <em>own</em> data as a hosted feature layer, rather than just viewing someone else’s. <strong>If this is mostly new,</strong> also fine; everything from here forward assumes only what’s in this section, not prior AGOL experience.</p>
 </section>
 <hr class="docutils" />
 <section id="hosted-feature-layers-what-they-are">
@@ -631,7 +635,7 @@ document.write(`
 </section>
 <section id="uploading-and-publishing-data">
 <h2><span class="section-number">2.4. </span>Uploading and Publishing Data<a class="headerlink" href="#uploading-and-publishing-data" title="Link to this heading">#</a></h2>
-<p>The publish-from-upload workflow in ArcGIS Online is about as compressed as publishing gets: upload a file, and AGOL handles schema detection, storage, and endpoint creation automatically. Next week you’ll do the manual version of this same chain, Store → Layer → Style, by hand in GeoServer, and see exactly how much AGOL is quietly doing for you here.</p>
+<p>The publish-from-upload workflow in ArcGIS Online is about as compressed as publishing gets: upload a file, and AGOL handles schema detection, storage, and endpoint creation automatically.</p>
 <p><strong>Formats AGOL accepts for upload:</strong></p>
 <ul class="simple">
 <li><p><strong>CSV</strong>: a spreadsheet with either latitude/longitude columns, or street addresses AGOL can geocode into points during upload</p></li>
@@ -675,7 +679,7 @@ document.write(`
 <ul class="simple">
 <li><p><strong>Community and tribal data.</strong> Indigenous communities and other groups practicing data sovereignty may have strong reasons <em>not</em> to want culturally sensitive locations sitting on a commercial vendor’s cloud, regardless of the sharing setting. The concern isn’t only “can strangers see this,” it’s “whose infrastructure holds this, and under what terms can that access be revoked or that data be used.”</p></li>
 <li><p><strong>Sensitive locations.</strong> Habitat data for an endangered species, the address of a shelter, or precise home locations in a community survey can all be technically “correct” to map and still cause real harm if shared publicly. Poaching, harassment, or exposure are real downstream risks, not hypothetical ones.</p></li>
-<li><p><strong>Persistence and revocability.</strong> Because the data lives on Esri’s platform (Section 2.1), the people who created a public map don’t have unilateral control over its long-term availability. An account suspension, a lapsed license, or a platform policy change can affect access in ways a self-hosted server sitting on infrastructure you control would not. You’ll be the one controlling that infrastructure yourself starting next week.</p></li>
+<li><p><strong>Persistence and revocability.</strong> Because the data lives on Esri’s platform (Section 2.3), the people who created a public map don’t have unilateral control over its long-term availability. An account suspension, a lapsed license, or a platform policy change can affect access in ways a self-hosted server sitting on infrastructure you control would not. You’ll be the one controlling that infrastructure yourself starting next week.</p></li>
 </ul>
 <p>None of this means “never share publicly.” Plenty of data (bus routes, public parks, zoning boundaries) is precisely the kind of information that <em>should</em> be as open and discoverable as possible. The point is that the sharing decision deserves the same scrutiny as any other design decision in this course: who is this data about, who benefits from it being visible, and who might be put at risk by that same visibility?</p>
 <p><strong>Hold onto this question.</strong> It’s the seed for Discussion 1 in Week 4, where we’ll dig into open data, community consent, and what “open” actually obligates a publisher to consider.</p>
@@ -697,9 +701,25 @@ document.write(`
 </ul>
 </section>
 <hr class="docutils" />
-<section id="lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">
-<h2><span class="section-number">2.8. </span>Lab 1: Publishing a Hosted Feature Layer and POI Webmap<a class="headerlink" href="#lab-1-publishing-a-hosted-feature-layer-and-poi-webmap" title="Link to this heading">#</a></h2>
+<section id="preparing-for-lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">
+<h2><span class="section-number">2.8. </span>Preparing for Lab 1: Publishing a Hosted Feature Layer and POI Webmap<a class="headerlink" href="#preparing-for-lab-1-publishing-a-hosted-feature-layer-and-poi-webmap" title="Link to this heading">#</a></h2>
+<p>For Thursday’s course, your job is to find a public GIS layer of interest that you’d want to share on a web map. You can bring any dataset that you’d like, as long as it you’re OK sharing it publically on the WNMU ArcOnline platform.</p>
+<p>Here’s a few options below:</p>
+<section id="nm-public-data-option">
+<h3><span class="section-number">2.8.1. </span>NM Public Data Option<a class="headerlink" href="#nm-public-data-option" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a> and search for a small <strong>point</strong> dataset covering Grant County or the Gila region — trailheads, campgrounds, historic markers, or fire lookout towers are all good, manageable choices.</p></li>
+<li><p>Download it as a <strong>shapefile</strong> (zip the <code class="docutils literal notranslate"><span class="pre">.shp</span></code> + sidecar files together) <em>or</em>,</p></li>
+<li><p>Save the file somewhere you can find it and be able to upload during our first Lab 1.</p></li>
+</ol>
+</section>
+<section id="personal-data-option">
+<h3><span class="section-number">2.8.2. </span>Personal Data Option<a class="headerlink" href="#personal-data-option" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>If you’d rather build your own dataset, make a simple CSV with <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, and one or two descriptive columns (<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>). This could be a handful of real places you know in the region works fine. Consider how you might want to symbolize this data when uploaded and develop accordingly.</p></li>
+</ol>
 <p>See <a class="reference internal" href="#../labs/lab_01.md"><span class="xref myst">Lab 1</span></a>.</p>
+</section>
 </section>
 </section>
 
@@ -777,7 +797,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">2.7. Readings &amp; Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">2.8. Lab 1: Publishing a Hosted Feature Layer and POI Webmap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-for-lab-1-publishing-a-hosted-feature-layer-and-poi-webmap">2.8. Preparing for Lab 1: Publishing a Hosted Feature Layer and POI Webmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nm-public-data-option">2.8.1. NM Public Data Option</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-data-option">2.8.2. Personal Data Option</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
