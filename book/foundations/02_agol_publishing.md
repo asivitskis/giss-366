@@ -18,7 +18,7 @@ By the end of this unit, you will be able to:
 
 ## ArcGIS Online: A Quick Orientation (and Refresher)
 
-If you've taken an intro GIS course, ArcGIS Online (AGOL) probably isn't brand new to you. You've likely opened a map someone else built, maybe added a layer or two, and clicked around Map Viewer. That's a fine starting point, but it's a *consumer's* view of the platform. This week you're switching roles: from someone who opens maps to someone who publishes them. Before diving into hosted feature layers in 2.1, it's worth making sure everyone has the same mental map of what AGOL actually is.
+If you've taken an intro GIS course, ArcGIS Online (AGOL) probably isn't brand new to you. You've likely opened a map someone else built, maybe added a layer or two, and clicked around Map Viewer. That's a fine starting point, but it's a *consumer's* view of the platform. This week you're switching roles: from someone who opens maps to someone who publishes them. Before diving into hosted feature layers in 2.3, it's worth making sure everyone has the same mental map of what AGOL actually is.
 
 **Where AGOL sits in the Esri product family.** Esri sells three related but distinct things, and it's easy to conflate them:
 
@@ -44,7 +44,7 @@ If you can't publish a hosted feature layer in Lab 1, your account role is the f
 - **Map Viewer**: where you'll spend most of your time: adding layers, symbolizing them, configuring popups, and assembling a finished web map. This is today's main workspace.
 - **Groups**: a way of bundling content and people together for sharing purposes (e.g., sharing a layer with just your project team rather than the whole organization or the public). We won't lean on this heavily today, but you'll see it again if you collaborate on the final project.
 
-**If this is all familiar,** great: 2.1 is where things get new, publishing your *own* data as a hosted feature layer, rather than just viewing someone else's. **If this is mostly new,** also fine; everything from here forward assumes only what's in this section, not prior AGOL experience.
+**If this is all familiar,** great: 2.3 is where things get new, publishing your *own* data as a hosted feature layer, rather than just viewing someone else's. **If this is mostly new,** also fine; everything from here forward assumes only what's in this section, not prior AGOL experience.
 
 ---
 
@@ -75,7 +75,7 @@ The two aren't really competing on *capability* so much as on *who takes on the 
 
 ## Uploading and Publishing Data
 
-The publish-from-upload workflow in ArcGIS Online is about as compressed as publishing gets: upload a file, and AGOL handles schema detection, storage, and endpoint creation automatically. Next week you'll do the manual version of this same chain, Store → Layer → Style, by hand in GeoServer, and see exactly how much AGOL is quietly doing for you here.
+The publish-from-upload workflow in ArcGIS Online is about as compressed as publishing gets: upload a file, and AGOL handles schema detection, storage, and endpoint creation automatically.
 
 **Formats AGOL accepts for upload:**
 
@@ -125,7 +125,7 @@ That distinction matters most for exactly the kind of data where the stakes are 
 
 - **Community and tribal data.** Indigenous communities and other groups practicing data sovereignty may have strong reasons *not* to want culturally sensitive locations sitting on a commercial vendor's cloud, regardless of the sharing setting. The concern isn't only "can strangers see this," it's "whose infrastructure holds this, and under what terms can that access be revoked or that data be used."
 - **Sensitive locations.** Habitat data for an endangered species, the address of a shelter, or precise home locations in a community survey can all be technically "correct" to map and still cause real harm if shared publicly. Poaching, harassment, or exposure are real downstream risks, not hypothetical ones.
-- **Persistence and revocability.** Because the data lives on Esri's platform (Section 2.1), the people who created a public map don't have unilateral control over its long-term availability. An account suspension, a lapsed license, or a platform policy change can affect access in ways a self-hosted server sitting on infrastructure you control would not. You'll be the one controlling that infrastructure yourself starting next week.
+- **Persistence and revocability.** Because the data lives on Esri's platform (Section 2.3), the people who created a public map don't have unilateral control over its long-term availability. An account suspension, a lapsed license, or a platform policy change can affect access in ways a self-hosted server sitting on infrastructure you control would not. You'll be the one controlling that infrastructure yourself starting next week.
 
 None of this means "never share publicly." Plenty of data (bus routes, public parks, zoning boundaries) is precisely the kind of information that *should* be as open and discoverable as possible. The point is that the sharing decision deserves the same scrutiny as any other design decision in this course: who is this data about, who benefits from it being visible, and who might be put at risk by that same visibility?
 
@@ -146,6 +146,18 @@ None of this means "never share publicly." Plenty of data (bus routes, public pa
 
 ---
 
-## Lab 1: Publishing a Hosted Feature Layer and POI Webmap
+## Preparing for Lab 1: Publishing a Hosted Feature Layer and POI Webmap
+
+For Thursday's course, your job is to find a public GIS layer of interest that you'd want to share on a web map. You can bring any dataset that you'd like, as long as it you're OK sharing it publically on the WNMU ArcOnline platform. 
+
+Here's a few options below: 
+
+### NM Public Data Option
+1. Go to https://rgis.unm.edu/ and search for a small **point** dataset covering Grant County or the Gila region — trailheads, campgrounds, historic markers, or fire lookout towers are all good, manageable choices.
+2. Download it as a **shapefile** (zip the `.shp` + sidecar files together) *or*, 
+3. Save the file somewhere you can find it and be able to upload during our first Lab 1.
+
+### Personal Data Option
+1. If you'd rather build your own dataset, make a simple CSV with `name`, `latitude`, `longitude`, and one or two descriptive columns (`type`, `notes`). This could be a handful of real places you know in the region works fine. Consider how you might want to symbolize this data when uploaded and develop accordingly. 
 
 See [Lab 1](../labs/lab_01.md).
