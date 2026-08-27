@@ -510,9 +510,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality">Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality">Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-01-ai-policy-level-2">Lab 01 AI Policy - Level 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
 </li>
@@ -659,9 +661,14 @@ document.write(`
 <li><p>Pick a basemap from the gallery that doesn’t visually compete with your point symbols.</p></li>
 <li><p>Save the map (<strong>Save and open →</strong> give it a title, tags, and a one-sentence summary).</p></li>
 </ol>
+</section>
+<hr class="docutils" />
+<section id="step-4-create">
+<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
+<p>Let’s actually create some products to share our data. First, you’ll create a shareable linke for your symbolized web map. Then, you’ll construct a query against your own hosted feature layer’s REST endpoint, the same way any client would ask for your data. This is also your first real look at what a REST endpoint actually is.</p>
 </details>
 <details>
-<summary><b>Decide on a sharing level: click to expand</b></summary>
+<summary><b>Step 4.1 - Publish & Share your map: click to expand</b></summary>
 <ol class="arabic simple">
 <li><p>Click <strong>Share map</strong>. Before clicking anything, reread your Step 1 answer about a dataset where “Public” would give you pause.</p></li>
 <li><p>Choose a sharing level for <em>this</em> map: <strong>Private</strong>, the <strong>GISS 366</strong> group, your <strong>Organization</strong>, or <strong>Public</strong>. Be ready to justify it in your Step 5 reflection. There’s no single correct answer here, as long as it’s a considered choice and not a default click.</p></li>
@@ -669,13 +676,8 @@ document.write(`
 </details>
 <p><strong>Copy your web map’s link now.</strong> Open the map’s <strong>Item Details</strong> page, or use <strong>Share map → Link</strong>, and copy the URL. You’ll submit this link as part of your final graded assignment in Step 5.</p>
 <p><em>If you chose Private:</em> also add Alex as an individual with view access under <strong>Share map → People</strong>, or your we won’t be able to open the link to grade it. Note that you did this in your Step 5 reflection.</p>
-</section>
-<hr class="docutils" />
-<section id="step-4-create">
-<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
-<p>Now construct a query against your own hosted feature layer’s REST endpoint, the same way any client would ask for your data. This is also your first real look at what a REST endpoint actually is.</p>
 <details>
-<summary><b>Query your own hosted feature layer through its REST endpoint: click to expand</b></summary>
+<summary><b>Step 4.2 - Query your own hosted feature layer through its REST endpoint: click to expand</b></summary>
 <ol class="arabic">
 <li><p>Open your layer’s <strong>Item Details</strong> page (find it under <strong>Content</strong>). This page (title, description, tags, sharing level, thumbnail) is a single published, requestable resource with its own metadata.</p></li>
 <li><p>Scroll to the <strong>URL</strong> field (usually labeled something like <code class="docutils literal notranslate"><span class="pre">.../FeatureServer</span></code>). Open that URL in a new tab. This is your layer’s REST endpoint, a “menu” that lists what’s published here and how to ask for it. (In Lab 2, you’ll meet a close relative of this idea: GeoServer’s <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document.)</p></li>
@@ -687,13 +689,14 @@ document.write(`
 <li><p>Click <strong>Query (GET)</strong></p></li>
 </ul>
 </li>
-<li><p>Now try a real query instead of <code class="docutils literal notranslate"><span class="pre">1=1</span></code>. Swap the <strong>Where</strong> clause for an actual filter on one of your own fields (for example, <code class="docutils literal notranslate"><span class="pre">type='trailhead'</span></code>), and run it again. This is the same query logic the Python cell below sends, just built by hand first.</p>
+<li><p>Now try a real query instead of <code class="docutils literal notranslate"><span class="pre">1=1</span></code>. Swap the <strong>Where</strong> clause for an actual filter on one of your own fields (for example, <code class="docutils literal notranslate"><span class="pre">type='trailhead'</span></code>), and run it again.</p></li>
+<li><p>Finally, try setting the <code class="docutils literal notranslate"><span class="pre">Return</span> <span class="pre">Count</span> <span class="pre">Only</span></code> option to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This will provide a count of the features within your specific query, and exclude any geometry.</p>
 <p>Note the shape of what comes back.</p>
 <p><em>For a fuller walkthrough of querying a hosted feature layer through its REST endpoint, see Esri’s tutorial, “Manage a hosted feature layer and feature service” (Esri Developers, n.d.; full citation in Resources below).</em></p>
 </li>
 </ol>
 </details>
-<p>📸 <strong>Save a screenshot now:</strong> your constructed query and its result, for your own layer. Label it <em>Screenshot 4</em>.</p>
+<p>📸 <strong>Save a screenshot now:</strong> your query output result for your own layer. Label it <em>Screenshot 4</em>.</p>
 <p><strong>What did you notice?</strong></p>
 <ul class="simple">
 <li><p>Is the underlying <code class="docutils literal notranslate"><span class="pre">/query</span></code> response format familiar? Where have you seen that shape of data before?</p></li>
@@ -706,32 +709,32 @@ document.write(`
 <section id="what-to-turn-in-graded-lab-exercises">
 <h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>A link to your shared web map from Step 3. Confirm it is either set to public or shared with Alex’s account indiviudally.</p></li>
-<li><p>Your screenshot of the query you constructed against your own layer’s REST endpoint, and its result (Step 4).</p></li>
+<li><p>A link to your shared web map (Step 3). Confirm it is either set to public or shared with Alex’s account indiviudally.</p></li>
+<li><p>Your screenshot of the query output you constructed against your own layer’s REST endpoint (Step 4).</p></li>
 <li><p>A short written reflection (4-6 sentences) answering:</p>
 <ul class="simple">
-<li><p>Walk through, in your own words, what you asked your layer’s REST endpoint for and what came back. Hang onto this. You’ll compare it to a WFS pull in Lab 2.</p></li>
-<li><p>Revisit <strong>EQ2</strong>. What did you gain by publishing through a hosted platform like AGOL, and what do you expect you’d give up on a self-hosted setup instead? Be specific. Don’t just say “convenience” in the abstract; name <em>what</em> became easier and <em>what</em> you think you lose control over. (You’ll find out for real in Lab 2.)</p></li>
+<li><p>Walk through, in your own words, what you asked your layer’s REST endpoint for and what came back. What specific field did you query, what was the result, what happened when you set the ‘return county only’ option to true?</p></li>
 <li><p>Explain the sharing level you chose for Screenshot 3 (Private, the GISS 366 group, Organization, or Public). What could go wrong if you’d chosen a more open setting, and for whom? What would you lose by choosing a more restrictive one?</p></li>
 <li><p>What’s one thing that didn’t work smoothly today, and what was your first troubleshooting move: docs, a web search of the exact error, or the course discussion board?</p></li>
+<li><p>What might you use this workflow for in the future?</p></li>
 </ul>
 </li>
 </ol>
-</section>
+<p>Post your web map link, screenshot, and reflection to this week’s submission space in Canvas.</p>
 <section id="project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality">
-<h3>Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)<a class="headerlink" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality" title="Link to this heading">#</a></h3>
+<h4>Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)<a class="headerlink" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality" title="Link to this heading">#</a></h4>
 <p>In 2-3 sentences each:</p>
 <ul class="simple">
 <li><p>What place or idea are you drawn to for your final project? It doesn’t need to be Grant County or anything geospatial you’ve worked with in this course. It can be anywhere or anything that matters to you.</p></li>
-<li><p>Who’s the audience for a web map or web geospatial application of that place, and who is deliberately <em>not</em> the audience?</p></li>
-<li><p>What’s one question that audience might actually want a map to answer for them?</p></li>
+<li><p>Who’s the audience for a web map or web geospatial application of that place or topic?</p></li>
+<li><p>What’s one question that audience might actually want a map or geospatial tool to answer for them?</p></li>
 </ul>
 <p>You’ll revisit this in <strong>Topic Ideation B</strong> (Week 5), once you’ve got more of the toolkit under your belt.</p>
-<p>Post your web map link, screenshot, and reflection to this week’s submission space in Canvas.</p>
 </section>
-<section id="looking-ahead">
-<h3>Looking Ahead<a class="headerlink" href="#looking-ahead" title="Link to this heading">#</a></h3>
-<p>Week 3 shifts to the self-hosted pathway: standing up a GeoServer instance, publishing the same kind of layer as a WMS/WFS, and trying to consume it back into the ArcGIS Online you just spent today in. Week 4 picks up the sharing-decision thread directly in <strong>Discussion 1</strong>: open data, community consent, and what “open” actually obligates a publisher to consider. Revisit your Step 1 and sharing-level answers from today before that discussion; they’re your starting position. Week 6 comes back to self-hosted vs. hosted one more time, from the cloud-native/static-file angle. It’s worth comparing your EQ2 answer to how you think about that tradeoff once no server is running at all.</p>
+</section>
+<section id="lab-01-ai-policy-level-2">
+<h3>Lab 01 AI Policy - Level 2<a class="headerlink" href="#lab-01-ai-policy-level-2" title="Link to this heading">#</a></h3>
+<p>This lab permits optional use of AI to support student learning. Permitted uses can include using AI to help troubleshoot GIS workflows, however, independent installation and use of AI agents to complete GIS tasks is not permitted at this time. AI may also be used to support general writing procedures (outlining a project, improving clarity or grammar, etc.), but all responses must remain original to each student as a sole responsible author. Disclosure of AI use is not required for this Level 2 assignments. Using AI is a choice with ethical considerations, and it is asked that students weigh those considerations accordingly as they complete this work.</p>
 </section>
 <hr class="docutils" />
 <section id="resources">
@@ -920,9 +923,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality">Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality">Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-01-ai-policy-level-2">Lab 01 AI Policy - Level 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
 </li>
