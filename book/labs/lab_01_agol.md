@@ -258,6 +258,7 @@ This is optional, ungraded, and not required to complete Lab 1. It's here for an
     // Paste your own layer's FeatureServer/0 URL below.
     // Find it on your layer's Item Details page in AGOL, under "URL".
     // The layer must be shared Public for this to work.
+    // Make sure to add "/0" to the end of your link to select the actual data layer.
     const LAYER_URL = "[add your URL here]";
     const QUERY_URL = `${LAYER_URL}/query?where=1=1&outFields=*&f=geojson`;
 
