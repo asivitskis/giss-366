@@ -501,13 +501,12 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 1</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#esri-and-the-arcgis-online-environment-hosted-feature-layer-poi-webmap">ESRI and the ArcGIS Online Environment: Hosted Feature Layer + POI Webmap</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-we-re-working-silver-city-and-southwestern-new-mexico">Where We’re Working: Silver City and Southwestern New Mexico</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-notebook-is-organized">How This Notebook Is Organized</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-today-s-two-deliverables">A Note on Today’s Two Deliverables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect-data">Step 2: Collect Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
@@ -517,6 +516,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-optional-extension-your-hosted-feature-layer-in-maplibre-optional-not-required">Appendix: Optional Extension: Your Hosted Feature Layer in MapLibre (Optional, Not Required)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-publishing-without-an-organizational-account-optional-not-required">Appendix: Publishing Without an Organizational Account (Optional, Not Required)</a></li>
 </ul>
 </li>
@@ -543,18 +543,14 @@ document.write(`
 <p><strong>This is your first graded lab</strong> (Lab Exercises, Performance Task 1). It also opens <strong>Project Topic Ideation A</strong>, the first of three short checkpoints that build toward your Week 11 final project.</p>
 </section>
 <hr class="docutils" />
-<section id="where-we-re-working-silver-city-and-southwestern-new-mexico">
-<h2>Where We’re Working: Silver City and Southwestern New Mexico<a class="headerlink" href="#where-we-re-working-silver-city-and-southwestern-new-mexico" title="Link to this heading">#</a></h2>
-<p>We’re staying with the same shared region from Lab 0: Silver City, Grant County, and the Gila National Forest, pulled from the <strong>NM RGIS Clearinghouse</strong> (<a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a>). Using one shared place lets us compare notes on what published cleanly and what broke, before you head out on your own place for the final project.</p>
-</section>
 <section id="learning-goals">
 <h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p>By the end of this lab, you will be able to:</p>
 <ul class="simple">
-<li><p>Upload a point dataset and publish it as a hosted feature layer in ArcGIS Online</p></li>
+<li><p>Upload a geospatial dataset and publish it as a hosted feature layer in ArcGIS Online</p></li>
 <li><p>Configure symbology and popups so the layer is readable to someone unfamiliar with your fields</p></li>
 <li><p>Build a point-of-interest webmap and make a deliberate, justified choice about its sharing level</p></li>
-<li><p>Query your own hosted feature layer’s REST endpoint directly. In Lab 2, you’ll do this again with a WFS endpoint on a self-hosted GeoServer, so pay attention to what this request and response actually look like</p></li>
+<li><p>Query your own hosted feature layer’s REST endpoint directly.</p></li>
 <li><p>Take your first concrete step on the semester’s final project by naming a real place and audience</p></li>
 </ul>
 </section>
@@ -601,6 +597,7 @@ document.write(`
 </tbody>
 </table>
 </div>
+<p>You’ve also already been added to the <strong>GISS 366</strong> group in the WNMU AGOL organization, so it’s ready to use as a sharing option in Step 4. No need to request access.</p>
 <p><strong>Links</strong></p>
 <ul class="simple">
 <li><p>WNMU ArcGIS Online organization: <a class="reference external" href="https://wnmugis.maps.arcgis.com/home/index.html">https://wnmugis.maps.arcgis.com/home/index.html</a></p></li>
@@ -614,140 +611,94 @@ document.write(`
 <blockquote>
 <div><p><strong>EQ2: When data moves from a file you control into a platform someone else operates, what do you gain, what do you give up, and who ends up bearing that tradeoff?</strong></p>
 </div></blockquote>
-<p>Take a minute and jot down your first-pass answers (edit the cell below):</p>
+<p>Take a minute and jot down your first-pass answers to these reflection questions (no submission required, just some thoughts before you dive into the actual lab):</p>
 <ul class="simple">
 <li><p>AGOL does most of the publishing work automatically the moment you upload a file. You don’t manually configure a store, a layer, and a style by hand. What does that convenience cost you, if anything?</p></li>
 <li><p>If your WNMU AGOL account were deactivated the day after graduation, what would happen to a map you’d published and shared publicly? Compare that to what would happen to the shapefile sitting on your own hard drive.</p></li>
 <li><p>Think of a real dataset (POI, survey points, anything) where you’d hesitate before setting its AGOL sharing level to “Public.” What’s the actual risk, and to whom?</p></li>
-<li><p>Pick, even loosely, a place and an audience you might want to build your final project around. It’s okay if this changes completely by Week 5.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="step-2-collect">
-<h2>Step 2: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
+<section id="step-2-collect-data">
+<h2>Step 2: Collect Data<a class="headerlink" href="#step-2-collect-data" title="Link to this heading">#</a></h2>
 <p>Log in to ArcGIS Online and get a point-of-interest dataset ready to publish.</p>
 <details>
 <summary><b>Log in to the WNMU ArcGIS Online organization: click to expand</b></summary>
 <ol class="arabic simple">
 <li><p>In your browser, go to your WNMU org’s AGOL URL (see Links above).</p></li>
 <li><p>Sign in with your WNMU credentials.</p></li>
-<li><p>You should land on your organization’s home page. Click <strong>Content</strong> in the top bar. This is where every item you publish today, and every item your classmates publish, will show up. You’ll see a self-hosted version of this same idea in Lab 2, when GeoServer’s Layer Preview list plays the same role.</p></li>
+<li><p>You should land on your organization’s home page. Click <strong>Content</strong> in the top bar. This is where every item you publish today, and every item your classmates publish, will show up. You’ll see a self-hosted version of this same idea in Lab 2, when we use an open source server set up to accomplish a similar workflow.</p></li>
 </ol>
 </details>
 <details>
 <summary><b>Get a point-of-interest dataset: NM RGIS Clearinghouse or your own CSV. Click to expand</b></summary>
 <ol class="arabic simple">
-<li><p>Go to <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a> and search for a small <strong>point</strong> dataset covering Grant County or the Gila region. Trailheads, campgrounds, historic markers, and fire lookout towers are all good, manageable choices.</p></li>
-<li><p>Download it as a <strong>shapefile</strong> (zip the <code class="docutils literal notranslate"><span class="pre">.shp</span></code> file and its sidecar files together). Or, if you’d rather build your own, make a simple CSV with <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, and one or two descriptive columns (<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>). A handful of real places you know in the region works fine.</p></li>
+<li><p>Go to <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a> and search for a small <strong>point</strong> dataset covering Grant County or the Gila region. Trailheads, earthquake epicenters, wind turbines, or anything similar might be good choices.</p></li>
+<li><p>Download it as a <strong>shapefile</strong> (zipped <code class="docutils literal notranslate"><span class="pre">.shp</span></code> file and its sidecar files together). Or, if you’d rather build your own, make a simple CSV with <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, and one or two descriptive columns (<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>). A handful of real places you know in the region works fine.</p></li>
 <li><p>Save the file somewhere you can find it. You’ll upload it into AGOL in Step 4.</p></li>
 </ol>
-</details>
-<p>📸 <strong>Save a screenshot now:</strong> your organization’s AGOL Content page after logging in. Label it <em>Screenshot 1</em>.</p>
 </section>
 <hr class="docutils" />
 <section id="step-3-visualize">
 <h2>Step 3: Visualize<a class="headerlink" href="#step-3-visualize" title="Link to this heading">#</a></h2>
-<p>Before publishing anything of your own, look at what a hosted feature layer’s REST endpoint actually looks like.</p>
-<details>
-<summary><b>Inspect an existing hosted feature layer: click to expand</b></summary>
-<ol class="arabic">
-<li><p>In AGOL, search Content (or the public gallery) for any existing hosted feature layer. Your instructor may point you at a class example, or you can search the public gallery for something like <code class="docutils literal notranslate"><span class="pre">wildfire</span> <span class="pre">perimeters</span></code>.</p></li>
-<li><p>Open its <strong>Item Details</strong> page. This page (title, description, tags, sharing level, thumbnail) is a single published, requestable resource with its own metadata.</p></li>
-<li><p>Scroll to the <strong>URL</strong> field on the Item Details page (usually labeled something like <code class="docutils literal notranslate"><span class="pre">.../FeatureServer</span></code>). Open that URL in a new tab. This is the layer’s REST endpoint, a “menu” that lists what’s published here and how to ask for it. (In Lab 2, you’ll meet a close relative of this idea: GeoServer’s <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document.)</p></li>
-<li><p>From that REST endpoint page, click into a specific layer (for example, <code class="docutils literal notranslate"><span class="pre">/0</span></code>), then find the <strong>Query</strong> link near the bottom. Set the following properties:</p>
-<ul class="simple">
-<li><p><strong>Where:</strong> <code class="docutils literal notranslate"><span class="pre">1=1</span></code></p></li>
-<li><p><strong>OutFields:</strong> <code class="docutils literal notranslate"><span class="pre">*</span></code></p></li>
-<li><p><strong>Format:</strong> <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code></p></li>
-<li><p>Click <strong>Query (GET)</strong></p></li>
-</ul>
-<p>Note the shape of what comes back. You’ll pull a WFS equivalent yourself in Lab 2’s Python cell, and it’s worth comparing the two once you do.</p>
-<p><em>For a fuller walkthrough of querying a hosted feature layer through its REST endpoint, see Esri’s tutorial, “Manage a hosted feature layer and feature service” (Esri Developers, n.d.; full citation in Resources below).</em></p>
-</li>
-</ol>
-</details>
-<p>📸 <strong>Save a screenshot now:</strong> the REST endpoint’s Item Details or Query page for the layer you inspected. Label it <em>Screenshot 2</em>.</p>
-<p><strong>What you noticed (double-click to edit):</strong></p>
-<ul class="simple">
-<li><p>What metadata does the Item Details page show you, beyond just a list of layers?</p></li>
-<li><p>Is the underlying <code class="docutils literal notranslate"><span class="pre">/query</span></code> response format familiar? Where have you seen that shape of data before?</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="step-4-create">
-<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
-<p>Now publish your own dataset, style it, and turn it into a webmap.</p>
+<p>Now publish your own dataset and turn it into a readable, styled map.</p>
 <details>
 <summary><b>Publish your dataset as a hosted feature layer: click to expand</b></summary>
 <ol class="arabic simple">
 <li><p>From <strong>Content</strong>, click <strong>New item → Your device</strong>, and select the file you gathered in Step 2 (zipped shapefile or CSV).</p></li>
 <li><p>If you uploaded a CSV with address fields instead of lat/long, AGOL will prompt you to geocode it. Otherwise, it should detect the coordinate fields automatically. Confirm the field mapping looks right.</p></li>
-<li><p>Give the layer a clear title, including your name or initials (for example, <code class="docutils literal notranslate"><span class="pre">POI_TrailheadsGila_jsmith</span></code>), so it’s easy to find in a shared organization. Click <strong>Publish → Hosted Feature Layer</strong>.</p></li>
+<li><p>Give the layer a clear title, including your name or initials (for example, <code class="docutils literal notranslate"><span class="pre">POI_nm_earthquakes_asivitskis</span></code>), so it’s easy to find in a shared organization. Click <strong>Publish → Hosted Feature Layer</strong>.</p></li>
 <li><p>Open the new layer in <strong>Map Viewer</strong>.</p></li>
 </ol>
 </details>
 <details>
 <summary><b>Configure symbology and popups: click to expand</b></summary>
 <ol class="arabic simple">
-<li><p>In Map Viewer, open the <strong>Styles</strong> pane for your layer. If your data has a meaningful category column (for example, <code class="docutils literal notranslate"><span class="pre">type</span></code>), try <strong>Unique values</strong>. Otherwise, a single clear symbol works fine.</p></li>
+<li><p>In Map Viewer, open the <strong>Styles</strong> pane for your layer. If your data has a meaningful category column (for example, <code class="docutils literal notranslate"><span class="pre">type</span></code> or <code class="docutils literal notranslate"><span class="pre">mag</span></code>), try <strong>Unique values</strong>. Otherwise, a single clear symbol works fine.</p></li>
 <li><p>Open <strong>Popup</strong> settings. Turn off any fields that are noise (IDs, raw codes), give the remaining fields readable aliases, and reorder them so the most important information is at the top.</p></li>
 <li><p>Pick a basemap from the gallery that doesn’t visually compete with your point symbols.</p></li>
 <li><p>Save the map (<strong>Save and open →</strong> give it a title, tags, and a one-sentence summary).</p></li>
 </ol>
 </details>
-<p>📸 <strong>Save a screenshot now:</strong> your layer, styled with a working popup, in Map Viewer. Label it <em>Screenshot 3</em>.</p>
 <details>
 <summary><b>Decide on a sharing level: click to expand</b></summary>
 <ol class="arabic simple">
 <li><p>Click <strong>Share map</strong>. Before clicking anything, reread your Step 1 answer about a dataset where “Public” would give you pause.</p></li>
-<li><p>Choose a sharing level for <em>this</em> map: <strong>Private</strong>, <strong>Organization</strong>, or <strong>Public</strong>. Be ready to justify it in your Step 5 reflection. There’s no single correct answer here, as long as it’s a considered choice and not a default click.</p></li>
+<li><p>Choose a sharing level for <em>this</em> map: <strong>Private</strong>, the <strong>GISS 366</strong> group, your <strong>Organization</strong>, or <strong>Public</strong>. Be ready to justify it in your Step 5 reflection. There’s no single correct answer here, as long as it’s a considered choice and not a default click.</p></li>
 </ol>
 </details>
-<p>📸 <strong>Save a screenshot now:</strong> the Share settings dialog showing the level you chose. Label it <em>Screenshot 4</em>.</p>
+<p><strong>Copy your web map’s link now.</strong> Open the map’s <strong>Item Details</strong> page, or use <strong>Share map → Link</strong>, and copy the URL. You’ll submit this link as part of your final graded assignment in Step 5.</p>
+<p><em>If you chose Private:</em> also add Alex as an individual with view access under <strong>Share map → People</strong>, or your we won’t be able to open the link to grade it. Note that you did this in your Step 5 reflection.</p>
+</section>
+<hr class="docutils" />
+<section id="step-4-create">
+<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
+<p>Now construct a query against your own hosted feature layer’s REST endpoint, the same way any client would ask for your data. This is also your first real look at what a REST endpoint actually is.</p>
 <details>
-<summary><b>Query your own hosted layer from Python: click to expand</b></summary>
-<p>Run the code cell below (edit the URL first to match your own published layer) to pull your own hosted features straight out of AGOL’s REST endpoint as GeoJSON. This is the hosted-layer equivalent of the WFS pull you’ll do in Lab 2.</p>
-<p>To get your layer’s URL, open its <strong>Item Details</strong> page in AGOL and copy the URL shown under <strong>URL</strong>. It should end in <code class="docutils literal notranslate"><span class="pre">/FeatureServer/0</span></code>.</p>
-</details><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Consume your own published hosted feature layer directly, the way any client would</span>
-<span class="c1"># Edit LAYER_URL to match the FeatureServer URL from your own layer&#39;s Item Details page.</span>
-
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-
-<span class="n">LAYER_URL</span> <span class="o">=</span> <span class="s2">&quot;https://services.arcgis.com/XXXXXXXXXXXX/arcgis/rest/services/POI_TrailheadsGila_yourname/FeatureServer/0&quot;</span>  <span class="c1"># &lt;-- change to your layer&#39;s URL</span>
-
-<span class="n">query_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">LAYER_URL</span><span class="si">}</span><span class="s2">/query&quot;</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="s2">&quot;1=1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;outFields&quot;</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="s2">&quot;geojson&quot;</span>
-<span class="p">}</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-    <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pulled </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span><span class="si">}</span><span class="s2"> features straight from your own hosted feature layer.&quot;</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-    <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t reach the layer yet -- confirm LAYER_URL above is the full FeatureServer/0 URL&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;from your layer&#39;s Item Details page, and that the layer&#39;s sharing level allows this query.&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error detail: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Couldn&#39;t reach the layer yet -- confirm LAYER_URL above is the full FeatureServer/0 URL
-from your layer&#39;s Item Details page, and that the layer&#39;s sharing level allows this query.
-Error detail: 400 Client Error: Bad Request for url: https://services.arcgis.com/XXXXXXXXXXXX/arcgis/rest/services/POI_TrailheadsGila_yourname/FeatureServer/0/query?where=1%3D1&amp;outFields=%2A&amp;f=geojson
-</pre></div>
-</div>
-</div>
-</div>
+<summary><b>Query your own hosted feature layer through its REST endpoint: click to expand</b></summary>
+<ol class="arabic">
+<li><p>Open your layer’s <strong>Item Details</strong> page (find it under <strong>Content</strong>). This page (title, description, tags, sharing level, thumbnail) is a single published, requestable resource with its own metadata.</p></li>
+<li><p>Scroll to the <strong>URL</strong> field (usually labeled something like <code class="docutils literal notranslate"><span class="pre">.../FeatureServer</span></code>). Open that URL in a new tab. This is your layer’s REST endpoint, a “menu” that lists what’s published here and how to ask for it. (In Lab 2, you’ll meet a close relative of this idea: GeoServer’s <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document.)</p></li>
+<li><p>From that REST endpoint page, click into your layer (for example, <code class="docutils literal notranslate"><span class="pre">/0</span></code>), then find the <strong>Query</strong> link near the bottom. Set the following properties:</p>
+<ul class="simple">
+<li><p><strong>Where:</strong> <code class="docutils literal notranslate"><span class="pre">1=1</span></code></p></li>
+<li><p><strong>OutFields:</strong> <code class="docutils literal notranslate"><span class="pre">*</span></code></p></li>
+<li><p><strong>Format:</strong> <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code></p></li>
+<li><p>Click <strong>Query (GET)</strong></p></li>
+</ul>
+</li>
+<li><p>Now try a real query instead of <code class="docutils literal notranslate"><span class="pre">1=1</span></code>. Swap the <strong>Where</strong> clause for an actual filter on one of your own fields (for example, <code class="docutils literal notranslate"><span class="pre">type='trailhead'</span></code>), and run it again. This is the same query logic the Python cell below sends, just built by hand first.</p>
+<p>Note the shape of what comes back.</p>
+<p><em>For a fuller walkthrough of querying a hosted feature layer through its REST endpoint, see Esri’s tutorial, “Manage a hosted feature layer and feature service” (Esri Developers, n.d.; full citation in Resources below).</em></p>
+</li>
+</ol>
+</details>
+<p>📸 <strong>Save a screenshot now:</strong> your constructed query and its result, for your own layer. Label it <em>Screenshot 4</em>.</p>
+<p><strong>What did you notice?</strong></p>
+<ul class="simple">
+<li><p>Is the underlying <code class="docutils literal notranslate"><span class="pre">/query</span></code> response format familiar? Where have you seen that shape of data before?</p></li>
+<li><p>What changed in the result when you swapped <code class="docutils literal notranslate"><span class="pre">1=1</span></code> for a real filter on your own data?</p></li>
+</ul>
 </section>
 <hr class="docutils" />
 <section id="step-5-act">
@@ -755,21 +706,14 @@ Error detail: 400 Client Error: Bad Request for url: https://services.arcgis.com
 <section id="what-to-turn-in-graded-lab-exercises">
 <h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Your four screenshots:</p>
-<ul class="simple">
-<li><p><strong>Screenshot 1</strong>: your organization’s AGOL Content page (Collect)</p></li>
-<li><p><strong>Screenshot 2</strong>: REST endpoint Item Details or Query page you inspected (Visualize)</p></li>
-<li><p><strong>Screenshot 3</strong>: your styled layer with working popup in Map Viewer (Create)</p></li>
-<li><p><strong>Screenshot 4</strong>: the Share settings dialog showing your chosen sharing level (Create)</p></li>
-</ul>
-</li>
-<li><p>Your completed Python cell output (the pulled GeoJSON feature count and the small plot).</p></li>
+<li><p>A link to your shared web map from Step 3. Confirm it is either set to public or shared with Alex’s account indiviudally.</p></li>
+<li><p>Your screenshot of the query you constructed against your own layer’s REST endpoint, and its result (Step 4).</p></li>
 <li><p>A short written reflection (4-6 sentences) answering:</p>
 <ul class="simple">
-<li><p>Walk through, in your own words, what happened between your Python cell and AGOL for that query. What was requested, and what came back? Hang onto this output. You’ll compare it to a WFS pull in Lab 2.</p></li>
+<li><p>Walk through, in your own words, what you asked your layer’s REST endpoint for and what came back. Hang onto this. You’ll compare it to a WFS pull in Lab 2.</p></li>
 <li><p>Revisit <strong>EQ2</strong>. What did you gain by publishing through a hosted platform like AGOL, and what do you expect you’d give up on a self-hosted setup instead? Be specific. Don’t just say “convenience” in the abstract; name <em>what</em> became easier and <em>what</em> you think you lose control over. (You’ll find out for real in Lab 2.)</p></li>
-<li><p>Explain the sharing level you chose for Screenshot 4. What could go wrong if you’d chosen a more open setting, and for whom? What would you lose by choosing a more restrictive one?</p></li>
-<li><p>What’s one thing that didn’t work smoothly today, and what was your first troubleshooting move: docs, a web search of the exact error, or the course discussion board? <em>(K16)</em></p></li>
+<li><p>Explain the sharing level you chose for Screenshot 3 (Private, the GISS 366 group, Organization, or Public). What could go wrong if you’d chosen a more open setting, and for whom? What would you lose by choosing a more restrictive one?</p></li>
+<li><p>What’s one thing that didn’t work smoothly today, and what was your first troubleshooting move: docs, a web search of the exact error, or the course discussion board?</p></li>
 </ul>
 </li>
 </ol>
@@ -778,12 +722,12 @@ Error detail: 400 Client Error: Bad Request for url: https://services.arcgis.com
 <h3>Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)<a class="headerlink" href="#project-topic-ideation-a-checkpoint-low-stakes-not-graded-on-idea-quality" title="Link to this heading">#</a></h3>
 <p>In 2-3 sentences each:</p>
 <ul class="simple">
-<li><p>What place are you drawn to for your final project? It doesn’t need to be Grant County or anything geospatial you’ve worked with in this course. It can be anywhere that matters to you.</p></li>
-<li><p>Who’s the audience for a web map of that place, and who is deliberately <em>not</em> the audience?</p></li>
+<li><p>What place or idea are you drawn to for your final project? It doesn’t need to be Grant County or anything geospatial you’ve worked with in this course. It can be anywhere or anything that matters to you.</p></li>
+<li><p>Who’s the audience for a web map or web geospatial application of that place, and who is deliberately <em>not</em> the audience?</p></li>
 <li><p>What’s one question that audience might actually want a map to answer for them?</p></li>
 </ul>
 <p>You’ll revisit this in <strong>Topic Ideation B</strong> (Week 5), once you’ve got more of the toolkit under your belt.</p>
-<p>Post your screenshots, code output, and reflection to this week’s submission space in Canvas.</p>
+<p>Post your web map link, screenshot, and reflection to this week’s submission space in Canvas.</p>
 </section>
 <section id="looking-ahead">
 <h3>Looking Ahead<a class="headerlink" href="#looking-ahead" title="Link to this heading">#</a></h3>
@@ -798,9 +742,94 @@ Error detail: 400 Client Error: Bad Request for url: https://services.arcgis.com
 <li><p>ArcGIS Online: Share your map (Esri documentation): <a class="reference external" href="https://doc.arcgis.com/en/arcgis-online/share-maps/share-map.htm">https://doc.arcgis.com/en/arcgis-online/share-maps/share-map.htm</a></p></li>
 <li><p>ArcGIS REST API, Feature Service: <a class="reference external" href="https://developers.arcgis.com/rest/services-reference/enterprise/feature-service/">https://developers.arcgis.com/rest/services-reference/enterprise/feature-service/</a></p></li>
 <li><p>NM RGIS Clearinghouse: <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geopandas</span></code> documentation: <a class="reference external" href="https://geopandas.org/">https://geopandas.org/</a></p></li>
 </ul>
 </section>
+</section>
+<hr class="docutils" />
+<section id="appendix-optional-extension-your-hosted-feature-layer-in-maplibre-optional-not-required">
+<h2>Appendix: Optional Extension: Your Hosted Feature Layer in MapLibre (Optional, Not Required)<a class="headerlink" href="#appendix-optional-extension-your-hosted-feature-layer-in-maplibre-optional-not-required" title="Link to this heading">#</a></h2>
+<p>In Lab 0, you built <code class="docutils literal notranslate"><span class="pre">test_map.html</span></code>: a MapLibre page showing a basemap and one hardcoded marker. This extension modifies that same file to pull your own hosted feature layer straight out of AGOL’s REST endpoint and draw it as real points on the map, no AGOL interface involved at all.</p>
+<p>This is optional, ungraded, and not required to complete Lab 1. It’s here for anyone who wants another hands-on look at the open-source pathway before Lab 2.</p>
+<p><strong>One requirement:</strong> a browser fetching your layer directly like this needs to reach it without logging in, so your layer has to be shared <strong>Public</strong>. Group and Organization sharing won’t work here since the request carries no AGOL credentials. If you chose a more restrictive sharing level in Step 3 for good reasons, that’s a legitimate call. Skip this extension, or just describe in a sentence or two what would need to change for this approach to work instead.</p>
+<details>
+<summary><b>Run it: click to expand</b></summary>
+<ol class="arabic simple">
+<li><p>In your <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder from Lab 0, create a new file named <code class="docutils literal notranslate"><span class="pre">test_map_extension.html</span></code>.</p></li>
+<li><p>Copy the code block below and paste it in. Save the file.</p></li>
+<li><p>Edit the <code class="docutils literal notranslate"><span class="pre">LAYER_URL</span></code> line near the top to match your own layer’s <code class="docutils literal notranslate"><span class="pre">FeatureServer/0</span></code> URL (Item Details page, same one you used in Step 4’s Python cell).</p></li>
+<li><p><strong>Right-click <code class="docutils literal notranslate"><span class="pre">test_map_extension.html</span></code> → Open With Live Server.</strong></p></li>
+<li><p>Your points should appear on the map. Click one to see its attributes in a popup.</p></li>
+<li><p>If nothing loads, open Dev Tools → Console. A <code class="docutils literal notranslate"><span class="pre">403</span></code> or CORS error almost always means the layer isn’t shared Public yet.</p></li>
+</ol>
+</details>
+<p><strong>Copy this into <code class="docutils literal notranslate"><span class="pre">test_map_extension.html</span></code>:</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>GISS 366 - Lab 1 Extension - MapLibre + Your Hosted Feature Layer<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">#</span><span class="nn">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vw</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="c1">// Paste your own layer&#39;s FeatureServer/0 URL below.</span>
+<span class="w">    </span><span class="c1">// Find it on your layer&#39;s Item Details page in AGOL, under &quot;URL&quot;.</span>
+<span class="w">    </span><span class="c1">// The layer must be shared Public for this to work.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">LAYER_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;[add your URL here]&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">QUERY_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">LAYER_URL</span><span class="si">}</span><span class="sb">/query?where=1=1&amp;outFields=*&amp;f=geojson`</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://tiles.openfreemap.org/styles/liberty&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// &lt;-- swap this string if you&#39;d like</span>
+<span class="w">      </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">108.2803</span><span class="p">,</span><span class="w"> </span><span class="mf">32.7701</span><span class="p">],</span><span class="w"> </span><span class="c1">// &lt;-- our test map was centered on Silver City, you may need to change these coords.</span>
+<span class="w">      </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
+
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">QUERY_URL</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">geojson</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s1">&#39;my-layer&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;geojson&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">geojson</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">          </span><span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my-layer-points&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;circle&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;my-layer&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">paint</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="s1">&#39;circle-radius&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span>
+<span class="w">              </span><span class="s1">&#39;circle-color&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#2563eb&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="s1">&#39;circle-stroke-width&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">              </span><span class="s1">&#39;circle-stroke-color&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#ffffff&#39;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">});</span>
+
+<span class="w">          </span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;my-layer-points&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">features</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">properties</span><span class="p">;</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">props</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;b&gt;</span><span class="si">${</span><span class="nx">k</span><span class="si">}</span><span class="sb">&lt;/b&gt;: </span><span class="si">${</span><span class="nx">v</span><span class="si">}</span><span class="sb">`</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">);</span>
+<span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">Popup</span><span class="p">()</span>
+<span class="w">              </span><span class="p">.</span><span class="nx">setLngLat</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">lngLat</span><span class="p">)</span>
+<span class="w">              </span><span class="p">.</span><span class="nx">setHTML</span><span class="p">(</span><span class="nx">rows</span><span class="p">)</span>
+<span class="w">              </span><span class="p">.</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="w">          </span><span class="p">});</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Could not load your layer.&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">          </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Could not load your layer. Confirm LAYER_URL is correct and the layer is shared Public.&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="appendix-publishing-without-an-organizational-account-optional-not-required">
@@ -882,13 +911,12 @@ Error detail: 400 Client Error: Bad Request for url: https://services.arcgis.com
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 1</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#esri-and-the-arcgis-online-environment-hosted-feature-layer-poi-webmap">ESRI and the ArcGIS Online Environment: Hosted Feature Layer + POI Webmap</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-we-re-working-silver-city-and-southwestern-new-mexico">Where We’re Working: Silver City and Southwestern New Mexico</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-notebook-is-organized">How This Notebook Is Organized</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-today-s-two-deliverables">A Note on Today’s Two Deliverables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect-data">Step 2: Collect Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
@@ -898,6 +926,7 @@ Error detail: 400 Client Error: Bad Request for url: https://services.arcgis.com
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-optional-extension-your-hosted-feature-layer-in-maplibre-optional-not-required">Appendix: Optional Extension: Your Hosted Feature Layer in MapLibre (Optional, Not Required)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-publishing-without-an-organizational-account-optional-not-required">Appendix: Publishing Without an Organizational Account (Optional, Not Required)</a></li>
 </ul>
 </li>
