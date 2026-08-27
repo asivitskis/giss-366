@@ -88,8 +88,10 @@ Now publish your own dataset and turn it into a readable, styled map.
 
 1. From **Content**, click **New item → Your device**, and select the file you gathered in Step 2 (zipped shapefile or CSV).
 2. If you uploaded a CSV with address fields instead of lat/long, AGOL will prompt you to geocode it. Otherwise, it should detect the coordinate fields automatically. Confirm the field mapping looks right.
-3. Give the layer a clear title, including your name or initials (for example, `POI_nm_earthquakes_asivitskis`), so it's easy to find in a shared organization. Click **Publish → Hosted Feature Layer**.
-4. Open the new layer in **Map Viewer**.
+3. Give the layer a clear title, with the following format `Lab 01 - [layer name] - [yourname]`, so it is easy to find in our share organization. For example, our demonstration earthquake layer is named `Lab 01 - NM Earthquakes - Asivitskis`.  
+4. Click **Publish → Hosted Feature Layer**.
+5. Share this hosted feature service with the `GISS 366/566 Fall 2026` Group (if you are OK sharing this data with classmates).
+6. Open the new layer in **Map Viewer**.
 
 </details>
 
