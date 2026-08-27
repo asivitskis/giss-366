@@ -162,6 +162,85 @@ Let's actually create some products to share our data. First, you'll create a sh
 
 Post your web map link, screenshot, and reflection to this week's submission space in Canvas.
 
+---
+
+## Lab 01 Rubric (40 pts)
+
+Grading applies **only** to the three graded submission items above (web map link + sharing, REST endpoint query screenshot, and written reflection). Project Topic Ideation A is required but is **not graded** on idea quality.
+
+<table style="font-size:0.85em;">
+<thead>
+<tr>
+<th style="text-align:left; width:14%;">Score Band</th>
+<th style="text-align:left;">What It Looks Like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Exceptional (7–8)</b></td>
+<td>Exceeding expectations; indicates mastery; in-depth understanding; higher-order thinking; inferences and extensions of learning objectives that go beyond what was taught; truly superb effort.</td>
+</tr>
+<tr>
+<td><b>Proficient (5–6)</b></td>
+<td>Meeting expectations; application of concepts; independently demonstrates understanding and thorough competency of learning objectives explicitly taught.</td>
+</tr>
+<tr>
+<td><b>Developing (3–4)</b></td>
+<td>Approaching expectations; demonstration of basic understanding without application and understanding of more complex ideas and processes; meets minimum requirements for satisfactory learning.</td>
+</tr>
+<tr>
+<td><b>Insufficient (1–2)</b></td>
+<td>Below expectations; partial or no demonstration of understanding and progress toward learning objectives; major errors and omissions present; inadequate for competency.</td>
+</tr>
+</tbody>
+</table>
+
+<br>
+
+<table style="font-size:0.85em;">
+<thead>
+<tr>
+<th style="text-align:left; width:46%;">Criteria</th>
+<th style="text-align:left; width:30%;">Comments</th>
+<th style="text-align:center; width:8%;">Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Content:</b> The hosted feature layer's web map link and REST endpoint query screenshot are both complete and correctly executed. The map link works and is shared at an appropriate level (Public, or Private plus shared with Alex), and the screenshot shows a correctly constructed query against the student's own layer, including the specific field queried and the result of setting "return county only" to true.</td>
+<td></td>
+<td style="text-align:center;"> / 8</td>
+</tr>
+<tr>
+<td><b>Content:</b> The written reflection completely and directly answers all four prompts: what was queried at the REST endpoint and what came back (including the "return county only" behavior), the sharing-level choice and its tradeoffs, a specific troubleshooting moment and method, and a genuine future use case. The response shows real understanding, with specific detail and reasoning behind it.</td>
+<td></td>
+<td style="text-align:center;"> / 8</td>
+</tr>
+<tr>
+<td><b>Process:</b> Symbology, popup configuration (field visibility, aliases, ordering), and basemap choice for the hosted feature layer reflect the student's own deliberate reasoning. Choices are explained or evident, not left as untouched defaults, and demonstrate independent, competent application of the AGOL publishing and styling workflow taught in the lab.</td>
+<td></td>
+<td style="text-align:center;"> / 8</td>
+</tr>
+<tr>
+<td><b>Process:</b> The reflection is evidence-based and specific, grounded in the student's actual query results and REST endpoint behavior. It draws an explicit, reasoned connection between the chosen sharing level and its real consequences or tradeoffs (EQ2), treating Steps 3 and 4 as connected parts of one workflow.</td>
+<td></td>
+<td style="text-align:center;"> / 8</td>
+</tr>
+<tr>
+<td><b>Product:</b> The web map link, REST endpoint screenshot, and written reflection are submitted in the requested format. Work is professionally presented, clearly organized and labeled, fully functional (link opens without error, screenshot is legible and shows the query results), and free of errors.</td>
+<td></td>
+<td style="text-align:center;"> / 8</td>
+</tr>
+<tr>
+<td style="text-align:right;"><b>Total</b></td>
+<td></td>
+<td style="text-align:center;"><b> / 40</b></td>
+</tr>
+</tbody>
+</table>
+
+---
+
 #### Project Topic Ideation A (checkpoint: low-stakes, not graded on idea quality)
 
 In 2-3 sentences each:
