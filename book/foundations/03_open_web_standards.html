@@ -504,10 +504,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoserver-as-an-ogc-implementation">3.4. GeoServer as an OGC Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consuming-services-in-arcgis-online">3.5. Consuming Services in ArcGIS Online</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">3.5.1. 5-minute discussion (breakout or whole-class)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-three-mystery-layers">3.5.2. In-Class Exercise: Three Mystery Layers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">3.6. Readings &amp; Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-publishing-consuming-a-wms-wfs">3.7. Lab 2: Publishing &amp; Consuming a WMS/WFS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-prep-before-thursday">3.8. Optional Prep: Before Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-explore-the-mrlc-geoserver-web-interface-1015-min">3.8.1. Exercise 1: Explore the MRLC GeoServer Web Interface (10–15 min)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-getcapabilities-scavenger-hunt-10-min">3.8.2. Exercise 2: GetCapabilities Scavenger Hunt (10 min)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-scout-your-lab-2-dataset-1015-min">3.8.3. Exercise 3: Scout Your Lab 2 Dataset (10–15 min)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-check-your-dataset-s-coordinate-system-5-min-only-if-you-did-exercise-3">3.8.4. Exercise 4: Check Your Dataset’s Coordinate System (5 min, only if you did Exercise 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-geoserver-s-own-getting-started-page-10-min">3.8.5. Exercise 5: GeoServer’s Own “Getting Started” Page (10 min)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -625,6 +634,9 @@ document.write(`
 <blockquote>
 <div><p><strong>Looking ahead:</strong> WMS/WFS/WMTS are the standards that made “any client can talk to any server” possible in the first place, and GeoServer remains a dominant way to stand up self-hosted, enterprise-grade OGC services today, for live databases, frequently-updated data, or organizations that need a queryable service rather than a static file. But the OGC family itself has kept evolving: the newer <strong>OGC API</strong> suite (OGC API - Features, OGC API - Tiles) re-expresses these same ideas as simpler REST/JSON APIs, and, running in parallel to services entirely, <strong>cloud-native formats</strong> like vector tiles, PMTiles, and COGs let a browser fetch exactly the bytes it needs straight from static storage, with no server running at all. We’ll dig into that shift in Week 6. Think of this week as the <em>why standards let systems interoperate</em> lesson; Week 6 is the <em>here’s where serving static, cloud-native data is heading</em> lesson. Understanding WMS/WFS first gives you the vocabulary to see clearly what the cloud-native approach is actually trading away (a live, queryable server) for what it gains (near-zero hosting cost, no server to maintain).</p>
 </div></blockquote>
+<blockquote>
+<div><p><strong>A caution worth naming:</strong> part of the pressure toward cloud-native and managed platforms isn’t just cost or convenience, it’s security. GeoServer runs on a Java web container (Tomcat), and self-hosted instances have been a real target for exploits in recent years; keeping one patched takes ongoing, specialized attention that not every organization can staff. That’s a legitimate reason the market is shifting, and it’s worth watching, not dismissing. But the protocol still outlives the backend: an agency that migrates away from GeoServer toward ArcGIS Enterprise, a managed host, or something else entirely will very likely still expose WMS/WFS, because that’s the compatibility layer everyone else’s software expects. And plenty of deep, high-stakes GIS infrastructure (think USGS, NOAA) isn’t migrating off GeoServer anytime soon. Read the “is GeoServer dying” discourse with that in mind: the backend is genuinely in flux, but the standard you’re learning this week is the part likeliest to still be there in five years.</p>
+</div></blockquote>
 </section>
 <section id="consuming-services-in-arcgis-online">
 <h2><span class="section-number">3.5. </span>Consuming Services in ArcGIS Online<a class="headerlink" href="#consuming-services-in-arcgis-online" title="Link to this heading">#</a></h2>
@@ -637,8 +649,17 @@ document.write(`
 <li><p>If GeoServer requires a server that’s always running, and Week 6’s cloud-native formats need only static storage, what’s the tradeoff an organization is actually making when it picks one over the other? (Revisit this one after Week 6 and see if your answer changes.)</p></li>
 </ol>
 </section>
-</section>
 <hr class="docutils" />
+<section id="in-class-exercise-three-mystery-layers">
+<h3><span class="section-number">3.5.2. </span>In-Class Exercise: Three Mystery Layers<a class="headerlink" href="#in-class-exercise-three-mystery-layers" title="Link to this heading">#</a></h3>
+<p>Small groups, one URL each. In ArcGIS Online: <strong>Add → Add Layer from URL</strong>, paste the URL, let AGOL auto-detect the service type, then <strong>Next</strong> and pick a layer. Only toggle “use as basemap” if you actually want it as one. For each layer, groups report back on: what AGOL named the layer, whether clicking a feature returns real attribute data or just an image, what the data shows and who’d want it, and what would happen if someone tried to open the same link in a different mapping program.</p>
+<ol class="arabic simple">
+<li><p><strong>WMS</strong> — <code class="docutils literal notranslate"><span class="pre">https://www.mrlc.gov/geoserver/ows?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</span></code></p></li>
+<li><p><strong>WFS</strong> — <code class="docutils literal notranslate"><span class="pre">https://www.mrlc.gov/geoserver/ows?service=WFS&amp;acceptversions=2.0.0&amp;request=GetCapabilities</span></code></p></li>
+<li><p><strong>WMTS</strong> — <code class="docutils literal notranslate"><span class="pre">https://www.mrlc.gov/geoserver/gwc/service/wmts?service=WMTS&amp;acceptVersions=1.0.0&amp;request=GetCapabilities</span></code></p></li>
+</ol>
+</section>
+</section>
 <section id="readings-resources">
 <h2><span class="section-number">3.6. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -653,6 +674,31 @@ document.write(`
 <section id="lab-2-publishing-consuming-a-wms-wfs">
 <h2><span class="section-number">3.7. </span>Lab 2: Publishing &amp; Consuming a WMS/WFS<a class="headerlink" href="#lab-2-publishing-consuming-a-wms-wfs" title="Link to this heading">#</a></h2>
 <p>See <a class="reference internal" href="#../labs/lab_02.md"><span class="xref myst">Lab 2</span></a>.</p>
+</section>
+<section id="optional-prep-before-thursday">
+<h2><span class="section-number">3.8. </span>Optional Prep: Before Thursday<a class="headerlink" href="#optional-prep-before-thursday" title="Link to this heading">#</a></h2>
+<p>None of what follows is graded, and none of it will be assumed knowledge in Lab 2. If you want more comfortable footing before Thursday’s hands-on publish sprint, pick whichever of these feels useful.</p>
+<section id="exercise-1-explore-the-mrlc-geoserver-web-interface-1015-min">
+<h3><span class="section-number">3.8.1. </span>Exercise 1: Explore the MRLC GeoServer Web Interface (10–15 min)<a class="headerlink" href="#exercise-1-explore-the-mrlc-geoserver-web-interface-1015-min" title="Link to this heading">#</a></h3>
+<p>Visit the <a class="reference external" href="https://www.mrlc.gov/geoserver/web/">MRLC GeoServer landing page</a> and browse the layer list. Click Layer Preview on a layer you didn’t touch in class and open it in OpenLayers. What does it show? Is it the same kind of data you tested in the Explore activity, or something different? This is the same style of public interface, though read-only, that you’ll be navigating pieces of on our class instance Thursday.</p>
+</section>
+<section id="exercise-2-getcapabilities-scavenger-hunt-10-min">
+<h3><span class="section-number">3.8.2. </span>Exercise 2: GetCapabilities Scavenger Hunt (10 min)<a class="headerlink" href="#exercise-2-getcapabilities-scavenger-hunt-10-min" title="Link to this heading">#</a></h3>
+<p>On the Layer Preview page, pick a layer you didn’t use in class and note its exact name (it looks like <code class="docutils literal notranslate"><span class="pre">workspace:layername</span></code>). Then open the WMS GetCapabilities URL from the worksheet. Clicking WMS on the landing page returns one long document listing every layer on the server, not just one, so use your browser’s find function (Ctrl+F, or Cmd+F on Mac) and search for the layer name you wrote down. That drops you into the <code class="docutils literal notranslate"><span class="pre">&lt;Layer&gt;</span></code> block for your specific layer, where you’ll find its <code class="docutils literal notranslate"><span class="pre">&lt;Title&gt;</span></code> and its <code class="docutils literal notranslate"><span class="pre">&lt;BoundingBox&gt;</span></code>. The list of supported output formats, by contrast, isn’t inside each layer’s block; it’s listed once near the top of the document under <code class="docutils literal notranslate"><span class="pre">&lt;GetMap&gt;&lt;Format&gt;</span></code>, and applies to every layer on the server.</p>
+<p>Stretch goal: edit the URL, swap <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> for <code class="docutils literal notranslate"><span class="pre">GetMap</span></code>, add a bounding box parameter, and watch the response change from a menu to an actual picture. You’ll be reading this exact document structure, generated by our own server this time, during Thursday’s read-along.</p>
+</section>
+<section id="exercise-3-scout-your-lab-2-dataset-1015-min">
+<h3><span class="section-number">3.8.3. </span>Exercise 3: Scout Your Lab 2 Dataset (10–15 min)<a class="headerlink" href="#exercise-3-scout-your-lab-2-dataset-1015-min" title="Link to this heading">#</a></h3>
+<p>If you haven’t already, browse the NM RGIS Clearinghouse and download a small vector dataset for Grant County or the Gila as a shapefile. Trails, fire perimeters, or public land boundaries are good choices. Note what actually downloads: a shapefile is really several files (<code class="docutils literal notranslate"><span class="pre">.shp</span></code>, <code class="docutils literal notranslate"><span class="pre">.shx</span></code>, <code class="docutils literal notranslate"><span class="pre">.dbf</span></code>, <code class="docutils literal notranslate"><span class="pre">.prj</span></code> at minimum). Can you find all of them once you unzip it? Thursday’s Store step expects exactly this file set, so finding it now means less digging mid-lab.</p>
+</section>
+<section id="exercise-4-check-your-dataset-s-coordinate-system-5-min-only-if-you-did-exercise-3">
+<h3><span class="section-number">3.8.4. </span>Exercise 4: Check Your Dataset’s Coordinate System (5 min, only if you did Exercise 3)<a class="headerlink" href="#exercise-4-check-your-dataset-s-coordinate-system-5-min-only-if-you-did-exercise-3" title="Link to this heading">#</a></h3>
+<p>Open your downloaded shapefile in QGIS, or any GIS software you have, and find its coordinate reference system in the layer properties. Jot down what it is. You’ll need to set the Declared SRS to match it on Thursday.</p>
+</section>
+<section id="exercise-5-geoserver-s-own-getting-started-page-10-min">
+<h3><span class="section-number">3.8.5. </span>Exercise 5: GeoServer’s Own “Getting Started” Page (10 min)<a class="headerlink" href="#exercise-5-geoserver-s-own-getting-started-page-10-min" title="Link to this heading">#</a></h3>
+<p>Skim <a class="reference external" href="https://docs.geoserver.org/latest/en/user/gettingstarted/index.html">GeoServer’s Getting Started documentation</a>. You’ll see the same store, layer, style, and workspace vocabulary from tonight’s lecture, described from GeoServer’s own point of view.</p>
+</section>
 </section>
 </section>
 
@@ -726,10 +772,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoserver-as-an-ogc-implementation">3.4. GeoServer as an OGC Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consuming-services-in-arcgis-online">3.5. Consuming Services in ArcGIS Online</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">3.5.1. 5-minute discussion (breakout or whole-class)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-three-mystery-layers">3.5.2. In-Class Exercise: Three Mystery Layers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">3.6. Readings &amp; Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-2-publishing-consuming-a-wms-wfs">3.7. Lab 2: Publishing &amp; Consuming a WMS/WFS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-prep-before-thursday">3.8. Optional Prep: Before Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-explore-the-mrlc-geoserver-web-interface-1015-min">3.8.1. Exercise 1: Explore the MRLC GeoServer Web Interface (10–15 min)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-getcapabilities-scavenger-hunt-10-min">3.8.2. Exercise 2: GetCapabilities Scavenger Hunt (10 min)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-scout-your-lab-2-dataset-1015-min">3.8.3. Exercise 3: Scout Your Lab 2 Dataset (10–15 min)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-check-your-dataset-s-coordinate-system-5-min-only-if-you-did-exercise-3">3.8.4. Exercise 4: Check Your Dataset’s Coordinate System (5 min, only if you did Exercise 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-geoserver-s-own-getting-started-page-10-min">3.8.5. Exercise 5: GeoServer’s Own “Getting Started” Page (10 min)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
