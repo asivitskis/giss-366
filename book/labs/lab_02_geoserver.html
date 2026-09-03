@@ -547,17 +547,17 @@ document.write(`
 <hr class="docutils" />
 <section id="where-we-re-working-silver-city-southwestern-new-mexico">
 <h2>Where We’re Working: Silver City &amp; Southwestern New Mexico<a class="headerlink" href="#where-we-re-working-silver-city-southwestern-new-mexico" title="Link to this heading">#</a></h2>
-<p>Same shared region as Lab 1: Silver City, Grant County, and the Gila National Forest, pulled from the <strong>NM RGIS Clearinghouse</strong> (<a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a>). Last week you published a hosted feature layer directly into ArcGIS Online. This week you’re standing on the other side of that same doorway, publishing into a server your instructor runs, then bringing that layer back into the same ArcGIS Online you already know.</p>
+<p>Same shared region as Lab 1: Silver City, Grant County, and the Gila National Forest, pulled from the <strong>NM RGIS Clearinghouse</strong> (<a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a>). Last week you published a hosted feature layer directly into ArcGIS Online. This week you’re standing on the other side of that same doorway, publishing into a server that is run explicitly for your class, then bringing that layer back into the same ArcGIS Online you already know.</p>
 </section>
 <section id="learning-goals">
 <h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p>By the end of this lab, you will be able to:</p>
 <ul class="simple">
-<li><p>Explain why an open standard like WMS/WFS lets a self-hosted server and a proprietary platform interoperate <em>(K02)</em></p></li>
-<li><p>Stand up a workspace on a live GeoServer instance and publish a real dataset as a WMS and a WFS layer <em>(S02)</em></p></li>
-<li><p>Consume that published layer from an open-source client and from the ArcGIS Online you used in Lab 1, and explain what does or doesn’t work about each <em>(K01, K02)</em></p></li>
-<li><p>Read a <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document and connect it to what you saw in lecture <em>(K02)</em></p></li>
-<li><p>Compare this self-hosted publishing experience to Lab 1’s hosted one and articulate what each trades away <em>(K02)</em></p></li>
+<li><p>Explain why an open standard like WMS/WFS lets a self-hosted server and a proprietary platform interoperate.</p></li>
+<li><p>Stand up a workspace on a live GeoServer instance and publish a real dataset as a WMS and a WFS layer.</p></li>
+<li><p>Consume that published layer from an open-source client and from the ArcGIS Online you used in Lab 1, and explain what does or doesn’t work about each.</p></li>
+<li><p>Read a <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document and connect it to what you saw in lecture.</p></li>
+<li><p>Compare this self-hosted publishing experience to Lab 1’s hosted one and articulate what each trades away.</p></li>
 </ul>
 </section>
 <section id="how-this-notebook-is-organized">
@@ -586,17 +586,22 @@ document.write(`
 <td><p>Download from NM RGIS Clearinghouse</p></td>
 <td><p>The data you’ll publish today</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>ArcGIS Online</strong></p></td>
+<tr class="row-even"><td><p><strong>Class shapefile upload page</strong></p></td>
+<td><p>Provided by instructor (same droplet)</p></td>
+<td><p>No: you’ll log in with the same class credentials</p></td>
+<td><p>Getting your zipped shapefile from your laptop onto the server, before you publish it in GeoServer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ArcGIS Online</strong></p></td>
 <td><p>Provided via WNMU organizational account</p></td>
 <td><p>None</p></td>
 <td><p>Consuming your published service, the same platform you published to in Lab 1</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>QGIS</strong> <em>(optional but recommended)</em></p></td>
+<tr class="row-even"><td><p><strong>QGIS</strong> <em>(optional but recommended)</em></p></td>
 <td><p>Free</p></td>
 <td><p><a class="reference external" href="https://qgis.org/download/">https://qgis.org/download/</a></p></td>
 <td><p>Handy for inspecting or reprojecting data before you publish it</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>A modern browser with Dev Tools</strong></p></td>
+<tr class="row-odd"><td><p><strong>A modern browser with Dev Tools</strong></p></td>
 <td><p>Free</p></td>
 <td><p>Already set up in Lab 0</p></td>
 <td><p>Reading <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> and watching WMS/WFS requests</p></td>
@@ -607,6 +612,7 @@ document.write(`
 <p><strong>Links</strong></p>
 <ul class="simple">
 <li><p>Class GeoServer instance: <a class="reference external" href="https://138-68-249-92.sslip.io/geoserver">https://138-68-249-92.sslip.io/geoserver</a></p></li>
+<li><p>Class shapefile upload page: <a class="reference external" href="https://138-68-249-92.sslip.io/upload">https://138-68-249-92.sslip.io/upload</a></p></li>
 <li><p>NM RGIS Clearinghouse: <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a></p></li>
 <li><p>GeoServer public demo (for reference, not what you’ll publish to): <a class="reference external" href="https://data.geoserver.org/geoserver/web/">https://data.geoserver.org/geoserver/web/</a></p></li>
 </ul>
@@ -619,40 +625,36 @@ document.write(`
 <p>Before publishing anything, sit with a couple of questions from lecture.</p>
 <blockquote>
 <div><p><strong>EQ3: What happens elsewhere in this system when I change one part of it, a tile size, a data format, a query, an interface choice, and who ends up reached, or excluded, on the other end?</strong></p>
+<p><strong>Lab 02 Question: How can I publish and access a WFS or WMS layer outside of ArcGIS Online? What can this open-source option do/not do in comparison to the proprietary route?</strong></p>
 </div></blockquote>
 <p>Take a minute and jot down your first-pass answers (edit the cell below):</p>
 <ul class="simple">
 <li><p>If you publish the <em>same</em> dataset as both a WMS and a WFS, what does each version let a user <em>do</em> that the other doesn’t?</p></li>
 <li><p>GeoServer is free to install, but it has to run on a computer that’s on and reachable. ArcGIS Online costs a license, but WNMU is always running it for you, as you already experienced in Lab 1. What does that tradeoff mean for who can realistically stand up a live geospatial service?</p></li>
 </ul>
-<p><strong>Your answers (double-click this cell to edit):</strong></p>
-<ul class="simple">
-<li></li>
-<li></li>
-</ul>
 </section>
 <hr class="docutils" />
 <section id="step-2-collect">
 <h2>Step 2: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
-<p>Log in to the class GeoServer instance and grab a dataset to publish.</p>
+<p>Overview: Log in to the class GeoServer instance for a quick exploration. Then grab a dataset to publish and add to our server.</p>
 <details>
-<summary><b>Open-source pathway: log in to the shared GeoServer instance. Click to expand</b></summary>
+<summary><b>Part 1: Open-source pathway - log in to the shared GeoServer instance. Click to expand</b></summary>
 <ol class="arabic simple">
 <li><p>In your browser, go to the class GeoServer URL your instructor gave you (see Links above).</p></li>
 <li><p>Log in with the credentials provided in class.</p></li>
 <li><p>You should land on the GeoServer welcome page, the same interface anyone running their own instance would see. From here on, everything you do in Steps 3 and 4 is identical to a local install. The only difference is who is keeping the server running.</p></li>
-<li><p><strong>Use your assigned workspace name</strong> for everything you publish today (for example, <code class="docutils literal notranslate"><span class="pre">smith_giss366</span></code>). This is what keeps your layers separate from your classmates’ on the same shared server.</p></li>
+<li><p><strong>Use your assigned workspace name</strong> for everything you publish today (for example, <code class="docutils literal notranslate"><span class="pre">student01_giss366</span></code>). This is what keeps your layers separate from your classmates’ on the same shared server.</p></li>
 </ol>
 <blockquote>
 <div><p>Curious what it takes to run this yourself? A local install path (native binary or Docker) is in the appendix at the end of this notebook if you want to try it outside of class. Not required for this lab.</p>
 </div></blockquote>
 </details>
 <details>
-<summary><b>Get a dataset: NM RGIS Clearinghouse. Click to expand</b></summary>
+<summary><b>Part 2: Get a dataset - NM RGIS Clearinghouse. Click to expand</b></summary>
 <ol class="arabic simple">
 <li><p>Go to <a class="reference external" href="https://rgis.unm.edu/">https://rgis.unm.edu/</a> and search for a small vector dataset covering Grant County or the Gila region. Trails, fire perimeters, and public land boundaries are good, manageable choices.</p></li>
-<li><p>Download it as a <strong>shapefile</strong> (<code class="docutils literal notranslate"><span class="pre">.shp</span></code> and its sidecar files, usually zipped together).</p></li>
-<li><p>Unzip it somewhere you can find it. You’ll upload this into GeoServer in Step 4.</p></li>
+<li><p>Download it as a <strong>shapefile</strong> (<code class="docutils literal notranslate"><span class="pre">.shp</span></code> and its sidecar files, usually zipped together as a single <code class="docutils literal notranslate"><span class="pre">.zip</span></code>).</p></li>
+<li><p><strong>Leave the <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file zipped.</strong> Don’t unzip it yourself — in Step 4 you’ll upload this <code class="docutils literal notranslate"><span class="pre">.zip</span></code> as-is through the class upload page, which unzips it on the server for you.</p></li>
 <li><p><em>(Optional)</em> Open it in QGIS first just to confirm it looks right and note its coordinate reference system (CRS). You’ll need to know this when you publish it.</p></li>
 </ol>
 </details>
@@ -665,15 +667,15 @@ document.write(`
 <details>
 <summary><b>Explore GeoServer's built-in demo layers: click to expand</b></summary>
 <ol class="arabic simple">
-<li><p>From the GeoServer welcome page, click <strong>Layer Preview</strong> in the left sidebar. GeoServer ships with a handful of sample layers (states, populated places, and so on) already published. This is a fast way to see the publish workflow’s <em>output</em> before you’ve built one yourself.</p></li>
+<li><p>From the GeoServer welcome page, click <strong>Layer Preview</strong> in the left sidebar. Our GISS 366 Geoserver already has some demonstration layers from New Mexico published. This is a fast way to see the publish workflow’s <em>output</em> before you’ve built one yourself.</p></li>
 <li><p>Click <strong>OpenLayers</strong> next to any sample layer. This opens an interactive preview, similar to what your own layer will look like once published.</p></li>
-<li><p>Now find that same layer’s <strong>WMS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL</strong>. Click <strong>Layer Preview</strong>, then look for the small format links, or go directly to <code class="docutils literal notranslate"><span class="pre">[GEOSERVER-URL]/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</span></code> (swap in the class server URL). Open it in a new tab.</p></li>
+<li><p>Now find that same layer’s <strong>WMS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL</strong>. Click <strong>Layer Preview</strong>, then look for the small format links, or go directly to <code class="docutils literal notranslate"><span class="pre">https://138-68-249-92.sslip.io/geoserver/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</span></code>. Open it in a new tab.</p></li>
 <li><p>Skim the raw XML. Find the list of <code class="docutils literal notranslate"><span class="pre">&lt;Layer&gt;</span></code> entries (this is the “menu” from lecture; note that on a shared instance, you’ll see <em>everyone’s</em> published layers listed here once your classmates start publishing too) and the supported <code class="docutils literal notranslate"><span class="pre">&lt;Format&gt;</span></code> types for <code class="docutils literal notranslate"><span class="pre">GetMap</span></code>.</p></li>
 <li><p>Now edit that same URL, changing <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> to <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> with a specific layer and bounding box (GeoServer’s Layer Preview page generates one of these for you automatically; click <strong>Common Formats → PNG</strong> to see it in action). Compare: one URL gave you a menu, the other gave you a picture.</p></li>
 </ol>
 </details>
 <p>📸 <strong>Save a screenshot now:</strong> the raw <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> XML with at least one <code class="docutils literal notranslate"><span class="pre">&lt;Layer&gt;</span></code> entry visible. Label it <em>Screenshot 2</em>.</p>
-<p><strong>What you noticed (double-click to edit):</strong></p>
+<p><strong>What you noticed:</strong></p>
 <ul class="simple">
 <li><p>How many layers appeared in the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document?</p></li>
 <li><p>What image formats does <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> support, based on what you saw?</p></li>
@@ -684,114 +686,131 @@ document.write(`
 <h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
 <p>Now publish your own dataset, then try consuming it from both pathways.</p>
 <details>
-<summary><b>Open-source pathway: publish your dataset in GeoServer. Click to expand</b></summary>
+<summary><b>Part 1: Open-source pathway - publish your dataset in GeoServer. Click to expand</b></summary>
+<p>Your dataset gets onto the server in two parts: first you <strong>upload</strong> the zipped shapefile through a small class upload page, then you <strong>import and publish</strong> it inside GeoServer itself. GeoServer’s own file browser only sees files already sitting on the server, so the upload page is what bridges the gap between your laptop and the droplet.</p>
+<p><strong>Part A — Upload your zipped shapefile</strong></p>
 <ol class="arabic simple">
-<li><p>In GeoServer, go to <strong>Stores → Add new Store → Shapefile</strong>. Point it at the shapefile you downloaded in Step 2, assign it to <strong>your assigned workspace</strong> (not a new one; everyone shares the same GeoServer instance, so your workspace is what keeps your layer namespaced to you), and save.</p></li>
-<li><p>GeoServer will detect the layer inside your store and prompt you to <strong>publish</strong> it. Click <strong>Publish</strong>.</p></li>
-<li><p>On the layer configuration page:</p>
+<li><p>Go to the class upload page (see Links above): <code class="docutils literal notranslate"><span class="pre">https://138-68-249-92.sslip.io/upload</span></code></p></li>
+<li><p>Log in with the same shared class credentials you used for GeoServer.</p></li>
+<li><p>Type <strong>your assigned workspace name</strong>, exactly as it appears in GeoServer (for example, <code class="docutils literal notranslate"><span class="pre">student01_giss366</span></code>) — this determines where your file lands on the server, so a typo here means GeoServer won’t be able to find it in Part B.</p></li>
+<li><p>Choose your zipped shapefile (the <code class="docutils literal notranslate"><span class="pre">.zip</span></code> from Step 2 — still zipped, don’t unzip it yourself) and click <strong>Upload</strong>.</p></li>
+</ol>
+<p><strong>Part B — Import and publish it in GeoServer</strong></p>
+<ol class="arabic simple">
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">https://138-68-249-92.sslip.io/geoserver</span></code> and log in.</p></li>
+<li><p>Go to <strong>Import Data → Spatial Files</strong>.</p></li>
+<li><p>Click <strong>Browse</strong> next to the data directory field and navigate: <strong>uploads → [your workspace] → [your file’s folder]</strong> (the folder will be named after your zip file, minus <code class="docutils literal notranslate"><span class="pre">.zip</span></code>). Make sure to not click any of the files within the folder, just be in the folder where the files are visible. Select it, then click <strong>Next</strong>.</p></li>
+<li><p>GeoServer will detect the shapefile inside; check the box next to it, confirm the target workspace matches <strong>your assigned workspace</strong>, and click <strong>Import</strong>.</p></li>
+<li><p>On the layer configuration page that follows:</p>
 <ul class="simple">
 <li><p>Under <strong>Data</strong>, set the <strong>Declared SRS</strong> to match your data’s CRS (QGIS told you this in Step 2, if you checked) and click <strong>Compute from data</strong> for the bounding boxes.</p></li>
 <li><p>Under <strong>Publishing</strong>, note the default style applied. You can leave it, or explore GeoServer’s built-in styles for something more legible (for example, a line style if your data is trails).</p></li>
 </ul>
 </li>
 <li><p>Save. Go back to <strong>Layer Preview</strong>, find your new layer (filter by your workspace name if the list is long; remember, everyone in class is publishing to the same server), and open it in <strong>OpenLayers</strong> to confirm it renders.</p></li>
-<li><p>Your layer is now live as <strong>both</strong> WMS and WFS, automatically. Find both endpoints:</p>
-<ul class="simple">
-<li><p>WMS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code>: <code class="docutils literal notranslate"><span class="pre">[GEOSERVER-URL]/[your-workspace]/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</span></code></p></li>
-<li><p>WFS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code>: <code class="docutils literal notranslate"><span class="pre">[GEOSERVER-URL]/[your-workspace]/wfs?service=WFS&amp;version=2.0.0&amp;request=GetCapabilities</span></code></p></li>
-</ul>
-</li>
+<li><p>Your layer is now live as <strong>both</strong> WMS and WFS, automatically. Find both endpoints:</p></li>
 </ol>
+<ul class="simple">
+<li><p>WMS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code>: <code class="docutils literal notranslate"><span class="pre">https://138-68-249-92.sslip.io/geoserver/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</span></code></p></li>
+<li><p>WFS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code>: <code class="docutils literal notranslate"><span class="pre">https://138-68-249-92.sslip.io/geoserver/wfs?service=WFS&amp;version=2.0.0&amp;request=GetCapabilities</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><strong>If the shapefile doesn’t appear when you Browse:</strong> double-check the workspace name you typed on the upload page (Part A, step 3) exactly matches your GeoServer workspace name — a mismatch is the most common cause.</p>
+</div></blockquote>
 </details>
 <p>📸 <strong>Save a screenshot now:</strong> your published layer rendering in GeoServer’s OpenLayers preview. Label it <em>Screenshot 3</em>.</p>
 <details>
-<summary><b>Consume your WFS from Python: click to expand</b></summary>
-<p>Run the code cell below (edit the URL first to match your workspace and layer name) to pull your own published features straight out of GeoServer as GeoJSON, no GeoServer preview page involved, just the raw WFS request.</p>
-</details>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Consume your own published WFS layer directly, the way any client would</span>
-<span class="c1"># Edit GEOSERVER_URL, WORKSPACE, and LAYER_NAME to match what you published above.</span>
-
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-
-<span class="n">GEOSERVER_URL</span> <span class="o">=</span> <span class="s2">&quot;link&quot;</span>  <span class="c1"># &lt;-- change to the class server URL</span>
-<span class="n">WORKSPACE</span> <span class="o">=</span> <span class="s2">&quot;your_workspace&quot;</span>   <span class="c1"># &lt;-- change to your assigned workspace name</span>
-<span class="n">LAYER_NAME</span> <span class="o">=</span> <span class="s2">&quot;your_layer&quot;</span>      <span class="c1"># &lt;-- change to your published layer name</span>
-
-<span class="n">wfs_url</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">GEOSERVER_URL</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">WORKSPACE</span><span class="si">}</span><span class="s2">/ows&quot;</span>
-    <span class="sa">f</span><span class="s2">&quot;?service=WFS&amp;version=2.0.0&amp;request=GetFeature&quot;</span>
-    <span class="sa">f</span><span class="s2">&quot;&amp;typeName=</span><span class="si">{</span><span class="n">WORKSPACE</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">LAYER_NAME</span><span class="si">}</span><span class="s2">&amp;outputFormat=application/json&quot;</span>
-<span class="p">)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wfs_url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-    <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pulled </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span><span class="si">}</span><span class="s2"> features straight from your own WFS endpoint.&quot;</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-    <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t reach the WFS endpoint yet. Confirm the class GeoServer URL is correct and the&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;workspace/layer names above match what you published, then re-run this cell.&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error detail: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Couldn&#39;t reach the WFS endpoint yet. Confirm the class GeoServer URL is correct and the
-workspace/layer names above match what you published, then re-run this cell.
-Error detail: No connection adapters were found for &#39;link/your_workspace/ows?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;typeName=your_workspace:your_layer&amp;outputFormat=application/json&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<details>
-<summary><b>Proprietary pathway: consume it from ArcGIS Online. Click to expand</b></summary>
+<summary><b>Part 2: Proprietary pathway - consume it in ArcGIS Online. Click to expand</b></summary>
 <ol class="arabic simple">
-<li><p>In ArcGIS Online, the same environment you published a hosted feature layer to in Lab 1, open Map Viewer and choose <strong>Add → Add Layer from Web</strong>.</p></li>
-<li><p>Choose <strong>WMS OGC Web Service</strong> (or <strong>WFS</strong>, if you’d rather bring in features instead of an image), and paste in your <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL from Step 4.</p></li>
+<li><p>In ArcGIS Online, the same environment you published a hosted feature layer to in Lab 1 and practiced connecting to live services with in class, open Map Viewer and choose <strong>Add → Add Layer from Web</strong>.</p></li>
+<li><p>Paste in your <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL from above. Choose <strong>WMS OGC Web Service</strong> (or <strong>WFS</strong>, if you’d rather bring in features instead of an image).</p></li>
 <li><p>Because this is a real, always-on server rather than something running on your own laptop, this should actually connect. AGOL will parse the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> document, list your published layer(s), and let you add one to the map.</p></li>
+<li><p>Visualize the layer that you published on ArcGIS Online. If you selected WFS, practice changing the symbology. If you selected WMS, consider why and how you can’t change any of these settings.</p></li>
 </ol>
 <p><strong>If it doesn’t connect on the first try</strong>, check the following before assuming something’s broken:</p>
 <ul class="simple">
 <li><p>Did you copy the full <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL, including your workspace name?</p></li>
-<li><p>Is the layer’s style and SRS fully saved in GeoServer (Step 4)?</p></li>
+<li><p>Is the layer’s style and SRS fully saved in GeoServer (above)?</p></li>
 <li><p>Try the WMS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL directly in a new browser tab first. If it doesn’t load there, AGOL won’t be able to reach it either.</p></li>
 </ul>
 </details>
 <p>📸 <strong>Save a screenshot now:</strong> your layer successfully added in ArcGIS Online. Label it <em>Screenshot 4</em>.</p>
-<p><strong>Reflection prompt for later:</strong> in this lab last year, before a shared always-on server, this step was expected to fail for most students, because everyone was running GeoServer on their own laptop’s <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, which is invisible to anything outside that machine. Today it (probably) worked. That difference <em>is</em> the lesson: what changed wasn’t the standard, it was who’s responsible for keeping the server reachable. Hang onto that thought for Step 5.</p>
-</section>
 <hr class="docutils" />
+<details>
+<summary><b>Open-source pathway: consume it with a Leaflet WMS layer. Click to expand</b></summary>
+<p>This reuses the same <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder and Live Server workflow from Lab 0, you’re just pointing a small mapping page at a real, live WMS endpoint instead of a static basemap. The following code uses the Leaflet package, which we will dive into next week (week 4).</p>
+<ol class="arabic simple">
+<li><p>In VS Code, open your <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder from Lab 0 (recreate it if you don’t still have it).</p></li>
+<li><p>Create a new file named <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code>.</p></li>
+<li><p>Copy the code block below into <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code>, filling in the two placeholders (<code class="docutils literal notranslate"><span class="pre">[GEOSERVER-URL]</span></code> and <code class="docutils literal notranslate"><span class="pre">[your-workspace]:[your-layer]</span></code>) with your own values from above. Save the file.</p></li>
+<li><p>In the file explorer, <strong>right-click <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code> → Open With Live Server</strong>. Your published layer should render as a raster tile layer inside MapLibre.</p></li>
+<li><p>Pan and zoom. Open your browser’s Dev Tools → Network tab and watch the requests fire, these are individual <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> requests, the same request type you inspected by hand back in Step 3.</p></li>
+</ol>
+</details>
+<p>📸 <strong>Save a screenshot now:</strong> your WMS layer rendering inside your local MapLibre page. Label it <em>Screenshot 5</em>.</p>
+<p><strong>Copy this into <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code>:</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>GISS 366 – Lab 2 – WMS Layer<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/leaflet@1.9.4/dist/leaflet.css&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/leaflet@1.9.4/dist/leaflet.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">#</span><span class="nn">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vw</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="s1">&#39;map&#39;</span><span class="p">).</span><span class="nx">setView</span><span class="p">([</span><span class="mf">32.7701</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">108.2803</span><span class="p">],</span><span class="w"> </span><span class="mf">11</span><span class="p">);</span><span class="w"> </span><span class="c1">// Silver City -- swap to match your dataset&#39;s extent if it&#39;s elsewhere</span>
+
+<span class="w">    </span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">(</span><span class="s1">&#39;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">attribution</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;copy; OpenStreetMap contributors&#39;</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">.</span><span class="nx">wms</span><span class="p">(</span><span class="s1">&#39;[GEOSERVER-URL]/wms&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;[your-workspace]:[your-layer]&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">transparent</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>If the layer doesn’t appear:</strong> First - check that you’ve entered in the [GEOSERVER-URL] and ‘[your-workspace]:[your-layer]’ spelling exactly as they appear on our course website. Just like Lab 01 SQL querries, even a spelling mispelling can cause and eror.</p>
+<p>Once you’ve confirmed spelling, ‘open Dev Tools’ → Console first. A CORS error there (something like <em>“blocked by CORS policy”</em>) points to a server-side setting on the GeoServer instance itself, not something fixable from your <code class="docutils literal notranslate"><span class="pre">.html</span></code> file (you’ve likely done everything right!). Flag it on the discussion board and send a message to Alex rather than troubleshooting alone. This is a geoserver setting configuration that Alex can fix and will be of benefit to everyone’s mapping. This shouldn’t be an issue with the leaflet example above, but please note this and be aware.</p>
+<p>This is a great examples of the limitations behind the client-server architecture of web mapping. Even if you (the client) has completed all building steps correctly, issues on the server end (data stores/the cloud) can inhibit your overall web map function. Consider how reliance on external infastructure might change the dynamic about who really is “in charge/in control” of the web maps that you build, and how self-hosting your own services might be one path towards further “data sovereignty.”</p>
+</div></blockquote>
+</section>
 <section id="step-5-act">
 <h2>Step 5: Act<a class="headerlink" href="#step-5-act" title="Link to this heading">#</a></h2>
 <section id="what-to-turn-in-graded-lab-exercises">
 <h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Your four screenshots:</p>
+<li><p>Your five screenshots:</p>
 <ul class="simple">
 <li><p><strong>Screenshot 1</strong>: GeoServer welcome page (Collect)</p></li>
 <li><p><strong>Screenshot 2</strong>: raw <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> XML (Visualize)</p></li>
 <li><p><strong>Screenshot 3</strong>: your own layer in GeoServer’s OpenLayers preview (Create)</p></li>
 <li><p><strong>Screenshot 4</strong>: your layer in ArcGIS Online (Create)</p></li>
+<li><p><strong>Screenshot 5</strong>: your layer rendering in your local MapLibre page via WMS (Create)</p></li>
 </ul>
 </li>
-<li><p>Your completed Python cell output (the pulled GeoJSON feature count and the small plot).</p></li>
 <li><p>A short written reflection (4-6 sentences) answering:</p>
 <ul class="simple">
-<li><p>Walk through, in your own words, what happened between your browser (or AGOL, or the Python cell) and GeoServer for <strong>one</strong> of your requests today. What was requested, and what came back?</p></li>
+<li><p>Walk through, in your own words, what happened between your browser (via AGOL, or via your MapLibre page) and GeoServer for <strong>one</strong> of your requests today. What was requested, and what came back?</p></li>
 <li><p>Revisit <strong>EQ3</strong>: what did publishing the <em>same</em> dataset as both WMS and WFS actually let you do differently between the two? Which one would you reach for if you needed to symbolize the data yourself in a client, versus just needing a quick reference layer?</p></li>
 <li><p>Today’s GeoServer instance is shared and always-on rather than something you installed yourself. Compare that to a hypothetical version of this lab where you ran GeoServer on your own laptop. What would have changed about the ArcGIS Online step, and who is responsible for that server staying up between now and finals week?</p></li>
-<li><p>Now that you’ve published through both a hosted platform (Lab 1, AGOL) and a self-hosted server (today), which felt like it gave you more control, and which felt easier? Was that the tradeoff you predicted in Lab 1’s EQ2 answer?</p></li>
-<li><p>What’s one thing that didn’t work smoothly today, and what was your first troubleshooting move: docs, a web search of the exact error, or the course discussion board <em>(K16)</em>?</p></li>
+<li><p>Now that you’ve published through both a hosted platform (Lab 1, AGOL) and a self-hosted server (Lab 02), which felt like it gave you more control, and which felt easier? Was that the tradeoff you predicted in Lab 1’s EQ2 answer?</p></li>
+<li><p>What’s one thing that didn’t work smoothly today, and what was your first troubleshooting move: docs, a web search of the exact error, or the course discussion board?</p></li>
 </ul>
 </li>
 </ol>
-<p>Post your screenshots, code output, and reflection to this week’s submission space in Canvas.</p>
+<p>Post your screenshots and reflection to this week’s submission space in Canvas.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -828,7 +847,7 @@ Error detail: No connection adapters were found for &#39;link/your_workspace/ows
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><strong>Content:</strong> All four screenshots and the completed Python cell output are present and correctly executed. Screenshot 1 shows a successful login, Screenshot 2 shows readable <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> XML with a visible <code class="docutils literal notranslate"><span class="pre">&lt;Layer&gt;</span></code> entry, Screenshot 3 shows the student’s own layer rendering in OpenLayers, and Screenshot 4 shows that layer successfully added in ArcGIS Online. The Python cell runs against the student’s own workspace and returns a real feature count and plot.</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Content:</strong> All five screenshots are present and correctly show what’s asked. Screenshot 1 shows a successful login, Screenshot 2 shows readable <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> XML with a visible <code class="docutils literal notranslate"><span class="pre">&lt;Layer&gt;</span></code> entry, Screenshot 3 shows the student’s own layer rendering in OpenLayers, Screenshot 4 shows that layer successfully added in ArcGIS Online, and Screenshot 5 shows that same layer rendering as a WMS source inside the student’s own local MapLibre page.</p></td>
 <td class="text-left"><p></p></td>
 <td class="text-center"><p>/ 8</p></td>
 </tr>
@@ -844,7 +863,7 @@ Error detail: No connection adapters were found for &#39;link/your_workspace/ows
 <td class="text-left"><p></p></td>
 <td class="text-center"><p>/ 8</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Product:</strong> Screenshots, code output, and written reflection are submitted in the requested format. Work is professionally presented, clearly organized and labeled, fully functional (screenshots are legible, the code cell output is present and correct), and free of errors.</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Product:</strong> Screenshots and written reflection are submitted in the requested format. Work is professionally presented, clearly organized and labeled, fully functional (screenshots are legible and match what’s described), and free of errors.</p></td>
 <td class="text-left"><p></p></td>
 <td class="text-center"><p>/ 8</p></td>
 </tr>
