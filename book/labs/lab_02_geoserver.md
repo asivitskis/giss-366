@@ -45,7 +45,7 @@ Same as Lab 0 and Lab 1: the **Geo-Inquiry Process**. **Ask → Collect → Visu
 - NM RGIS Clearinghouse: https://rgis.unm.edu/
 - GeoServer public demo (for reference, not what you'll publish to): https://data.geoserver.org/geoserver/web/
 
-> **A note on why this looks different from a typical "install the software" lab:** Part of this week's lesson (EQ3) is about what it takes to keep a service *running* and *reachable*, not just installed. Rather than have everyone individually fight Java versions and then discover their laptop is invisible to the open internet, you're experiencing the "always-on, professionally hosted" side of that tradeoff directly, the same way you already experienced it first-hand in Lab 1, publishing straight into ArcGIS Online. You'll still do the actual publishing work yourself (Step 4). You're just not the one keeping the lights on for the server underneath it.
+> **If our class GeoServer is unreachable today: we have a backup plan.** If the class droplet is down for any reason, we'll switch to a public federal GeoServer instance from the Multi-Resolution Land Characteristics (MRLC) Consortium `https://www.mrlc.gov/geoserver/web/?0`, a group of federal agencies that maintains the National Land Cover Database (NLCD) from Landsat imagery. On a backup day, you'll still complete the "consume" half of this lab exactly as written: pulling a GetCapabilities URL into ArcGIS Online (Screenshot 4) and into your own Leaflet page (Screenshot 5). What changes is that you won't be publishing your own layer into a workspace you control, so Screenshot 1 (GeoServer welcome/login), Screenshot 3 (your own layer in OpenLayers preview), and the "published to your own workspace" rubric criteria are waived for that session. If this happens, your instructor will confirm in class and post an updated Canvas note with the adjusted checklist and any extended deadline for revisiting the publish steps once our own server is back up.
 
 
 ## Step 1: Ask
@@ -253,6 +253,8 @@ Post your screenshots and reflection to this week's submission space in Canvas.
 
 ## Lab 02 Rubric (40 pts)
 
+>**Contingency note:** if class ran on the MRLC backup GeoServer (see "Before You Begin" above) because our own droplet was unreachable, Screenshot 1, Screenshot 3, and the "published to your own workspace" Process criterion below are waived for that submission. Your instructor will confirm in Canvas whether this applies and what, if anything, is due later once our class server is back up.
+
 | Score Band | What It Looks Like |
 |:---|:---|
 | **Exceptional (7-8)** | Exceeding expectations; indicates mastery; in-depth understanding; higher-order thinking; inferences and extensions of learning objectives that go beyond what was taught; truly superb effort. |
@@ -311,3 +313,16 @@ Curious what it takes to be the one keeping the server up, instead of just publi
 
 If you want to try connecting a locally installed instance to ArcGIS Online the way earlier semesters did, you'll need a tunneling tool like [ngrok](https://ngrok.com/) to expose `localhost` to the open internet. This is exactly the gap the class server closes for you.
 
+## Appendix: MRLC backup options
+
+Links:
+GeoServer - `https://www.mrlc.gov/geoserver/web/?0`
+
+```html
+L.tileLayer.wms('https://www.mrlc.gov/geoserver/mrlc_display/wms', {
+      layers: 'mrlc_display:NLCD_2021_Land_Cover_L48',
+      format: 'image/png',
+      transparent: true
+    }).addTo(map);
+
+```
