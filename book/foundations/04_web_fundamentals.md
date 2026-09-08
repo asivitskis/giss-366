@@ -1,4 +1,5 @@
-# Reading the Code You've Already Run
+# Web Language Fundamentals
+## Reading the Code You've Already Run
 
 **Week 4 | Lecture + Lab 3: HTML & CSS Fundamentals**
 
@@ -25,8 +26,7 @@ You've now run two working web pages in this course: `test_map.html` in Lab 0, a
 
 We're going to open both files back up and read them line by line. The JavaScript in those files stays untouched today. That's Week 5's material, once HTML and CSS are solid underneath it.
 
-
-## Why This Matters Even If You're Going the ArcGIS Online Route
+### Why This Matters Even If You're Going the ArcGIS Online Route
 
 This literacy shows up inside AGOL too:
 
@@ -36,11 +36,11 @@ This literacy shows up inside AGOL too:
 
 Whichever pathway you lean toward for your final project, the next three weeks are foundational to both.
 
-## Things You Can't Build Without This
+### Things You Can't Build Without This
 
 *Example Links*
- - Link 1
- - Link 2
+ - Link 1: https://tacomaequitymap.caimaps.info/CAILive?location=Tacoma&layer=Equity+Index&tab=demo&searchType=address&area=EquityCalcTacoma
+ - Link 2: https://livingatlas.arcgis.com/wildfireaware/#ext=-100.00,40.00&zoom=5
 
 A few examples, on screen, that all have one thing in common: someone wrote HTML, CSS, or JavaScript by hand to build them.
 
@@ -48,7 +48,6 @@ A few examples, on screen, that all have one thing in common: someone wrote HTML
 - A styled title or description box floating over a web map
 - A hand-built Leaflet or MapLibre page like the ones you've already run
 
-**These look great, right? If you want to build things like these, you need the coding basics. That's what we're developing over the next three weeks.**
 
 ---
 
@@ -170,6 +169,15 @@ display(HTML(minimal_page))
 # Try it: change the heading text above, or add a second <p> element, then re-run this cell.
 ```
 
+
+
+<div style="border:1px solid #999; padding:10px; font-family:sans-serif;">
+    <h1>This is the main heading</h1>
+    <p>This is a paragraph.</p>
+</div>
+
+
+
 ### Block vs. inline elements
 
 *(IWM Section 1.5.3)*
@@ -232,11 +240,11 @@ A link uses the `<a>` element with an `href` attribute pointing to its destinati
 list_and_link_demo = """
 <div style="font-family:sans-serif; border:1px solid #999; padding:10px;">
   <p>Data sources used in this map:</p>
-  <ul>
+  <ol>
     <li>US Census TIGER/Line boundaries</li>
     <li>OpenStreetMap basemap tiles</li>
     <li>NOAA precipitation data</li>
-  </ul>
+  </ol>
   <p>Built with <a href="https://leafletjs.com" target="_blank">Leaflet</a>.</p>
 </div>
 """
@@ -245,6 +253,20 @@ display(HTML(list_and_link_demo))
 
 # Try it: change <ul> to <ol>, add a fourth list item, or point the link somewhere else.
 ```
+
+
+
+<div style="font-family:sans-serif; border:1px solid #999; padding:10px;">
+  <p>Data sources used in this map:</p>
+  <ol>
+    <li>US Census TIGER/Line boundaries</li>
+    <li>OpenStreetMap basemap tiles</li>
+    <li>NOAA precipitation data</li>
+  </ol>
+  <p>Built with <a href="https://leafletjs.com" target="_blank">Leaflet</a>.</p>
+</div>
+
+
 
 ### `id`, `class`, and `style`: the bridge to CSS
 
@@ -355,6 +377,8 @@ display(HTML(color_text_demo))
 
 # Try it: change the HEX code, swap text-align to right or left, or add font-size.
 ```
+
+Check out this website for WNMU Colors & Hexcodes: https://teamcolorcodes.com/western-new-mexico-mustangs-color-codes/
 
 ### Example 4: the box model
 
