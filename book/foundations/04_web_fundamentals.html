@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. Web Fundamentals: HTML, CSS, JavaScript, Leaflet &#8212; WebMapping &amp; Web GIS</title>
+    <title>4. Reading the Code You’ve Already Run &#8212; WebMapping &amp; Web GIS</title>
   
   
   
@@ -197,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="01_what_is_webgis.html">1. What is Web GIS?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_open_web_standards.html">3. Open Web Standards</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Web Fundamentals: HTML, CSS, JavaScript, Leaflet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Reading the Code You’ve Already Run</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_open_source_libraries.html">5. Open Source Libraries: MapLibre GL JS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_cloud_native.html">6. Tiling and Cloud Native Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
@@ -475,7 +475,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -486,11 +488,50 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Web Fundamentals: HTML, CSS, JavaScript, Leaflet</h1>
+    <h1>Reading the Code You’ve Already Run</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">4.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-start-you-ve-already-been-doing-this">4.2. Before We Start: You’ve Already Been Doing This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters-even-if-you-re-going-the-arcgis-online-route">4.3. Why This Matters Even If You’re Going the ArcGIS Online Route</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-you-can-t-build-without-this">4.4. Things You Can’t Build Without This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-0-three-languages-three-jobs">4.5. Part 0: Three Languages, Three Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-html-structure-and-contents">4.6. Part 1: HTML, Structure and Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skeleton-every-page-you-ve-built-follows">4.6.1. The skeleton every page you’ve built follows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-html-element">4.6.2. Anatomy of an HTML element</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-comments">4.6.3. HTML comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-iwm-example-01-01-html-the-minimal-page">4.6.4. Example 1 (IWM <code class="docutils literal notranslate"><span class="pre">example-01-01.html</span></code>): the minimal page</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-vs-inline-elements">4.6.5. Block vs. inline elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-elements-you-ll-use-most">4.6.6. The elements you’ll use most</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-lists-and-links">4.6.7. Example 2: lists and links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-class-and-style-the-bridge-to-css">4.6.8. <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, and <code class="docutils literal notranslate"><span class="pre">style</span></code>: the bridge to CSS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-css-appearance-and-layout">4.7. Part 2: CSS, Appearance and Layout</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-css-rule">4.7.1. The anatomy of a CSS rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectors-telling-css-which-elements-to-style">4.7.2. Selectors: telling CSS which elements to style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-color-and-text">4.7.3. Example 3: color and text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-the-box-model">4.7.4. Example 4: the box model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positioning-a-box-on-the-page">4.7.5. Positioning a box on the page</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-s-lab-git-vs-code-and-github-pages">4.8. Before Thursday’s Lab: Git, VS Code, and GitHub Pages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-recap-in-the-order-we-covered-it-today">4.8.1. Quick recap, in the order we covered it today</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up-ungraded-reflection">4.9. Wrap-Up: Ungraded Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">4.10. Looking Ahead</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">4.11. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-reading-your-own-code-and-publishing-it">4.12. Lab 3: Reading Your Own Code (and Publishing It)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -500,9 +541,682 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="web-fundamentals-html-css-javascript-leaflet">
-<h1><span class="section-number">4. </span>Web Fundamentals: HTML, CSS, JavaScript, Leaflet<a class="headerlink" href="#web-fundamentals-html-css-javascript-leaflet" title="Link to this heading">#</a></h1>
-<p><strong>Week 4 | Lecture + Lab 3: Embedding an interactive map</strong></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="reading-the-code-you-ve-already-run">
+<h1><span class="section-number">4. </span>Reading the Code You’ve Already Run<a class="headerlink" href="#reading-the-code-you-ve-already-run" title="Link to this heading">#</a></h1>
+<p><strong>Week 4 | Lecture + Lab 3: HTML &amp; CSS Fundamentals</strong></p>
+<hr class="docutils" />
+<section id="learning-objectives">
+<h2><span class="section-number">4.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>State the job each of HTML, CSS, and JavaScript does in a web page</p></li>
+<li><p>Read an HTML element (tag, attributes, contents) and predict what it adds to the page</p></li>
+<li><p>Write and modify common HTML elements: headings, paragraphs, lists, links, and images</p></li>
+<li><p>Read a CSS rule (selector, property, value) and predict what it changes on the page</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code> attributes to target specific elements with CSS</p></li>
+<li><p>Set color, font, and text alignment with CSS</p></li>
+<li><p>Explain the CSS box model (content, padding, border, margin) and use <code class="docutils literal notranslate"><span class="pre">position</span></code> to place an element precisely on the page</p></li>
+<li><p>Recognize where this same literacy shows up in the ArcGIS Online pathway</p></li>
+</ul>
+<p><strong>Textbook:</strong> This lecture draws on Michael Dorman’s open-access <em><a class="reference external" href="https://geobgu.xyz/web-mapping/">Introduction to Web Mapping</a></em> (IWM), Chapter 1 (HTML) and Chapter 2 (CSS). Section numbers are given throughout so you can find the full explanation and the live, downloadable version of each named example (for instance, <code class="docutils literal notranslate"><span class="pre">example-01-01.html</span></code>).</p>
+</section>
+<section id="before-we-start-you-ve-already-been-doing-this">
+<h2><span class="section-number">4.2. </span>Before We Start: You’ve Already Been Doing This<a class="headerlink" href="#before-we-start-you-ve-already-been-doing-this" title="Link to this heading">#</a></h2>
+<p>You’ve now run two working web pages in this course: <code class="docutils literal notranslate"><span class="pre">test_map.html</span></code> in Lab 0, and <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code> in Lab 2. You did this without a lecture on HTML or CSS first. That was deliberate. Today isn’t your first exposure to this syntax. It’s the first time we name what you’ve already been looking at.</p>
+<p>We’re going to open both files back up and read them line by line. The JavaScript in those files stays untouched today. That’s Week 5’s material, once HTML and CSS are solid underneath it.</p>
+</section>
+<section id="why-this-matters-even-if-you-re-going-the-arcgis-online-route">
+<h2><span class="section-number">4.3. </span>Why This Matters Even If You’re Going the ArcGIS Online Route<a class="headerlink" href="#why-this-matters-even-if-you-re-going-the-arcgis-online-route" title="Link to this heading">#</a></h2>
+<p>This literacy shows up inside AGOL too:</p>
+<ul class="simple">
+<li><p>The <strong>Embed widget</strong> in Experience Builder takes raw HTML. You’re about to get much faster at reading it.</p></li>
+<li><p>Widget <strong>theming and layout</strong> in Experience Builder uses CSS-flavored controls: color, spacing, positioning, the same vocabulary from today’s CSS section.</p></li>
+<li><p><strong>Custom Experience Builder widgets</strong> are built with JavaScript, HTML, and CSS via the developer edition and the ArcGIS Maps SDK. That’s Week 5 territory, built on today’s foundation.</p></li>
+</ul>
+<p>Whichever pathway you lean toward for your final project, the next three weeks are foundational to both.</p>
+</section>
+<section id="things-you-can-t-build-without-this">
+<h2><span class="section-number">4.4. </span>Things You Can’t Build Without This<a class="headerlink" href="#things-you-can-t-build-without-this" title="Link to this heading">#</a></h2>
+<p><em>Example Links</em></p>
+<ul class="simple">
+<li><p>Link 1</p></li>
+<li><p>Link 2</p></li>
+</ul>
+<p>A few examples, on screen, that all have one thing in common: someone wrote HTML, CSS, or JavaScript by hand to build them.</p>
+<ul class="simple">
+<li><p>A custom Experience Builder widget doing something no out-of-the-box widget does</p></li>
+<li><p>A styled title or description box floating over a web map</p></li>
+<li><p>A hand-built Leaflet or MapLibre page like the ones you’ve already run</p></li>
+</ul>
+<p><strong>These look great, right? If you want to build things like these, you need the coding basics. That’s what we’re developing over the next three weeks.</strong></p>
+</section>
+<hr class="docutils" />
+<section id="part-0-three-languages-three-jobs">
+<h2><span class="section-number">4.5. </span>Part 0: Three Languages, Three Jobs<a class="headerlink" href="#part-0-three-languages-three-jobs" title="Link to this heading">#</a></h2>
+<p><em>(IWM Section 1.3)</em></p>
+<p>Every web page you’ll build this semester is made of up to three languages, and each one has a distinct job:</p>
+<ul class="simple">
+<li><p><strong>HTML</strong> (<code class="docutils literal notranslate"><span class="pre">.html</span></code>) determines page contents</p></li>
+<li><p><strong>CSS</strong> (<code class="docutils literal notranslate"><span class="pre">.css</span></code>) determines presentation style</p></li>
+<li><p><strong>JavaScript</strong> (<code class="docutils literal notranslate"><span class="pre">.js</span></code>) determines interactive behavior</p></li>
+</ul>
+<p>A page can be built with HTML alone (that’s all of today’s examples). Add CSS and it gets styled. Add JavaScript and it gets interactive, reacting to clicks, loading data, building a map from a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code>. Keeping these three jobs separate in your head, structure, style, behavior, will make every error message you hit this semester easier to diagnose: first ask which of the three jobs is failing, then look in the matching file.</p>
+</section>
+<hr class="docutils" />
+<section id="part-1-html-structure-and-contents">
+<h2><span class="section-number">4.6. </span>Part 1: HTML, Structure and Contents<a class="headerlink" href="#part-1-html-structure-and-contents" title="Link to this heading">#</a></h2>
+<p><em>(IWM Chapter 1)</em></p>
+<section id="the-skeleton-every-page-you-ve-built-follows">
+<h3><span class="section-number">4.6.1. </span>The skeleton every page you’ve built follows<a class="headerlink" href="#the-skeleton-every-page-you-ve-built-follows" title="Link to this heading">#</a></h3>
+<p>Every page you’ve built has followed the same skeleton (IWM Section 1.6.2):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">html&gt;</span></code> tells the browser this is an HTML5 document. It always comes first.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code> wraps the entire document.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> holds information about the page (its title, and later its linked CSS and JS files) that isn’t shown directly in the browser window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> holds everything that actually appears on screen.</p></li>
+</ul>
+<p><strong>The single most important line in every map page you’ve written:</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>This empty box is the entire reason your maps have somewhere to live. This week the JavaScript that reaches into it (<code class="docutils literal notranslate"><span class="pre">L.map('map')</span></code>) is provided for you, but you now know exactly what it’s reaching into, and why its <code class="docutils literal notranslate"><span class="pre">id</span></code> matters.</p>
+</section>
+<section id="anatomy-of-an-html-element">
+<h3><span class="section-number">4.6.2. </span>Anatomy of an HTML element<a class="headerlink" href="#anatomy-of-an-html-element" title="Link to this heading">#</a></h3>
+<p><em>(IWM Section 1.5.1)</em></p>
+<p>An HTML element is a start tag, its content, and an end tag:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Web Mapping<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Start tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Content</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Web</span> <span class="pre">Mapping</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>End tag</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;/title&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Some elements are <strong>empty</strong>: they have a start tag only, no content, and no end tag. <code class="docutils literal notranslate"><span class="pre">&lt;hr&gt;</span></code> (a horizontal line) is one example.</p>
+<p>Elements can also carry <strong>attributes</strong>, written inside the start tag as <code class="docutils literal notranslate"><span class="pre">name=&quot;value&quot;</span></code>. The <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> element below has two attributes, <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/leaflet.png&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;300px&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Attribute values go in quotes. Multiple attributes are separated by spaces. Not every attribute applies to every element: <code class="docutils literal notranslate"><span class="pre">src</span></code> is required for <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> but has no meaning for <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code>.</p>
+</section>
+<section id="html-comments">
+<h3><span class="section-number">4.6.3. </span>HTML comments<a class="headerlink" href="#html-comments" title="Link to this heading">#</a></h3>
+<p>It’s good practice to leave notes for yourself and for anyone else reading your code:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- This paragraph still needs a citation --&gt;</span>
+</pre></div>
+</div>
+<p>Anything between <code class="docutils literal notranslate"><span class="pre">&lt;!--</span></code> and <code class="docutils literal notranslate"><span class="pre">--&gt;</span></code> is ignored by the browser. It exists only for humans reading the source.</p>
+</section>
+<section id="example-1-iwm-example-01-01-html-the-minimal-page">
+<h3><span class="section-number">4.6.4. </span>Example 1 (IWM <code class="docutils literal notranslate"><span class="pre">example-01-01.html</span></code>): the minimal page<a class="headerlink" href="#example-1-iwm-example-01-01-html-the-minimal-page" title="Link to this heading">#</a></h3>
+<p>Dorman’s first example is a minimal HTML document, one heading and one paragraph (IWM Section 1.3):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>A minimal web page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>This is the main heading<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a paragraph.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Live in this notebook:</strong> the cell below renders that exact page. Run it, then come back and change the heading text or add a second paragraph. That’s Dorman’s own suggested first exercise (IWM Section 1.10).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">minimal_page</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;border:1px solid #999; padding:10px; font-family:sans-serif;&quot;&gt;</span>
+<span class="s2">    &lt;h1&gt;This is the main heading&lt;/h1&gt;</span>
+<span class="s2">    &lt;p&gt;This is a paragraph.&lt;/p&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">minimal_page</span><span class="p">))</span>
+
+<span class="c1"># Try it: change the heading text above, or add a second &lt;p&gt; element, then re-run this cell.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="border:1px solid #999; padding:10px; font-family:sans-serif;">
+    <h1>This is the main heading</h1>
+    <p>This is a paragraph.</p>
+</div>
+</div></div>
+</div>
+</section>
+<section id="block-vs-inline-elements">
+<h3><span class="section-number">4.6.5. </span>Block vs. inline elements<a class="headerlink" href="#block-vs-inline-elements" title="Link to this heading">#</a></h3>
+<p><em>(IWM Section 1.5.3)</em></p>
+<p>HTML elements behave in one of two ways:</p>
+<ul class="simple">
+<li><p><strong>Block-level elements</strong> always start on a new line and stretch to fill the available width. Headings, paragraphs, and lists are block elements.</p></li>
+<li><p><strong>Inline elements</strong> sit inside a line of text, the way a word sits among other words. Links, bold text, and images are inline elements.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Block</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Inline</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;i&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Whitespace note: browsers collapse multiple spaces and line breaks in your source code down to a single space when displaying text (IWM Section 1.6.7.1). If you want a visible line break, use <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>, not extra spaces in your source file.</p>
+</section>
+<section id="the-elements-you-ll-use-most">
+<h3><span class="section-number">4.6.6. </span>The elements you’ll use most<a class="headerlink" href="#the-elements-you-ll-use-most" title="Link to this heading">#</a></h3>
+<p><em>(IWM Sections 1.6.5, 1.6.6, 1.6.8, 1.6.9, 1.6.10)</em></p>
+<p>These are the elements you’ll actually write and edit this week, in the lab and in your own map’s description text.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Element</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code> … <code class="docutils literal notranslate"><span class="pre">&lt;h6&gt;</span></code></p></td>
+<td><p>Section headings, largest to smallest</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;Map</span> <span class="pre">Title&lt;/h1&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code></p></td>
+<td><p>A paragraph of text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;p&gt;This</span> <span class="pre">map</span> <span class="pre">shows...&lt;/p&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;i&gt;</span></code></p></td>
+<td><p>Bold, italic text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">&lt;b&gt;bold&lt;/b&gt;.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code></p></td>
+<td><p>Bullet list, numbered list, and their items</p></td>
+<td><p>see below</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code></p></td>
+<td><p>A link, using the <code class="docutils literal notranslate"><span class="pre">href</span></code> attribute for the destination</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;https://leafletjs.com&quot;&gt;Leaflet&lt;/a&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code></p></td>
+<td><p>An image, using the <code class="docutils literal notranslate"><span class="pre">src</span></code> attribute for its location</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">src=&quot;logo.png&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code></p></td>
+<td><p>A generic block-level container, used to group content</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;description&quot;&gt;...&lt;/div&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code></p></td>
+<td><p>A generic inline container, used to group a small piece of text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;highlight&quot;&gt;note&lt;/span&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> don’t do anything visible on their own. Their entire purpose is to give CSS (and later JavaScript) something to grab onto, which is exactly what <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;map&quot;&gt;</span></code> has been doing all along.</p>
+</section>
+<section id="example-2-lists-and-links">
+<h3><span class="section-number">4.6.7. </span>Example 2: lists and links<a class="headerlink" href="#example-2-lists-and-links" title="Link to this heading">#</a></h3>
+<p><em>(IWM Sections 1.6.8.1, 1.6.9.1)</em></p>
+<p>An unordered (bullet) list uses <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code> items inside it. Swap <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code> for <code class="docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code> and the same items become numbered:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Coffee<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Tea<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Milk<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>A link uses the <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code> element with an <code class="docutils literal notranslate"><span class="pre">href</span></code> attribute pointing to its destination. Adding <code class="docutils literal notranslate"><span class="pre">target=&quot;_blank&quot;</span></code> opens the link in a new tab:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://leafletjs.com&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Leaflet<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Live in this notebook:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_and_link_demo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;font-family:sans-serif; border:1px solid #999; padding:10px;&quot;&gt;</span>
+<span class="s2">  &lt;p&gt;Data sources used in this map:&lt;/p&gt;</span>
+<span class="s2">  &lt;ul&gt;</span>
+<span class="s2">    &lt;li&gt;US Census TIGER/Line boundaries&lt;/li&gt;</span>
+<span class="s2">    &lt;li&gt;OpenStreetMap basemap tiles&lt;/li&gt;</span>
+<span class="s2">    &lt;li&gt;NOAA precipitation data&lt;/li&gt;</span>
+<span class="s2">  &lt;/ul&gt;</span>
+<span class="s2">  &lt;p&gt;Built with &lt;a href=&quot;https://leafletjs.com&quot; target=&quot;_blank&quot;&gt;Leaflet&lt;/a&gt;.&lt;/p&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">list_and_link_demo</span><span class="p">))</span>
+
+<span class="c1"># Try it: change &lt;ul&gt; to &lt;ol&gt;, add a fourth list item, or point the link somewhere else.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="font-family:sans-serif; border:1px solid #999; padding:10px;">
+  <p>Data sources used in this map:</p>
+  <ul>
+    <li>US Census TIGER/Line boundaries</li>
+    <li>OpenStreetMap basemap tiles</li>
+    <li>NOAA precipitation data</li>
+  </ul>
+  <p>Built with <a href="https://leafletjs.com" target="_blank">Leaflet</a>.</p>
+</div>
+</div></div>
+</div>
+</section>
+<section id="id-class-and-style-the-bridge-to-css">
+<h3><span class="section-number">4.6.8. </span><code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, and <code class="docutils literal notranslate"><span class="pre">style</span></code>: the bridge to CSS<a class="headerlink" href="#id-class-and-style-the-bridge-to-css" title="Link to this heading">#</a></h3>
+<p><em>(IWM Section 1.7)</em></p>
+<p>Every HTML element can carry three general-purpose attributes that don’t change what the element is, only how you (and CSS) can refer to it later:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Uniqueness</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>Uniquely identifies one element on the page</p></td>
+<td><p>Must be unique. No two elements share an <code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">class</span></code></p></td>
+<td><p>Groups multiple elements together</p></td>
+<td><p>Many elements can share the same <code class="docutils literal notranslate"><span class="pre">class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">style</span></code></p></td>
+<td><p>Applies a CSS rule directly to this one element</p></td>
+<td><p>N/A, used sparingly</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Map Title<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;note&quot;</span><span class="p">&gt;</span>Data current as of September 2026.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;note&quot;</span><span class="p">&gt;</span>Basemap tiles by OpenStreetMap contributors.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Both paragraphs above share <code class="docutils literal notranslate"><span class="pre">class=&quot;note&quot;</span></code>, so a single CSS rule targeting <code class="docutils literal notranslate"><span class="pre">.note</span></code> will style them both at once. Only one element on the page can carry <code class="docutils literal notranslate"><span class="pre">id=&quot;title&quot;</span></code>. Hold on to this distinction. It’s the first thing CSS asks about every element: are you targeting one specific element, or a group?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-2-css-appearance-and-layout">
+<h2><span class="section-number">4.7. </span>Part 2: CSS, Appearance and Layout<a class="headerlink" href="#part-2-css-appearance-and-layout" title="Link to this heading">#</a></h2>
+<p><em>(IWM Chapter 2)</em></p>
+<section id="the-anatomy-of-a-css-rule">
+<h3><span class="section-number">4.7.1. </span>The anatomy of a CSS rule<a class="headerlink" href="#the-anatomy-of-a-css-rule" title="Link to this heading">#</a></h3>
+<p>A CSS rule always has the same three-part anatomy (IWM Section 2.3):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">selector</span> <span class="p">{</span> <span class="nb">property</span><span class="p">:</span> <span class="n">value</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Open <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code> from Lab 2 and find this block:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">#</span><span class="nn">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vw</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Read it out loud, in plain English, before naming the vocabulary:</p>
+<ul class="simple">
+<li><p><em>“Select the body. Set its margin to zero.”</em> Removes the default gap every browser puts around a page, so your map isn’t sitting in a little frame.</p></li>
+<li><p><em>“Select the element with id <code class="docutils literal notranslate"><span class="pre">map</span></code>. Set its height to 100% of the viewport height, its width to 100% of the viewport width.”</em> This is the only reason your map fills the entire browser window instead of sitting in a small box.</p></li>
+</ul>
+<p><strong>Linking method used here:</strong> this is <em>embedded</em> CSS, a <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block sitting inside <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>. The alternatives are <em>inline</em> CSS (a <code class="docutils literal notranslate"><span class="pre">style=&quot;...&quot;</span></code> attribute on one element) and <em>external</em> CSS (a separate <code class="docutils literal notranslate"><span class="pre">.css</span></code> file pulled in with <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">href=&quot;style.css&quot;&gt;</span></code>). All three do the same job; they differ in where the rule lives (IWM Section 2.7). External CSS is the standard approach for real projects, since it keeps style code out of your HTML entirely and lets one CSS file style many pages. We’ll use embedded CSS for most examples this week so HTML and CSS stay visible together while you’re learning, and you’ll move to an external file in the lab.</p>
+</section>
+<section id="selectors-telling-css-which-elements-to-style">
+<h3><span class="section-number">4.7.2. </span>Selectors: telling CSS which elements to style<a class="headerlink" href="#selectors-telling-css-which-elements-to-style" title="Link to this heading">#</a></h3>
+<p><em>(IWM Section 2.4)</em></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Selector type</p></th>
+<th class="head"><p>Syntax</p></th>
+<th class="head"><p>Targets</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Type selector</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">{</span> <span class="pre">}</span></code></p></td>
+<td><p>Every <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> element on the page</p></td>
+</tr>
+<tr class="row-odd"><td><p>Class selector</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.note</span> <span class="pre">{</span> <span class="pre">}</span></code></p></td>
+<td><p>Every element with <code class="docutils literal notranslate"><span class="pre">class=&quot;note&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ID selector</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#title</span> <span class="pre">{</span> <span class="pre">}</span></code></p></td>
+<td><p>The one element with <code class="docutils literal notranslate"><span class="pre">id=&quot;title&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">        </span><span class="c">/* every paragraph */</span>
+<span class="p">.</span><span class="nc">note</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">gray</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c">/* every element with class=&quot;note&quot; */</span>
+<span class="p">#</span><span class="nn">title</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">navy</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c">/* the one element with id=&quot;title&quot; */</span>
+</pre></div>
+</div>
+<p>This is exactly why <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code> mattered a moment ago (IWM Section 1.7): they’re what an ID or class selector is grabbing onto. When two rules conflict, the more specific selector wins. An ID selector overrides a type selector, and a rule written later in the file overrides an earlier, equally specific one (IWM Section 2.5).</p>
+</section>
+<section id="example-3-color-and-text">
+<h3><span class="section-number">4.7.3. </span>Example 3: color and text<a class="headerlink" href="#example-3-color-and-text" title="Link to this heading">#</a></h3>
+<p><em>(IWM Sections 2.8.2, 2.8.3)</em></p>
+<p>CSS accepts color in a few formats. All are common in real code, so it helps to recognize each one:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Named color</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">DarkCyan;</span></code></p></td>
+<td><p>Easiest to read, limited palette</p></td>
+</tr>
+<tr class="row-odd"><td><p>HEX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">#ee3e80;</span></code></p></td>
+<td><p>Six-digit code for red, green, blue</p></td>
+</tr>
+<tr class="row-even"><td><p>RGB / RGBA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">rgba(255,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0.8);</span></code></p></td>
+<td><p>Red, green, blue, plus optional transparency (the fourth value, 0 to 1)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Text-related properties you’ll reach for constantly:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="n">Verdana</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">font-family</span></code> takes a list of options separated by commas. The browser uses the first one it has available, falling back down the list, which is why a generic family name like <code class="docutils literal notranslate"><span class="pre">sans-serif</span></code> is usually listed last as a safety net.</p>
+<p><strong>Live in this notebook:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_text_demo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;font-family:sans-serif; border:1px solid #999; padding:10px;&quot;&gt;</span>
+<span class="s2">  &lt;p style=&quot;color:DarkCyan; font-weight:bold;&quot;&gt;Named color: DarkCyan&lt;/p&gt;</span>
+<span class="s2">  &lt;p style=&quot;color:#ee3e80;&quot;&gt;HEX color: #ee3e80&lt;/p&gt;</span>
+<span class="s2">  &lt;p style=&quot;color:rgba(0,100,180,0.8); font-style:italic; text-align:center;&quot;&gt;</span>
+<span class="s2">     RGBA color, italic, centered</span>
+<span class="s2">  &lt;/p&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">color_text_demo</span><span class="p">))</span>
+
+<span class="c1"># Try it: change the HEX code, swap text-align to right or left, or add font-size.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="font-family:sans-serif; border:1px solid #999; padding:10px;">
+  <p style="color:DarkCyan; font-weight:bold;">Named color: DarkCyan</p>
+  <p style="color:#ee3e80;">HEX color: #ee3e80</p>
+  <p style="color:rgba(0,100,180,0.8); font-style:italic; text-align:center;">
+     RGBA color, italic, centered
+  </p>
+</div>
+</div></div>
+</div>
+</section>
+<section id="example-4-the-box-model">
+<h3><span class="section-number">4.7.4. </span>Example 4: the box model<a class="headerlink" href="#example-4-the-box-model" title="Link to this heading">#</a></h3>
+<p><em>(IWM Section 2.8.4)</em></p>
+<p>Every HTML element lives inside an invisible box. CSS lets you control that box’s size and boundaries:</p>
+<ul class="simple">
+<li><p><strong>Padding</strong>, space between the content and the border</p></li>
+<li><p><strong>Border</strong>, the edge of the box itself</p></li>
+<li><p><strong>Margin</strong>, space outside the border, between this box and its neighbors</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">powderblue</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">border:</span> <span class="pre">1px</span> <span class="pre">solid</span> <span class="pre">black;</span></code> is shorthand for setting <code class="docutils literal notranslate"><span class="pre">border-width</span></code>, <code class="docutils literal notranslate"><span class="pre">border-style</span></code>, and <code class="docutils literal notranslate"><span class="pre">border-color</span></code> all in one line (IWM Section 2.10.2). You’ll see shorthand properties like this constantly; they’re a convenience, not a different feature.</p>
+<p><strong>Live in this notebook:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">box_model_demo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;font-family:sans-serif;&quot;&gt;</span>
+<span class="s2">  &lt;div style=&quot;height:80px; width:140px; background-color:powderblue;</span>
+<span class="s2">              padding:15px; margin:10px; border:2px solid #336;</span>
+<span class="s2">              display:inline-block;&quot;&gt;Box 1&lt;/div&gt;</span>
+<span class="s2">  &lt;div style=&quot;height:80px; width:140px; background-color:#ffe775;</span>
+<span class="s2">              padding:15px; margin:10px; border:2px solid #336;</span>
+<span class="s2">              display:inline-block;&quot;&gt;Box 2&lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">box_model_demo</span><span class="p">))</span>
+
+<span class="c1"># Try it: change the padding, margin, or border values above and re-run.</span>
+<span class="c1"># Padding pushes the border outward. Margin pushes neighboring boxes away.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="font-family:sans-serif;">
+  <div style="height:80px; width:140px; background-color:powderblue;
+              padding:15px; margin:10px; border:2px solid #336;
+              display:inline-block;">Box 1</div>
+  <div style="height:80px; width:140px; background-color:#ffe775;
+              padding:15px; margin:10px; border:2px solid #336;
+              display:inline-block;">Box 2</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="positioning-a-box-on-the-page">
+<h3><span class="section-number">4.7.5. </span>Positioning a box on the page<a class="headerlink" href="#positioning-a-box-on-the-page" title="Link to this heading">#</a></h3>
+<p><em>(IWM Section 2.8.4.6)</em></p>
+<p>By default, every block element sits in <strong>normal flow</strong>: each one stacks below the one before it. The <code class="docutils literal notranslate"><span class="pre">position</span></code> property lets you take an element out of that flow and place it exactly where you want.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">position</span></code> value</p></th>
+<th class="head"><p>Behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">static</span></code> (default)</p></td>
+<td><p>Normal flow, stacks below the previous element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">relative</span></code></p></td>
+<td><p>Shifted from its normal-flow position, but its original space stays reserved</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">absolute</span></code></p></td>
+<td><p>Placed relative to the nearest positioned ancestor, scrolls with the page</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code></p></td>
+<td><p>Placed relative to the browser viewport, stays put even when the page scrolls</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">title-box</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">    </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the property that will let you place a title box in a fixed spot over your own map later this week, and it’s also the reason <code class="docutils literal notranslate"><span class="pre">z-index</span></code> exists: when a positioned box overlaps other content, <code class="docutils literal notranslate"><span class="pre">z-index</span></code> controls which one renders on top (higher numbers sit in front). <code class="docutils literal notranslate"><span class="pre">z-index</span></code> only has an effect on elements that already have <code class="docutils literal notranslate"><span class="pre">position</span></code> set to something other than <code class="docutils literal notranslate"><span class="pre">static</span></code> (IWM Section 2.8.4.7).</p>
+<p><strong>Live in this notebook:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">position_demo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div style=&quot;position:relative; height:180px; width:100%; background:#eee;</span>
+<span class="s2">            font-family:sans-serif; border:1px solid #999;&quot;&gt;</span>
+<span class="s2">  &lt;div style=&quot;position:static; background:#cde; padding:8px; margin:5px;</span>
+<span class="s2">              display:inline-block;&quot;&gt;static (normal flow)&lt;/div&gt;</span>
+<span class="s2">  &lt;div style=&quot;position:absolute; top:70px; left:30px; background:#fdd;</span>
+<span class="s2">              padding:8px; border:1px solid #900;&quot;&gt;absolute, top:70px; left:30px;&lt;/div&gt;</span>
+<span class="s2">  &lt;div style=&quot;position:absolute; top:100px; left:200px; background:#dfd;</span>
+<span class="s2">              padding:8px; border:1px solid #090;&quot;&gt;absolute, top:100px; left:200px;&lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">position_demo</span><span class="p">))</span>
+
+<span class="c1"># Try it: change the top:/left: values on either box, or switch position:absolute</span>
+<span class="c1"># to position:fixed and imagine scrolling a page taller than your screen.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="position:relative; height:180px; width:100%; background:#eee;
+            font-family:sans-serif; border:1px solid #999;">
+  <div style="position:static; background:#cde; padding:8px; margin:5px;
+              display:inline-block;">static (normal flow)</div>
+  <div style="position:absolute; top:70px; left:30px; background:#fdd;
+              padding:8px; border:1px solid #900;">absolute, top:70px; left:30px;</div>
+  <div style="position:absolute; top:100px; left:200px; background:#dfd;
+              padding:8px; border:1px solid #090;">absolute, top:100px; left:200px;</div>
+</div>
+</div></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="before-thursday-s-lab-git-vs-code-and-github-pages">
+<h2><span class="section-number">4.8. </span>Before Thursday’s Lab: Git, VS Code, and GitHub Pages<a class="headerlink" href="#before-thursday-s-lab-git-vs-code-and-github-pages" title="Link to this heading">#</a></h2>
+<p>Today’s lecture covers HTML and CSS concepts. Thursday’s lab is where three things happen for the first time in this course, all at once:</p>
+<ol class="arabic simple">
+<li><p>You connect VS Code to your own computer, not just the browser</p></li>
+<li><p>You clone a GitHub repository and push a commit</p></li>
+<li><p>You publish a page live on GitHub Pages</p></li>
+</ol>
+<p>You’ll also work through a few of Dorman’s HTML and CSS examples directly, then apply what you learned today to customize the title and description text on your own Leaflet map page, styling it with the CSS properties from this lecture. You will not need to touch the map’s JavaScript to do this.</p>
+<p>None of that requires new HTML or CSS knowledge beyond today, but it does require lab time, not just reading. Come to lab with your GitHub account access confirmed (see homework) so we’re not troubleshooting logins during coding time.</p>
+<section id="quick-recap-in-the-order-we-covered-it-today">
+<h3><span class="section-number">4.8.1. </span>Quick recap, in the order we covered it today<a class="headerlink" href="#quick-recap-in-the-order-we-covered-it-today" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Section</p></th>
+<th class="head"><p>What it does</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HTML / CSS / JS</p></td>
+<td><p>1.3</p></td>
+<td><p>Content / style / behavior, the three jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code></p></td>
+<td><p>1.6.2</p></td>
+<td><p>The required skeleton of every page</p></td>
+</tr>
+<tr class="row-even"><td><p>Element, tag, attribute</p></td>
+<td><p>1.5.1</p></td>
+<td><p>The building block of HTML: <code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">src=&quot;...&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Block vs. inline</p></td>
+<td><p>1.5.3</p></td>
+<td><p>Whether an element stacks on its own line or sits inline</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code>-<code class="docutils literal notranslate"><span class="pre">&lt;h6&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code></p></td>
+<td><p>1.6</p></td>
+<td><p>The elements you’ll write and edit most</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code> / <code class="docutils literal notranslate"><span class="pre">class</span></code> / <code class="docutils literal notranslate"><span class="pre">style</span></code></p></td>
+<td><p>1.7</p></td>
+<td><p>Lets CSS (and later JS) target one element or a group</p></td>
+</tr>
+<tr class="row-even"><td><p>CSS rule, selector, property, value</p></td>
+<td><p>2.3-2.4</p></td>
+<td><p>The anatomy CSS uses to style matched elements</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">font-family</span></code>, <code class="docutils literal notranslate"><span class="pre">text-align</span></code></p></td>
+<td><p>2.8.2-2.8.3</p></td>
+<td><p>Common color and text styling</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">padding</span></code>, <code class="docutils literal notranslate"><span class="pre">border</span></code>, <code class="docutils literal notranslate"><span class="pre">margin</span></code></p></td>
+<td><p>2.8.4</p></td>
+<td><p>The box model, space inside and around an element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">z-index</span></code></p></td>
+<td><p>2.8.4.6-2.8.4.7</p></td>
+<td><p>Placing an element precisely and controlling overlap</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="wrap-up-ungraded-reflection">
+<h2><span class="section-number">4.9. </span>Wrap-Up: Ungraded Reflection<a class="headerlink" href="#wrap-up-ungraded-reflection" title="Link to this heading">#</a></h2>
+<p>Discussion 1 (Access &amp; Equity) has moved to Week 5, where you’ll have your own deployed Leaflet map to hold that question against. For today, a short, ungraded warm-up instead, jot a few sentences (edit the cell below):</p>
+<ul class="simple">
+<li><p>What’s one line of code from <code class="docutils literal notranslate"><span class="pre">test_map.html</span></code> or <code class="docutils literal notranslate"><span class="pre">wms_test.html</span></code> that you can now explain, that you couldn’t fully explain before today?</p></li>
+<li><p>Where else, in ArcGIS Online, in a lab, on any website, have you likely already been looking at HTML or CSS without recognizing it as such?</p></li>
+</ul>
+<p><em>Your answer here:</em></p>
+</section>
+<section id="looking-ahead">
+<h2><span class="section-number">4.10. </span>Looking Ahead<a class="headerlink" href="#looking-ahead" title="Link to this heading">#</a></h2>
+<p>Week 5 takes the next step: building a Leaflet map from a completely blank file, HTML skeleton, linked CSS and JS, tile layer, and a GeoJSON layer, rather than editing code that was already written for you. This is also where you’ll write your first JavaScript: variables, objects, function calls, and the DOM (Document Object Model) that lets JavaScript find and modify the very <code class="docutils literal notranslate"><span class="pre">id</span></code>-tagged elements you styled with CSS this week. Week 6 does the same build again in MapLibre GL JS, framed explicitly as the same architecture in a newer library, so you can see directly what transfers and what doesn’t.</p>
+</section>
+<section id="readings-resources">
+<h2><span class="section-number">4.11. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Dorman, M. <em><a class="reference external" href="https://geobgu.xyz/web-mapping/">Introduction to Web Mapping</a></em>, Chapter 1: HTML</p></li>
+<li><p>Dorman, M. <em><a class="reference external" href="https://geobgu.xyz/web-mapping/">Introduction to Web Mapping</a></em>, Chapter 2: CSS</p></li>
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/HTML">MDN: HTML basics</a></p></li>
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/CSS">MDN: CSS basics</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="lab-3-reading-your-own-code-and-publishing-it">
+<h2><span class="section-number">4.12. </span>Lab 3: Reading Your Own Code (and Publishing It)<a class="headerlink" href="#lab-3-reading-your-own-code-and-publishing-it" title="Link to this heading">#</a></h2>
+<p>See <a class="reference internal" href="#../labs/lab_03.md"><span class="xref myst">Lab 3</span></a>. Lab 3 includes the full HTML + CSS + pre-built-Leaflet-map capstone exercise, where you’ll combine everything from today into one published page.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -559,6 +1273,52 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">4.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-start-you-ve-already-been-doing-this">4.2. Before We Start: You’ve Already Been Doing This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters-even-if-you-re-going-the-arcgis-online-route">4.3. Why This Matters Even If You’re Going the ArcGIS Online Route</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-you-can-t-build-without-this">4.4. Things You Can’t Build Without This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-0-three-languages-three-jobs">4.5. Part 0: Three Languages, Three Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-html-structure-and-contents">4.6. Part 1: HTML, Structure and Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skeleton-every-page-you-ve-built-follows">4.6.1. The skeleton every page you’ve built follows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-html-element">4.6.2. Anatomy of an HTML element</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-comments">4.6.3. HTML comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-iwm-example-01-01-html-the-minimal-page">4.6.4. Example 1 (IWM <code class="docutils literal notranslate"><span class="pre">example-01-01.html</span></code>): the minimal page</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-vs-inline-elements">4.6.5. Block vs. inline elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-elements-you-ll-use-most">4.6.6. The elements you’ll use most</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-lists-and-links">4.6.7. Example 2: lists and links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-class-and-style-the-bridge-to-css">4.6.8. <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, and <code class="docutils literal notranslate"><span class="pre">style</span></code>: the bridge to CSS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-css-appearance-and-layout">4.7. Part 2: CSS, Appearance and Layout</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-css-rule">4.7.1. The anatomy of a CSS rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectors-telling-css-which-elements-to-style">4.7.2. Selectors: telling CSS which elements to style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-color-and-text">4.7.3. Example 3: color and text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-the-box-model">4.7.4. Example 4: the box model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positioning-a-box-on-the-page">4.7.5. Positioning a box on the page</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-thursday-s-lab-git-vs-code-and-github-pages">4.8. Before Thursday’s Lab: Git, VS Code, and GitHub Pages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-recap-in-the-order-we-covered-it-today">4.8.1. Quick recap, in the order we covered it today</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up-ungraded-reflection">4.9. Wrap-Up: Ungraded Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">4.10. Looking Ahead</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">4.11. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-reading-your-own-code-and-publishing-it">4.12. Lab 3: Reading Your Own Code (and Publishing It)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
