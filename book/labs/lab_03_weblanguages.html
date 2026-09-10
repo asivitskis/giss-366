@@ -1,0 +1,1238 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 3 &#8212; WebMapping &amp; Web GIS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/labs/lab_03_weblanguages';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/labs/lab_03_weblanguages.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Final Project: Public Web GIS Inquiry" href="../final-project/00-project-overview.html" />
+    <link rel="prev" title="Lab 2" href="lab_02_geoserver.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Software &amp; Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ArcGIS Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/github.html">Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/qgis.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1 - WebGIS Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/01_what_is_webgis.html">1. What is Web GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_open_web_standards.html">3. Open Web Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/05_open_source_libraries.html">5. Open Source Libraries: MapLibre GL JS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/06_cloud_native.html">6. Tiling and Cloud Native Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../create/building_web_apps.html">8. Web GIS Architecture &amp; Databases</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_01_agol.html">Lab 1</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_02_geoserver.html">Lab 2</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 3</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../final-project/00-project-overview.html">Final Project: Public Web GIS Inquiry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/labs/lab_03_weblanguages.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/labs/lab_03_weblanguages.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/labs/lab_03_weblanguages.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/labs/lab_03_weblanguages.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/labs/lab_03_weblanguages.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#html-css-in-practice-publishing-your-first-map-page">HTML &amp; CSS in Practice: Publishing Your First Map Page</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-confirm-access">Part A: Confirm access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-explore-what-you-cloned">Part C: Explore what you cloned</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-alone-reading-example-02-08-style-content">3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code> style content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-position-reading-example-02-09-style-css">3.2 Adding position: reading <code class="docutils literal notranslate"><span class="pre">example-02-09</span></code> style CSS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-pattern-example-02-11-html">3.3 The full pattern: <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-rubric-30-pts">Lab 3 Rubric (30 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-ai-policy-level-2">Lab 3 AI Policy - Level 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3">
+<h1>Lab 3<a class="headerlink" href="#lab-3" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="html-css-in-practice-publishing-your-first-map-page">
+<h1>HTML &amp; CSS in Practice: Publishing Your First Map Page<a class="headerlink" href="#html-css-in-practice-publishing-your-first-map-page" title="Link to this heading">#</a></h1>
+<section id="giss-geog-366-368-web-mapping-web-gis">
+<h2>GISS/GEOG 366/368 · Web Mapping &amp; Web GIS<a class="headerlink" href="#giss-geog-366-368-web-mapping-web-gis" title="Link to this heading">#</a></h2>
+<p><strong>Unit 4 Focus:</strong> HTML and CSS only. The map’s JavaScript (<code class="docutils literal notranslate"><span class="pre">map.js</span></code>) is provided and stays untouched today. Reading, writing, and modifying your own JavaScript starts in Week 5, when you build a Leaflet map from a blank file. This is your third graded lab.</p>
+</section>
+<section id="before-you-begin">
+<h2>Before You Begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">#</a></h2>
+<p>Today adds new tools you have not used yet in this course, on top of ones you already have.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Role today</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>A GitHub account</strong></p></td>
+<td><p>Confirmed working in this week’s homework, before lab</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code, with the Git/GitHub extension enabled</strong></p></td>
+<td><p>Cloning the starter repository and editing files locally</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Git</strong></p></td>
+<td><p>Installed alongside VS Code, or separately; VS Code will prompt you if it’s missing</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code + Live Server</strong></p></td>
+<td><p>Previewing your edits in a browser before you publish</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The Lab 3 starter repository</strong></p></td>
+<td><p>Provided by your instructor; contains the files you’ll edit today, listed in Step 2</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>A GitHub Pages-enabled repository</strong></p></td>
+<td><p>Where your finished page will live, publicly, at a URL you can share</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><a class="reference external" href="https://developer.mozilla.org/">MDN Web Docs</a></strong></p></td>
+<td><p>Your first stop, before the discussion board, when something doesn’t work</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dorman, <em>Introduction to Web Mapping</em>, Chapters 1-2</strong></p></td>
+<td><p>The source for every HTML and CSS pattern used today</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You do not need to download Leaflet yourself today. The starter repository already includes the Leaflet library files the provided map page links to.</p>
+</section>
+<section id="step-1-ask">
+<h2>Step 1: Ask<a class="headerlink" href="#step-1-ask" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>Lab 3 Question: If you never touch a single line of JavaScript today, how much of what a visitor sees on your published page is still entirely your own work?</strong></p>
+</div></blockquote>
+<p>Jot your first-pass answer before we start (edit the cell below):</p>
+<ul class="simple">
+<li><p>Look at the provided map page for a moment (you’ll open the real file in Step 2). Guess: what fraction of what makes this page look and read the way it does is HTML and CSS, versus JavaScript?</p></li>
+<li><p>You are about to publish a web page to a public URL for the first time in this course. What is one thing about that, permanence, visibility, version control, that feels different from saving a file to your own <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder?</p></li>
+</ul>
+<p><em>Your answer here:</em></p>
+</section>
+<section id="step-2-collect">
+<h2>Step 2: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
+<section id="part-a-confirm-access">
+<h3>Part A: Confirm access<a class="headerlink" href="#part-a-confirm-access" title="Link to this heading">#</a></h3>
+<p>Before opening VS Code, confirm two things (both should already be true from this week’s homework):</p>
+<ol class="arabic simple">
+<li><p>You can log in to GitHub in a browser.</p></li>
+<li><p>You have the link to the Lab 3 starter repository from your instructor.</p></li>
+</ol>
+<p>If either isn’t true yet, resolve it now. Everything after this point assumes both are working.</p>
+<details>
+<summary><b>Part B: Make your own copy, then clone it in VS Code. Click to expand</b></summary>
+<p>This is the first time you’ll connect VS Code to a GitHub repository directly, rather than downloading files by hand. The steps below use VS Code’s built-in Git support, no command line required.</p>
+<p><strong>Step 0: Create your own copy of the starter repository.</strong></p>
+<ol class="arabic simple">
+<li><p>In a browser, go to the starter repository URL your instructor provided.</p></li>
+<li><p>Click the green <strong>Use this template</strong> button, then choose <strong>Create a new repository</strong>.</p></li>
+<li><p>Name it whatever you like (for example, <code class="docutils literal notranslate"><span class="pre">giss-366-lab3</span></code>), and make sure it’s being created under <strong>your own</strong> GitHub account, not your instructor’s.</p></li>
+<li><p>Click <strong>Create repository</strong>. This gives you a full, independent copy that you own and can push to.</p></li>
+<li><p>Copy the URL of <strong>this new repository</strong> (the one you just created), not the original starter repo. You’ll paste it into VS Code in the next step.</p></li>
+</ol>
+<p><strong>Now clone your own copy into VS Code:</strong></p>
+<ol class="arabic simple">
+<li><p>Open VS Code.</p></li>
+<li><p>Open the <strong>Source Control</strong> panel (the icon that looks like a branching line, in the left sidebar).</p></li>
+<li><p>Click <strong>Clone Repository</strong>.</p></li>
+<li><p>Paste the URL of <strong>your own repository</strong> from Step 0 (not the original starter repo URL), then choose a location on your computer to save it, ideally near your existing <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder.</p></li>
+<li><p>When VS Code asks, choose <strong>Open</strong> to open the cloned folder as your workspace.</p></li>
+<li><p>If this is the first time Git has asked for your identity on this computer, VS Code will prompt you for your name and email. Use the same email associated with your GitHub account.</p></li>
+</ol>
+<p>If VS Code reports that Git is not installed, install it from <a class="reference external" href="https://git-scm.com/downloads">git-scm.com</a>, restart VS Code, and try again from Step 3.</p>
+<p>If you don’t see a <strong>Use this template</strong> button on the starter repository page, you’re likely looking at the wrong repository, check with your instructor before proceeding, since cloning the original directly will prevent you from publishing your own page later.</p>
+</details></section>
+<section id="part-c-explore-what-you-cloned">
+<h3>Part C: Explore what you cloned<a class="headerlink" href="#part-c-explore-what-you-cloned" title="Link to this heading">#</a></h3>
+<p>Open the folder in VS Code’s file explorer. You should see something like this:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File / folder</p></th>
+<th class="head"><p>What it is</p></th>
+<th class="head"><p>Will you edit it today?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">index.html</span></code></p></td>
+<td><p>The full map page: structure, style, and the link to the map script (built on Dorman’s <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code> pattern)</p></td>
+<td><p>Yes, HTML and CSS only</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">map.js</span></code></p></td>
+<td><p>The JavaScript that builds the actual Leaflet map</p></td>
+<td><p><strong>No</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">css/leaflet.css</span></code></p></td>
+<td><p>The Leaflet library’s own stylesheet</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">js/leaflet.js</span></code></p></td>
+<td><p>The Leaflet library itself</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Two files are yours to change today. Two are not. Keep that distinction in view for the rest of the lab; it’s the whole point of Part 3 in Step 4.</p>
+</section>
+</section>
+<section id="step-3-visualize">
+<h2>Step 3: Visualize<a class="headerlink" href="#step-3-visualize" title="Link to this heading">#</a></h2>
+<section id="structure-alone-reading-example-02-08-style-content">
+<h3>3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code> style content<a class="headerlink" href="#structure-alone-reading-example-02-08-style-content" title="Link to this heading">#</a></h3>
+<p><em>(Dorman, M. Introduction to Web Mapping, Section 2.10.1)</em></p>
+<p>Before opening the full, styled file, look at what its content looks like with no CSS at all. This is the plain HTML that a title and a description box start from, before any positioning or color is added:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>About this map<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the final result of the
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://leafletjs.com/examples/quick-start/&quot;</span>
+            <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+    The map demonstrates Leaflet basics, such as setting up a Leaflet map,
+    adding markers, polylines and popups.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The placement and styling of the title and description boxes is
+    done using CSS. Check out the source code of this page to see how.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Map authored by Michael Dorman<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Two <code class="docutils literal notranslate"><span class="pre">id</span></code> attributes appear here, <code class="docutils literal notranslate"><span class="pre">id=&quot;title&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">id=&quot;description&quot;</span></code> (recall IWM Section 1.7). Nothing about their position or appearance is decided yet. That is entirely CSS’s job, coming next.</p>
+<p><strong>Live in this notebook</strong>, this is what the content above looks like with zero CSS applied, stacked in plain normal flow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">structure_only_demo</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&lt;div style=&quot;font-family:sans-serif; border:1px solid #999; padding:10px;&quot;&gt;</span>
+<span class="s1">  &lt;h1 id=&quot;title&quot;&gt;Leaflet Quick Start Guide&lt;/h1&gt;</span>
+<span class="s1">  &lt;div id=&quot;description&quot;&gt;</span>
+<span class="s1">      &lt;h2&gt;About this map&lt;/h2&gt;</span>
+<span class="s1">      &lt;p&gt;This is the final result of the</span>
+<span class="s1">          &lt;a href=&quot;https://leafletjs.com/examples/quick-start/&quot;</span>
+<span class="s1">              target=&quot;_blank&quot;&gt;Leaflet Quick Start Guide&lt;/a&gt;.</span>
+<span class="s1">      The map demonstrates Leaflet basics, such as setting up a Leaflet map,</span>
+<span class="s1">      adding markers, polylines and popups.&lt;/p&gt;</span>
+<span class="s1">      &lt;p&gt;The placement and styling of the title and description boxes is</span>
+<span class="s1">      done using CSS. Check out the source code of this page to see how.&lt;/p&gt;</span>
+<span class="s1">      &lt;p&gt;Map authored by Michael Dorman&lt;/p&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">&lt;/div&gt;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">structure_only_demo</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="font-family:sans-serif; border:1px solid #999; padding:10px;">
+  <h1 id="title">Leaflet Quick Start Guide</h1>
+  <div id="description">
+      <h2>About this map</h2>
+      <p>This is the final result of the
+          <a href="https://leafletjs.com/examples/quick-start/"
+              target="_blank">Leaflet Quick Start Guide</a>.
+      The map demonstrates Leaflet basics, such as setting up a Leaflet map,
+      adding markers, polylines and popups.</p>
+      <p>The placement and styling of the title and description boxes is
+      done using CSS. Check out the source code of this page to see how.</p>
+      <p>Map authored by Michael Dorman</p>
+  </div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="adding-position-reading-example-02-09-style-css">
+<h3>3.2 Adding position: reading <code class="docutils literal notranslate"><span class="pre">example-02-09</span></code> style CSS<a class="headerlink" href="#adding-position-reading-example-02-09-style-css" title="Link to this heading">#</a></h3>
+<p><em>(Dorman, M. Introduction to Web Mapping, Section 2.10.2)</em></p>
+<p>Now add the CSS that pulls the title and description out of normal flow and pins each one to a fixed spot in the viewport:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">title</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">    </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">grey</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">#</span><span class="nn">description</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">    </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">);</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">grey</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Name what’s doing the work here, using vocabulary from lecture: two ID selectors (<code class="docutils literal notranslate"><span class="pre">#title</span></code>, <code class="docutils literal notranslate"><span class="pre">#description</span></code>), <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed</span></code> to leave normal flow, <code class="docutils literal notranslate"><span class="pre">top</span></code>/<code class="docutils literal notranslate"><span class="pre">left</span></code>/<code class="docutils literal notranslate"><span class="pre">bottom</span></code> offsets to place each box, and <code class="docutils literal notranslate"><span class="pre">padding</span></code>, <code class="docutils literal notranslate"><span class="pre">border</span></code>, and <code class="docutils literal notranslate"><span class="pre">border-radius</span></code> from the box model to make each one readable.</p>
+<p><strong>Live in this notebook:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positioned_demo</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&lt;div style=&quot;position:relative; height:260px; width:100%; background:#ddd;</span>
+<span class="s1">            font-family:sans-serif; overflow:hidden; border:1px solid #999;&quot;&gt;</span>
+<span class="s1">  &lt;div style=&quot;position:absolute; top:10px; left:20px; margin-top:0;</span>
+<span class="s1">              padding:10px 15px; background-color:rgba(255,255,255,0.5);</span>
+<span class="s1">              border:1px solid grey; border-radius:3px;&quot;&gt;</span>
+<span class="s1">    &lt;strong&gt;Leaflet Quick Start Guide&lt;/strong&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">  &lt;div style=&quot;position:absolute; bottom:15px; left:10px; width:260px;</span>
+<span class="s1">              padding:0px 15px; background-color:rgba(255,255,255,0.7);</span>
+<span class="s1">              border:1px solid grey; border-radius:3px;&quot;&gt;</span>
+<span class="s1">    &lt;h4&gt;About this map&lt;/h4&gt;</span>
+<span class="s1">    &lt;p style=&quot;font-size:0.85em;&quot;&gt;Positioned with CSS, still no map behind it yet.&lt;/p&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">&lt;/div&gt;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">positioned_demo</span><span class="p">))</span>
+
+<span class="c1"># Compare this to 3.1 above: same HTML content, same id attributes,</span>
+<span class="c1"># completely different layout, because of CSS alone.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="position:relative; height:260px; width:100%; background:#ddd;
+            font-family:sans-serif; overflow:hidden; border:1px solid #999;">
+  <div style="position:absolute; top:10px; left:20px; margin-top:0;
+              padding:10px 15px; background-color:rgba(255,255,255,0.5);
+              border:1px solid grey; border-radius:3px;">
+    <strong>Leaflet Quick Start Guide</strong>
+  </div>
+  <div style="position:absolute; bottom:15px; left:10px; width:260px;
+              padding:0px 15px; background-color:rgba(255,255,255,0.7);
+              border:1px solid grey; border-radius:3px;">
+    <h4>About this map</h4>
+    <p style="font-size:0.85em;">Positioned with CSS, still no map behind it yet.</p>
+  </div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="the-full-pattern-example-02-11-html">
+<h3>3.3 The full pattern: <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code><a class="headerlink" href="#the-full-pattern-example-02-11-html" title="Link to this heading">#</a></h3>
+<p><em>(Dorman, M. Introduction to Web Mapping, Sections 2.10.3-2.10.4)</em></p>
+<p>This is the same file you already have in your cloned repository, saved as <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, built on Dorman’s <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code> pattern. It adds two final layers on top of what you just saw: custom fonts and colors (Section 2.10.3), and the map itself, loaded by <code class="docutils literal notranslate"><span class="pre">map.js</span></code> and placed behind the title and description using <code class="docutils literal notranslate"><span class="pre">z-index</span></code> (Section 2.10.4).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Map description on web map<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://fonts.googleapis.com/css?family=Noto+Sans&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://fonts.googleapis.com/css?family=Lora&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/leaflet.css&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/leaflet.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;whitesmoke&quot;</span><span class="p">;</span>
+<span class="w">                </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Noto Sans&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">                </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3d3d3d</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">title</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">                </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">                </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lora&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">serif</span><span class="p">;</span>
+<span class="w">                </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">.04</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">                </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+<span class="w">                </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">grey</span><span class="p">;</span>
+<span class="w">                </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">description</span><span class="w"> </span><span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lora&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">serif</span><span class="p">;</span>
+<span class="w">                </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">.04</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">map</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="w">                </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">description</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">                </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">);</span>
+<span class="w">                </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">grey</span><span class="p">;</span>
+<span class="w">                </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">                </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">description</span><span class="w"> </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">.9</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">                </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">description</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#005daa</span><span class="p">;</span>
+<span class="w">                </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">#</span><span class="nn">description</span><span class="w"> </span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">underline</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>About this map<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the final result of the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://leafletjs.com/examples/quick-start/&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>. The map demonstrates Leaflet basics, such as setting up a Leaflet map, adding markers, polylines and popups.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The placement and styling of the title and description boxes is done using CSS. Check out the source code of this page to see how.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Map authored by Michael Dorman<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;map.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>A few things worth pointing out before you go editing anything:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#map</span></code> uses <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute</span></code> with <code class="docutils literal notranslate"><span class="pre">top:</span> <span class="pre">0;</span> <span class="pre">bottom:</span> <span class="pre">0;</span> <span class="pre">width:</span> <span class="pre">100%;</span></code>, which is what makes it fill the whole browser window behind everything else.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z-index:</span> <span class="pre">800</span></code> on <code class="docutils literal notranslate"><span class="pre">#title</span></code> and <code class="docutils literal notranslate"><span class="pre">#description</span></code> is what keeps them visible on top of the map instead of underneath it (IWM Section 2.8.4.7).</p></li>
+<li><p>Two Google Fonts are linked in the <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> (<code class="docutils literal notranslate"><span class="pre">Noto</span> <span class="pre">Sans</span></code>, <code class="docutils literal notranslate"><span class="pre">Lora</span></code>) and then referenced by name inside the <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block, an external resource plus an internal rule working together.</p></li>
+<li><p>The very last line, <code class="docutils literal notranslate"><span class="pre">&lt;script</span> <span class="pre">src=&quot;map.js&quot;&gt;&lt;/script&gt;</span></code>, is the one line in this entire file connected to JavaScript. Everything above it is HTML and CSS.</p></li>
+</ul>
+<p><strong>Do not open <code class="docutils literal notranslate"><span class="pre">map.js</span></code> expecting to edit it today.</strong> Open it only to read it, briefly, so you know what it’s doing:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">).</span><span class="nx">setView</span><span class="p">([</span><span class="mf">51.505</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.09</span><span class="p">],</span><span class="w"> </span><span class="mf">13</span><span class="p">);</span>
+
+<span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">(</span><span class="s1">&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">19</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">attribution</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;</span>
+<span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+
+<span class="nx">L</span><span class="p">.</span><span class="nx">marker</span><span class="p">([</span><span class="mf">51.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.09</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">bindPopup</span><span class="p">(</span><span class="s2">&quot;&lt;b&gt;Hello world!&lt;/b&gt;&lt;br&gt;I am a popup.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">openPopup</span><span class="p">();</span>
+
+<span class="nx">L</span><span class="p">.</span><span class="nx">circle</span><span class="p">([</span><span class="mf">51.508</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.11</span><span class="p">],</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#f03&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fillOpacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">).</span><span class="nx">bindPopup</span><span class="p">(</span><span class="s2">&quot;I am a circle.&quot;</span><span class="p">);</span>
+
+<span class="nx">L</span><span class="p">.</span><span class="nx">polygon</span><span class="p">([</span>
+<span class="w">    </span><span class="p">[</span><span class="mf">51.509</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.08</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="mf">51.503</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.06</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="mf">51.51</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.047</span><span class="p">]</span>
+<span class="p">]).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">).</span><span class="nx">bindPopup</span><span class="p">(</span><span class="s2">&quot;I am a polygon.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can read this now: a variable (<code class="docutils literal notranslate"><span class="pre">map</span></code>), a couple of object literals (the tile layer and circle options), and a chain of function calls. You are not expected to write this yet. That’s Week 5.</p>
+</section>
+</section>
+<section id="step-4-create">
+<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
+<p>Three parts. The first two build the pattern by hand in a scratch file, the same way lecture asked you to type rather than copy-paste. The third customizes and publishes the real file from your cloned repository.</p>
+<details>
+<summary><b>Part 1: Build the structure-plus-position pattern yourself. Click to expand</b></summary>
+<p>In your cloned repository folder, create a new file named <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code>. Type (don’t copy-paste) a full HTML document that:</p>
+<ol class="arabic simple">
+<li><p>Has the standard skeleton: <code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">html&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> with a <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>.</p></li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>, includes the structure from Step 3.1: an <code class="docutils literal notranslate"><span class="pre">&lt;h1</span> <span class="pre">id=&quot;title&quot;&gt;</span></code> and a <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;description&quot;&gt;</span></code> containing an <code class="docutils literal notranslate"><span class="pre">&lt;h2&gt;</span></code>, at least one <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>, and the link to the Leaflet Quick Start Guide.</p></li>
+<li><p>Inside <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>, add a <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block containing the CSS from Step 3.2: the <code class="docutils literal notranslate"><span class="pre">#title</span></code> and <code class="docutils literal notranslate"><span class="pre">#description</span></code> rules using <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed</span></code>.</p></li>
+</ol>
+<p>Open <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> with Live Server. Confirm your title and description boxes are positioned in fixed spots, matching what you saw rendered in Step 3.2, with no map behind them yet (there isn’t one; you haven’t added a <code class="docutils literal notranslate"><span class="pre">#map</span></code> div or a script tag in this file, and that’s expected).</p>
+<p>📸 <strong>Save a screenshot now:</strong> <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> open in a browser via Live Server, showing your positioned title and description boxes. Label it <em>Screenshot 1</em>.</p>
+</details><details>
+<summary><b>Part 2: Customize the real capstone file. Click to expand</b></summary>
+<p>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> from your cloned repository. This is the complete file shown in Step 3.3. Make the following changes:</p>
+<p><strong>HTML changes</strong> (inside <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>, leave <code class="docutils literal notranslate"><span class="pre">&lt;script</span> <span class="pre">src=&quot;map.js&quot;&gt;&lt;/script&gt;</span></code> exactly where it is):</p>
+<ul class="simple">
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">&lt;h1</span> <span class="pre">id=&quot;title&quot;&gt;</span></code> text to a title of your choosing.</p></li>
+<li><p>Rewrite the paragraphs inside <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;description&quot;&gt;</span></code> to describe your own interests, planned project topic, or a data source you’re considering for Week 5, rather than describing the Leaflet Quick Start Guide.</p></li>
+<li><p>Add a bulleted list (<code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code>) inside the description box, naming two or three things (data sources, questions, places), using the list pattern from lecture.</p></li>
+<li><p>Change the last line, “Map authored by…”, to your own name.</p></li>
+</ul>
+<p><strong>CSS changes</strong> (inside the <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block only):</p>
+<ul class="simple">
+<li><p>Change at least one color: the <code class="docutils literal notranslate"><span class="pre">background-color</span></code> of <code class="docutils literal notranslate"><span class="pre">#title</span></code> or <code class="docutils literal notranslate"><span class="pre">#description</span></code>, or the <code class="docutils literal notranslate"><span class="pre">border</span></code> color.</p></li>
+<li><p>Change at least one font choice, either swap <code class="docutils literal notranslate"><span class="pre">font-family</span></code> on <code class="docutils literal notranslate"><span class="pre">#title</span></code> for a different value, or link a different Google Font in <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> and reference it.</p></li>
+<li><p>Change the position of one box by editing its <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, or <code class="docutils literal notranslate"><span class="pre">bottom</span></code> value.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">class=&quot;note&quot;</span></code> to one of your paragraphs, and add a new CSS rule, <code class="docutils literal notranslate"><span class="pre">.note</span> <span class="pre">{</span> <span class="pre">}</span></code>, that styles it differently from the others (smaller font, italic, a different color), to practice the <code class="docutils literal notranslate"><span class="pre">id</span></code> vs. <code class="docutils literal notranslate"><span class="pre">class</span></code> distinction from lecture.</p></li>
+</ul>
+<p><strong>What not to change:</strong> <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, the <code class="docutils literal notranslate"><span class="pre">&lt;script</span> <span class="pre">src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;</span></code> line, the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">href=&quot;css/leaflet.css&quot;&gt;</span></code> line, or the <code class="docutils literal notranslate"><span class="pre">#map</span></code> div itself. If you want the map’s location, markers, or data to change, you’re previewing Week 5, not doing Week 4’s task. Open <code class="docutils literal notranslate"><span class="pre">map.js</span></code> once, add a single-line comment at the very top,</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Do not edit anything below this line. Provided for Lab 3; JavaScript starts Week 5.</span>
+</pre></div>
+</div>
+<p>and leave the rest of the file exactly as it was.</p>
+<p>Preview your edits with Live Server before moving on.</p>
+<p>📸 <strong>Save a screenshot now:</strong> your customized <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, open locally, showing your new title text, description content and list, and CSS styling changes, with the map visible behind them. Label it <em>Screenshot 2</em>.</p>
+</details><details>
+<summary><b>Part 3: Publish to GitHub Pages. Click to expand</b></summary>
+<p>Your first push to GitHub happens here. If any step below prompts you for GitHub sign-in, use the same account confirmed in Step 2.</p>
+<p><strong>1. Stage and commit your changes</strong>, using VS Code’s Source Control panel:</p>
+<ul class="simple">
+<li><p>Open the Source Control panel. You should see <code class="docutils literal notranslate"><span class="pre">index.html</span></code> (your customizations) and <code class="docutils literal notranslate"><span class="pre">map.js</span></code> (one comment line added) listed as changes.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">+</span></code> next to each file to stage it, or stage all changes at once.</p></li>
+<li><p>Type a commit message describing what you did, for example: <code class="docutils literal notranslate"><span class="pre">Customize</span> <span class="pre">title,</span> <span class="pre">description,</span> <span class="pre">and</span> <span class="pre">styling</span> <span class="pre">for</span> <span class="pre">Lab</span> <span class="pre">3</span></code>.</p></li>
+<li><p>Click the checkmark (Commit).</p></li>
+</ul>
+<p><strong>2. Push your commit</strong>, using the <strong>Sync Changes</strong> button (or <strong>Push</strong>) in the Source Control panel. This sends your commit from your computer up to GitHub. This is the first time you’ve done this in the course; if VS Code asks you to confirm your GitHub identity again, do so.</p>
+<p><strong>3. Enable GitHub Pages</strong>, in your browser:</p>
+<ul class="simple">
+<li><p>Go to your repository on <a class="reference external" href="http://github.com">github.com</a>.</p></li>
+<li><p>Open <strong>Settings → Pages</strong>.</p></li>
+<li><p>Under <strong>Build and deployment</strong>, set the source branch to <code class="docutils literal notranslate"><span class="pre">main</span></code> (or whichever branch you pushed to) and the folder to <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">(root)</span></code>.</p></li>
+<li><p>Save, and wait a minute or two for GitHub to build your site.</p></li>
+</ul>
+<p><strong>4. Find your published URL.</strong> GitHub will show it on the same Settings → Pages screen once the build finishes, in the form <code class="docutils literal notranslate"><span class="pre">https://[your-username].github.io/[your-repo-name]/</span></code>. Open it in a browser.</p>
+<p>📸 <strong>Save a screenshot now:</strong> the published page open in a browser, with the full <code class="docutils literal notranslate"><span class="pre">github.io</span></code> URL visible in the address bar, showing your customized title, description, and styling live on the internet. Label it <em>Screenshot 3</em>.</p>
+</details></section>
+<section id="step-5-act">
+<h2>Step 5: Act<a class="headerlink" href="#step-5-act" title="Link to this heading">#</a></h2>
+<section id="what-to-turn-in-graded-lab-exercises">
+<h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Your three screenshots:</p>
+<ul class="simple">
+<li><p><strong>Screenshot 1</strong>: <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code>, your hand-typed structure and positioning (Create, Part 1)</p></li>
+<li><p><strong>Screenshot 2</strong>: your customized <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, local preview, with the map visible (Create, Part 2)</p></li>
+<li><p><strong>Screenshot 3</strong>: the live GitHub Pages URL, in the browser address bar (Create, Part 3)</p></li>
+</ul>
+</li>
+<li><p>The link to your published GitHub Pages URL.</p></li>
+<li><p>A short written reflection (3-4 sentences) answering:</p>
+<ul class="simple">
+<li><p>Revisit your Step 1 guess. Now that you’ve built it, how much of the finished page’s look and content came from HTML and CSS alone, with zero JavaScript written by you?</p></li>
+<li><p>In your own words, why does changing <code class="docutils literal notranslate"><span class="pre">#title</span></code>’s CSS rule change what the page looks like, even though <code class="docutils literal notranslate"><span class="pre">map.js</span></code> was never opened for editing?</p></li>
+<li><p>Which part of today felt more unfamiliar: the Git/VS Code/GitHub Pages workflow, or the HTML/CSS editing itself? What would make the less familiar one easier next time?</p></li>
+</ul>
+</li>
+</ol>
+<p>Post your screenshots, your published GitHub Pages link, and your written reflection to this week’s submission space in Canvas.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lab-3-rubric-30-pts">
+<h2>Lab 3 Rubric (30 pts)<a class="headerlink" href="#lab-3-rubric-30-pts" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Score Band</p></th>
+<th class="head text-left"><p>What It Looks Like</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Exceptional (7-8)</strong></p></td>
+<td class="text-left"><p>Exceeding expectations; indicates mastery; in-depth understanding; higher-order thinking; inferences and extensions of learning objectives that go beyond what was taught; truly superb effort.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Proficient (5-6)</strong></p></td>
+<td class="text-left"><p>Meeting expectations; application of concepts; independently demonstrates understanding and thorough competency of learning objectives explicitly taught.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Developing (3-4)</strong></p></td>
+<td class="text-left"><p>Approaching expectations; demonstration of basic understanding without application and understanding of more complex ideas and processes; meets minimum requirements for satisfactory learning.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Insufficient (1-2)</strong></p></td>
+<td class="text-left"><p>Below expectations; partial or no demonstration of understanding and progress toward learning objectives; major errors and omissions present; inadequate for competency.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Criteria</p></th>
+<th class="head text-left"><p>Comments</p></th>
+<th class="head text-center"><p>Grade</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Content:</strong> All three screenshots are present and correctly show what’s asked, the hand-built warmup page, the customized local preview, and the live GitHub Pages URL.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Content:</strong> The written reflection directly and specifically answers all three prompts, with an accurate, own-words explanation of why CSS changes alone reshape the page.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Process:</strong> The published page loads correctly at its GitHub Pages URL; <code class="docutils literal notranslate"><span class="pre">map.js</span></code> and the Leaflet library files were left untouched apart from the single required comment; HTML and CSS changes meet all bullet points in Step 4, Part 2.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Product:</strong> Screenshots, GitHub Pages link, and reflection are submitted in the requested format, clearly labeled, legible, and free of errors.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 7</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Total</strong></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p><strong>/ 30</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="lab-3-ai-policy-level-2">
+<h3>Lab 3 AI Policy - Level 2<a class="headerlink" href="#lab-3-ai-policy-level-2" title="Link to this heading">#</a></h3>
+<p>This lab permits optional use of AI to support student learning. Permitted uses can include using AI to help troubleshoot GIS workflows, however, independent installation and use of AI agents to complete GIS tasks is not permitted at this time. AI may also be used to support general writing procedures (outlining a project, improving clarity or grammar, etc.), but all responses must remain original to each student as a sole responsible author. Disclosure of AI use is not required for this Level 2 assignment. Using AI is a choice with ethical considerations, and it is asked that students weigh those considerations accordingly as they complete this work.</p>
+</section>
+<section id="looking-ahead">
+<h3>Looking Ahead<a class="headerlink" href="#looking-ahead" title="Link to this heading">#</a></h3>
+<p>Week 5 is the real from-scratch build: a Leaflet map starting from a completely blank file, HTML skeleton, linked CSS and JS, tile layer, and a GeoJSON layer of your own, using the region and data you’ve been working with all semester. This is also where Discussion 1 (Access &amp; Equity) lands, held against a map you built and published yourself.</p>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.mozilla.org/">MDN Web Docs</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Docs: Configuring a publishing source for your GitHub Pages site</a></p></li>
+<li><p><a class="reference external" href="https://leafletjs.com/reference.html">Leaflet documentation</a> (for context only; you are reading <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, not writing Leaflet code today)</p></li>
+<li><p>Dorman, M. <em><a class="reference external" href="https://geobgu.xyz/web-mapping/">Introduction to Web Mapping</a></em>, Chapter 1 (HTML), Section 1.7 (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">style</span></code>)</p></li>
+<li><p>Dorman, M. <em><a class="reference external" href="https://geobgu.xyz/web-mapping/">Introduction to Web Mapping</a></em>, Chapter 2 (CSS), Section 2.10 (“Map description example,” the source of today’s <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code>, <code class="docutils literal notranslate"><span class="pre">example-02-09</span></code>, and <code class="docutils literal notranslate"><span class="pre">example-02-11</span></code>)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-366",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_02_geoserver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../final-project/00-project-overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Final Project: Public Web GIS Inquiry</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#html-css-in-practice-publishing-your-first-map-page">HTML &amp; CSS in Practice: Publishing Your First Map Page</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-confirm-access">Part A: Confirm access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-explore-what-you-cloned">Part C: Explore what you cloned</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-alone-reading-example-02-08-style-content">3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code> style content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-position-reading-example-02-09-style-css">3.2 Adding position: reading <code class="docutils literal notranslate"><span class="pre">example-02-09</span></code> style CSS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-pattern-example-02-11-html">3.3 The full pattern: <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-rubric-30-pts">Lab 3 Rubric (30 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-ai-policy-level-2">Lab 3 AI Policy - Level 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
