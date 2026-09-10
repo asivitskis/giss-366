@@ -511,7 +511,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-alone-reading-example-02-08-style-content">3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code> style content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-alone-reading-index-html-style-content">3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">index.html</span></code> style content</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-position-reading-example-02-09-style-css">3.2 Adding position: reading <code class="docutils literal notranslate"><span class="pre">example-02-09</span></code> style CSS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-pattern-example-02-11-html">3.3 The full pattern: <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code></a></li>
 </ul>
@@ -521,7 +521,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-rubric-30-pts">Lab 3 Rubric (30 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-rubric-40-pts">Lab 3 Rubric (40 pts)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-ai-policy-level-2">Lab 3 AI Policy - Level 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
@@ -552,7 +552,7 @@ document.write(`
 </section>
 <section id="before-you-begin">
 <h2>Before You Begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">#</a></h2>
-<p>Today adds new tools you have not used yet in this course, on top of ones you already have.</p>
+<p>Today adds new tools you have not used yet in this course, on top of ones you already have. Verify that you have these tools installed before proceeding.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Tool</p></th>
@@ -581,9 +581,6 @@ document.write(`
 <tr class="row-even"><td><p><strong><a class="reference external" href="https://developer.mozilla.org/">MDN Web Docs</a></strong></p></td>
 <td><p>Your first stop, before the discussion board, when something doesn’t work</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Dorman, <em>Introduction to Web Mapping</em>, Chapters 1-2</strong></p></td>
-<td><p>The source for every HTML and CSS pattern used today</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -591,32 +588,38 @@ document.write(`
 </section>
 <section id="step-1-ask">
 <h2>Step 1: Ask<a class="headerlink" href="#step-1-ask" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><p><strong>Lab 3 Question: If you never touch a single line of JavaScript today, how much of what a visitor sees on your published page is still entirely your own work?</strong></p>
-</div></blockquote>
-<p>Jot your first-pass answer before we start (edit the cell below):</p>
+<p>Check out this link of a basic Leaflet Map template, hosted on GitHub Pages: <a class="reference external" href="https://asivitskis.github.io/giss366-lab03-template/">https://asivitskis.github.io/giss366-lab03-template/</a></p>
+<p>For Lab 03, you will be modifying this exact template to start building a customized web map of your own. You’ll begin to investigate the source code files that go into deploying this map.</p>
+<p>Jot your first-pass answer before continuing with the lab instructions:</p>
 <ul class="simple">
-<li><p>Look at the provided map page for a moment (you’ll open the real file in Step 2). Guess: what fraction of what makes this page look and read the way it does is HTML and CSS, versus JavaScript?</p></li>
-<li><p>You are about to publish a web page to a public URL for the first time in this course. What is one thing about that, permanence, visibility, version control, that feels different from saving a file to your own <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder?</p></li>
+<li><p>Look at the page for a minute. Try sorting what you see into two rough piles: things that feel tied to the actual geography (the map itself, markers, behavior) and everything else (content, descriptions, etc.). Which parts do you think you’ll be able to modify with your current knowledge and skill level? You’ll check where the real line falls once you open the source code in Step 2.</p></li>
+<li><p>You are about to publish a web page with an accesible URL for the first time in this course. What is one thing about that (version control, accessibility, etc.) that feels different from saving a file to your own <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder on your personal computer?</p></li>
 </ul>
-<p><em>Your answer here:</em></p>
+<p>Keep that sorting in mind as you consider:</p>
+<blockquote>
+<div><p><strong>Lab 3 Question: All of the “geographic” components of this map are controlled by JavaScript. However, if you never touch a single line of JavaScript today, how many components of this map will you be able to have control over with HTML and CSS?</strong></p>
+</div></blockquote>
 </section>
 <section id="step-2-collect">
 <h2>Step 2: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
 <section id="part-a-confirm-access">
 <h3>Part A: Confirm access<a class="headerlink" href="#part-a-confirm-access" title="Link to this heading">#</a></h3>
-<p>Before opening VS Code, confirm two things (both should already be true from this week’s homework):</p>
+<p>Before opening VS Code, confirm two things:</p>
 <ol class="arabic simple">
 <li><p>You can log in to GitHub in a browser.</p></li>
-<li><p>You have the link to the Lab 3 starter repository from your instructor.</p></li>
+<li><p>You have the link to the Lab 3 starter repository. This was shared via a Canvas Message prior to Thursday’s Lab Session. And, it can also be found below:</p></li>
 </ol>
-<p>If either isn’t true yet, resolve it now. Everything after this point assumes both are working.</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/asivitskis/giss366-lab03-template">asivitskis/giss366-lab03-template</a></p></li>
+</ul>
+<p>Make sure that you have access to these items above. Everything after this point assumes both are working.</p>
 <details>
-<summary><b>Part B: Make your own copy, then clone it in VS Code. Click to expand</b></summary>
+<summary><b>Part B: Make your own copy of the repository, then clone it in VS Code. Click to expand</b></summary>
 <p>This is the first time you’ll connect VS Code to a GitHub repository directly, rather than downloading files by hand. The steps below use VS Code’s built-in Git support, no command line required.</p>
-<p><strong>Step 0: Create your own copy of the starter repository.</strong></p>
+<p><strong>Step 0: Create your own copy of the template repository.</strong></p>
 <ol class="arabic simple">
-<li><p>In a browser, go to the starter repository URL your instructor provided.</p></li>
+<li><p>In a browser, go to the template repository URL: <a class="github reference external" href="https://github.com/asivitskis/giss366-lab03-template">asivitskis/giss366-lab03-template</a></p></li>
+<li><p>Make sure you are signed into your GitHub account.</p></li>
 <li><p>Click the green <strong>Use this template</strong> button, then choose <strong>Create a new repository</strong>.</p></li>
 <li><p>Name it whatever you like (for example, <code class="docutils literal notranslate"><span class="pre">giss-366-lab3</span></code>), and make sure it’s being created under <strong>your own</strong> GitHub account, not your instructor’s.</p></li>
 <li><p>Click <strong>Create repository</strong>. This gives you a full, independent copy that you own and can push to.</p></li>
@@ -624,15 +627,15 @@ document.write(`
 </ol>
 <p><strong>Now clone your own copy into VS Code:</strong></p>
 <ol class="arabic simple">
-<li><p>Open VS Code.</p></li>
+<li><p>Open VS Code. Make sure no files are open. Click File &gt; “New Window” if needed.</p></li>
 <li><p>Open the <strong>Source Control</strong> panel (the icon that looks like a branching line, in the left sidebar).</p></li>
 <li><p>Click <strong>Clone Repository</strong>.</p></li>
-<li><p>Paste the URL of <strong>your own repository</strong> from Step 0 (not the original starter repo URL), then choose a location on your computer to save it, ideally near your existing <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder.</p></li>
+<li><p>Paste the URL of <strong>your own repository</strong> from Step 0, then choose a location on your computer to save it, ideally near your existing <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folder.</p></li>
 <li><p>When VS Code asks, choose <strong>Open</strong> to open the cloned folder as your workspace.</p></li>
 <li><p>If this is the first time Git has asked for your identity on this computer, VS Code will prompt you for your name and email. Use the same email associated with your GitHub account.</p></li>
 </ol>
 <p>If VS Code reports that Git is not installed, install it from <a class="reference external" href="https://git-scm.com/downloads">git-scm.com</a>, restart VS Code, and try again from Step 3.</p>
-<p>If you don’t see a <strong>Use this template</strong> button on the starter repository page, you’re likely looking at the wrong repository, check with your instructor before proceeding, since cloning the original directly will prevent you from publishing your own page later.</p>
+<p>If you don’t see a <strong>Use this template</strong> button on the starter repository page, you’re likely looking at the wrong repository. Check in with Alex before proceeding, since cloning the original directly will prevent you from publishing your own page later.</p>
 </details></section>
 <section id="part-c-explore-what-you-cloned">
 <h3>Part C: Explore what you cloned<a class="headerlink" href="#part-c-explore-what-you-cloned" title="Link to this heading">#</a></h3>
@@ -649,16 +652,20 @@ document.write(`
 <td><p>The full map page: structure, style, and the link to the map script (built on Dorman’s <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code> pattern)</p></td>
 <td><p>Yes, HTML and CSS only</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">map.js</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></td>
+<td><p>A standard, explanatory landing page that provides a description for your repository.</p></td>
+<td><p><strong>Optional edits</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">map.js</span></code></p></td>
 <td><p>The JavaScript that builds the actual Leaflet map</p></td>
 <td><p><strong>No</strong></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">css/leaflet.css</span></code></p></td>
-<td><p>The Leaflet library’s own stylesheet</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">css/leaflet.css</span></code></p></td>
+<td><p>The Leaflet library’s own stylesheet, located within a CSS folder.</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">js/leaflet.js</span></code></p></td>
-<td><p>The Leaflet library itself</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">js/leaflet.js</span></code></p></td>
+<td><p>The Leaflet library itself, located within the js folder.</p></td>
 <td><p>No</p></td>
 </tr>
 </tbody>
@@ -669,11 +676,11 @@ document.write(`
 </section>
 <section id="step-3-visualize">
 <h2>Step 3: Visualize<a class="headerlink" href="#step-3-visualize" title="Link to this heading">#</a></h2>
-<section id="structure-alone-reading-example-02-08-style-content">
-<h3>3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code> style content<a class="headerlink" href="#structure-alone-reading-example-02-08-style-content" title="Link to this heading">#</a></h3>
+<section id="structure-alone-reading-index-html-style-content">
+<h3>3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">index.html</span></code> style content<a class="headerlink" href="#structure-alone-reading-index-html-style-content" title="Link to this heading">#</a></h3>
 <p><em>(Dorman, M. Introduction to Web Mapping, Section 2.10.1)</em></p>
-<p>Before opening the full, styled file, look at what its content looks like with no CSS at all. This is the plain HTML that a title and a description box start from, before any positioning or color is added:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<p>Before opening the full, styled file, check out this brief copy of its content. This is the plain HTML that is built into the map that you will be reproducing. It include a title and a description box, before any positioning or color is added:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>[update this] Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>About this map<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the final result of the
@@ -683,7 +690,7 @@ document.write(`
     adding markers, polylines and popups.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The placement and styling of the title and description boxes is
     done using CSS. Check out the source code of this page to see how.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Map authored by Michael Dorman<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Map authored by: [insert your name here]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -695,7 +702,7 @@ document.write(`
 
 <span class="n">structure_only_demo</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">&lt;div style=&quot;font-family:sans-serif; border:1px solid #999; padding:10px;&quot;&gt;</span>
-<span class="s1">  &lt;h1 id=&quot;title&quot;&gt;Leaflet Quick Start Guide&lt;/h1&gt;</span>
+<span class="s1">  &lt;h1 id=&quot;title&quot;&gt;[update this] Leaflet Quick Start Guide&lt;/h1&gt;</span>
 <span class="s1">  &lt;div id=&quot;description&quot;&gt;</span>
 <span class="s1">      &lt;h2&gt;About this map&lt;/h2&gt;</span>
 <span class="s1">      &lt;p&gt;This is the final result of the</span>
@@ -705,7 +712,7 @@ document.write(`
 <span class="s1">      adding markers, polylines and popups.&lt;/p&gt;</span>
 <span class="s1">      &lt;p&gt;The placement and styling of the title and description boxes is</span>
 <span class="s1">      done using CSS. Check out the source code of this page to see how.&lt;/p&gt;</span>
-<span class="s1">      &lt;p&gt;Map authored by Michael Dorman&lt;/p&gt;</span>
+<span class="s1">      &lt;p&gt;Map authored by: [insert your name here]&lt;/p&gt;</span>
 <span class="s1">  &lt;/div&gt;</span>
 <span class="s1">&lt;/div&gt;</span>
 <span class="s1">&#39;&#39;&#39;</span>
@@ -717,7 +724,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html">
 <div style="font-family:sans-serif; border:1px solid #999; padding:10px;">
-  <h1 id="title">Leaflet Quick Start Guide</h1>
+  <h1 id="title">[update this] Leaflet Quick Start Guide</h1>
   <div id="description">
       <h2>About this map</h2>
       <p>This is the final result of the
@@ -727,7 +734,7 @@ document.write(`
       adding markers, polylines and popups.</p>
       <p>The placement and styling of the title and description boxes is
       done using CSS. Check out the source code of this page to see how.</p>
-      <p>Map authored by Michael Dorman</p>
+      <p>Map authored by: [insert your name here]</p>
   </div>
 </div>
 </div></div>
@@ -876,13 +883,15 @@ document.write(`
 <span class="w">        </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>[update this] Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>About this map<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the final result of the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://leafletjs.com/examples/quick-start/&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>. The map demonstrates Leaflet basics, such as setting up a Leaflet map, adding markers, polylines and popups.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The placement and styling of the title and description boxes is done using CSS. Check out the source code of this page to see how.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Map authored by Michael Dorman<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the final result of the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://leafletjs.com/examples/quick-start/&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Leaflet Quick Start Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>. 
+                The map demonstrates Leaflet basics, such as setting up a Leaflet map, adding markers, polylines and popups.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The placement and styling of the title and description boxes is done using CSS. 
+                Check out the source code of this page to see how.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Map authored by: [insert your name here]<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;map.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
@@ -927,7 +936,7 @@ document.write(`
 </section>
 <section id="step-4-create">
 <h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
-<p>Three parts. The first two build the pattern by hand in a scratch file, the same way lecture asked you to type rather than copy-paste. The third customizes and publishes the real file from your cloned repository.</p>
+<p>Three parts. The first builds the pattern by hand in a scratch file. The second has you customized the real map file. The third publishes the real file from your cloned repository.</p>
 <details>
 <summary><b>Part 1: Build the structure-plus-position pattern yourself. Click to expand</b></summary>
 <p>In your cloned repository folder, create a new file named <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code>. Type (don’t copy-paste) a full HTML document that:</p>
@@ -937,7 +946,7 @@ document.write(`
 <li><p>Inside <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>, add a <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block containing the CSS from Step 3.2: the <code class="docutils literal notranslate"><span class="pre">#title</span></code> and <code class="docutils literal notranslate"><span class="pre">#description</span></code> rules using <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed</span></code>.</p></li>
 </ol>
 <p>Open <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> with Live Server. Confirm your title and description boxes are positioned in fixed spots, matching what you saw rendered in Step 3.2, with no map behind them yet (there isn’t one; you haven’t added a <code class="docutils literal notranslate"><span class="pre">#map</span></code> div or a script tag in this file, and that’s expected).</p>
-<p>📸 <strong>Save a screenshot now:</strong> <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> open in a browser via Live Server, showing your positioned title and description boxes. Label it <em>Screenshot 1</em>.</p>
+<p>Leave <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> in your repository folder. You’ll stage and push it along with <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in Part 3.</p>
 </details><details>
 <summary><b>Part 2: Customize the real capstone file. Click to expand</b></summary>
 <p>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> from your cloned repository. This is the complete file shown in Step 3.3. Make the following changes:</p>
@@ -955,19 +964,15 @@ document.write(`
 <li><p>Change the position of one box by editing its <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, or <code class="docutils literal notranslate"><span class="pre">bottom</span></code> value.</p></li>
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">class=&quot;note&quot;</span></code> to one of your paragraphs, and add a new CSS rule, <code class="docutils literal notranslate"><span class="pre">.note</span> <span class="pre">{</span> <span class="pre">}</span></code>, that styles it differently from the others (smaller font, italic, a different color), to practice the <code class="docutils literal notranslate"><span class="pre">id</span></code> vs. <code class="docutils literal notranslate"><span class="pre">class</span></code> distinction from lecture.</p></li>
 </ul>
-<p><strong>What not to change:</strong> <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, the <code class="docutils literal notranslate"><span class="pre">&lt;script</span> <span class="pre">src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;</span></code> line, the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">href=&quot;css/leaflet.css&quot;&gt;</span></code> line, or the <code class="docutils literal notranslate"><span class="pre">#map</span></code> div itself. If you want the map’s location, markers, or data to change, you’re previewing Week 5, not doing Week 4’s task. Open <code class="docutils literal notranslate"><span class="pre">map.js</span></code> once, add a single-line comment at the very top,</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Do not edit anything below this line. Provided for Lab 3; JavaScript starts Week 5.</span>
-</pre></div>
-</div>
-<p>and leave the rest of the file exactly as it was.</p>
-<p>Preview your edits with Live Server before moving on.</p>
-<p>📸 <strong>Save a screenshot now:</strong> your customized <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, open locally, showing your new title text, description content and list, and CSS styling changes, with the map visible behind them. Label it <em>Screenshot 2</em>.</p>
+<p><strong>What not to change:</strong> <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, the <code class="docutils literal notranslate"><span class="pre">&lt;script</span> <span class="pre">src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;</span></code> line, the <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">href=&quot;css/leaflet.css&quot;&gt;</span></code> line, or the <code class="docutils literal notranslate"><span class="pre">#map</span></code> div itself.</p>
+<p>Changing the map’s location, markers, or data is this the focus for Week 5. . This is the domain of JavaScript, and it is controlled within the <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Leave this file exactly as it is for now (any changes may interupt the function of your final script).</p>
+<p>Preview your edits with Live Server before moving on. You’ll push this file to GitHub in Part 3 and submit it directly, so make sure it’s in the state you want graded before you commit.</p>
 </details><details>
 <summary><b>Part 3: Publish to GitHub Pages. Click to expand</b></summary>
 <p>Your first push to GitHub happens here. If any step below prompts you for GitHub sign-in, use the same account confirmed in Step 2.</p>
 <p><strong>1. Stage and commit your changes</strong>, using VS Code’s Source Control panel:</p>
 <ul class="simple">
-<li><p>Open the Source Control panel. You should see <code class="docutils literal notranslate"><span class="pre">index.html</span></code> (your customizations) and <code class="docutils literal notranslate"><span class="pre">map.js</span></code> (one comment line added) listed as changes.</p></li>
+<li><p>Open the Source Control panel. You should see <code class="docutils literal notranslate"><span class="pre">index.html</span></code> (your customizations) and <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code>  listed as changes.</p></li>
 <li><p>Click the <code class="docutils literal notranslate"><span class="pre">+</span></code> next to each file to stage it, or stage all changes at once.</p></li>
 <li><p>Type a commit message describing what you did, for example: <code class="docutils literal notranslate"><span class="pre">Customize</span> <span class="pre">title,</span> <span class="pre">description,</span> <span class="pre">and</span> <span class="pre">styling</span> <span class="pre">for</span> <span class="pre">Lab</span> <span class="pre">3</span></code>.</p></li>
 <li><p>Click the checkmark (Commit).</p></li>
@@ -977,25 +982,21 @@ document.write(`
 <ul class="simple">
 <li><p>Go to your repository on <a class="reference external" href="http://github.com">github.com</a>.</p></li>
 <li><p>Open <strong>Settings → Pages</strong>.</p></li>
-<li><p>Under <strong>Build and deployment</strong>, set the source branch to <code class="docutils literal notranslate"><span class="pre">main</span></code> (or whichever branch you pushed to) and the folder to <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">(root)</span></code>.</p></li>
+<li><p>Under <strong>Build and deployment</strong>, set the source branch to <code class="docutils literal notranslate"><span class="pre">main</span></code> and the folder to <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">(root)</span></code>.</p></li>
 <li><p>Save, and wait a minute or two for GitHub to build your site.</p></li>
 </ul>
 <p><strong>4. Find your published URL.</strong> GitHub will show it on the same Settings → Pages screen once the build finishes, in the form <code class="docutils literal notranslate"><span class="pre">https://[your-username].github.io/[your-repo-name]/</span></code>. Open it in a browser.</p>
-<p>📸 <strong>Save a screenshot now:</strong> the published page open in a browser, with the full <code class="docutils literal notranslate"><span class="pre">github.io</span></code> URL visible in the address bar, showing your customized title, description, and styling live on the internet. Label it <em>Screenshot 3</em>.</p>
+<p>Congratulations! You just published your first open-source web-map.</p>
 </details></section>
 <section id="step-5-act">
 <h2>Step 5: Act<a class="headerlink" href="#step-5-act" title="Link to this heading">#</a></h2>
 <section id="what-to-turn-in-graded-lab-exercises">
 <h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Your three screenshots:</p>
-<ul class="simple">
-<li><p><strong>Screenshot 1</strong>: <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code>, your hand-typed structure and positioning (Create, Part 1)</p></li>
-<li><p><strong>Screenshot 2</strong>: your customized <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, local preview, with the map visible (Create, Part 2)</p></li>
-<li><p><strong>Screenshot 3</strong>: the live GitHub Pages URL, in the browser address bar (Create, Part 3)</p></li>
-</ul>
-</li>
-<li><p>The link to your published GitHub Pages URL.</p></li>
+<li><p>Your <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> file, hand-typed and pushed to your repository (Create, Part 1).</p></li>
+<li><p>Your customized <code class="docutils literal notranslate"><span class="pre">index.html</span></code> file, pushed to your repository (Create, Part 2).</p></li>
+<li><p>The link to your published GitHub Pages URL (Create, Part 3).</p></li>
+<li><p>The link to your GitHub repository where the page and the files are hosted (Collect, Part B)</p></li>
 <li><p>A short written reflection (3-4 sentences) answering:</p>
 <ul class="simple">
 <li><p>Revisit your Step 1 guess. Now that you’ve built it, how much of the finished page’s look and content came from HTML and CSS alone, with zero JavaScript written by you?</p></li>
@@ -1004,12 +1005,12 @@ document.write(`
 </ul>
 </li>
 </ol>
-<p>Post your screenshots, your published GitHub Pages link, and your written reflection to this week’s submission space in Canvas.</p>
+<p>Submit your GitHub links and written reflection to this week’s submission space in Canvas. Since <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> and <code class="docutils literal notranslate"><span class="pre">index.html</span></code> are both pushed to your repository, they’ll be graded directly from GitHub, either from the repository’s file view or, for <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, from the live Pages URL itself.</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="lab-3-rubric-30-pts">
-<h2>Lab 3 Rubric (30 pts)<a class="headerlink" href="#lab-3-rubric-30-pts" title="Link to this heading">#</a></h2>
+<section id="lab-3-rubric-40-pts">
+<h2>Lab 3 Rubric (40 pts)<a class="headerlink" href="#lab-3-rubric-40-pts" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Score Band</p></th>
@@ -1041,25 +1042,29 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><strong>Content:</strong> All three screenshots are present and correctly show what’s asked, the hand-built warmup page, the customized local preview, and the live GitHub Pages URL.</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Content:</strong> <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code> and the customized <code class="docutils literal notranslate"><span class="pre">index.html</span></code> are both present in the pushed repository and correctly show what’s asked, the hand-built warmup page and the customized, styled map page.</p></td>
 <td class="text-left"><p></p></td>
 <td class="text-center"><p>/ 8</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>Content:</strong> The written reflection directly and specifically answers all three prompts, with an accurate, own-words explanation of why CSS changes alone reshape the page.</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Content:</strong> The written reflection is complete, directly and specifically answering all three prompts, including an explanation of why CSS changes alone reshape the page.</p></td>
 <td class="text-left"><p></p></td>
 <td class="text-center"><p>/ 8</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Process:</strong> The published page loads correctly at its GitHub Pages URL; <code class="docutils literal notranslate"><span class="pre">map.js</span></code> and the Leaflet library files were left untouched apart from the single required comment; HTML and CSS changes meet all bullet points in Step 4, Part 2.</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Process:</strong> The published page loads correctly at its GitHub Pages URL. <code class="docutils literal notranslate"><span class="pre">map.js</span></code> and the Leaflet library files were left untouched. The HTML and CSS changes meet all bullet points in Step 4, Part 2.</p></td>
 <td class="text-left"><p></p></td>
-<td class="text-center"><p>/ 7</p></td>
+<td class="text-center"><p>/ 8</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>Product:</strong> Screenshots, GitHub Pages link, and reflection are submitted in the requested format, clearly labeled, legible, and free of errors.</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Process:</strong> The reflection is evidence-based and specific, grounded in the student’s own before-and-after comparison of the page rather than general statements, and names a specific troubleshooting moment and how it was resolved.</p></td>
 <td class="text-left"><p></p></td>
-<td class="text-center"><p>/ 7</p></td>
+<td class="text-center"><p>/ 8</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Total</strong></p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Product:</strong> <code class="docutils literal notranslate"><span class="pre">warmup.html</span></code>, <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, the GitHub Pages link, and the reflection are submitted in the requested format, clearly labeled, legible, and free of errors.</p></td>
 <td class="text-left"><p></p></td>
-<td class="text-center"><p><strong>/ 30</strong></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Total</strong></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p><strong>/ 40</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -1162,7 +1167,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-alone-reading-example-02-08-style-content">3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">example-02-08</span></code> style content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-alone-reading-index-html-style-content">3.1 Structure alone: reading <code class="docutils literal notranslate"><span class="pre">index.html</span></code> style content</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-position-reading-example-02-09-style-css">3.2 Adding position: reading <code class="docutils literal notranslate"><span class="pre">example-02-09</span></code> style CSS</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-pattern-example-02-11-html">3.3 The full pattern: <code class="docutils literal notranslate"><span class="pre">example-02-11.html</span></code></a></li>
 </ul>
@@ -1172,7 +1177,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-rubric-30-pts">Lab 3 Rubric (30 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-rubric-40-pts">Lab 3 Rubric (40 pts)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-3-ai-policy-level-2">Lab 3 AI Policy - Level 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking Ahead</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
