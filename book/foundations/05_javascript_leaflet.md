@@ -1,4 +1,4 @@
-# JavaScript & Leaflet: Writing the Map Yourself
+# JavaScript & Leaflet
 
 ## Week 5 | Lecture + Lab 4: JavaScript Fundamentals & Building a Leaflet Map from Scratch
 
@@ -115,6 +115,44 @@ Use `typeof` to check what you're working with (`typeof "a"` → `'string'`, `ty
 
 ---
 
+> ### Try It in Your Console
+>
+> Write these in one at a time and predict the output before you hit Enter.
+>
+> **Variables and arrays:**
+> ```js
+> let lat = 31.262218;
+> let lng = 34.801472;
+> let coords = [lat, lng];
+> coords[0];
+> coords[1];
+> ```
+>
+> **Objects:**
+> ```js
+> let style = {color: "red", weight: 4, fillColor: "yellow"};
+> style.color;
+> style["weight"];
+> ```
+>
+> **`typeof` and then data example:**
+> ```js
+> typeof "a";
+> typeof 5;
+> typeof true;
+> typeof [1, 2];
+> ```
+> That last one returns `'object'`, not `'array'`. Arrays don't get their own `typeof` category in JavaScript.
+>
+> **actual array check:**
+> ```js
+> Array.isArray([1, 2]);
+> Array.isArray({a: 1});
+> ```
+
+---
+
+
 ## Part 3: Functions
 
 *(IWM Section 3.7–3.8)*
@@ -142,6 +180,30 @@ document.getElementById("btn").addEventListener("click", function() {
 Objects can hold functions too, in which case they're called **methods**, accessed the same way as any other property: `car.start()`. Leaflet layer objects work exactly this way, `.addTo()`, `.bindPopup()`, and `.onAdd()` are all methods you'll call throughout this lab.
 
 ---
+
+> ### Try It in Your Console
+>
+> **A named function:**
+> ```js
+> function greeting(name) {
+>     console.log("Hello, " + name + "!");
+> }
+> greeting("Student");
+> greeting("Silver City");
+> ```
+>
+> **The same idea, anonymous** (the style Leaflet event listeners use):
+> ```js
+> let sayHi = function(name) {
+>     console.log("Hi, " + name);
+> };
+> sayHi("Grant County");
+> ```
+>
+> Notice `greeting` and `sayHi` do the same job two different ways. Leaflet almost always uses the anonymous style, defined right where it's needed instead of named and called separately.
+
+---
+
 
 ## Part 4: Conditionals and Loops
 
@@ -217,6 +279,27 @@ document.getElementById("myButton").addEventListener("click", function() {
 Leaflet's map, marker, and layer objects all support this same `.addEventListener`-style pattern for things like clicks on the map itself (Section 6.9); useful to know exists, even if this week's lab centers on the more common `.bindPopup()` shortcut instead.
 
 ---
+
+> ### Try It in Your Console
+>
+> This requires a published webpage open (not a blank tab) so there's a DOM to reach into.
+>
+> Open any website, then run:
+> ```js
+> document.body.style.backgroundColor = "lightyellow";
+> ```
+> The page changes color immediately. This is JavaScript reaching into the live DOM, the same mechanism `.innerHTML` uses. Refresh the page to undo it.
+>
+> **Tie this back to your own Lab 3 page** Open your published Lab 3 map (it has an element with `id="title"`), then run:
+> ```js
+> document.getElementById("title");
+> document.getElementById("title").innerHTML;
+> document.getElementById("title").innerHTML = "My New Map";
+> ```
+> The title text on the page changes, live, without editing any file. This is the exact tool a custom `L.control` panel uses to build its content later tonight.
+
+---
+
 
 ## Part 7: Building a Leaflet Map From Scratch
 
