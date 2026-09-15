@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. JavaScript &amp; Leaflet: Writing the Map Yourself &#8212; WebMapping &amp; Web GIS</title>
+    <title>5. JavaScript &amp; Leaflet &#8212; WebMapping &amp; Web GIS</title>
   
   
   
@@ -198,7 +198,7 @@
 <li class="toctree-l1"><a class="reference internal" href="02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_open_web_standards.html">3. Open Web Standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. JavaScript &amp; Leaflet: Writing the Map Yourself</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. JavaScript &amp; Leaflet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_cloud_native.html">6. Tiling and Cloud Native Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
 </ul>
@@ -490,7 +490,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>JavaScript & Leaflet: Writing the Map Yourself</h1>
+    <h1>JavaScript & Leaflet</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -535,8 +535,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="javascript-leaflet-writing-the-map-yourself">
-<h1><span class="section-number">5. </span>JavaScript &amp; Leaflet: Writing the Map Yourself<a class="headerlink" href="#javascript-leaflet-writing-the-map-yourself" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="javascript-leaflet">
+<h1><span class="section-number">5. </span>JavaScript &amp; Leaflet<a class="headerlink" href="#javascript-leaflet" title="Link to this heading">#</a></h1>
 <section id="week-5-lecture-lab-4-javascript-fundamentals-building-a-leaflet-map-from-scratch">
 <h2><span class="section-number">5.1. </span>Week 5 | Lecture + Lab 4: JavaScript Fundamentals &amp; Building a Leaflet Map from Scratch<a class="headerlink" href="#week-5-lecture-lab-4-javascript-fundamentals-building-a-leaflet-map-from-scratch" title="Link to this heading">#</a></h2>
 <p><strong>Unit 5 Focus:</strong> This is the week we’ll dive directly into the <code class="docutils literal notranslate"><span class="pre">map.js</span></code> file. You’ll learn the JavaScript you need, then use it to build a Leaflet map from a blank file: HTML skeleton, a tile layer, your own markers/lines/polygons, popups, and a custom description control, published live on GitHub Pages in Lab 4.</p>
@@ -656,6 +656,38 @@ document.write(`
 </div>
 <p><strong>This matters immediately in Leaflet</strong>, because every Leaflet function that draws a shape takes exactly this shape of input: an array (or array of arrays) for the geometry, and an object for the styling options. Arrays and objects can nest inside each other, which is exactly how a line’s coordinate list or a marker’s popup options are structured.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">typeof</span></code> to check what you’re working with (<code class="docutils literal notranslate"><span class="pre">typeof</span> <span class="pre">&quot;a&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">'string'</span></code>, <code class="docutils literal notranslate"><span class="pre">typeof</span> <span class="pre">[1,2]</span></code> → <code class="docutils literal notranslate"><span class="pre">'object'</span></code>), and <code class="docutils literal notranslate"><span class="pre">Array.isArray(x)</span></code> to tell an array apart from a plain object.</p>
+<hr class="docutils" />
+<blockquote>
+<div><h3 class="rubric" id="id1">Try It in Your Console</h3>
+<p>Write these in one at a time and predict the output before you hit Enter.</p>
+<p><strong>Variables and arrays:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">lat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">31.262218</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">lng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">34.801472</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">lng</span><span class="p">];</span>
+<span class="nx">coords</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="nx">coords</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+</pre></div>
+</div>
+<p><strong>Objects:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;yellow&quot;</span><span class="p">};</span>
+<span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="p">;</span>
+<span class="nx">style</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">typeof</span></code> and then data example:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="ow">typeof</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">;</span>
+<span class="ow">typeof</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+<span class="ow">typeof</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="ow">typeof</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>That last one returns <code class="docutils literal notranslate"><span class="pre">'object'</span></code>, not <code class="docutils literal notranslate"><span class="pre">'array'</span></code>. Arrays don’t get their own <code class="docutils literal notranslate"><span class="pre">typeof</span></code> category in JavaScript.</p>
+<p><strong>actual array check:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">]);</span>
+<span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">({</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
 </section>
 </section>
 <hr class="docutils" />
@@ -678,6 +710,26 @@ document.write(`
 </pre></div>
 </div>
 <p>Objects can hold functions too, in which case they’re called <strong>methods</strong>, accessed the same way as any other property: <code class="docutils literal notranslate"><span class="pre">car.start()</span></code>. Leaflet layer objects work exactly this way, <code class="docutils literal notranslate"><span class="pre">.addTo()</span></code>, <code class="docutils literal notranslate"><span class="pre">.bindPopup()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.onAdd()</span></code> are all methods you’ll call throughout this lab.</p>
+<hr class="docutils" />
+<blockquote>
+<div><h3 class="rubric" id="id2">Try It in Your Console</h3>
+<p><strong>A named function:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">greeting</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">greeting</span><span class="p">(</span><span class="s2">&quot;Student&quot;</span><span class="p">);</span>
+<span class="nx">greeting</span><span class="p">(</span><span class="s2">&quot;Silver City&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>The same idea, anonymous</strong> (the style Leaflet event listeners use):</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">sayHi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hi, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">sayHi</span><span class="p">(</span><span class="s2">&quot;Grant County&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Notice <code class="docutils literal notranslate"><span class="pre">greeting</span></code> and <code class="docutils literal notranslate"><span class="pre">sayHi</span></code> do the same job two different ways. Leaflet almost always uses the anonymous style, defined right where it’s needed instead of named and called separately.</p>
+</div></blockquote>
 </section>
 <hr class="docutils" />
 <section id="part-4-conditionals-and-loops">
@@ -734,6 +786,23 @@ document.write(`
 </pre></div>
 </div>
 <p>Leaflet’s map, marker, and layer objects all support this same <code class="docutils literal notranslate"><span class="pre">.addEventListener</span></code>-style pattern for things like clicks on the map itself (Section 6.9); useful to know exists, even if this week’s lab centers on the more common <code class="docutils literal notranslate"><span class="pre">.bindPopup()</span></code> shortcut instead.</p>
+<hr class="docutils" />
+<blockquote>
+<div><h3 class="rubric" id="id3">Try It in Your Console</h3>
+<p>This requires a published webpage open (not a blank tab) so there’s a DOM to reach into.</p>
+<p>Open any website, then run:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lightyellow&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The page changes color immediately. This is JavaScript reaching into the live DOM, the same mechanism <code class="docutils literal notranslate"><span class="pre">.innerHTML</span></code> uses. Refresh the page to undo it.</p>
+<p><strong>Tie this back to your own Lab 3 page</strong> Open your published Lab 3 map (it has an element with <code class="docutils literal notranslate"><span class="pre">id=&quot;title&quot;</span></code>), then run:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My New Map&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The title text on the page changes, live, without editing any file. This is the exact tool a custom <code class="docutils literal notranslate"><span class="pre">L.control</span></code> panel uses to build its content later tonight.</p>
+</div></blockquote>
 </section>
 <hr class="docutils" />
 <section id="part-7-building-a-leaflet-map-from-scratch">
