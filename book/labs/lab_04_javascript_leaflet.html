@@ -530,6 +530,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-adding-your-own-vector-layers">Appendix: Adding Your Own Vector Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-no-signup-no-api-key-basemaps">Appendix B: No-Signup, No-API-Key Basemaps</a></li>
 </ul>
 </li>
 </ul>
@@ -592,15 +593,14 @@ document.write(`
 <section id="step-1-ask">
 <h2>Step 1: Ask<a class="headerlink" href="#step-1-ask" title="Link to this heading">#</a></h2>
 <p>Open this reference map for a minute: <a class="reference external" href="https://leafletjs.com/examples/quick-start/">https://leafletjs.com/examples/quick-start/</a></p>
-<p>This is the map Dorman’s Chapter 6 walks through building, and it’s close to what you’re building today, minus the styling and customization you’ll add.</p>
 <p>Before opening the starter repository, jot your first-pass answers:</p>
 <ul class="simple">
 <li><p>Pick a place that matters to your project topic, your hometown, a field site, a neighborhood you’ve mapped before in this course. What is its approximate latitude and longitude? (A quick search of “[place name] coordinates” will get you close enough.)</p></li>
-<li><p>List two or three additional nearby points, paths, or areas you might want to mark on your map, this is your rough content plan for Step 4.</p></li>
-<li><p>In Lab 3, you never opened <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Looking at the quick-start map above, take a guess: how many lines of JavaScript do you think it takes to get a tile layer and one marker on screen?</p></li>
+<li><p>List two or three additional nearby points, paths, or areas you might want to mark on your map, or build a polygon from. This is your rough content plan for Step 4.</p></li>
+<li><p>In Lab 3, you never opened <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Looking at the quick-start map above, take a guess: how many lines of JavaScript do you think it takes to get the basemap loaded and one marker on screen?</p></li>
 </ul>
 <blockquote>
-<div><p><strong>Lab 4 Question: In Lab 3, changing <code class="docutils literal notranslate"><span class="pre">#title</span></code>’s CSS rule changed the page without ever touching <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Today, <code class="docutils literal notranslate"><span class="pre">map.js</span></code> is the file that puts anything geographic on the page at all; no HTML or CSS on its own will draw a marker or a tile. Why do you think that division of labor exists between the three languages?</strong></p>
+<div><p><strong>Lab 4 Question: In Lab 3, changing <code class="docutils literal notranslate"><span class="pre">#title</span></code>’s CSS rule changed the page without ever touching <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Today, <code class="docutils literal notranslate"><span class="pre">map.js</span></code> is the file that puts anything geographic on the page at all. Why do you think that distinction exists between the three languages?</strong></p>
 </div></blockquote>
 </section>
 <section id="step-2-collect">
@@ -800,19 +800,24 @@ Skim this before writing your own; you’ll fill in each numbered section separa
 <p>Pick <strong>at least one</strong> of the following options. Each is a small, self-contained addition, pick whichever sounds most useful for your topic, or work through more than one if you have time. In your Step 5 reflection, you’ll name the option you chose and justify why.</p>
 <p><strong>Option A: Swap in a custom basemap</strong></p>
 <ol class="arabic">
-<li><p>Browse the gallery at <a class="reference external" href="https://leaflet-extras.github.io/leaflet-providers/preview/index.html">leaflet-providers preview</a> and pick one you like (e.g., a terrain, satellite, or dark-mode basemap).</p></li>
+<li><p>Browse <strong>Appendix B</strong> (or the full gallery at the <a class="reference external" href="https://leaflet-extras.github.io/leaflet-providers/preview/index.html">leaflet-providers preview</a> if you don’t mind registering for a key) and pick one you like (e.g., a terrain, satellite, or grayscale basemap).</p></li>
 <li><p>In <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, add the plugin script tag <em>above</em> your <code class="docutils literal notranslate"><span class="pre">map.js</span></code> script tag:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/leaflet-providers/leaflet-providers.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </li>
-<li><p>In <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, replace your existing <code class="docutils literal notranslate"><span class="pre">L.tileLayer(...)</span></code> call with the provider shorthand, using the exact name shown on the preview page:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">.</span><span class="nx">provider</span><span class="p">(</span><span class="s2">&quot;Stadia.StamenTerrain&quot;</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, replace your existing <code class="docutils literal notranslate"><span class="pre">L.tileLayer(...)</span></code> call with the provider shorthand, using the exact name shown in Appendix B or on the preview page:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">.</span><span class="nx">provider</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
-<li><p><strong>Common bug:</strong> if you keep your old <code class="docutils literal notranslate"><span class="pre">L.tileLayer(...)</span></code> call <em>and</em> add the new one, both will load, one stacked on top of the other, and you’ll only see whichever loaded last. Delete or comment out the original before adding the replacement.</p></li>
 </ol>
+<p><strong>Common bugs:</strong></p>
+<ul class="simple">
+<li><p>if you keep your old <code class="docutils literal notranslate"><span class="pre">L.tileLayer(...)</span></code> call <em>and</em> add the new one, both will load, one stacked on top of the other, and you’ll only see whichever loaded last. Delete or comment out the original before adding the replacement.</p></li>
+<li><p><strong>401 error after publishin):</strong> if your basemap works in Live Server but shows a <code class="docutils literal notranslate"><span class="pre">401</span></code> error in the browser console (<code class="docutils literal notranslate"><span class="pre">F12</span></code> → Console) once published to GitHub Pages, that provider requires an API key and domain whitelisting you haven’t set up. Switch to a provider from Appendix B instead of troubleshooting keys.</p></li>
+</ul>
+<p><strong>More explanation:</strong> Many basemaps on the leaflet-providers preview site (Stadia/Stamen, Mapbox, Thunderforest, CartoDB, HERE, Jawg, MapTiler, TomTom) require you to sign up for a free account and paste an API key or access token into your code. Without one, the tiles will fail to load, often with a <code class="docutils literal notranslate"><span class="pre">401</span></code> error in the browser console, and this will usually happen only <em>after</em> you publish to GitHub Pages, since some providers (like Stadia) quietly allow unauthenticated requests from <code class="docutils literal notranslate"><span class="pre">localhost</span></code> during local testing. To avoid signup and key management entirely, choose one of the basemaps listed in <strong>Appendix B</strong> at the end of this lab; every layer name in that list works on GitHub Pages with zero setup.</p>
 <p><strong>Option B: Add a WMS layer from your GeoServer lab</strong></p>
 <ol class="arabic">
 <li><p>In <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, add:</p>
@@ -989,6 +994,49 @@ Skim this before writing your own; you’ll fill in each numbered section separa
 </pre></div>
 </div>
 </section>
+<section id="appendix-b-no-signup-no-api-key-basemaps">
+<h2>Appendix B: No-Signup, No-API-Key Basemaps<a class="headerlink" href="#appendix-b-no-signup-no-api-key-basemaps" title="Link to this heading">#</a></h2>
+<p><em>(Use with Part 5, Option A. Every basemap below loads on GitHub Pages with no account, no API key, and no domain whitelisting.)</em></p>
+<p>If you don’t want to deal with signups or key management, stick to layer names from this list when using <code class="docutils literal notranslate"><span class="pre">L.tileLayer.provider(&quot;...&quot;)</span></code>. These are confirmed to work anonymously, on any domain, as of this writing (providers occasionally change their terms, so it’s worth a quick visual spot-check against the <a class="reference external" href="https://leaflet-extras.github.io/leaflet-providers/preview/index.html">preview gallery</a> if a layer ever stops loading).</p>
+<p><strong>Standard / street map</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenStreetMap.Mapnik</span></code> (the default look; same as the basemap you already added in Part 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenStreetMap.HOT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldStreetMap</span></code></p></li>
+</ul>
+<p><strong>Topographic / terrain</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenTopoMap</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldTopoMap</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldTerrain</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldShadedRelief</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USGS.USTopo</span></code> <em>(US coverage only)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USGS.USImageryTopo</span></code> <em>(US coverage only)</em></p></li>
+</ul>
+<p><strong>Satellite / imagery</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldImagery</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USGS.USImagery</span></code> <em>(US coverage only)</em></p></li>
+</ul>
+<p><strong>Physical / reference</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.OceanBasemap</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldPhysical</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.NatGeoWorldMap</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esri.WorldGrayCanvas</span></code></p></li>
+</ul>
+<p><strong>Specialty</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CyclOSM</span></code></p></li>
+</ul>
+<p><strong>Usage notes</strong></p>
+<ul class="simple">
+<li><p>Esri layers ask you to agree to their terms of service, but no API key is required in your code, they load fine anonymously for classroom use.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">USGS.*</span></code> layers only render tiles within the United States; if your map area is international, skip these and use one of the global options instead.</p></li>
+<li><p>These are all free to use but not unlimited. Fine for lab traffic, but don’t hammer any single provider with heavy production-scale requests.</p></li>
+<li><p>If a layer you want isn’t on this list (Stadia/Stamen, Mapbox, CartoDB, Thunderforest, HERE, Jawg, MapTiler, TomTom), it requires registration and an API key pasted into your <code class="docutils literal notranslate"><span class="pre">L.tileLayer.provider()</span></code> options; that’s a valid choice too, just budget extra setup time and don’t leave your key hardcoded in a public repo if the provider asks you to keep it private.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1083,6 +1131,7 @@ Skim this before writing your own; you’ll fill in each numbered section separa
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-adding-your-own-vector-layers">Appendix: Adding Your Own Vector Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-no-signup-no-api-key-basemaps">Appendix B: No-Signup, No-API-Key Basemaps</a></li>
 </ul>
 </li>
 </ul>
