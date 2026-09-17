@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 4 &#8212; WebMapping &amp; Web GIS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/labs/lab_04_javascript_leaflet';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/labs/lab_04_javascript_leaflet.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Final Project: Public Web GIS Inquiry" href="../final-project/00-project-overview.html" />
+    <link rel="prev" title="Lab 3" href="lab_03_weblanguages.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Software &amp; Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ArcGIS Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/github.html">Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/qgis.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1 - WebGIS Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/01_what_is_webgis.html">1. What is Web GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_open_web_standards.html">3. Open Web Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/05_javascript_leaflet.html">5. JavaScript &amp; Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/06_cloud_native.html">6. Tiling and Cloud Native Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../create/building_web_apps.html">8. Web GIS Architecture &amp; Databases</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_01_agol.html">Lab 1</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_02_geoserver.html">Lab 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_03_weblanguages.html">Lab 3</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 4</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../final-project/00-project-overview.html">Final Project: Public Web GIS Inquiry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/labs/lab_04_javascript_leaflet.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/labs/lab_04_javascript_leaflet.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/labs/lab_04_javascript_leaflet.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/labs/lab_04_javascript_leaflet.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/labs/lab_04_javascript_leaflet.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-leaflet-in-practice-building-and-publishing-your-own-web-map">JavaScript &amp; Leaflet in Practice: Building and Publishing Your Own Web Map</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-confirm-access">Part A: Confirm access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-clone-the-repo">Part B: Clone the repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-explore-what-you-cloned">Part C: Explore what you cloned</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-minimum-a-leaflet-map-needs">3.1 The minimum a Leaflet map needs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-js-basics-reading-the-shape-of-a-leaflet-call">3.2 Review JS Basics - Reading the shape of a Leaflet call</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-target-file">3.3 The full target file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-4-rubric-40-pts">Lab 4 Rubric (40 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-4-ai-policy-level-2">Lab 4 AI Policy: Level 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-adding-your-own-vector-layers">Appendix: Adding Your Own Vector Layers</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4">
+<h1>Lab 4<a class="headerlink" href="#lab-4" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="javascript-leaflet-in-practice-building-and-publishing-your-own-web-map">
+<h1>JavaScript &amp; Leaflet in Practice: Building and Publishing Your Own Web Map<a class="headerlink" href="#javascript-leaflet-in-practice-building-and-publishing-your-own-web-map" title="Link to this heading">#</a></h1>
+<section id="giss-geog-366-368-web-mapping-web-gis">
+<h2>GISS/GEOG 366/368 · Web Mapping &amp; Web GIS<a class="headerlink" href="#giss-geog-366-368-web-mapping-web-gis" title="Link to this heading">#</a></h2>
+<p><strong>Unit 5 Focus:</strong> JavaScript and Leaflet, from a blank file. Unlike Lab 3, there is no provided <code class="docutils literal notranslate"><span class="pre">map.js</span></code> today; you write it. This is your fourth graded lab, and the first time you’ve authored the map’s actual behavior yourself.</p>
+</section>
+<section id="before-you-begin">
+<h2>Before You Begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">#</a></h2>
+<p>The tools are the same as Lab 3. Confirm you still have them before proceeding.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Role today</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>A GitHub account</strong></p></td>
+<td><p>Already confirmed in Lab 3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code, with the Git/GitHub extension enabled</strong></p></td>
+<td><p>Cloning the Lab 4 template and editing files locally</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Git</strong></p></td>
+<td><p>Same install as Lab 3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code + Live Server</strong></p></td>
+<td><p>Previewing your map locally as you write JavaScript, before pushing</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The Lab 4 starter repository</strong></p></td>
+<td><p>Provided by your instructor; a fresh template, similar in structure to the Lab 3 template but with an empty <code class="docutils literal notranslate"><span class="pre">map.js</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>A region and a few locations of your own</strong></p></td>
+<td><p>You’ll need real (or realistic) coordinates to place on your map (see Step 1)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><a class="reference external" href="https://developer.mozilla.org/">MDN Web Docs</a></strong> and <strong><a class="reference external" href="https://leafletjs.com/reference.html">Leaflet documentation</a></strong></p></td>
+<td><p>Your first stops when something doesn’t work</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You already know how to clone a repo, edit locally, preview with Live Server, and publish via GitHub Pages from Lab 3. That workflow doesn’t change today. What’s new is the file you’re actually writing code into.</p>
+</section>
+<section id="step-1-ask">
+<h2>Step 1: Ask<a class="headerlink" href="#step-1-ask" title="Link to this heading">#</a></h2>
+<p>Open this reference map for a minute: <a class="reference external" href="https://leafletjs.com/examples/quick-start/">https://leafletjs.com/examples/quick-start/</a></p>
+<p>This is the map Dorman’s Chapter 6 walks through building, and it’s close to what you’re building today, minus the styling and customization you’ll add.</p>
+<p>Before opening the starter repository, jot your first-pass answers:</p>
+<ul class="simple">
+<li><p>Pick a place that matters to your project topic, your hometown, a field site, a neighborhood you’ve mapped before in this course. What is its approximate latitude and longitude? (A quick search of “[place name] coordinates” will get you close enough.)</p></li>
+<li><p>List two or three additional nearby points, paths, or areas you might want to mark on your map, this is your rough content plan for Step 4.</p></li>
+<li><p>In Lab 3, you never opened <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Looking at the quick-start map above, take a guess: how many lines of JavaScript do you think it takes to get a tile layer and one marker on screen?</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Lab 4 Question: In Lab 3, changing <code class="docutils literal notranslate"><span class="pre">#title</span></code>’s CSS rule changed the page without ever touching <code class="docutils literal notranslate"><span class="pre">map.js</span></code>. Today, <code class="docutils literal notranslate"><span class="pre">map.js</span></code> is the file that puts anything geographic on the page at all; no HTML or CSS on its own will draw a marker or a tile. Why do you think that division of labor exists between the three languages?</strong></p>
+</div></blockquote>
+</section>
+<section id="step-2-collect">
+<h2>Step 2: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
+<section id="part-a-confirm-access">
+<h3>Part A: Confirm access<a class="headerlink" href="#part-a-confirm-access" title="Link to this heading">#</a></h3>
+<p>Same as Lab 3: confirm you can log in to GitHub, and that you have the link to the Lab 4 starter repository (shared via Canvas prior to lab).</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/asivitskis/giss366-lab04-template">asivitskis/giss366-lab04-template</a></p></li>
+</ul>
+</section>
+<section id="part-b-clone-the-repo">
+<h3>Part B: Clone the repo<a class="headerlink" href="#part-b-clone-the-repo" title="Link to this heading">#</a></h3>
+<p>This is the same process as Lab 3; if it’s still fresh, skim and move on.</p>
+<p><strong>Step 0: Create your own copy of the template repository.</strong></p>
+<ol class="arabic simple">
+<li><p>In a browser, go to the template repository URL above.</p></li>
+<li><p>Make sure you’re signed into your GitHub account.</p></li>
+<li><p>Click <strong>Use this template</strong> → <strong>Create a new repository</strong>.</p></li>
+<li><p>Name it something like <code class="docutils literal notranslate"><span class="pre">giss-366-lab4</span></code>, under <strong>your own</strong> account.</p></li>
+<li><p>Click <strong>Create repository</strong>.</p></li>
+<li><p>Copy the URL of <strong>this new repository</strong> (not the original template).</p></li>
+</ol>
+<p><strong>Clone your own copy into VS Code:</strong></p>
+<ol class="arabic simple">
+<li><p>Open VS Code, no files open (File → New Window if needed).</p></li>
+<li><p>Open the <strong>Source Control</strong> panel and click <strong>Clone Repository</strong>.</p></li>
+<li><p>Paste your new repository’s URL, choose a save location near your other <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folders.</p></li>
+<li><p>Choose <strong>Open</strong> when prompted.</p></li>
+</ol>
+</section>
+<section id="part-c-explore-what-you-cloned">
+<h3>Part C: Explore what you cloned<a class="headerlink" href="#part-c-explore-what-you-cloned" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File / folder</p></th>
+<th class="head"><p>What it is</p></th>
+<th class="head"><p>Will you edit it today?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">index.html</span></code></p></td>
+<td><p>The full map page skeleton: <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>, Leaflet CSS/JS links, an empty <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;map&quot;&gt;</span></code>, and a link to <code class="docutils literal notranslate"><span class="pre">map.js</span></code></p></td>
+<td><p>Minimal; mostly title text and <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> tweaks, similar to Lab 03</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">map.js</span></code></p></td>
+<td><p><strong>Empty.</strong> This is where all of today’s work happens</p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></td>
+<td><p>Standard repository landing page</p></td>
+<td><p>Optional</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">css/leaflet.css</span></code></p></td>
+<td><p>Leaflet’s own stylesheet</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">js/leaflet.js</span></code></p></td>
+<td><p>The Leaflet library itself</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">images/</span></code></p></td>
+<td><p>A folder for any marker icons or logo images you want to add</p></td>
+<td><p>Optional</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="step-3-visualize">
+<h2>Step 3: Visualize<a class="headerlink" href="#step-3-visualize" title="Link to this heading">#</a></h2>
+<section id="the-minimum-a-leaflet-map-needs">
+<h3>3.1 The minimum a Leaflet map needs<a class="headerlink" href="#the-minimum-a-leaflet-map-needs" title="Link to this heading">#</a></h3>
+<p><em>(Dorman, M. Introduction to Web Mapping, Sections 6.5.2–6.5.11)</em></p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in your cloned repository. Review the following features:</p>
+<ul class="simple">
+<li><p>It already includes the Leaflet library and an empty map <div>.</p></li>
+<li><p>It also includes the same <stlye> elements within the <head> section and the and <div id="description"> section within the <body> that you learned to customize in Lab 03. We’ll give you the opportunity to replicate your customization or expand it further for this lab.</p></li>
+</ul>
+<p>If you were to mentally remove those features, the skeleton below is the minimum viable code needed to build a basic Leaflet map. notice the different components and where they sit.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>[update this] My Map<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/leaflet.css&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/leaflet.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="o">,</span><span class="w"> </span><span class="p">#</span><span class="nn">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;map.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Return to your new <code class="docutils literal notranslate"><span class="pre">index.html</span></code> file. Try to open this index file version with LiveServer.</p>
+<p>You’ll see the title bar and description panel from the template, but the space between them will be blank. That’s because <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;map&quot;&gt;</span></code> is empty, and <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, the file that’s supposed to fill it, doesn’t exist yet. That’s your job in Step 4. You’ll come back to the <code class="docutils literal notranslate"><span class="pre">#title</span></code> and <code class="docutils literal notranslate"><span class="pre">#description</span></code> content and styling in Part 3, once there’s actually a map underneath them to describe.</p>
+</section>
+<section id="review-js-basics-reading-the-shape-of-a-leaflet-call">
+<h3>3.2 Review JS Basics - Reading the shape of a Leaflet call<a class="headerlink" href="#review-js-basics-reading-the-shape-of-a-leaflet-call" title="Link to this heading">#</a></h3>
+<p>Every Leaflet layer you’ll write today follows the same two-part shape: <strong>create the layer, then add it to the map.</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">marker</span><span class="p">([</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">lng</span><span class="p">]).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">polyline</span><span class="p">([[</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">lng</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">lng</span><span class="p">]],</span><span class="w"> </span><span class="nx">options</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> variable itself has to exist before any of these calls run, which means the very first line of your <code class="docutils literal notranslate"><span class="pre">map.js</span></code> is always going to be an <code class="docutils literal notranslate"><span class="pre">L.map(...)</span></code> call. Everything else in the file depends on that variable.</p>
+</section>
+<section id="the-full-target-file">
+<h3>3.3 The full target file<a class="headerlink" href="#the-full-target-file" title="Link to this heading">#</a></h3>
+<p>Here’s the complete pattern your <code class="docutils literal notranslate"><span class="pre">map.js</span></code> will follow by the end of Step 4 (values are placeholders, yours will use your own coordinates and styling):</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1. Create the map, centered on your chosen location and zoom level.</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">YOUR_LAT</span><span class="p">,</span><span class="w"> </span><span class="nx">YOUR_LNG</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="nx">XX</span><span class="p">});</span>
+
+<span class="c1">// 2. Add a basemap tile layer</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">attribution</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;copy; OpenStreetMap contributors&#39;</span><span class="p">}</span>
+<span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+
+<span class="c1">// 3. Add at least one marker, line, or polygon</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">pnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">marker</span><span class="p">([</span><span class="nx">lat</span><span class="w"> </span><span class="nx">coord</span><span class="p">,</span><span class="w"> </span><span class="nx">lng</span><span class="w"> </span><span class="nx">coord</span><span class="p">]).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="nx">pnt</span><span class="p">.</span><span class="nx">bindPopup</span><span class="p">(</span><span class="s2">&quot;Something worth saying about this location.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Beyond this basic basic JS code, you can add additional customization options (different basemaps, feature controls, scale bars, etc.).
+Skim this before writing your own; you’ll fill in each numbered section separately in Step 4.</p>
+</section>
+</section>
+<section id="step-4-create">
+<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
+<details>
+<summary><b>Part 1: Center your map and add a tile layer. Click to expand</b></summary>
+<p>Open <code class="docutils literal notranslate"><span class="pre">map.js</span></code> (currently empty) in VS Code.</p>
+<ol class="arabic">
+<li><p>Look up the approximate latitude and longitude for the place you want to use as your map center.</p></li>
+<li><p>Write the first line of <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">YOUR_LAT,</span> <span class="pre">YOUR_LNG</span></code> with your coordinates to center map object there:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">YOUR_LAT</span><span class="p">,</span><span class="w"> </span><span class="nx">YOUR_LNG</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="nx">XX</span><span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p>For the Zoom level <code class="docutils literal notranslate"><span class="pre">XX</span></code>, choose a number between 20 (all the way zoomed out) and 1 (all the way zoomed in).</p></li>
+<li><p>Below it, add an <code class="docutils literal notranslate"><span class="pre">L.tileLayer</span></code> call to bring in an OpenStreetMap basemap (Lecture Part 7). Don’t forget <code class="docutils literal notranslate"><span class="pre">.addTo(map)</span></code> at the end.</p></li>
+<li><p>Save, then open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> with Live Server. You should see a basemap, centered and zoomed where you specified, with nothing else on it yet.</p></li>
+</ol>
+<p><strong>Try it:</strong> Change only the <code class="docutils literal notranslate"><span class="pre">zoom</span></code> number and refresh. Then change only the <code class="docutils literal notranslate"><span class="pre">center</span></code> array. Confirm you understand which number controls which behavior before moving on.</p>
+</details>
+<details>
+<summary><b>Part 2: Add your own self-built vector layers. Click to expand</b></summary>
+<p>Using the coordinates you listed in Step 1, add <strong>at least two</strong> of the following (mix and match; you don’t need all three):</p>
+<ul class="simple">
+<li><p><strong>A marker</strong> at one point of interest, with <code class="docutils literal notranslate"><span class="pre">.bindPopup()</span></code> containing at least one sentence and one HTML tag (<code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>, etc.)</p></li>
+<li><p><strong>A line</strong> connecting two or more of your points, with a custom <code class="docutils literal notranslate"><span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">weight</span></code></p></li>
+<li><p><strong>A polygon</strong> outlining an area relevant to your topic, with a custom <code class="docutils literal notranslate"><span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">fillColor</span></code></p></li>
+</ul>
+<p>For each one, follow the create-then-<code class="docutils literal notranslate"><span class="pre">.addTo(map)</span></code> pattern from Step 3.2. Check the map in Live Server after each addition, rather than writing all three and debugging at once.</p>
+<p>An additional appendix has been linked at the bottom of this lab for a quick review of adding polygons.</p>
+<p><strong>Common early bugs to check for, if nothing appears:</strong></p>
+<ul class="simple">
+<li><p>Did you swap latitude and longitude? Leaflet coordinate arrays are <code class="docutils literal notranslate"><span class="pre">[lat,</span> <span class="pre">lng]</span></code>.</p></li>
+<li><p>Is every statement inside <code class="docutils literal notranslate"><span class="pre">map.js</span></code> ending in a semicolon?</p></li>
+<li><p>Does every opening <code class="docutils literal notranslate"><span class="pre">{</span></code> or <code class="docutils literal notranslate"><span class="pre">(</span></code> have a matching closing <code class="docutils literal notranslate"><span class="pre">}</span></code> or <code class="docutils literal notranslate"><span class="pre">)</span></code>? (Check your browser’s console: <code class="docutils literal notranslate"><span class="pre">F12</span></code> → Console tab, for a red error message pointing at the exact line.)</p></li>
+</ul>
+</details>
+<details>
+<summary><b>Part 3: Update your title bar and description panel. Click to expand</b></summary>
+<p>This is the same <code class="docutils literal notranslate"><span class="pre">#title</span></code> and <code class="docutils literal notranslate"><span class="pre">#description</span></code> HTML/CSS from Lab 3, just pointed at your new map. In <code class="docutils literal notranslate"><span class="pre">index.html</span></code>:</p>
+<ol class="arabic simple">
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">&lt;h1</span> <span class="pre">id=&quot;title&quot;&gt;</span></code> text to name today’s map.</p></li>
+<li><p>Rewrite the contents of <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;description&quot;&gt;</span></code>:</p>
+<ul class="simple">
+<li><p>Replace the “About this map” text with one or two sentences about what your map shows and why.</p></li>
+<li><p>Add a short list (<code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code>) of the layers you added in Part 2.</p></li>
+<li><p>Update “Map authored by:” with your name, and remove any other leftover placeholder text.</p></li>
+</ul>
+</li>
+<li><p>Optional: adjust the CSS in the <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> block (<code class="docutils literal notranslate"><span class="pre">background-color</span></code>, <code class="docutils literal notranslate"><span class="pre">padding</span></code>, <code class="docutils literal notranslate"><span class="pre">border-radius</span></code>, <code class="docutils literal notranslate"><span class="pre">font-family</span></code>, positioning, and so on) to give this map its own visual identity, the same way you customized these properties in Lab 3.</p></li>
+</ol>
+<p><strong>Common bug:</strong> if your description text mentions a layer you didn’t actually add in Part 2 (or vice versa), the grader will notice, keep the panel’s content in sync with your actual <code class="docutils literal notranslate"><span class="pre">map.js</span></code>.</p>
+</details>
+<details>
+<summary><b>Part 4: Title and polish. Click to expand</b></summary>
+<p>Back in <code class="docutils literal notranslate"><span class="pre">index.html</span></code>:</p>
+<ul class="simple">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code> to name your map.</p></li>
+<li><p>Confirm the <code class="docutils literal notranslate"><span class="pre">&lt;meta</span> <span class="pre">name=&quot;viewport&quot;&gt;</span></code> line is present (it should already be in the template); this keeps your map usable on mobile.</p></li>
+</ul>
+<p>Preview the whole thing once more in Live Server before moving to Step 5. This is the version that gets pushed and graded.</p>
+</details>
+<details>
+<summary><b>Part 5: Customize and add additional data. Click to expand</b></summary>
+<p>Pick <strong>at least one</strong> of the following options. Each is a small, self-contained addition, pick whichever sounds most useful for your topic, or work through more than one if you have time. In your Step 5 reflection, you’ll name the option you chose and justify why.</p>
+<p><strong>Option A: Swap in a custom basemap</strong></p>
+<ol class="arabic">
+<li><p>Browse the gallery at <a class="reference external" href="https://leaflet-extras.github.io/leaflet-providers/preview/index.html">leaflet-providers preview</a> and pick one you like (e.g., a terrain, satellite, or dark-mode basemap).</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, add the plugin script tag <em>above</em> your <code class="docutils literal notranslate"><span class="pre">map.js</span></code> script tag:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/leaflet-providers/leaflet-providers.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, replace your existing <code class="docutils literal notranslate"><span class="pre">L.tileLayer(...)</span></code> call with the provider shorthand, using the exact name shown on the preview page:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">.</span><span class="nx">provider</span><span class="p">(</span><span class="s2">&quot;Stadia.StamenTerrain&quot;</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Common bug:</strong> if you keep your old <code class="docutils literal notranslate"><span class="pre">L.tileLayer(...)</span></code> call <em>and</em> add the new one, both will load, one stacked on top of the other, and you’ll only see whichever loaded last. Delete or comment out the original before adding the replacement.</p></li>
+</ol>
+<p><strong>Option B: Add a WMS layer from your GeoServer lab</strong></p>
+<ol class="arabic">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, add:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">tileLayer</span><span class="p">.</span><span class="nx">wms</span><span class="p">(</span><span class="s2">&quot;https://YOUR-GEOSERVER-URL/geoserver/wms&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;workspace:layer_name&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">transparent</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Get your URL and <code class="docutils literal notranslate"><span class="pre">workspace:layer_name</span></code> from the GeoServer Layer Preview tab (the same place you previewed this layer during the GeoServer lab).</p></li>
+<li><p><strong>Common bug:</strong> a blank or gray tile usually means the layer’s bounding box doesn’t overlap your map’s <code class="docutils literal notranslate"><span class="pre">center</span></code>. Re-check the layer’s extent in GeoServer’s Layer Preview before assuming your code is wrong.</p></li>
+</ol>
+<p><strong>Option C: Add a layer control to toggle layers on and off</strong></p>
+<p>If you added a second basemap (Option A) or want viewers to be able to hide/show your Part 2 layers, give each layer a name and pass them to <code class="docutils literal notranslate"><span class="pre">L.control.layers()</span></code>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">baseMaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Streets&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">osmLayer</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Terrain&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">terrainLayer</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">overlayMaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;My Points&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">markerLayer</span><span class="w"> </span><span class="p">};</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">control</span><span class="p">.</span><span class="nx">layers</span><span class="p">(</span><span class="nx">baseMaps</span><span class="p">,</span><span class="w"> </span><span class="nx">overlayMaps</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Common bug:</strong> this only works if each layer was saved to its own variable (<code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">osmLayer</span> <span class="pre">=</span> <span class="pre">L.tileLayer(...)</span></code>, without <code class="docutils literal notranslate"><span class="pre">.addTo(map)</span></code> chained on) rather than added directly. Go back and split any chained calls into two lines: create the variable, then add the ones you want visible by default with <code class="docutils literal notranslate"><span class="pre">.addTo(map)</span></code> on the next line.</p>
+<p><strong>Option D: Add a scale bar</strong></p>
+<p>The easiest addition on this list, one line:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">control</span><span class="p">.</span><span class="nx">scale</span><span class="p">().</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>By default this shows both metric and imperial. To show only one, pass <code class="docutils literal notranslate"><span class="pre">{metric:</span> <span class="pre">true,</span> <span class="pre">imperial:</span> <span class="pre">false}</span></code> as an argument.</p>
+</details>
+<details>
+<summary><b>Part 6: Publish to GitHub Pages. Click to expand</b></summary>
+<p>Same three-step process as Lab 3:</p>
+<ol class="arabic simple">
+<li><p><strong>Stage and commit</strong>, using VS Code’s Source Control panel. Stage <code class="docutils literal notranslate"><span class="pre">index.html</span></code> and <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, write a commit message (e.g., <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">custom</span> <span class="pre">Leaflet</span> <span class="pre">map</span> <span class="pre">for</span> <span class="pre">Lab</span> <span class="pre">4</span></code>), and commit.</p></li>
+<li><p><strong>Push</strong>, using Sync Changes / Push.</p></li>
+<li><p><strong>Enable GitHub Pages</strong>, in your repository’s Settings → Pages (source: <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">(root)</span></code> folder), if it isn’t already enabled from the template.</p></li>
+<li><p><strong>Find your published URL</strong> on the same Settings → Pages screen once the build finishes.</p></li>
+</ol>
+<p>Open the published URL and confirm your map, markers, popups, and description panel all appear exactly as they did in Live Server.</p>
+</details></section>
+<section id="step-5-act">
+<h2>Step 5: Act<a class="headerlink" href="#step-5-act" title="Link to this heading">#</a></h2>
+<section id="what-to-turn-in-graded-lab-exercises">
+<h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Your completed <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, pushed to your repository (Create, Parts 1–3).</p></li>
+<li><p>Your updated <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, pushed to your repository (Create, Parts 3–4).</p></li>
+<li><p>The link to your published GitHub Pages URL (Create, Part 6).</p></li>
+<li><p>The link to your GitHub repository (Collect, Part B).</p></li>
+<li><p>A short written reflection (~300 words) answering:</p>
+<ul class="simple">
+<li><p>Revisit your Step 1 guess about line count. How close were you, and what surprised you about how little (or how much) code it took?</p></li>
+<li><p>Name one specific bug you hit while writing <code class="docutils literal notranslate"><span class="pre">map.js</span></code> today, and how you found and fixed it (console error, mismatched bracket, swapped coordinates, etc.).</p></li>
+<li><p>Name which Part 4.5 customization option you added (A, B, C, or D), and explain why you chose it over the others.</p></li>
+<li><p>Compare today to Lab 3: which felt more like “real programming” to you, and why?</p></li>
+</ul>
+</li>
+</ol>
+<p>Submit your GitHub links and written reflection to this week’s submission space in Canvas.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lab-4-rubric-40-pts">
+<h2>Lab 4 Rubric (40 pts)<a class="headerlink" href="#lab-4-rubric-40-pts" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Score Band</p></th>
+<th class="head text-left"><p>What It Looks Like</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Exceptional (7-8)</strong></p></td>
+<td class="text-left"><p>Exceeding expectations; indicates mastery; in-depth understanding; higher-order thinking; inferences and extensions of learning objectives that go beyond what was taught; truly superb effort.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Proficient (5-6)</strong></p></td>
+<td class="text-left"><p>Meeting expectations; application of concepts; independently demonstrates understanding and thorough competency of learning objectives explicitly taught.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Developing (3-4)</strong></p></td>
+<td class="text-left"><p>Approaching expectations; demonstration of basic understanding without application and understanding of more complex ideas and processes; meets minimum requirements for satisfactory learning.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Insufficient (1-2)</strong></p></td>
+<td class="text-left"><p>Below expectations; partial or no demonstration of understanding and progress toward learning objectives; major errors and omissions present; inadequate for competency.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Criteria</p></th>
+<th class="head text-left"><p>Comments</p></th>
+<th class="head text-center"><p>Grade</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Content:</strong> <code class="docutils literal notranslate"><span class="pre">map.js</span></code> correctly initializes a map, adds a tile layer, and adds at least two vector layers (marker/line/polygon) with a working popup, and includes one working part 5 customization option.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Content:</strong> The <code class="docutils literal notranslate"><span class="pre">#title</span></code> and <code class="docutils literal notranslate"><span class="pre">#description</span></code> elements in <code class="docutils literal notranslate"><span class="pre">index.html</span></code> have been updated with content specific to this map (not leftover Lab 3 or template placeholder text), and reflect the layers actually present in <code class="docutils literal notranslate"><span class="pre">map.js</span></code>.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Process:</strong> The published GitHub Pages URL loads correctly and matches the local Live Server preview; the repository history shows a real commit/push, not just a single upload.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Process:</strong> The written reflection is specific and evidence-based: it names an actual bug encountered and how it was resolved, and names the Part 5 customization chosen with a genuine reason for choosing it.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Product:</strong> <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, the GitHub Pages link, the repository link, and the reflection are all submitted, clearly labeled, and free of errors.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p>/ 8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Total</strong></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p><strong>/ 40</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="lab-4-ai-policy-level-2">
+<h3>Lab 4 AI Policy: Level 2<a class="headerlink" href="#lab-4-ai-policy-level-2" title="Link to this heading">#</a></h3>
+<p>This lab permits optional use of AI to support student learning. Permitted uses can include using AI to help troubleshoot GIS workflows and debug JavaScript errors (for example, pasting a console error message to ask what it means), however, independent installation and use of AI agents to complete GIS tasks is not permitted at this time. AI may also be used to support general writing procedures (outlining a project, improving clarity or grammar, etc.), but all code and written responses must remain original to each student as a sole responsible author. Disclosure of AI use is not required for this Level 2 assignment. Using AI is a choice with ethical considerations, and it is asked that students weigh those considerations accordingly as they complete this work.</p>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.mozilla.org/">MDN Web Docs</a></p></li>
+<li><p><a class="reference external" href="https://leafletjs.com/reference.html">Leaflet documentation</a></p></li>
+<li><p><a class="reference external" href="https://leaflet-extras.github.io/leaflet-providers/preview/">Leaflet Provider Demo</a> (alternative basemaps, if you’d like to swap the default OpenStreetMap tiles)</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Docs: Configuring a publishing source for your GitHub Pages site</a></p></li>
+</ul>
+</section>
+</section>
+<section id="appendix-adding-your-own-vector-layers">
+<h2>Appendix: Adding Your Own Vector Layers<a class="headerlink" href="#appendix-adding-your-own-vector-layers" title="Link to this heading">#</a></h2>
+<p><em>(IWM Section 6.6–6.8)</em></p>
+<p>Once the tile layer is in place, add foreground features on top of it. All three take a coordinate array (or array of arrays) plus an optional styling object:</p>
+<p><strong>Markers</strong>: a single point, default blue pin icon:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">pnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">marker</span><span class="p">([</span><span class="mf">31.262218</span><span class="p">,</span><span class="w"> </span><span class="mf">34.801472</span><span class="p">]).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Circle markers</strong>: a point drawn as a customizable circle (radius in <em>pixels</em>, so it stays constant size at any zoom):</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">L</span><span class="p">.</span><span class="nx">circleMarker</span><span class="p">([</span><span class="mf">31.262</span><span class="p">,</span><span class="w"> </span><span class="mf">34.800</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Lines</strong>: an array of <code class="docutils literal notranslate"><span class="pre">[lat,</span> <span class="pre">lng]</span></code> points, connected in order:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">polyline</span><span class="p">(</span>
+<span class="w">    </span><span class="p">[[</span><span class="mf">31.2627</span><span class="p">,</span><span class="w"> </span><span class="mf">34.8005</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">31.2621</span><span class="p">,</span><span class="w"> </span><span class="mf">34.8008</span><span class="p">]],</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">}</span>
+<span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Polygons</strong>: same idea, but closed and fillable (don’t repeat the first point at the end):</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">pol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">.</span><span class="nx">polygon</span><span class="p">(</span>
+<span class="w">    </span><span class="p">[[</span><span class="mf">31.2631</span><span class="p">,</span><span class="w"> </span><span class="mf">34.8037</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">31.2625</span><span class="p">,</span><span class="w"> </span><span class="mf">34.8031</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">31.2617</span><span class="p">,</span><span class="w"> </span><span class="mf">34.8036</span><span class="p">]],</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">}</span>
+<span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Transparency</strong>: is set with the <code class="docutils literal notranslate"><span class="pre">fillOpacity</span></code> whereas, <code class="docutils literal notranslate"><span class="pre">opacity</span></code> controls the outline/stroke transparency. Both take a value from 0 (fully transparent) to 1 (fully opaque), and both work on polygon, circleMarker, and polyline (though polyline has no fill, so only opacity matters there), to note <code class="docutils literal notranslate"><span class="pre">fillOpacity</span></code> default is 0.2. Check out these few examples below:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Fully opaque fill</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">polygon</span><span class="p">(</span><span class="nx">coords</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillOpacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+
+<span class="c1">// Half-transparent fill</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">polygon</span><span class="p">(</span><span class="nx">coords</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillOpacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+
+<span class="c1">// Nearly invisible fill, outline only</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">polygon</span><span class="p">(</span><span class="nx">coords</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillColor</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fillOpacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-366",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_03_weblanguages.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../final-project/00-project-overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Final Project: Public Web GIS Inquiry</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 4</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-leaflet-in-practice-building-and-publishing-your-own-web-map">JavaScript &amp; Leaflet in Practice: Building and Publishing Your Own Web Map</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-confirm-access">Part A: Confirm access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-clone-the-repo">Part B: Clone the repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-explore-what-you-cloned">Part C: Explore what you cloned</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-minimum-a-leaflet-map-needs">3.1 The minimum a Leaflet map needs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-js-basics-reading-the-shape-of-a-leaflet-call">3.2 Review JS Basics - Reading the shape of a Leaflet call</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-target-file">3.3 The full target file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-4-rubric-40-pts">Lab 4 Rubric (40 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-4-ai-policy-level-2">Lab 4 AI Policy: Level 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-adding-your-own-vector-layers">Appendix: Adding Your Own Vector Layers</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
