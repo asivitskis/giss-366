@@ -25,14 +25,13 @@ You already know how to clone a repo, edit locally, preview with Live Server, an
 
 Open this reference map for a minute: https://leafletjs.com/examples/quick-start/
 
-This is the map Dorman's Chapter 6 walks through building, and it's close to what you're building today, minus the styling and customization you'll add.
 
 Before opening the starter repository, jot your first-pass answers:
 - Pick a place that matters to your project topic, your hometown, a field site, a neighborhood you've mapped before in this course. What is its approximate latitude and longitude? (A quick search of "[place name] coordinates" will get you close enough.)
-- List two or three additional nearby points, paths, or areas you might want to mark on your map, this is your rough content plan for Step 4.
-- In Lab 3, you never opened `map.js`. Looking at the quick-start map above, take a guess: how many lines of JavaScript do you think it takes to get a tile layer and one marker on screen?
+- List two or three additional nearby points, paths, or areas you might want to mark on your map, or build a polygon from. This is your rough content plan for Step 4.
+- In Lab 3, you never opened `map.js`. Looking at the quick-start map above, take a guess: how many lines of JavaScript do you think it takes to get the basemap loaded and one marker on screen?
 
-> **Lab 4 Question: In Lab 3, changing `#title`'s CSS rule changed the page without ever touching `map.js`. Today, `map.js` is the file that puts anything geographic on the page at all; no HTML or CSS on its own will draw a marker or a tile. Why do you think that division of labor exists between the three languages?**
+> **Lab 4 Question: In Lab 3, changing `#title`'s CSS rule changed the page without ever touching `map.js`. Today, `map.js` is the file that puts anything geographic on the page at all. Why do you think that distinction exists between the three languages?**
 
 ## Step 2: Collect
 
@@ -217,16 +216,21 @@ Pick **at least one** of the following options. Each is a small, self-contained 
 
 **Option A: Swap in a custom basemap**
 
-1. Browse the gallery at [leaflet-providers preview](https://leaflet-extras.github.io/leaflet-providers/preview/index.html) and pick one you like (e.g., a terrain, satellite, or dark-mode basemap).
+1. Browse **Appendix B** (or the full gallery at the [leaflet-providers preview](https://leaflet-extras.github.io/leaflet-providers/preview/index.html) if you don't mind registering for a key) and pick one you like (e.g., a terrain, satellite, or grayscale basemap).
 2. In `index.html`, add the plugin script tag *above* your `map.js` script tag:
    ```html
    <script src="https://unpkg.com/leaflet-providers/leaflet-providers.js"></script>
    ```
-3. In `map.js`, replace your existing `L.tileLayer(...)` call with the provider shorthand, using the exact name shown on the preview page:
+3. In `map.js`, replace your existing `L.tileLayer(...)` call with the provider shorthand, using the exact name shown in Appendix B or on the preview page:
    ```js
-   L.tileLayer.provider("Stadia.StamenTerrain").addTo(map);
+   L.tileLayer.provider("OpenTopoMap").addTo(map);
    ```
-4. **Common bug:** if you keep your old `L.tileLayer(...)` call *and* add the new one, both will load, one stacked on top of the other, and you'll only see whichever loaded last. Delete or comment out the original before adding the replacement.
+
+**Common bugs:** 
+ - if you keep your old `L.tileLayer(...)` call *and* add the new one, both will load, one stacked on top of the other, and you'll only see whichever loaded last. Delete or comment out the original before adding the replacement.
+ - **401 error after publishin):** if your basemap works in Live Server but shows a `401` error in the browser console (`F12` → Console) once published to GitHub Pages, that provider requires an API key and domain whitelisting you haven't set up. Switch to a provider from Appendix B instead of troubleshooting keys.
+  
+**More explanation:** Many basemaps on the leaflet-providers preview site (Stadia/Stamen, Mapbox, Thunderforest, CartoDB, HERE, Jawg, MapTiler, TomTom) require you to sign up for a free account and paste an API key or access token into your code. Without one, the tiles will fail to load, often with a `401` error in the browser console, and this will usually happen only *after* you publish to GitHub Pages, since some providers (like Stadia) quietly allow unauthenticated requests from `localhost` during local testing. To avoid signup and key management entirely, choose one of the basemaps listed in **Appendix B** at the end of this lab; every layer name in that list works on GitHub Pages with zero setup.
 
 **Option B: Add a WMS layer from your GeoServer lab**
 
@@ -379,3 +383,42 @@ L.polygon(coords, {color: "red", fillColor: "yellow", fillOpacity: 0.5}).addTo(m
 // Nearly invisible fill, outline only
 L.polygon(coords, {color: "red", fillColor: "yellow", fillOpacity: 0.05}).addTo(map);
 ```
+
+## Appendix B: No-Signup, No-API-Key Basemaps
+
+*(Use with Part 5, Option A. Every basemap below loads on GitHub Pages with no account, no API key, and no domain whitelisting.)*
+
+If you don't want to deal with signups or key management, stick to layer names from this list when using `L.tileLayer.provider("...")`. These are confirmed to work anonymously, on any domain, as of this writing (providers occasionally change their terms, so it's worth a quick visual spot-check against the [preview gallery](https://leaflet-extras.github.io/leaflet-providers/preview/index.html) if a layer ever stops loading).
+
+**Standard / street map**
+- `OpenStreetMap.Mapnik` (the default look; same as the basemap you already added in Part 1)
+- `OpenStreetMap.HOT`
+- `Esri.WorldStreetMap`
+
+**Topographic / terrain**
+- `OpenTopoMap`
+- `Esri.WorldTopoMap`
+- `Esri.WorldTerrain`
+- `Esri.WorldShadedRelief`
+- `USGS.USTopo` *(US coverage only)*
+- `USGS.USImageryTopo` *(US coverage only)*
+
+**Satellite / imagery**
+- `Esri.WorldImagery`
+- `USGS.USImagery` *(US coverage only)*
+
+**Physical / reference**
+- `Esri.OceanBasemap`
+- `Esri.WorldPhysical`
+- `Esri.NatGeoWorldMap`
+- `Esri.WorldGrayCanvas`
+
+**Specialty**
+- `CyclOSM`
+
+**Usage notes**
+
+- Esri layers ask you to agree to their terms of service, but no API key is required in your code, they load fine anonymously for classroom use.
+- The `USGS.*` layers only render tiles within the United States; if your map area is international, skip these and use one of the global options instead.
+- These are all free to use but not unlimited. Fine for lab traffic, but don't hammer any single provider with heavy production-scale requests.
+- If a layer you want isn't on this list (Stadia/Stamen, Mapbox, CartoDB, Thunderforest, HERE, Jawg, MapTiler, TomTom), it requires registration and an API key pasted into your `L.tileLayer.provider()` options; that's a valid choice too, just budget extra setup time and don't leave your key hardcoded in a public repo if the provider asks you to keep it private.
