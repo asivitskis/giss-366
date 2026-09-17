@@ -47,6 +47,7 @@ parts:
       - file: book/labs/lab_01_agol
       - file: book/labs/lab_02_geoserver
       - file: book/labs/lab_03_weblanguages
+      - file: book/labs/lab_04_javascript_leaflet
   - caption: Final Project
     numbered: false
     maxdepth: 2
