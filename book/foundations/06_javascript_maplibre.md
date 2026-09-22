@@ -5,15 +5,11 @@
 
 By the end of this unit, you will be able to:
 
-- Explain what MapLibre GL JS adds over Leaflet (vector tiles, WebGL rendering, 3D)
-- Build a complete interactive map in a single HTML file, using CDN links instead of a local `js/`/`css/` folder
-- Initialize a MapLibre map with a chosen center, zoom, pitch, bearing, and basemap style
-- Add navigation, geolocate, fullscreen, and draw controls
-- Add GeoJSON, raster, and WMS layers using `addSource` / `addLayer`
-- Write data-driven styling expressions (`interpolate`, `step`, `case`, `get`) to build choropleth and heatmap layers
-- Cluster point data, customize marker icons, and add popups
-- Build 3D extrusions (buildings, choropleths) and control the camera (`fitBounds`, `flyTo`, `maxBounds`)
-- Build a simple HTML/CSS legend or color bar, since MapLibre GL JS has no built-in legend widget
+- Explain what MapLibre GL JS adds over Leaflet (vector tiles, WebGL rendering, 3D), and build a complete interactive map in a single CDN-loaded HTML file
+- Initialize a map with a chosen center, zoom, pitch, bearing, and basemap style, and add navigation, geolocate, fullscreen, and draw controls
+- Add GeoJSON, clustered, raster, and WMS layers using `addSource`/`addLayer`, styled with data-driven expressions (`interpolate`, `step`, `get`)
+- Add markers and popups, and build a simple HTML/CSS legend, since MapLibre GL JS has no built-in legend widget
+- Build 3D extrusions and terrain, and control the camera with `fitBounds`, `flyTo`, and `maxBounds`
 
 ## Notebook Overview: From Static Basemaps to Interactive, Data-Driven Web Maps
 
@@ -566,7 +562,7 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
 ```
 
 
-## Part 8: Raster and WMS layers
+## Part 7: Raster and WMS layers
 
 ### XYZ raster tiles
 
@@ -890,20 +886,29 @@ Initialize a map centered on a country of your choice with an appropriate zoom l
 Create a 3D view of a city of your choice: an appropriate `zoom`, `pitch`, and `bearing`, using the `liberty` style. If you have a MapTiler key, try swapping in `3d-satellite` or `3d-topo` MapTiler styles and compare.
 
 ### Exercise 3: Map Controls
-Add a `GeolocateControl` (top-left), a `FullscreenControl` (top-right), and a Draw control configured for points, lines, and polygons (top-left) to a map of your choice.
+Add a `GeolocateControl` (top-left), a `FullscreenControl` (top-right), and a Draw control configured for points, lines, and polygons (top-left) to a map of your choice. Try enabling one of the extra Terra Draw modes (`rectangle`, `circle`, or `freehand`) and log `draw.getAll()` to the console after drawing something.
 
-### Exercise 4: Overlaying Data Layers
+### Exercise 4: Markers, Lines & Polygons
+Add a default `Marker` at a location of your choice. Then, using `addSource`/`addLayer`, draw a `LineString` representing a route you know well and a `Polygon` representing a boundary (a park, campus, or neighborhood). Style the line and polygon with colors and opacity that make sense together.
+
+### Exercise 5: Clustering Points
+Adapt the earthquake clustering example to a dataset of your choice (or keep the earthquake data, but change the `clusterRadius`/`clusterMaxZoom` values and the `step` color/radius breakpoints). Confirm that clicking a cluster zooms in appropriately, and that clicking an individual point still opens a popup.
+
+### Exercise 6: Popups & Legend
+Build a small GeoJSON `FeatureCollection` of 4-5 points of your choice, and wire up click-popups for them following the Part 6 pattern (including the cursor change on hover). Then add an HTML/CSS legend, like the one in the Quick Recap example, explaining what the points represent.
+
+### Exercise 7: Raster & WMS Overlay
 Add a buildings layer and a roads layer for a New Mexico town of your choice to a map with sensible styling. Use your own extract from RGIS or OpenStreetMap if you have one ready. If not, these two ready-made GeoJSON files work as a stand-in while you get your own data sorted:
 - Buildings: `https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson`
 - Roads: `https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson`
 
-Then, separately, add the USGS Topo XYZ raster layer from Part 8 to a satellite-style basemap, with a layer-visibility toggle control.
+Then, separately, add the USGS Topo XYZ raster layer from Part 7 to a satellite-style basemap, with a layer-visibility toggle control.
 
-### Exercise 5: 3D Buildings
-Build a 3D map centered on a city of your choice, and add extruded building footprints (Part 9) using a custom color gradient tied to building height.
+### Exercise 8: 3D Buildings
+Build a 3D map centered on a city of your choice, and add extruded building footprints (Part 8) using a custom color gradient tied to building height.
 
-### Exercise 6: Legends & Overlays
-Add a custom marker icon (Part 6) plus a text label to your map, and build an HTML/CSS legend (Part 11) describing what the icon represents.
+### Exercise 9: Camera Control & 3D Terrain
+Using the Part 9 techniques, build a map that `fitBounds` to a region of your choice on load, then add a button that `flyTo`s a specific landmark within that region. Separately, adapt the 3D terrain example to your own region of interest, and add a `TerrainControl` so users can toggle the exaggeration.
 
 
 ## Readings & Resources
