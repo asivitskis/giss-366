@@ -1,13 +1,6 @@
 # MapLibre GL JS
 
 
-## Lecture: From Static Basemaps to Interactive, Data-Driven Web Maps
-
-**Unit focus:** So far your maps have been built with Leaflet, loaded from local `js/` and `css/` folders alongside a `map.js` file. This unit introduces **MapLibre GL JS**, a different mapping engine with native support for vector tiles and 3D. We'll build every example as a **single self-contained HTML file**, loading MapLibre straight from a CDN, so you can go from a blank file to a working interactive map without setting up a project folder at all.
-
-*This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu's [geog-510](https://github.com/giswqs/geog-510) course materials, adapted here for MapLibre GL JS.*
-
-
 ## Learning Objectives
 
 By the end of this unit, you will be able to:
@@ -22,6 +15,11 @@ By the end of this unit, you will be able to:
 - Build 3D extrusions (buildings, choropleths) and control the camera (`fitBounds`, `flyTo`, `maxBounds`)
 - Build a simple HTML/CSS legend or color bar, since MapLibre GL JS has no built-in legend widget
 
+## Notebook Overview: From Static Basemaps to Interactive, Data-Driven Web Maps
+
+So far your maps have been built with Leaflet, loaded from local `js/` and `css/` folders alongside a `map.js` file. This unit introduces **MapLibre GL JS**, a different mapping engine with native support for vector tiles and 3D. We'll build every example as a **single self-contained HTML file**, loading MapLibre straight from a CDN, so you can go from a blank file to a working interactive map without setting up a project folder at all.
+
+*This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu's [geog-510](https://github.com/giswqs/geog-510) course materials, adapted here for MapLibre GL JS.*
 
 ## Part 1: Why MapLibre GL JS?
 
@@ -31,7 +29,7 @@ Leaflet renders vector graphics as SVG or Canvas, both are strictly 2D, and both
 2. **3D is possible.** Buildings can be extruded, terrain can be given real elevation, and the camera can pitch and rotate, none of which Leaflet can do.
 
 
-## Part 2: One File, One Map — Setting Up with a CDN
+## Part 2: Basic MapLibre Map with CDN
 
 Your Leaflet repos have followed this shape:
 
@@ -45,12 +43,16 @@ my-map/
 └── map.js
 ```
 
-For MapLibre, we're going to skip the folder structure entirely. [unpkg](https://unpkg.com) hosts the MapLibre GL JS library and stylesheet directly, so a `<script>` and `<link>` tag pointed at unpkg replace the whole `js/` and `css/` folders:
+For MapLibre, we're going to skip the folder structure entirely. [unpkg](https://unpkg.com) hosts the MapLibre GL JS library and stylesheet directly, so a `<link>` tag plus a small ES module `<script>` replace the whole `js/` and `css/` folders. This is the "CDN / No bundler" setup from [MapLibre's own installation docs](https://maplibre.org/maplibre-gl-js/docs/#__tabbed_1_6):
 
 ```html
-<script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
-<link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.css" />
+<script type="module">
+    import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.mjs';
+</script>
 ```
+
+The `^6.10.0` is a semver range, not a fixed version, MapLibre will serve the newest compatible `6.x` release automatically. The library is loaded as an **ES module** here (`type="module"`, `import ... from`), not as a classic script. That has one consequence worth knowing up front: variables declared at the top level of a module script (like `map` below) are *not* attached to `window`, so they won't be visible if you try to poke at them from the browser console the way you could with a classic script. We'll add one line to work around that.
 
 Everything else, the map `<div>`, its CSS, and the JavaScript that builds the map, can live in that same `index.html`, inside `<style>` and `<script>` tags. No `map.js` to link, no local library files to keep track of. Here's the complete minimal file:
 
@@ -60,8 +62,7 @@ Everything else, the map `<div>`, its CSS, and the JavaScript that builds the ma
 <head>
     <title>My Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
-    <link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.css" />
     <style>
         body { margin: 0; }
         #map { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
@@ -70,8 +71,10 @@ Everything else, the map `<div>`, its CSS, and the JavaScript that builds the ma
 <body>
     <div id="map"></div>
 
-    <script>
-        let map = new maplibregl.Map({
+    <script type="module">
+        import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.mjs';
+
+        const map = new maplibregl.Map({
             container: 'map',
             style: 'https://tiles.openfreemap.org/styles/positron',
             center: [-100, 40],   // [lng, lat] -- note the order, opposite of Leaflet's [lat, lng]!
@@ -79,12 +82,15 @@ Everything else, the map `<div>`, its CSS, and the JavaScript that builds the ma
             pitch: 0,
             bearing: 0
         });
+        window.map = map;   // exposes map to the browser console for debugging
     </script>
 </body>
 </html>
 ```
 
-Save that as `index.html`, open it in a browser (no local server needed for this simple version), and you have a working map. As the map grows more complex later in this lecture, you're welcome to move the `<script>` contents into a separate `map.js` if you prefer, the CDN approach and the folder approach aren't mutually exclusive, but for MapLibre you have the option of staying in one file for as long as it stays manageable.
+Save that as `index.html`, open it in a browser (no local server needed for this simple version), and you have a working map. As the map grows more complex later in this lecture, you're welcome to move the `<script>` contents into a separate `map.js` if you prefer (keep `type="module"` on the `<script>` tag that loads it), the CDN approach and the folder approach aren't mutually exclusive, but for MapLibre you have the option of staying in one file for as long as it stays manageable.
+
+> **Why `window.map = map`?** Inside a module script, top-level variables are scoped to that module, not attached to `window` the way classic-script variables are. Without this line, typing `map.getZoom()` in your browser's dev console would throw `map is not defined`. Adding it back gives you the same live-debugging workflow you're used to.
 
 > **Watch out:** MapLibre (like GeoJSON) always writes coordinates as `[longitude, latitude]`. Leaflet's `L.marker([lat, lng])` uses the opposite order. Mixing these up is one of the most common web-mapping bugs, in either library.
 
@@ -99,32 +105,11 @@ style: 'https://tiles.openfreemap.org/styles/liberty'    // OSM-style default
 style: 'https://tiles.openfreemap.org/styles/bright'
 ```
 
-MapTiler-hosted styles (`streets`, `satellite`, `hybrid`, `topo`) need a free API key appended to the URL:
+MapTiler-hosted styles (`streets`, `satellite`, `hybrid`, `topo`). You need a free API key appended to the URL, however you should be cautious to never publically expose your API key or other visitors/clients could steal this information. If you're interested to investigate MapTiler, please proceed with caution. 
 
 ```js
 const MAPTILER_KEY = 'YOUR_KEY_HERE';   // never commit a real key to a public repo
 style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`
-```
-
-### A background-color-only style
-
-You can also hand-write a minimal style JSON directly, with no external tiles at all:
-
-```js
-let map = new maplibregl.Map({
-    container: 'map',
-    style: {
-        version: 8,
-        sources: {},
-        layers: [{
-            id: 'background',
-            type: 'background',
-            paint: { 'background-color': 'lightgray' }
-        }]
-    },
-    center: [-100, 40],
-    zoom: 3
-});
 ```
 
 
@@ -167,98 +152,158 @@ map.on('load', function () {
 
 ### Draw control
 
-Drawing shapes on the map needs one more CDN library, the **mapbox-gl-draw** plugin, again loaded with plain `<script>`/`<link>` tags, no local install required:
+Drawing shapes on the map needs one more CDN library, the **[terra-draw](https://maplibre.org/maplibre-gl-js/docs/examples/draw-polygon-with-mapbox-gl-draw/#__tabbed_1_2)** plugin, again loaded with plain `<script>`/`<link>` tags, no local install required:
 
 ```html
-<script src="https://unpkg.com/@mapbox/mapbox-gl-draw@1.4.3/dist/mapbox-gl-draw.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/@mapbox/mapbox-gl-draw@1.4.3/dist/mapbox-gl-draw.css">
+<script src="https://cdn.jsdelivr.net/npm/@watergis/maplibre-gl-terradraw@1.0.1/dist/maplibre-gl-terradraw.umd.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@watergis/maplibre-gl-terradraw@1.0.1/dist/maplibre-gl-terradraw.css"
+/>
 ```
 
+> Note this stays a **classic** (non-`module`) script tag on purpose, that's how the plugin attaches `terra-draw` to the global `window`. Your main map code, in the `type="module"` script, can still read that global fine; module scoping only restricts what a module *creates* at its own top level, not what it can read.
+
 ```js
-let draw = new MapboxDraw({
-    displayControlsDefault: false,
-    controls: { polygon: true, line_string: true, point: true, trash: true }
-});
-map.addControl(draw, 'top-left');
+const draw = new MaplibreTerradrawControl.MaplibreTerradrawControl({
+        modes: [
+            // 'render', comment this to always show drawing tool
+            'point',
+            'linestring',
+            'polygon',
+            'select',
+            'delete-selection',
+            'delete',
+            'download'
+        ],
+        open: true,
+    });
+    map.addControl(draw, 'top-left');
 ```
 
-To pre-load existing features, call `.set()` after the control is added:
+Multiple additional drawing options include the following, try some of these out:
 
 ```js
-draw.set(myFeatureCollection);
+'rectangle',
+'circle',
+'freehand',
+'angled-rectangle',
+'sensor',
+'sector',
 ```
 
 Access what the user drew with `draw.getSelected()` (selected only) or `draw.getAll()` (everything).
 
 
-## Part 4: Adding GeoJSON Layers
+## Part 4: Adding Markers & Geometries
 
-MapLibre always separates **where the data comes from** (a source) from **how it's drawn** (a layer). You add both inside the `'load'` listener, right alongside your controls.
+Similar to Leaflet, MapLibre is able to add and draw geometries. Check out the Part 4 example to modify and explore these options. Remember to update your map center and Zoom accordingly for each new addition. 
 
-### Points (circles)
+### Default Marker
 
 ```js
-map.addSource('cities', { type: 'geojson', data: 'data/cities.geojson' });
-map.addLayer({
-    id: 'cities-layer',
-    type: 'circle',
-    source: 'cities',
-    paint: {
-        'circle-radius': 6,
-        'circle-color': '#3182bd',
-        'circle-stroke-width': 1,
-        'circle-stroke-color': 'white'
-    }
-});
+const marker = new maplibregl.Marker()
+    .setLngLat([-108.2833, 32.7764])
+    .addTo(map);
+
 ```
+
+For more complex geometries, MapLibre always separates where the data comes from (a source) from how it’s drawn (a layer). You add both inside the `'load'` listener, right alongside your controls.
 
 ### Lines
 
 ```js
-map.addSource('route', { type: 'geojson', data: 'data/route.geojson' });
-map.addLayer({
-    id: 'route-layer',
-    type: 'line',
-    source: 'route',
-    layout: { 'line-join': 'round', 'line-cap': 'round' },
-    paint: { 'line-color': '#e6550d', 'line-width': 3 }
+map.on('load', () => {
+    map.addSource('route', {
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+                'type': 'LineString',
+                'coordinates': [
+                    [-108.2750622, 32.7796674],
+                    [-108.272518, 32.7823097],
+                    [-108.270348, 32.7830646],
+                    [-108.266831, 32.7831904],
+                    [-108.2612936, 32.7851407],
+                    [-108.2548583, 32.7871537],
+                    [-108.2487223, 32.7874683],
+                    [-108.2382965, 32.7864721],
+                    [-108.2046233, 32.783012],
+                    [-108.1890922, 32.7805237],
+                    [-108.1822079, 32.7798317],
+                    [-108.1756229, 32.7793913],
+                    [-108.1696366, 32.7804608],
+                    [-108.1594598, 32.7822223],
+                    [-108.1510789, 32.7820965],
+                    [-108.1481606, 32.7786992],
+                    [-108.1479361, 32.7736659],
+                    [-108.1483102, 32.7706458],
+                    [-108.1478887, 32.7662977],
+                    [-108.1448956, 32.7598794],
+                    [-108.143399, 32.7585579],
+                    [-108.1397323, 32.7578028],
+                    [-108.1377868, 32.758432],
+                    [-108.1349433, 32.7590613],
+                    [-108.1314263, 32.7590613]
+                ]
+            }
+        }
+    });
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': {
+            'line-color': '#888',
+            'line-width': 8
+        }
+    });
 });
 ```
 
 ### Polygons
 
 ```js
-map.addSource('stat_data', { type: 'geojson', data: 'data/stat.geojson' });
-map.addLayer({
-    id: 'stat_layer',
-    type: 'fill',
-    source: 'stat_data',
-    paint: {
-        'fill-color': 'blue',
-        'fill-outline-color': 'black',
-        'fill-opacity': 0.5
-    }
+map.on('load', () => {
+    map.addSource('maine', {
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': [
+                    [
+                        [-108.2853603, 32.77102],
+                        [-108.2982235, 32.7688568],
+                        [-108.3009621, 32.76132],
+                        [-108.294323, 32.7538525],
+                        [-108.2866051, 32.7528754],
+                        [-108.2824557, 32.7575514],
+                        [-108.280381, 32.7606222],
+                        [-108.2810449, 32.7701128],
+                        [-108.2853603, 32.77102]
+                    ]
+                ]
+            }
+        }
+    });
+    map.addLayer({
+        'id': 'maine',
+        'type': 'fill',
+        'source': 'maine',
+        'layout': {},
+        'paint': {
+            'fill-color': '#088',
+            'fill-opacity': 0.8
+        }
+    });
 });
-```
-
-### Mixed-geometry GeoJSON
-
-A single GeoJSON `FeatureCollection` can mix points, lines, and polygons. Add **one source** and **three layers**, each filtered to its geometry type:
-
-```js
-map.addSource('mixed', { type: 'geojson', data: 'data/mixed.geojson' });
-
-map.addLayer({ id: 'mixed-fill', type: 'fill', source: 'mixed',
-    filter: ['==', ['geometry-type'], 'Polygon'],
-    paint: { 'fill-color': '#a1d99b', 'fill-opacity': 0.6 } });
-
-map.addLayer({ id: 'mixed-line', type: 'line', source: 'mixed',
-    filter: ['==', ['geometry-type'], 'LineString'],
-    paint: { 'line-color': '#31a354', 'line-width': 2 } });
-
-map.addLayer({ id: 'mixed-point', type: 'circle', source: 'mixed',
-    filter: ['==', ['geometry-type'], 'Point'],
-    paint: { 'circle-color': '#006d2c', 'circle-radius': 5 } });
 ```
 
 ### Local vs. remote data
@@ -275,177 +320,267 @@ map.addSource('inline', {
 
 ## Part 5: Clustering Points
 
-Clustering is a property of the **source**, and it's drawn with three separate layers: clusters, cluster counts, and unclustered points.
+Clustering is a property of the **source**, and it's drawn with three separate layers: clusters, cluster counts, and unclustered points. The example below uses earthquake epicenters across the U.S. (see [Maplibre Tutorial](https://maplibre.org/maplibre-gl-js/docs/examples/create-and-style-clusters/))
 
 ```js
-map.addSource('earthquakes', {
-    type: 'geojson',
-    data: 'data/earthquakes.geojson',
-    cluster: true,
-    clusterMaxZoom: 14,
-    clusterRadius: 50
+const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://demotiles.maplibre.org/style.json',
+    center: [-103.59179687498357, 40.66995747013945],
+    zoom: 3,
+    fadeDuration: 0 // this is in order for the text and circles to move "as-one"
 });
 
-map.addLayer({
-    id: 'clusters',
-    type: 'circle',
-    source: 'earthquakes',
-    filter: ['has', 'point_count'],
-    paint: {
-        'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
-        'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
-    }
-});
+map.on('load', () => {
+    // Add a new source from our GeoJSON data and
+    // set the 'cluster' option to true. GL-JS will
+    // add the point_count property to your source data.
+    map.addSource('earthquakes', {
+        type: 'geojson',
+        // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+        // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+        data: 'https://maplibre.org/maplibre-gl-js/docs/assets/earthquakes.geojson',
+        cluster: true,
+        clusterMaxZoom: 14, // Max zoom to cluster points on
+        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+    });
 
-map.addLayer({
-    id: 'cluster-count',
-    type: 'symbol',
-    source: 'earthquakes',
-    filter: ['has', 'point_count'],
-    layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-size': 12 }
-});
+    map.addLayer({
+        id: 'clusters',
+        type: 'circle',
+        source: 'earthquakes',
+        filter: ['has', 'point_count'],
+        paint: {
+            // Use step expressions (https://maplibre.org/maplibre-style-spec/#expressions-step)
+            // with three steps to implement three types of circles:
+            //   * Blue, 20px circles when point count is less than 100
+            //   * Yellow, 30px circles when point count is between 100 and 750
+            //   * Pink, 40px circles when point count is greater than or equal to 750
+            'circle-color': [
+                'step',
+                ['get', 'point_count'],
+                '#51bbd6',
+                100,
+                '#f1f075',
+                750,
+                '#f28cb1'
+            ],
+            'circle-radius': [
+                'step',
+                ['get', 'point_count'],
+                20,
+                100,
+                30,
+                750,
+                40
+            ]
+        }
+    });
 
-map.addLayer({
-    id: 'unclustered-point',
-    type: 'circle',
-    source: 'earthquakes',
-    filter: ['!', ['has', 'point_count']],
-    paint: { 'circle-color': '#11b4da', 'circle-radius': 6, 'circle-stroke-width': 1, 'circle-stroke-color': '#fff' }
+    map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'earthquakes',
+        filter: ['has', 'point_count'],
+        layout: {
+            'text-field': '{point_count_abbreviated}',
+            'text-font': ['Noto Sans Regular'],
+            'text-size': 12
+        }
+    });
+
+    map.addLayer({
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'earthquakes',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+            'circle-color': '#11b4da',
+            'circle-radius': 4,
+            'circle-stroke-width': 1,
+            'circle-stroke-color': '#fff'
+        }
+    });
+
+    // inspect a cluster on click
+    map.on('click', 'clusters', async (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+            layers: ['clusters']
+        });
+        const clusterId = features[0].properties.cluster_id;
+        const zoom = await map.getSource('earthquakes').getClusterExpansionZoom(clusterId);
+        map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom
+        });
+    });
+
+    // When a click event occurs on a feature in
+    // the unclustered-point layer, open a popup at
+    // the location of the feature, with
+    // description HTML from its properties.
+    map.on('click', 'unclustered-point', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const mag = e.features[0].properties.mag;
+        let tsunami;
+
+        if (e.features[0].properties.tsunami === 1) {
+            tsunami = 'yes';
+        } else {
+            tsunami = 'no';
+        }
+
+        // Ensure that if the map is zoomed out such that
+        // multiple copies of the feature are visible, the
+        // popup appears over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new maplibregl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(
+                `magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`
+            )
+            .addTo(map);
+    });
+
+    map.on('mouseenter', 'clusters', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'clusters', () => {
+        map.getCanvas().style.cursor = '';
+    });
 });
 ```
 
 The `['step', ...]` expression buckets clusters by point count and colors/sizes them accordingly.
 
 
-## Part 6: Custom Marker Icons
+## Part 6: Popups
 
-Using a custom icon image is a two-step process: **load** the image into the map's sprite, then **reference** it in a symbol layer.
+### Pop-Ups
 
+Simple pop-ups can be added like default markers.
 ```js
-map.loadImage('img/custom-marker.png', (error, image) => {
-    if (error) throw error;
-    map.addImage('custom-marker', image);
-
-    map.addSource('points', { type: 'geojson', data: 'data/points.geojson' });
-    map.addLayer({
-        id: 'points-layer',
-        type: 'symbol',
-        source: 'points',
-        layout: {
-            'icon-image': 'custom-marker',
-            'icon-size': 0.5,
-            'icon-allow-overlap': true   // otherwise MapLibre hides overlapping icons by default
-        }
-    });
-});
-```
-
-### HTML markers
-
-If you just need one or two draggable, DOM-based pins (rather than a data-driven layer of thousands), MapLibre also has a `Marker` class that behaves much like Leaflet's `L.marker()`:
-
-```js
-new maplibregl.Marker({ color: 'red' })
-    .setLngLat([-100, 40])
+const popup = new maplibregl.Popup({closeOnClick: false})
+    .setLngLat([-96, 37.8])
+    .setHTML('<h1>Hello World!</h1>')
     .addTo(map);
-```
-
-Use **layers** (as above) for large or data-driven point sets, they're rendered on the GPU and stay fast at any scale. Use `Marker` objects (this section) only for a handful of one-off pins, since each one is a real DOM element.
-
-
-## Part 7: Data-Driven Styling & Popups
-
-### Expressions
-
-MapLibre's "expression language" is how you write data-driven styling. The most common four:
-
-| Expression | Purpose |
-|---|---|
-| `['get', 'density']` | read a GeoJSON property |
-| `['interpolate', ['linear'], ['get', 'density'], 0, '#fef0d9', 14965, '#b30000']` | smooth color/size ramp |
-| `['step', ['get', 'count'], 'small', 10, 'medium', 100, 'large']` | discrete buckets |
-| `['case', ['==', ['get', 'type'], 'water'], 'blue', 'gray']` | if/else logic |
-
-A choropleth fill, replacing a flat `'fill-color': 'blue'`:
-
-```js
-'fill-color': [
-    'interpolate', ['linear'], ['get', 'density'],
-    0,     '#fef0d9',
-    865,   '#fdcc8a',
-    2287,  '#fc8d59',
-    7754,  '#e34a33',
-    14965, '#b30000'
-]
 ```
 
 ### Popups on click
 
+Custom popups on click require additional event listeners. (See [MapLibre Popup Example](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-click/))
 ```js
-map.on('click', 'stat_layer', function (e) {
-    let coordinates = e.lngLat;
-    let props = e.features[0].properties;
-    let description = `<strong>${props.SHEM_YISHUV}</strong><br>${Math.round(props.density)} people/km²`;
+// Add your points as GeoJSON
+    map.addSource('places', {
+        type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: [
+                {
+                    type: 'Feature',
+                    properties: {
+                        name: 'Point 1'
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [-108.2812252, 32.7746687]
+                    }
+                },
+                {
+                    type: 'Feature',
+                    properties: {
+                        name: 'Point 2'
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [-107.7564321, 32.2613517]
+                    }
+                },
+                {
+                    type: 'Feature',
+                    properties: {
+                        name: 'Point 3'
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [-107.1580646, 32.6698278]
+                    }
+                },
+                {
+                    type: 'Feature',
+                    properties: {
+                        name: 'Point 4'
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [-107.2211734, 33.1976318]
+                    }
+                }
+            ]
+        }
+    });
 
-    new maplibregl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(description)
-        .addTo(map);
-});
+    // Add a layer showing the points
+    map.addLayer({
+        id: 'places',
+        type: 'circle',
+        source: 'places',
+        paint: {
+            'circle-radius': 8,
+            'circle-color': '#1978A5',
+            'circle-stroke-color': '#FFFFFF',
+            'circle-stroke-width': 2
+        }
+    });
 
-// Optional: swap the cursor to a pointer over clickable features
-map.on('mouseenter', 'stat_layer', () => { map.getCanvas().style.cursor = 'pointer'; });
-map.on('mouseleave', 'stat_layer', () => { map.getCanvas().style.cursor = ''; });
+    // When a point is clicked, open a popup
+    map.on('click', 'places', (e) => {
+
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const name = e.features[0].properties.name;
+
+        // Keep popup attached to the correct copy of the point
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new maplibregl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(`<strong>${name}</strong>`)
+            .addTo(map);
+    });
+
+    // Change cursor to pointer when hovering over a point
+    map.on('mouseenter', 'places', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change cursor back when leaving a point
+    map.on('mouseleave', 'places', () => {
+        map.getCanvas().style.cursor = '';
+    });
+
 ```
 
-### Restyling a layer after the fact
 
-You can restyle a live map with no reload needed:
-
-```js
-map.setPaintProperty('stat_layer', 'fill-color', 'orange');
-```
-
-### Label styling and placement
-
-```js
-map.addLayer({
-    id: 'city-labels',
-    type: 'symbol',
-    source: 'cities',
-    layout: {
-        'text-field': ['upcase', ['get', 'name']],
-        'text-variable-anchor': ['top', 'bottom', 'left', 'right'],  // let MapLibre pick the least-crowded side
-        'text-radial-offset': 0.5,
-        'text-justify': 'auto'
-    }
-});
-```
-
-
-> ### Try It
->
-> On a live MapLibre example page, run each of these one at a time and watch the map respond immediately:
->
-> ```js
-> map.setPaintProperty('water', 'fill-color', 'orange');
-> map.setLayoutProperty('water', 'visibility', 'none');
-> map.setLayoutProperty('water', 'visibility', 'visible');
-> ```
-
-
-## Part 8: Raster, WMS & Heatmaps
+## Part 8: Raster and WMS layers
 
 ### XYZ raster tiles
 
+You can add raster data like xyz tile layers on top of your standard basemaps. 
 ```js
-map.addSource('usgs-topo', {
-    type: 'raster',
-    tiles: ['https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}'],
-    tileSize: 256,
-    attribution: 'USGS'
+map.on('load', () => {
+    map.addSource('usgs-topo', {
+        type: 'raster',
+        tiles: ['https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}'],
+        tileSize: 256,
+        attribution: 'USGS'
+    });
+    map.addLayer({ id: 'usgs-topo-layer', type: 'raster', source: 'usgs-topo' });
 });
-map.addLayer({ id: 'usgs-topo-layer', type: 'raster', source: 'usgs-topo' });
 ```
 
 ### WMS layers
@@ -454,108 +589,146 @@ A WMS server is added the same way as XYZ tiles, MapLibre has no dedicated WMS t
 
 ```js
 const wmsUrl = 'https://img.nj.gov/imagerywms/Natural2015';
-map.addSource('nj-imagery', {
-    type: 'raster',
-    tiles: [
-        `${wmsUrl}?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1` +
-        `&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=Natural2015`
-    ],
-    tileSize: 256
-});
-map.addLayer({ id: 'nj-imagery-layer', type: 'raster', source: 'nj-imagery' });
+
+map.on('load', () => {
+            map.addSource('nj-imagery', {
+                type: 'raster',
+                tiles: [
+                    `${wmsUrl}?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1` +
+                    `&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=Natural2015&styles=`
+                ],
+                tileSize: 256
+            });
+
+            map.addLayer({
+                id: 'nj-imagery-layer',
+                type: 'raster',
+                source: 'nj-imagery'
+            });
+        });
 ```
 
-### Cloud Optimized GeoTIFFs (COGs)
+This example points at a New Jersey imagery service because it is a live, no-key-required WMS that reliably works from a browser. New Mexico's RGIS clearinghouse (rgis.unm.edu) hosts some of its own data as WMS/WFS services too; once you pick a specific RGIS layer, check its GetCapabilities document for the exact layer name and swap it into this same URL pattern.
 
-Browser-side MapLibre GL JS has **no built-in COG reader**. A COG has to be tiled by a server first (e.g. [titiler](https://developmentseed.org/titiler/) or a cloud provider), then added exactly like the XYZ example above, pointed at the tiler's `{z}/{x}/{y}` endpoint instead of a plain file path.
-
-### Heatmaps
+We can also add WMS from our own GeoServer. Change the code to use your layer's correct `id` and `source`.
 
 ```js
-map.addSource('quakes', { type: 'geojson', data: 'data/earthquakes.geojson' });
-map.addLayer({
-    id: 'quakes-heat',
-    type: 'heatmap',
-    source: 'quakes',
-    paint: {
-        'heatmap-weight': ['interpolate', ['linear'], ['get', 'mag'], 0, 0, 6, 1],
-        'heatmap-intensity': 1,
-        'heatmap-radius': 20,
-        'heatmap-opacity': 0.8
-    }
-});
+const wmsUrl = 'https://138-68-249-92.sslip.io/geoserver/ows';
+
+map.on('load', () => {
+            map.addSource('gc-roads', {
+                type: 'raster',
+                tiles: [
+                    `${wmsUrl}?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.3.0` +
+                    `&request=GetMap&crs=EPSG:3857&transparent=true&width=256&height=256&layers=instructor_giss366:gc_roads&styles=`
+                ],
+                tileSize: 256
+            });
+
+            map.addLayer({
+                id: 'gc-roads-layer',
+                type: 'raster',
+                source: 'gc-roads'
+            });
+        });
+
 ```
 
 
-## Part 9: 3D Extrusions
+## Part 8: 3D Extrusions
 
 This is the one category of map that Leaflet genuinely cannot produce, extrusion needs the WebGL/3D pipeline that only MapLibre (or another WebGL-based library) provides.
 
-Switching a polygon layer from flat to extruded is smaller than it looks: change `type` to `'fill-extrusion'`, and add a `'fill-extrusion-height'` paint property alongside the color:
+Switching a polygon layer from flat to extruded is smaller than it looks: change `type` to `'fill-extrusion'`, and add a `'fill-extrusion-height'` paint property alongside the color. 
 
-```js
-map.addLayer({
-    id: 'towns_layer',
-    type: 'fill-extrusion',
-    source: 'towns_data',
-    paint: {
-        'fill-extrusion-color': [
-            'interpolate', ['linear'], ['get', 'density'],
-            0,     '#fef0d9',
-            865,   '#fdcc8a',
-            2287,  '#fc8d59',
-            7754,  '#e34a33',
-            14965, '#b30000'
-        ],
-        'fill-extrusion-height': ['get', 'density'],
-        'fill-extrusion-opacity': 0.9,
-        'fill-extrusion-base': 0
-    }
-});
-```
-
-Give the map some `pitch` (e.g. `pitch: 60`) when you initialize it, or the extrusion will be invisible from directly overhead.
 
 ### Building footprints from vector tiles
 
 Real building extrusions come from a vector tile source keyed to a `render_height` property, with height computed so buildings only appear once you're zoomed in close:
 
 ```js
-map.addSource('openmaptiles', {
-    type: 'vector',
-    url: `https://api.maptiler.com/tiles/v3/tiles.json?key=${MAPTILER_KEY}`
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.10.0/dist/maplibre-gl.mjs';
+
+const map = new maplibregl.Map({
+    style: `https://tiles.openfreemap.org/styles/bright`,
+    center: [-108.2833, 32.7764],
+    zoom: 15.5,
+    pitch: 45,
+    bearing: -17.6,
+    container: 'map',
+    canvasContextAttributes: {antialias: true}
 });
-map.addLayer({
-    id: '3d-buildings',
-    source: 'openmaptiles',
-    'source-layer': 'building',
-    type: 'fill-extrusion',
-    minzoom: 15,
-    paint: {
-        'fill-extrusion-color': ['interpolate', ['linear'], ['get', 'render_height'], 0, 'lightgray', 200, 'royalblue', 400, 'lightblue'],
-        'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 15, 0, 16, ['get', 'render_height']],
-        'fill-extrusion-base': ['case', ['>=', ['get', 'zoom'], 16], ['get', 'render_min_height'], 0]
+
+// The 'building' layer in the streets vector source contains building-height
+// data from OpenStreetMap.
+map.on('load', () => {
+    // Insert the layer beneath any symbol layer.
+    const layers = map.getStyle().layers;
+
+    let labelLayerId;
+    for (let i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            labelLayerId = layers[i].id;
+            break;
+        }
     }
+
+    map.addSource('openfreemap', {
+        url: `https://tiles.openfreemap.org/planet`,
+        type: 'vector',
+    });
+
+    map.addLayer(
+        {
+            'id': '3d-buildings',
+            'source': 'openfreemap',
+            'source-layer': 'building',
+            'type': 'fill-extrusion',
+            'minzoom': 15,
+            'filter': ['!=', ['get', 'hide_3d'], true],
+            'paint': {
+                'fill-extrusion-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 'render_height'], 3, 'lightgray', 6, 'royalblue', 12, 'lightblue'
+                ],
+                'fill-extrusion-height': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    15,
+                    0,
+                    16,
+                    ['get', 'render_height']
+                ],
+                'fill-extrusion-base': ['case',
+                    ['>=', ['get', 'zoom'], 16],
+                    ['get', 'render_min_height'], 0
+                ]
+            }
+        },
+        labelLayerId
+    );
 });
 ```
 
 
-## Part 10: Camera & Interaction Control
+## Part 9: Camera & Interaction Control; 3D Terrain
 
 ```js
 // Fit to a bounding box, e.g. after loading a GeoJSON file
-map.fitBounds([[-125, 24], [-66, 49]], { padding: 20 });
+map.fitBounds([[-109.05, 31.33], [-103.00, 37.00]], { padding: 20 });   // roughly New Mexico's extent
 
 // Fly smoothly to a new location
-map.flyTo({ center: [-122.4194, 37.7749], zoom: 12, essential: true });
+map.flyTo({ center: [-108.2803, 32.7701], zoom: 12, essential: true });   // Silver City, NM
 
 // Prevent the user from panning outside a region
 let map2 = new maplibregl.Map({
     container: 'map',
     style: 'https://tiles.openfreemap.org/styles/positron',
-    center: [34.8, 31.3],
-    zoom: 8,
-    maxBounds: [[34.0, 29.3], [35.9, 33.4]]   // roughly Israel's extent
+    center: [-106.1, 34.5],
+    zoom: 6,
+    maxBounds: [[-109.05, 31.33], [-103.00, 37.00]]   // roughly New Mexico's extent
 });
 
 // Disable scroll-to-zoom
@@ -569,39 +742,79 @@ map.on('mousemove', (e) => {
 ```
 
 
-## Part 11: Legends, Color Bars & Overlays
+```js
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.11.0/dist/maplibre-gl.mjs';
 
-MapLibre GL JS has **no built-in legend or color bar widget** — a legend is just an HTML `<div>` you position over the map with CSS, the same DOM-overlay technique you've already used for other on-page content.
+const map = new maplibregl.Map({
+    container: 'map',
+    zoom: 12,
+    center: [-108.2833, 32.7764],
+    pitch: 70,
+    hash: true,
+    style: {
+        version: 8,
+        sources: {
+            osm: {
+                type: 'raster',
+                tiles: ['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'],
+                tileSize: 256,
+                attribution: '&copy; OpenStreetMap Contributors',
+                maxzoom: 19
+            },
+            // Use a different source for terrain and hillshade layers, to improve render quality
+            terrainSource: {
+                type: 'raster-dem',
+                url: 'https://tiles.mapterhorn.com/tilejson.json'
+            },
+            hillshadeSource: {
+                type: 'raster-dem',
+                url: 'https://tiles.mapterhorn.com/tilejson.json'
+            }
+        },
+        layers: [
+            {
+                id: 'osm',
+                type: 'raster',
+                source: 'osm'
+            },
+            {
+                id: 'hills',
+                type: 'hillshade',
+                source: 'hillshadeSource',
+                layout: {visibility: 'visible'},
+                paint: {'hillshade-shadow-color': '#473B24'}
+            }
+        ],
+        terrain: {
+            source: 'terrainSource',
+            exaggeration: 1
+        },
+        sky: {}
+    },
+    maxZoom: 18,
+    maxPitch: 85
+});
 
-```html
-<div id="legend">
-    <strong>Population Density</strong><br>
-    <span style="background:#fef0d9">&nbsp;&nbsp;&nbsp;</span> 0–865<br>
-    <span style="background:#fdcc8a">&nbsp;&nbsp;&nbsp;</span> 865–2287<br>
-    <span style="background:#fc8d59">&nbsp;&nbsp;&nbsp;</span> 2287–7754<br>
-    <span style="background:#e34a33">&nbsp;&nbsp;&nbsp;</span> 7754–14965<br>
-</div>
+map.addControl(
+    new maplibregl.NavigationControl({
+        visualizePitch: true,
+        showZoom: true,
+        showCompass: true
+    })
+);
+
+map.addControl(
+    new maplibregl.TerrainControl({
+        source: 'terrainSource',
+        exaggeration: 1
+    })
+);
 ```
-
-```css
-#legend {
-    position: absolute;
-    bottom: 30px; right: 10px;
-    background: white;
-    padding: 10px;
-    font: 12px sans-serif;
-    border-radius: 4px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    z-index: 1;
-}
-```
-
-A logo or attribution image works the same way, an `<img>` inside an absolutely-positioned `<div>` layered over the `#map` div.
 
 
 ## Quick Recap: A Complete MapLibre Page
 
-Putting the pieces above together, here's a full page combining a styled basemap, a GeoJSON choropleth layer, a popup, and a legend — still just **one file**, no folders, no separate `map.js`:
+Putting the pieces above together, here's a full page combining a styled basemap, a GeoJSON choropleth layer, a popup, and a legend. It's still just **one file**, no folders, no separate `map.js`:
 
 ```html
 <!DOCTYPE html>
@@ -609,8 +822,7 @@ Putting the pieces above together, here's a full page combining a styled basemap
 <head>
     <title>My MapLibre Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
-    <link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.css" />
     <style>
         body { margin: 0; }
         #map { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
@@ -625,33 +837,36 @@ Putting the pieces above together, here's a full page combining a styled basemap
     <div id="map"></div>
     <div id="legend"><strong>Density</strong><br>low → high</div>
 
-    <script>
-        let map = new maplibregl.Map({
+    <script type="module">
+        import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.mjs';
+
+        const map = new maplibregl.Map({
             container: 'map',
             style: 'https://tiles.openfreemap.org/styles/positron',
-            center: [34.8, 31.3],
-            zoom: 8
+            center: [-106.1, 34.5],
+            zoom: 6
         });
+        window.map = map;   // exposes map to the browser console for debugging
 
         map.on('load', function () {
             map.addControl(new maplibregl.NavigationControl(), 'top-left');
 
-            map.addSource('stat_data', { type: 'geojson', data: 'data/stat.geojson' });
+            map.addSource('nm_counties', { type: 'geojson', data: 'data/nm_counties.geojson' });
             map.addLayer({
-                id: 'stat_layer',
+                id: 'nm_counties_layer',
                 type: 'fill',
-                source: 'stat_data',
+                source: 'nm_counties',
                 paint: {
                     'fill-color': [
                         'interpolate', ['linear'], ['get', 'density'],
-                        0, '#fef0d9', 865, '#fdcc8a', 2287, '#fc8d59', 7754, '#e34a33', 14965, '#b30000'
+                        0, '#fef0d9', 5, '#fdcc8a', 20, '#fc8d59', 75, '#e34a33', 200, '#b30000'
                     ],
                     'fill-outline-color': 'black',
                     'fill-opacity': 0.8
                 }
             });
 
-            map.on('click', 'stat_layer', function (e) {
+            map.on('click', 'nm_counties_layer', function (e) {
                 new maplibregl.Popup()
                     .setLngLat(e.lngLat)
                     .setHTML(`Density: ${Math.round(e.features[0].properties.density)}`)
@@ -663,7 +878,7 @@ Putting the pieces above together, here's a full page combining a styled basemap
 </html>
 ```
 
-Everything the student needs, library, styling, data, and interactivity, lives in this one `index.html`. As a project grows (more layers, more custom controls), it's reasonable to split the `<script>` block out into its own `map.js` file, exactly the way your Leaflet repos already do, but nothing about MapLibre *requires* that split the way local library files did.
+Everything we need, library, styling, data, and interactivity, lives in this one `index.html`. As a project grows (more layers, more custom controls), it's reasonable to split the `<script>` block out into its own `map.js` file, exactly the way your Leaflet repos already do, but nothing about MapLibre *requires* that split the way local library files did.
 
 
 ## Exercises
@@ -678,7 +893,7 @@ Create a 3D view of a city of your choice: an appropriate `zoom`, `pitch`, and `
 Add a `GeolocateControl` (top-left), a `FullscreenControl` (top-right), and a Draw control configured for points, lines, and polygons (top-left) to a map of your choice.
 
 ### Exercise 4: Overlaying Data Layers
-Add the NYC buildings and NYC roads GeoJSON layers to a map with sensible styling:
+Add a buildings layer and a roads layer for a New Mexico town of your choice to a map with sensible styling. Use your own extract from RGIS or OpenStreetMap if you have one ready. If not, these two ready-made GeoJSON files work as a stand-in while you get your own data sorted:
 - Buildings: `https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson`
 - Roads: `https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson`
 
@@ -696,6 +911,6 @@ Add a custom marker icon (Part 6) plus a text label to your map, and build an HT
 - Dorman, M. *[Introduction to Web Mapping](https://geobgu.xyz/web-mapping/)*, Chapter 14: MapLibre GL JS
 - [MapLibre GL JS Documentation](https://maplibre.org/maplibre-gl-js/docs/)
 - [MapLibre GL JS Examples Gallery](https://maplibre.org/maplibre-gl-js/docs/examples/)
-- [OpenFreeMap](https://openfreemap.org) — free, no-API-key vector basemap styles
-- [Mapbox Style Specification](https://maplibre.org/maplibre-style-spec/) — the reference for every `paint`/`layout` property and expression used above (MapLibre's style spec is a fork of this one)
+- [OpenFreeMap](https://openfreemap.org): free, no-API-key vector basemap styles
+- [Mapbox Style Specification](https://maplibre.org/maplibre-style-spec/): the reference for every `paint`/`layout` property and expression used above (MapLibre's style spec is a fork of this one)
 
