@@ -526,7 +526,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.8.2. Popups on click</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-8-raster-and-wms-layers">6.9. Part 8: Raster and WMS layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-7-raster-and-wms-layers">6.9. Part 7: Raster and WMS layers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-raster-tiles">6.9.1. XYZ raster tiles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layers">6.9.2. WMS layers</a></li>
 </ul>
@@ -541,9 +541,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-basic-map-basemap-styles">6.13.1. Exercise 1: Basic Map &amp; Basemap Styles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">6.13.2. Exercise 2: Customizing the Map View</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-map-controls">6.13.3. Exercise 3: Map Controls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">6.13.4. Exercise 4: Overlaying Data Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-3d-buildings">6.13.5. Exercise 5: 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-legends-overlays">6.13.6. Exercise 6: Legends &amp; Overlays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-markers-lines-polygons">6.13.4. Exercise 4: Markers, Lines &amp; Polygons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-clustering-points">6.13.5. Exercise 5: Clustering Points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-popups-legend">6.13.6. Exercise 6: Popups &amp; Legend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-wms-overlay">6.13.7. Exercise 7: Raster &amp; WMS Overlay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-3d-buildings">6.13.8. Exercise 8: 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-camera-control-3d-terrain">6.13.9. Exercise 9: Camera Control &amp; 3D Terrain</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">6.14. Readings &amp; Resources</a></li>
@@ -564,15 +567,11 @@ document.write(`
 <h2><span class="section-number">6.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this unit, you will be able to:</p>
 <ul class="simple">
-<li><p>Explain what MapLibre GL JS adds over Leaflet (vector tiles, WebGL rendering, 3D)</p></li>
-<li><p>Build a complete interactive map in a single HTML file, using CDN links instead of a local <code class="docutils literal notranslate"><span class="pre">js/</span></code>/<code class="docutils literal notranslate"><span class="pre">css/</span></code> folder</p></li>
-<li><p>Initialize a MapLibre map with a chosen center, zoom, pitch, bearing, and basemap style</p></li>
-<li><p>Add navigation, geolocate, fullscreen, and draw controls</p></li>
-<li><p>Add GeoJSON, raster, and WMS layers using <code class="docutils literal notranslate"><span class="pre">addSource</span></code> / <code class="docutils literal notranslate"><span class="pre">addLayer</span></code></p></li>
-<li><p>Write data-driven styling expressions (<code class="docutils literal notranslate"><span class="pre">interpolate</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">case</span></code>, <code class="docutils literal notranslate"><span class="pre">get</span></code>) to build choropleth and heatmap layers</p></li>
-<li><p>Cluster point data, customize marker icons, and add popups</p></li>
-<li><p>Build 3D extrusions (buildings, choropleths) and control the camera (<code class="docutils literal notranslate"><span class="pre">fitBounds</span></code>, <code class="docutils literal notranslate"><span class="pre">flyTo</span></code>, <code class="docutils literal notranslate"><span class="pre">maxBounds</span></code>)</p></li>
-<li><p>Build a simple HTML/CSS legend or color bar, since MapLibre GL JS has no built-in legend widget</p></li>
+<li><p>Explain what MapLibre GL JS adds over Leaflet (vector tiles, WebGL rendering, 3D), and build a complete interactive map in a single CDN-loaded HTML file</p></li>
+<li><p>Initialize a map with a chosen center, zoom, pitch, bearing, and basemap style, and add navigation, geolocate, fullscreen, and draw controls</p></li>
+<li><p>Add GeoJSON, clustered, raster, and WMS layers using <code class="docutils literal notranslate"><span class="pre">addSource</span></code>/<code class="docutils literal notranslate"><span class="pre">addLayer</span></code>, styled with data-driven expressions (<code class="docutils literal notranslate"><span class="pre">interpolate</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">get</span></code>)</p></li>
+<li><p>Add markers and popups, and build a simple HTML/CSS legend, since MapLibre GL JS has no built-in legend widget</p></li>
+<li><p>Build 3D extrusions and terrain, and control the camera with <code class="docutils literal notranslate"><span class="pre">fitBounds</span></code>, <code class="docutils literal notranslate"><span class="pre">flyTo</span></code>, and <code class="docutils literal notranslate"><span class="pre">maxBounds</span></code></p></li>
 </ul>
 </section>
 <section id="notebook-overview-from-static-basemaps-to-interactive-data-driven-web-maps">
@@ -1113,8 +1112,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="part-8-raster-and-wms-layers">
-<h2><span class="section-number">6.9. </span>Part 8: Raster and WMS layers<a class="headerlink" href="#part-8-raster-and-wms-layers" title="Link to this heading">#</a></h2>
+<section id="part-7-raster-and-wms-layers">
+<h2><span class="section-number">6.9. </span>Part 7: Raster and WMS layers<a class="headerlink" href="#part-7-raster-and-wms-layers" title="Link to this heading">#</a></h2>
 <section id="xyz-raster-tiles">
 <h3><span class="section-number">6.9.1. </span>XYZ raster tiles<a class="headerlink" href="#xyz-raster-tiles" title="Link to this heading">#</a></h3>
 <p>You can add raster data like xyz tile layers on top of your standard basemaps.</p>
@@ -1425,24 +1424,36 @@ document.write(`
 </section>
 <section id="exercise-3-map-controls">
 <h3><span class="section-number">6.13.3. </span>Exercise 3: Map Controls<a class="headerlink" href="#exercise-3-map-controls" title="Link to this heading">#</a></h3>
-<p>Add a <code class="docutils literal notranslate"><span class="pre">GeolocateControl</span></code> (top-left), a <code class="docutils literal notranslate"><span class="pre">FullscreenControl</span></code> (top-right), and a Draw control configured for points, lines, and polygons (top-left) to a map of your choice.</p>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">GeolocateControl</span></code> (top-left), a <code class="docutils literal notranslate"><span class="pre">FullscreenControl</span></code> (top-right), and a Draw control configured for points, lines, and polygons (top-left) to a map of your choice. Try enabling one of the extra Terra Draw modes (<code class="docutils literal notranslate"><span class="pre">rectangle</span></code>, <code class="docutils literal notranslate"><span class="pre">circle</span></code>, or <code class="docutils literal notranslate"><span class="pre">freehand</span></code>) and log <code class="docutils literal notranslate"><span class="pre">draw.getAll()</span></code> to the console after drawing something.</p>
 </section>
-<section id="exercise-4-overlaying-data-layers">
-<h3><span class="section-number">6.13.4. </span>Exercise 4: Overlaying Data Layers<a class="headerlink" href="#exercise-4-overlaying-data-layers" title="Link to this heading">#</a></h3>
+<section id="exercise-4-markers-lines-polygons">
+<h3><span class="section-number">6.13.4. </span>Exercise 4: Markers, Lines &amp; Polygons<a class="headerlink" href="#exercise-4-markers-lines-polygons" title="Link to this heading">#</a></h3>
+<p>Add a default <code class="docutils literal notranslate"><span class="pre">Marker</span></code> at a location of your choice. Then, using <code class="docutils literal notranslate"><span class="pre">addSource</span></code>/<code class="docutils literal notranslate"><span class="pre">addLayer</span></code>, draw a <code class="docutils literal notranslate"><span class="pre">LineString</span></code> representing a route you know well and a <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> representing a boundary (a park, campus, or neighborhood). Style the line and polygon with colors and opacity that make sense together.</p>
+</section>
+<section id="exercise-5-clustering-points">
+<h3><span class="section-number">6.13.5. </span>Exercise 5: Clustering Points<a class="headerlink" href="#exercise-5-clustering-points" title="Link to this heading">#</a></h3>
+<p>Adapt the earthquake clustering example to a dataset of your choice (or keep the earthquake data, but change the <code class="docutils literal notranslate"><span class="pre">clusterRadius</span></code>/<code class="docutils literal notranslate"><span class="pre">clusterMaxZoom</span></code> values and the <code class="docutils literal notranslate"><span class="pre">step</span></code> color/radius breakpoints). Confirm that clicking a cluster zooms in appropriately, and that clicking an individual point still opens a popup.</p>
+</section>
+<section id="exercise-6-popups-legend">
+<h3><span class="section-number">6.13.6. </span>Exercise 6: Popups &amp; Legend<a class="headerlink" href="#exercise-6-popups-legend" title="Link to this heading">#</a></h3>
+<p>Build a small GeoJSON <code class="docutils literal notranslate"><span class="pre">FeatureCollection</span></code> of 4-5 points of your choice, and wire up click-popups for them following the Part 6 pattern (including the cursor change on hover). Then add an HTML/CSS legend, like the one in the Quick Recap example, explaining what the points represent.</p>
+</section>
+<section id="exercise-7-raster-wms-overlay">
+<h3><span class="section-number">6.13.7. </span>Exercise 7: Raster &amp; WMS Overlay<a class="headerlink" href="#exercise-7-raster-wms-overlay" title="Link to this heading">#</a></h3>
 <p>Add a buildings layer and a roads layer for a New Mexico town of your choice to a map with sensible styling. Use your own extract from RGIS or OpenStreetMap if you have one ready. If not, these two ready-made GeoJSON files work as a stand-in while you get your own data sorted:</p>
 <ul class="simple">
 <li><p>Buildings: <code class="docutils literal notranslate"><span class="pre">https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson</span></code></p></li>
 <li><p>Roads: <code class="docutils literal notranslate"><span class="pre">https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson</span></code></p></li>
 </ul>
-<p>Then, separately, add the USGS Topo XYZ raster layer from Part 8 to a satellite-style basemap, with a layer-visibility toggle control.</p>
+<p>Then, separately, add the USGS Topo XYZ raster layer from Part 7 to a satellite-style basemap, with a layer-visibility toggle control.</p>
 </section>
-<section id="exercise-5-3d-buildings">
-<h3><span class="section-number">6.13.5. </span>Exercise 5: 3D Buildings<a class="headerlink" href="#exercise-5-3d-buildings" title="Link to this heading">#</a></h3>
-<p>Build a 3D map centered on a city of your choice, and add extruded building footprints (Part 9) using a custom color gradient tied to building height.</p>
+<section id="exercise-8-3d-buildings">
+<h3><span class="section-number">6.13.8. </span>Exercise 8: 3D Buildings<a class="headerlink" href="#exercise-8-3d-buildings" title="Link to this heading">#</a></h3>
+<p>Build a 3D map centered on a city of your choice, and add extruded building footprints (Part 8) using a custom color gradient tied to building height.</p>
 </section>
-<section id="exercise-6-legends-overlays">
-<h3><span class="section-number">6.13.6. </span>Exercise 6: Legends &amp; Overlays<a class="headerlink" href="#exercise-6-legends-overlays" title="Link to this heading">#</a></h3>
-<p>Add a custom marker icon (Part 6) plus a text label to your map, and build an HTML/CSS legend (Part 11) describing what the icon represents.</p>
+<section id="exercise-9-camera-control-3d-terrain">
+<h3><span class="section-number">6.13.9. </span>Exercise 9: Camera Control &amp; 3D Terrain<a class="headerlink" href="#exercise-9-camera-control-3d-terrain" title="Link to this heading">#</a></h3>
+<p>Using the Part 9 techniques, build a map that <code class="docutils literal notranslate"><span class="pre">fitBounds</span></code> to a region of your choice on load, then add a button that <code class="docutils literal notranslate"><span class="pre">flyTo</span></code>s a specific landmark within that region. Separately, adapt the 3D terrain example to your own region of interest, and add a <code class="docutils literal notranslate"><span class="pre">TerrainControl</span></code> so users can toggle the exaggeration.</p>
 </section>
 </section>
 <section id="readings-resources">
@@ -1545,7 +1556,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.8.2. Popups on click</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-8-raster-and-wms-layers">6.9. Part 8: Raster and WMS layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-7-raster-and-wms-layers">6.9. Part 7: Raster and WMS layers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-raster-tiles">6.9.1. XYZ raster tiles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layers">6.9.2. WMS layers</a></li>
 </ul>
@@ -1560,9 +1571,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-basic-map-basemap-styles">6.13.1. Exercise 1: Basic Map &amp; Basemap Styles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">6.13.2. Exercise 2: Customizing the Map View</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-map-controls">6.13.3. Exercise 3: Map Controls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">6.13.4. Exercise 4: Overlaying Data Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-3d-buildings">6.13.5. Exercise 5: 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-legends-overlays">6.13.6. Exercise 6: Legends &amp; Overlays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-markers-lines-polygons">6.13.4. Exercise 4: Markers, Lines &amp; Polygons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-clustering-points">6.13.5. Exercise 5: Clustering Points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-popups-legend">6.13.6. Exercise 6: Popups &amp; Legend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-wms-overlay">6.13.7. Exercise 7: Raster &amp; WMS Overlay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-3d-buildings">6.13.8. Exercise 8: 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-camera-control-3d-terrain">6.13.9. Exercise 9: Camera Control &amp; 3D Terrain</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">6.14. Readings &amp; Resources</a></li>
