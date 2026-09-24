@@ -11,13 +11,13 @@ By the end of this unit, you will be able to:
 - Add markers and popups, and build a simple HTML/CSS legend, since MapLibre GL JS has no built-in legend widget
 - Build 3D extrusions and terrain, and control the camera with `fitBounds`, `flyTo`, and `maxBounds`
 
-## Notebook Overview: From Static Basemaps to Interactive, Data-Driven Web Maps
+### Notebook Overview: From Static Basemaps to Interactive, Data-Driven Web Maps
 
 So far your maps have been built with Leaflet, loaded from local `js/` and `css/` folders alongside a `map.js` file. This unit introduces **MapLibre GL JS**, a different mapping engine with native support for vector tiles and 3D. We'll build every example as a **single self-contained HTML file**, loading MapLibre straight from a CDN, so you can go from a blank file to a working interactive map without setting up a project folder at all.
 
 *This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu's [geog-510](https://github.com/giswqs/geog-510) course materials, adapted here for MapLibre GL JS. All code examples are built with reference to [MapLibre Examples](https://maplibre.org/maplibre-gl-js/docs/examples/).*
 
-## Why MapLibre GL JS?
+### Why MapLibre GL JS?
 
 Leaflet renders vector graphics as SVG or Canvas, both are strictly 2D, and both treat "layers" as pre-rendered image tiles or drawn shapes. MapLibre GL JS instead renders everything through **WebGL**, talking directly to your computer's GPU. Two consequences follow directly from that:
 
@@ -437,7 +437,7 @@ earthquakes.addSourcesTo(map);
 
 **Key difference from a static GeoJSON:** the feature service stays live. Change the `where` clause in a query option and re-run `fromUrl()`, and you get fresh data with no change to your styling code.
 
-## Popups & Dynamics Options
+## Popups & Dynamic Options
 
 ### Pop-Ups
 
