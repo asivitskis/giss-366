@@ -547,7 +547,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprints-from-vector-tiles">6.8.1. Building footprints from vector tiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-terramin-camera-interaction-control">6.9. 3D Terramin; Camera &amp; Interaction Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-terrain-camera-interaction-control">6.9. 3D Terrain; Camera &amp; Interaction Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-camera-controls">6.9.1. Custom Camera Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-3d-terrain-view">6.9.2. Building a 3D Terrain View</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-recap-a-complete-maplibre-page">6.10. Quick Recap: A Complete MapLibre Page</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.11. Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-basic-map-basemap-styles">6.11.1. Exercise 1: Basic Map &amp; Basemap Styles</a></li>
@@ -590,6 +594,7 @@ document.write(`
 <h3><span class="section-number">6.1.1. </span>Notebook Overview: From Static Basemaps to Interactive, Data-Driven Web Maps<a class="headerlink" href="#notebook-overview-from-static-basemaps-to-interactive-data-driven-web-maps" title="Link to this heading">#</a></h3>
 <p>So far your maps have been built with Leaflet, loaded from local <code class="docutils literal notranslate"><span class="pre">js/</span></code> and <code class="docutils literal notranslate"><span class="pre">css/</span></code> folders alongside a <code class="docutils literal notranslate"><span class="pre">map.js</span></code> file. This unit introduces <strong>MapLibre GL JS</strong>, a different mapping engine with native support for vector tiles and 3D. We’ll build every example as a <strong>single self-contained HTML file</strong>, loading MapLibre straight from a CDN, so you can go from a blank file to a working interactive map without setting up a project folder at all.</p>
 <p><em>This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu’s <a class="reference external" href="https://github.com/giswqs/geog-510">geog-510</a> course materials, adapted here for MapLibre GL JS. All code examples are built with reference to <a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/examples/">MapLibre Examples</a>.</em></p>
+<p>Examples of all maps from the sections below can be found hosted at this <a class="reference external" href="https://github.com/asivitskis/GISS366-MapLibre-Examples">GISS 366 MapLibre Examples Repo</a></p>
 </section>
 <section id="why-maplibre-gl-js">
 <h3><span class="section-number">6.1.2. </span>Why MapLibre GL JS?<a class="headerlink" href="#why-maplibre-gl-js" title="Link to this heading">#</a></h3>
@@ -602,6 +607,7 @@ document.write(`
 </section>
 <section id="basic-maplibre-map-with-cdn">
 <h2><span class="section-number">6.2. </span>Basic MapLibre Map with CDN<a class="headerlink" href="#basic-maplibre-map-with-cdn" title="Link to this heading">#</a></h2>
+<p>Example Map 6-2: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_2_BasicMap.html">Basic MapLibre Example</a></p>
 <p>Your Leaflet repos have followed this shape:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my-map/
 ├── index.html
@@ -687,6 +693,7 @@ document.write(`
 </section>
 <section id="map-controls">
 <h2><span class="section-number">6.3. </span>Map Controls<a class="headerlink" href="#map-controls" title="Link to this heading">#</a></h2>
+<p>Example Map 6-3: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_2_BasicMap.html">MapLibre Map with Controls</a></p>
 <p>Controls are added inside a <code class="docutils literal notranslate"><span class="pre">'load'</span></code> event listener, so the map object exists first:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;top-left&#39;</span><span class="p">);</span>
@@ -764,6 +771,7 @@ document.write(`
 </section>
 <section id="adding-markers-geometries">
 <h2><span class="section-number">6.4. </span>Adding Markers &amp; Geometries<a class="headerlink" href="#adding-markers-geometries" title="Link to this heading">#</a></h2>
+<p>Example Map 6-4: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_4_AddingGeometry.html">Simple MapLibre Styled Point Map</a></p>
 <p>Similar to Leaflet, MapLibre is able to add and draw geometries. Check out the Part 4 example to modify and explore these options. Remember to update your map center and Zoom accordingly for each new addition.</p>
 <section id="default-marker">
 <h3><span class="section-number">6.4.1. </span>Default Marker<a class="headerlink" href="#default-marker" title="Link to this heading">#</a></h3>
@@ -884,9 +892,6 @@ document.write(`
 </pre></div>
 </div>
 <p><strong>Try it:</strong> change <code class="docutils literal notranslate"><span class="pre">fill-opacity</span></code> and <code class="docutils literal notranslate"><span class="pre">fill-color</span></code>, then the outline’s <code class="docutils literal notranslate"><span class="pre">line-width</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </section>
 </section>
 <section id="data-sources">
@@ -920,6 +925,8 @@ document.write(`
 <p>Layer <code class="docutils literal notranslate"><span class="pre">id</span></code>s must be unique, so give each new layer its own name.</p>
 <section id="static-files-local-data-source">
 <h3><span class="section-number">6.5.1. </span>Static files: Local Data Source<a class="headerlink" href="#static-files-local-data-source" title="Link to this heading">#</a></h3>
+<p>Example Map 6-5-1: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_5a_Local_Data.html">Local Data Loaded onto MapLibre</a>
+<em>view the file structure at this <a class="reference external" href="https://github.com/asivitskis/GISS366-MapLibre-Examples/tree/main/docs">repo</a></em></p>
 <p>In the MapLibre Examples file, a <code class="docutils literal notranslate"><span class="pre">data</span></code> is included within the docs folder that has a selection of public data downloaded in the geojson format from rgis. These files include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">nm_populated</span> <span class="pre">places.geojson</span></code></p></li>
@@ -948,6 +955,7 @@ document.write(`
 </section>
 <section id="static-files-remotely-hosted">
 <h3><span class="section-number">6.5.2. </span>Static Files: Remotely Hosted<a class="headerlink" href="#static-files-remotely-hosted" title="Link to this heading">#</a></h3>
+<p>Example Map 6-5-2: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_5b_Hosted_Data.html">MapLibre Map with Data from Hosted Source</a></p>
 <p>You can use the same same <code class="docutils literal notranslate"><span class="pre">addSource</span></code> call for static datasets that are hosted remotely. Remember to update style features accordingly.</p>
 <p>Here are some example datasets we can use from public test data hosting environments <a class="reference external" href="https://geojson.xyz/">GeoJson XYZ</a> and <a class="reference external" href="https://github.com/opengeos/data">OpenGeos Data Repository</a></p>
 <ul class="simple">
@@ -969,6 +977,7 @@ document.write(`
 </section>
 <section id="live-data-an-arcgis-online-feature-service">
 <h3><span class="section-number">6.5.3. </span>Live data: an ArcGIS Online feature service<a class="headerlink" href="#live-data-an-arcgis-online-feature-service" title="Link to this heading">#</a></h3>
+<p>Example Map 6-5-3: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_5c_ESRI_Rest.html">Adding Hosted Feature Service to MapLibre</a></p>
 <p>Both examples above are static files: the browser downloads the whole thing once and MapLibre draws it. An ArcGIS Online <strong>feature service</strong> is different. Instead of a file, you’re pointing at a live, queryable API, the same kind of endpoint you worked with in Lab 1 when you published your own hosted feature layer.</p>
 <p>The MapLibre ArcGIS plugin allows you to easily access and work with the ArcGIS Basemap Styles service, feature services, and vector tile services. To use the library you must first install the MapLibre GL JS library in your project. See the full ESRI documentation <a class="reference external" href="https://developers.arcgis.com/maplibre-gl-js/api-reference/">here</a>.</p>
 <p><strong>1. Add the MapLibre ArcGIS plugin via an import map, alongside MapLibre GL JS itself:</strong></p>
@@ -1042,6 +1051,7 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </section>
 <section id="popups-dynamic-options">
 <h2><span class="section-number">6.6. </span>Popups &amp; Dynamic Options<a class="headerlink" href="#popups-dynamic-options" title="Link to this heading">#</a></h2>
+<p>Example Map 6-6: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_6_PopUps.html">Simple MapLibre Map with Pop-Ups</a></p>
 <section id="pop-ups">
 <h3><span class="section-number">6.6.1. </span>Pop-Ups<a class="headerlink" href="#pop-ups" title="Link to this heading">#</a></h3>
 <p>Simple pop-ups can be added like default markers.</p>
@@ -1150,6 +1160,7 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </section>
 <section id="raster-and-wms-layers">
 <h2><span class="section-number">6.7. </span>Raster and WMS layers<a class="headerlink" href="#raster-and-wms-layers" title="Link to this heading">#</a></h2>
+<p>Example Map 6-7: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_7_Raster.html">Adding Raster Layers to MapLibre</a></p>
 <section id="xyz-raster-tiles">
 <h3><span class="section-number">6.7.1. </span>XYZ raster tiles<a class="headerlink" href="#xyz-raster-tiles" title="Link to this heading">#</a></h3>
 <p>You can add raster data like xyz tile layers on top of your standard basemaps.</p>
@@ -1214,6 +1225,7 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </section>
 <section id="d-extrusions">
 <h2><span class="section-number">6.8. </span>3D Extrusions<a class="headerlink" href="#d-extrusions" title="Link to this heading">#</a></h2>
+<p>Example Map 3-8: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_8_3D_Extrusions.html">WNMU 3D Building Map</a></p>
 <p>This is the one category of map that Leaflet genuinely cannot produce, extrusion needs the WebGL/3D pipeline that only MapLibre (or another WebGL-based library) provides.</p>
 <p>Switching a polygon layer from flat to extruded is smaller than it looks: change <code class="docutils literal notranslate"><span class="pre">type</span></code> to <code class="docutils literal notranslate"><span class="pre">'fill-extrusion'</span></code>, and add a <code class="docutils literal notranslate"><span class="pre">'fill-extrusion-height'</span></code> paint property alongside the color.</p>
 <section id="building-footprints-from-vector-tiles">
@@ -1286,8 +1298,12 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </div>
 </section>
 </section>
-<section id="d-terramin-camera-interaction-control">
-<h2><span class="section-number">6.9. </span>3D Terramin; Camera &amp; Interaction Control<a class="headerlink" href="#d-terramin-camera-interaction-control" title="Link to this heading">#</a></h2>
+<section id="d-terrain-camera-interaction-control">
+<h2><span class="section-number">6.9. </span>3D Terrain; Camera &amp; Interaction Control<a class="headerlink" href="#d-terrain-camera-interaction-control" title="Link to this heading">#</a></h2>
+<p>Example Map 3-9: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_9_3D_Terrain.html#12/32.7764/-108.2833/-17.6/70">Silver City 3D Terrain Map Demo</a></p>
+<section id="custom-camera-controls">
+<h3><span class="section-number">6.9.1. </span>Custom Camera Controls<a class="headerlink" href="#custom-camera-controls" title="Link to this heading">#</a></h3>
+<p>Use the following commands to help set defeault zoom levels and make dynamic adjustments.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Fit to a bounding box, e.g. after loading a GeoJSON file</span>
 <span class="nx">map</span><span class="p">.</span><span class="nx">fitBounds</span><span class="p">([[</span><span class="o">-</span><span class="mf">109.05</span><span class="p">,</span><span class="w"> </span><span class="mf">31.33</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">103.00</span><span class="p">,</span><span class="w"> </span><span class="mf">37.00</span><span class="p">]],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">});</span><span class="w">   </span><span class="c1">// roughly New Mexico&#39;s extent</span>
 
@@ -1313,6 +1329,10 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="p">});</span>
 </pre></div>
 </div>
+</section>
+<section id="building-a-3d-terrain-view">
+<h3><span class="section-number">6.9.2. </span>Building a 3D Terrain View<a class="headerlink" href="#building-a-3d-terrain-view" title="Link to this heading">#</a></h3>
+<p>MapLibre is able to display 3D terrain through straightforward additions of DEM and hillshade layers. Review this full <a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-terrain/">MapLibre Tutorial</a> for the base code. Update center locations, view orientations, and terrain exaggeration for customization.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">maplibregl</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;https://unpkg.com/maplibre-gl@6.11.0/dist/maplibre-gl.mjs&#39;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
@@ -1381,6 +1401,7 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="p">);</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="quick-recap-a-complete-maplibre-page">
 <h2><span class="section-number">6.10. </span>Quick Recap: A Complete MapLibre Page<a class="headerlink" href="#quick-recap-a-complete-maplibre-page" title="Link to this heading">#</a></h2>
@@ -1749,7 +1770,11 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprints-from-vector-tiles">6.8.1. Building footprints from vector tiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-terramin-camera-interaction-control">6.9. 3D Terramin; Camera &amp; Interaction Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-terrain-camera-interaction-control">6.9. 3D Terrain; Camera &amp; Interaction Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-camera-controls">6.9.1. Custom Camera Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-3d-terrain-view">6.9.2. Building a 3D Terrain View</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-recap-a-complete-maplibre-page">6.10. Quick Recap: A Complete MapLibre Page</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.11. Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-basic-map-basemap-styles">6.11.1. Exercise 1: Basic Map &amp; Basemap Styles</a></li>
