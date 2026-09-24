@@ -48,6 +48,7 @@ parts:
       - file: book/labs/lab_02_geoserver
       - file: book/labs/lab_03_weblanguages
       - file: book/labs/lab_04_javascript_leaflet
+      - file: book/labs/lab_05_javascript_maplibre
   - caption: Final Project
     numbered: false
     maxdepth: 2
