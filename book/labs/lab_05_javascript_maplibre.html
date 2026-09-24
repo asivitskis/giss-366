@@ -1,0 +1,1211 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 5 &#8212; WebMapping &amp; Web GIS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/labs/lab_05_javascript_maplibre';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/labs/lab_05_javascript_maplibre.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Final Project: Public Web GIS Inquiry" href="../final-project/00-project-overview.html" />
+    <link rel="prev" title="Lab 4" href="lab_04_javascript_leaflet.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Software &amp; Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ArcGIS Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/github.html">Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/qgis.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1 - WebGIS Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/01_what_is_webgis.html">1. What is Web GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_open_web_standards.html">3. Open Web Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/05_javascript_leaflet.html">5. JavaScript &amp; Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/06_javascript_maplibre.html">6. MapLibre GL JS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../create/building_web_apps.html">8. Web GIS Architecture &amp; Databases</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_01_agol.html">Lab 1</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_02_geoserver.html">Lab 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_03_weblanguages.html">Lab 3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lab_04_javascript_leaflet.html">Lab 4</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 5</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../final-project/00-project-overview.html">Final Project: Public Web GIS Inquiry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/labs/lab_05_javascript_maplibre.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/labs/lab_05_javascript_maplibre.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/labs/lab_05_javascript_maplibre.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/labs/lab_05_javascript_maplibre.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/labs/lab_05_javascript_maplibre.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maplibre-gl-js-in-practice-how-much-can-we-customize-a-web-map">MapLibre GL JS in Practice: How Much Can We Customize a Web Map?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-confirm-access">Part A: Confirm access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-clone-the-repo">Part B: Clone the repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-explore-what-you-cloned">Part C: Explore what you cloned</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-d-refer-back-to-the-lecture-starter-template">Part D: Refer back to the lecture starter template</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customization-requirement">Customization Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-basic-map-camera-view-basemap-selection">Exercise 1: Basic Map, Camera View &amp; Basemap Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-map-controls">Exercise 2: Adding Map Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-overlaying-data-layers">Exercise 3: Overlaying Data Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-popups">Exercise 4: Popups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">Exercise 5: Working with 3D Buildings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-rubric-40-pts">Lab 5 Rubric (40 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-ai-policy-level-2">Lab 5 AI Policy: Level 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-openfreemap-basemap-styles">Appendix A: OpenFreeMap Basemap Styles</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5">
+<h1>Lab 5<a class="headerlink" href="#lab-5" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="maplibre-gl-js-in-practice-how-much-can-we-customize-a-web-map">
+<h1>MapLibre GL JS in Practice: How Much Can We Customize a Web Map?<a class="headerlink" href="#maplibre-gl-js-in-practice-how-much-can-we-customize-a-web-map" title="Link to this heading">#</a></h1>
+<section id="giss-geog-366-368-web-mapping-web-gis">
+<h2>GISS/GEOG 366/368 · Web Mapping &amp; Web GIS<a class="headerlink" href="#giss-geog-366-368-web-mapping-web-gis" title="Link to this heading">#</a></h2>
+<p><strong>Unit 6 Focus:</strong> MapLibre GL JS. In Lab 4 you wrote a Leaflet <code class="docutils literal notranslate"><span class="pre">map.js</span></code> from a blank file. Today you build <strong>five different interactive maps</strong> with MapLibre GL JS, a WebGL-based library with native support for vector tiles, data-driven styling, and 3D. Every map is a single, self-contained HTML file loaded from a CDN. This is your fifth graded lab, and the first time you will style data with expressions, extrude 3D buildings, and publish a multi-map gallery.</p>
+<p>You are welcome to start from the sample code in the Week 6 lecture notebook and the <a class="reference external" href="https://github.com/asivitskis/GISS366-MapLibre-Examples">GISS 366 MapLibre Examples repo</a>. However, <strong>each map you submit must be customized so that it is clearly your own</strong> (different location, different colors and styling, different data choices). A map that is a copy of a lecture example with nothing changed will not receive full credit.</p>
+</section>
+<section id="before-you-begin">
+<h2>Before You Begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">#</a></h2>
+<p>The tools are the same as Labs 3 and 4. Confirm you still have them before proceeding.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Role today</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>A GitHub account</strong></p></td>
+<td><p>Already confirmed in Lab 3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code, with the Git/GitHub extension enabled</strong></p></td>
+<td><p>Cloning the Lab 5 template and editing files locally</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Git</strong></p></td>
+<td><p>Same install as Lab 3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VS Code + Live Server</strong></p></td>
+<td><p>Previewing each map locally as you build it. Live Server runs on <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, which is also what allows the Geolocate control and your local GeoJSON files to work</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The Lab 5 template repository</strong></p></td>
+<td><p>Provided by your instructor; contains a <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder with a gallery page, five map files, and a <code class="docutils literal notranslate"><span class="pre">data/</span></code> folder of New Mexico datasets</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>A modern web browser with developer tools</strong></p></td>
+<td><p>Press <code class="docutils literal notranslate"><span class="pre">F12</span></code> to open the Console. It is your first stop whenever a map does not appear</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>The Week 6 lecture notebook</strong> and the <strong><a class="reference external" href="https://github.com/asivitskis/GISS366-MapLibre-Examples">GISS 366 MapLibre Examples repo</a></strong></p></td>
+<td><p>Your source of sample code for every exercise</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/">MapLibre GL JS documentation</a></strong> and <strong><a class="reference external" href="https://maplibre.org/maplibre-style-spec/">MapLibre Style Specification</a></strong></p></td>
+<td><p>Your first stops when a property or expression does not work as expected</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>A few locations of your own</strong></p></td>
+<td><p>You will need real coordinates for several of your maps (see Step 1)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You already know how to clone a repo, edit locally, preview with Live Server, and publish via GitHub Pages. That workflow does not change today. There are two differences:</p>
+<ol class="arabic simple">
+<li><p><strong>Every map is one self-contained HTML file.</strong> There is no separate <code class="docutils literal notranslate"><span class="pre">map.js</span></code>, and no local <code class="docutils literal notranslate"><span class="pre">js/</span></code> or <code class="docutils literal notranslate"><span class="pre">css/</span></code> folders. MapLibre loads from a CDN.</p></li>
+<li><p><strong>GitHub Pages will publish from the <code class="docutils literal notranslate"><span class="pre">/docs</span></code> folder, not the root.</strong> This makes your gallery page the front door of your site.</p></li>
+</ol>
+</section>
+<section id="step-1-ask">
+<h2>Step 1: Ask<a class="headerlink" href="#step-1-ask" title="Link to this heading">#</a></h2>
+<p>This Lab will ask you to build 5 seperate MapLibre maps.</p>
+<p>Before opening the template repositoryuse this time to prep your data and write down some first-pass answers:</p>
+<ul class="simple">
+<li><p>To start thinking about how you want to customize each map, pick a place for each of the maps below, and find its approximate coordinates (a quick search of “[place name] coordinates” will get you close enough). <strong>Write them in MapLibre order: <code class="docutils literal notranslate"><span class="pre">[longitude,</span> <span class="pre">latitude]</span></code>.</strong> You can center your maps anywhere but Silver City, NM; as this was the example we used throughout the lecture.</p>
+<ul>
+<li><p><strong>Map 1:</strong> a city to view that you’d like to view in a tilted and rotated fashion.</p></li>
+<li><p><strong>Map 2:</strong> a location where you’d want a map with lots of controls.</p></li>
+<li><p><strong>Map 4:</strong> four points of your own (favorite places, trailheads, places you have lived) and one <em>numeric</em> attribute for each (a rating, a year, an elevation).</p></li>
+<li><p><strong>Map 5:</strong> a large, dense city for 3D buildings to explore. Building-height data in OpenStreetMap is far more complete in big cities (New York, Chicago, New Dehli, Addis Ababa, Tokyo) than in small towns.</p></li>
+</ul>
+</li>
+<li><p>Map 3 uses the New Mexico datasets in your template repo (counties, roads, populated places). Which two do you think would make the most interesting combination, and why?</p></li>
+<li><p>Revewing all the five maps that you will be as described above (view and basemap styles, controls, data layers, popups and legend, 3D buildings), which do you predict will take the <strong>most</strong> code? Which the <strong>least</strong>?</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Lab 5 Question: How much of a MapLibre map do you think you can customize, and what do you expect will limit you (the basemap, the data, the browser, your own code)?</strong></p>
+</div></blockquote>
+</section>
+<section id="step-2-collect">
+<h2>Step 2: Collect<a class="headerlink" href="#step-2-collect" title="Link to this heading">#</a></h2>
+<section id="part-a-confirm-access">
+<h3>Part A: Confirm access<a class="headerlink" href="#part-a-confirm-access" title="Link to this heading">#</a></h3>
+<p>Same as Labs 3 and 4: confirm you can log in to GitHub, and that you have the link to the Lab 5 template repository (shared via Canvas prior to lab).</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/asivitskis/giss366-lab05-template.git">asivitskis/giss366-lab05-template.git</a></p></li>
+</ul>
+</section>
+<section id="part-b-clone-the-repo">
+<h3>Part B: Clone the repo<a class="headerlink" href="#part-b-clone-the-repo" title="Link to this heading">#</a></h3>
+<p>This is the same process as Labs 3 and 4; if it is still fresh, skim and move on.</p>
+<p><strong>Step 0: Create your own copy of the template repository.</strong></p>
+<ol class="arabic simple">
+<li><p>In a browser, go to the template repository URL above.</p></li>
+<li><p>Make sure you are signed into your GitHub account.</p></li>
+<li><p>Click <strong>Use this template</strong> → <strong>Create a new repository</strong>.</p></li>
+<li><p>Name it something like <code class="docutils literal notranslate"><span class="pre">giss-366-lab5</span></code>, under <strong>your own</strong> account.</p></li>
+<li><p>Set the repository to <strong>Public</strong> (free GitHub accounts can only publish GitHub Pages from public repositories).</p></li>
+<li><p>Click <strong>Create repository</strong>, then copy the URL of <strong>this new repository</strong> (not the original template).</p></li>
+</ol>
+<p><strong>Clone your own copy into VS Code:</strong></p>
+<ol class="arabic simple">
+<li><p>Open VS Code, no files open (File → New Window if needed).</p></li>
+<li><p>Open the <strong>Source Control</strong> panel and click <strong>Clone Repository</strong>.</p></li>
+<li><p>Paste your new repository’s URL, and choose a save location near your other <code class="docutils literal notranslate"><span class="pre">giss-366</span></code> folders.</p></li>
+<li><p>Choose <strong>Open</strong> when prompted.</p></li>
+</ol>
+</section>
+<section id="part-c-explore-what-you-cloned">
+<h3>Part C: Explore what you cloned<a class="headerlink" href="#part-c-explore-what-you-cloned" title="Link to this heading">#</a></h3>
+<p><strong>All of your work happens inside the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>your-repo/
+├── LICENSE
+├── README.md
+└── docs/
+    ├── index.html
+    ├── map1.html
+    ├── map2.html
+    ├── map3.html
+    ├── map4.html
+    ├── map5.html
+    └── data/
+        ├── mora_county_roads.geojson
+        ├── nm_counties.geojson
+        ├── nm_populated_places.geojson
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File / folder</p></th>
+<th class="head"><p>What it is</p></th>
+<th class="head"><p>Will you edit it today?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docs/index.html</span></code></p></td>
+<td><p>Your <strong>gallery page</strong>: a title and a list of five links, one per map, each with a placeholder description</p></td>
+<td><p><strong>Yes</strong> (Step 4, Part 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docs/map1.html</span></code> – <code class="docutils literal notranslate"><span class="pre">docs/map5.html</span></code></p></td>
+<td><p>One file per exercise. Each will hold a complete MapLibre map</p></td>
+<td><p><strong>Yes.</strong> This is the bulk of today’s work (Step 3)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docs/data/nm_counties.geojson</span></code>, <code class="docutils literal notranslate"><span class="pre">mora_county_roads.geojson</span></code>, <code class="docutils literal notranslate"><span class="pre">nm_populated_places.geojson</span></code></p></td>
+<td><p>Public New Mexico datasets from the <a class="reference external" href="https://rgis.unm.edu/">New Mexico Resource Geographic Information System (RGIS)</a>. You will load them in Map 3</p></td>
+<td><p>No (use them as-is)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></td>
+<td><p>The repository landing page, with placeholders for your description and gallery link</p></td>
+<td><p><strong>Yes</strong> (Step 4, Part 2)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code></p></td>
+<td><p>Repository license</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Why <code class="docutils literal notranslate"><span class="pre">docs/</span></code>?</strong> GitHub Pages can publish either your repository’s root or a folder named <code class="docutils literal notranslate"><span class="pre">docs</span></code>. Your gallery lives in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> so that, once Pages is pointed there, your <code class="docutils literal notranslate"><span class="pre">index.html</span></code> becomes the home page of your site and README/LICENSE stay out of the way. You will set this up in Step 4.</p>
+</section>
+<section id="part-d-refer-back-to-the-lecture-starter-template">
+<h3>Part D: Refer back to the lecture starter template<a class="headerlink" href="#part-d-refer-back-to-the-lecture-starter-template" title="Link to this heading">#</a></h3>
+<p>Every map begins from the same minimal page from lecture Part 2 (Example Map 6-2). Open <code class="docutils literal notranslate"><span class="pre">docs/map1.html</span></code> (and the others). If they contain placeholder content, replace it with this starter and build on it.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Map<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.css&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">#</span><span class="nn">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span><span class="w"> </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">maplibregl</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;https://unpkg.com/maplibre-gl@^6.10.0/dist/maplibre-gl.mjs&#39;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://tiles.openfreemap.org/styles/positron&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">],</span><span class="w">   </span><span class="c1">// [lng, lat]</span>
+<span class="w">            </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="nb">window</span><span class="p">.</span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Compare this to the Leaflet skeleton from Lab 4. The CDN <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> and module <code class="docutils literal notranslate"><span class="pre">import</span></code> replace your <code class="docutils literal notranslate"><span class="pre">css/</span></code> and <code class="docutils literal notranslate"><span class="pre">js/</span></code> folders, and the map object is built with <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">maplibregl.Map({...})</span></code> instead of <code class="docutils literal notranslate"><span class="pre">L.map(...)</span></code>.</p>
+<p><strong>Things to remember before you start</strong></p>
+<ul class="simple">
+<li><p><strong>Coordinates are <code class="docutils literal notranslate"><span class="pre">[longitude,</span> <span class="pre">latitude]</span></code></strong>, the opposite of Leaflet.</p></li>
+<li><p><strong>Add sources, layers, and controls inside <code class="docutils literal notranslate"><span class="pre">map.on('load',</span> <span class="pre">...)</span></code>.</strong></p></li>
+<li><p><strong>Every layer <code class="docutils literal notranslate"><span class="pre">id</span></code> must be unique</strong> within a map.</p></li>
+<li><p><strong>Layers draw in the order they are added.</strong> Later layers appear on top of earlier ones.</p></li>
+<li><p><strong>Local data files (<code class="docutils literal notranslate"><span class="pre">data/...</span></code>) will not load if you double-click the HTML file.</strong> Browsers block this. Right-click the file in VS Code and choose <strong>Open with Live Server</strong>, or test on your GitHub Pages URL.</p></li>
+<li><p><strong>Open your browser’s developer console (<code class="docutils literal notranslate"><span class="pre">F12</span></code>)</strong> whenever something does not appear. Most problems (typos, wrong layer type, blocked data URLs) show up there as red errors.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-3-visualize">
+<h2>Step 3: Visualize<a class="headerlink" href="#step-3-visualize" title="Link to this heading">#</a></h2>
+<p>This is the bulk of the lab. You will build <strong>five maps, one per exercise</strong>, each in its own file inside <code class="docutils literal notranslate"><span class="pre">docs/</span></code>. Work on one map at a time:</p>
+<ol class="arabic simple">
+<li><p>Start from the lecture starter template (Step 2, Part D).</p></li>
+<li><p>Add one feature at a time, and <strong>preview in Live Server after each addition</strong> rather than writing everything and debugging at once.</p></li>
+<li><p>When a map is finished, <strong>commit it</strong> (Source Control panel → stage → commit message → commit) so your repository history shows your progress. You will push everything in Step 4.</p></li>
+</ol>
+<section id="customization-requirement">
+<h3>Customization Requirement<a class="headerlink" href="#customization-requirement" title="Link to this heading">#</a></h3>
+<p>To keep every submission original:</p>
+<ul class="simple">
+<li><p><strong>Location:</strong> Maps 1, 2, 4, and 5 must be centered on a location of <em>your</em> choosing. <strong>Do not use Silver City, NM (the lecture example location).</strong> Each map should also use a <em>different</em> location or theme from your other maps where practical.</p></li>
+<li><p><strong>Styling:</strong> Choose your own colors, sizes, opacities, and expression breakpoints. Exact values from lecture examples (for example <code class="docutils literal notranslate"><span class="pre">#e25822</span></code>, <code class="docutils literal notranslate"><span class="pre">royalblue</span></code>, <code class="docutils literal notranslate"><span class="pre">#088</span></code>) is not enough to count as customization.</p></li>
+<li><p><strong>Comment block:</strong> At the top of the <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> in each file, add a short comment listing <strong>at least three things you customized</strong> compared with the lecture code:</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="cm">/* CUSTOMIZATIONS</span>
+<span class="cm">   1. Centered on Lisbon, Portugal instead of the lecture location</span>
+<span class="cm">   2. Changed extrusion color ramp to a purple-to-yellow gradient</span>
+<span class="cm">   3. Added a second popup field showing building height</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p>The OpenFreeMap style URLs you will use are listed in <strong>Appendix A</strong>.</p>
+</section>
+<section id="exercise-1-basic-map-camera-view-basemap-selection">
+<h3>Exercise 1: Basic Map, Camera View &amp; Basemap Selection<a class="headerlink" href="#exercise-1-basic-map-camera-view-basemap-selection" title="Link to this heading">#</a></h3>
+<p><em>Lecture reference: Part 2, Basic MapLibre Map with CDN (Example Map 6-2)</em></p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">docs/map1.html</span></code></p>
+<ul class="simple">
+<li><p>Create a map centered on a <strong>city of your choice</strong> with an appropriate zoom level, a <strong>pitch</strong> between 40 and 60 degrees, and a <strong>non-zero bearing</strong>, so the view opens tilted and rotated.</p></li>
+<li><p>Update the basemap tiles to something other than <code class="docutils literal notranslate"><span class="pre">positron</span></code>. Review review Appendix A at the end of this lab document for options, or refer back to the lecture notes.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">title</span></code> for the page and a small text label on the map naming the city.</p></li>
+</ul>
+<p><strong>Optional extension:</strong> add a button that uses <code class="docutils literal notranslate"><span class="pre">map.flyTo(...)</span></code> to have the map zoom to your city upon loading.</p>
+<details>
+<summary><b>Common bugs to check for, if something is off. Click to expand</b></summary>
+<ul class="simple">
+<li><p><strong>The map is centered in the wrong part of the world.</strong> Did you swap longitude and latitude? MapLibre uses <code class="docutils literal notranslate"><span class="pre">[lng,</span> <span class="pre">lat]</span></code>.</p></li>
+<li><p><strong>The dropdown does nothing.</strong> Each <code class="docutils literal notranslate"><span class="pre">&lt;option&gt;</span></code> value must be a complete style URL. Attach your listener with <code class="docutils literal notranslate"><span class="pre">addEventListener('change',</span> <span class="pre">...)</span></code> inside the module script.</p></li>
+<li><p><strong>The dropdown or label is hidden behind the map.</strong> Position it with <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute</span></code> and a <code class="docutils literal notranslate"><span class="pre">z-index</span></code> (the lecture’s legend CSS uses <code class="docutils literal notranslate"><span class="pre">z-index:</span> <span class="pre">1</span></code>).</p></li>
+<li><p><strong>The basemap is blank after switching.</strong> Check the exact style URL. OpenFreeMap’s dark style is <code class="docutils literal notranslate"><span class="pre">.../styles/dark</span></code>, not <code class="docutils literal notranslate"><span class="pre">dark-matter</span></code>.</p></li>
+</ul>
+</details>
+</section>
+<section id="exercise-2-adding-map-controls">
+<h3>Exercise 2: Adding Map Controls<a class="headerlink" href="#exercise-2-adding-map-controls" title="Link to this heading">#</a></h3>
+<p><em>Lecture reference: Part 3, Map Controls (Example Map 6-3)</em></p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">docs/map2.html</span></code></p>
+<ul class="simple">
+<li><p>Create a map centered on a location of your choice and add the following controls:</p>
+<ul>
+<li><p><strong>NavigationControl</strong> at the top left.</p></li>
+<li><p><strong>FullscreenControl</strong> at the top right.</p></li>
+<li><p><strong>ScaleControl</strong> at the bottom left.</p></li>
+<li><p><strong>Terra Draw</strong> control at the top left, with modes for <strong>point, linestring, and polygon</strong>, plus <strong>at least one additional mode</strong> from the lecture list (<code class="docutils literal notranslate"><span class="pre">rectangle</span></code>, <code class="docutils literal notranslate"><span class="pre">circle</span></code>, <code class="docutils literal notranslate"><span class="pre">freehand</span></code>, and or your preference).</p></li>
+</ul>
+</li>
+</ul>
+<details>
+<summary><b>Common bugs to check for, if something is off. Click to expand</b></summary>
+<ul class="simple">
+<li><p><strong>The draw toolbar does not appear and the console says <code class="docutils literal notranslate"><span class="pre">MaplibreTerradrawControl</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code>.</strong> The plugin’s <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> tags are missing or mistyped. Compare them against the lecture, and keep the plugin script a classic tag (no <code class="docutils literal notranslate"><span class="pre">type=&quot;module&quot;</span></code>).</p></li>
+<li><p><strong>Controls overlap each other.</strong> Several controls at <code class="docutils literal notranslate"><span class="pre">'top-left'</span></code> stack in the order you add them. This is expected; it is a layout choice, not a bug.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">draw.getAll()</span></code> returns an empty result.</strong> You must draw at least one feature before you log it.</p></li>
+</ul>
+</details>
+</section>
+<section id="exercise-3-overlaying-data-layers">
+<h3>Exercise 3: Overlaying Data Layers<a class="headerlink" href="#exercise-3-overlaying-data-layers" title="Link to this heading">#</a></h3>
+<p><em>Lecture references: Part 4 (Markers &amp; Geometries), Part 5 (Data Sources), Part 7 (Raster and WMS layers)</em></p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">docs/map3.html</span></code></p>
+<p>This map combines vector data and a raster overlay.</p>
+<p><strong>Part A: GeoJSON layers</strong></p>
+<ul class="simple">
+<li><p>Add <strong>at least two GeoJSON layers with different geometry types</strong> (for example polygons + lines, or polygons + points). Use the New Mexico datasets already in your <code class="docutils literal notranslate"><span class="pre">docs/data/</span></code> folder (<code class="docutils literal notranslate"><span class="pre">nm_counties.geojson</span></code>, <code class="docutils literal notranslate"><span class="pre">mora_county_roads.geojson</span></code>, <code class="docutils literal notranslate"><span class="pre">nm_populated_places.geojson</span></code>) and load them with relative paths such as <code class="docutils literal notranslate"><span class="pre">data:</span> <span class="pre">'data/nm_counties.geojson'</span></code>. You may also bring in additional GeoJSON from another source, as long as you confirm it loads in the browser (raw files from <code class="docutils literal notranslate"><span class="pre">raw.githubusercontent.com</span></code> generally do) and cite its source in your README.</p></li>
+<li><p>Match each layer <code class="docutils literal notranslate"><span class="pre">type</span></code> to its geometry (<code class="docutils literal notranslate"><span class="pre">fill</span></code>, <code class="docutils literal notranslate"><span class="pre">line</span></code>, <code class="docutils literal notranslate"><span class="pre">circle</span></code>) and style it with appropriate <code class="docutils literal notranslate"><span class="pre">paint</span></code> properties. For polygons, add a separate <code class="docutils literal notranslate"><span class="pre">line</span></code> layer for the outline (as shown in lecture Part 4).</p></li>
+<li><p>Add a default <code class="docutils literal notranslate"><span class="pre">maplibregl.Marker</span></code> at a place of interest in your map area.</p></li>
+</ul>
+<p><strong>Part B: Raster overlay</strong></p>
+<ul class="simple">
+<li><p>Add <strong>one raster layer</strong> on top of your basemap, using either the <strong>USGS Topo XYZ tile source</strong> from the lecture or a <strong>WMS source</strong> (note that a WMS layer only displays where the service has coverage, so center your map accordingly).</p></li>
+<li><p>Add the raster layer <strong>before</strong> your vector layers so your vector data stays visible on top. If it makes sense, make sure it is partially transparent (<code class="docutils literal notranslate"><span class="pre">'raster-opacity'</span></code>) so the basemap or vector data is still readable.</p></li>
+</ul>
+<p><strong>Optional challenge:</strong> add a checkbox that toggles the raster layer on and off using <code class="docutils literal notranslate"><span class="pre">map.setLayoutProperty('your-layer-id',</span> <span class="pre">'visibility',</span> <span class="pre">'none')</span></code> (and <code class="docutils literal notranslate"><span class="pre">'visible'</span></code> to show it again).</p>
+<details>
+<summary><b>Common bugs to check for, if something is off. Click to expand</b></summary>
+<ul class="simple">
+<li><p><strong>Nothing shows, and the console has a failed request for your GeoJSON.</strong> Check the file path. It is relative to the HTML file, so it should look like <code class="docutils literal notranslate"><span class="pre">data/nm_counties.geojson</span></code> (not <code class="docutils literal notranslate"><span class="pre">docs/data/...</span></code>). Also make sure you are viewing the page through Live Server, not by double-clicking the file.</p></li>
+<li><p><strong>Your map is not looking at the data.</strong> The provided datasets are in New Mexico. Center your map there (roughly <code class="docutils literal notranslate"><span class="pre">[-106.1,</span> <span class="pre">34.5]</span></code> at zoom 6, as in the lecture recap) or use <code class="docutils literal notranslate"><span class="pre">fitBounds([[-109.05,</span> <span class="pre">31.33],</span> <span class="pre">[-103.00,</span> <span class="pre">37.00]])</span></code>.</p></li>
+<li><p><strong>Nothing appears, and there is no fetch error.</strong> The layer <code class="docutils literal notranslate"><span class="pre">type</span></code> does not match the geometry (for example, a <code class="docutils literal notranslate"><span class="pre">fill</span></code> layer pointed at line data). Check <em>Anatomy of a layer</em> in the lecture.</p></li>
+<li><p><strong>The expression has no effect.</strong> Property names in <code class="docutils literal notranslate"><span class="pre">['get',</span> <span class="pre">'...']</span></code> are case-sensitive and must match the file exactly.</p></li>
+<li><p><strong>The raster layer covers your vector data.</strong> Layers draw in the order they were added. Add the raster first.</p></li>
+<li><p><strong>The WMS layer is blank.</strong> The service probably has no coverage where your map is centered.</p></li>
+</ul>
+</details>
+</section>
+<section id="exercise-4-popups">
+<h3>Exercise 4: Popups<a class="headerlink" href="#exercise-4-popups" title="Link to this heading">#</a></h3>
+<p><em>Lecture reference: Part 6, Popups &amp; Dynamic Options (Example Map 6-6) and the Quick Recap example</em></p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">docs/map4.html</span></code></p>
+<ul class="simple">
+<li><p>Build your own GeoJSON <code class="docutils literal notranslate"><span class="pre">FeatureCollection</span></code> directly in the script with <strong>four points of your choice</strong> (for example favorite restaurants, hiking trailheads, or places you have lived). Each feature needs at least three properties, including a <strong><code class="docutils literal notranslate"><span class="pre">name</span></code></strong> and one <strong>numeric</strong> property (for example <code class="docutils literal notranslate"><span class="pre">rating</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, or <code class="docutils literal notranslate"><span class="pre">elevation</span></code>).</p></li>
+<li><p>Style the points with a <code class="docutils literal notranslate"><span class="pre">circle</span></code> layer.</p></li>
+<li><p>Add a <strong>click popup</strong> on the points that displays the name and at least two other properties, and change the <strong>cursor to a pointer</strong> when hovering over a point (following the lecture pattern).</p></li>
+</ul>
+<p><strong>Optional Challenge</strong>  coloring your points by the numeric property using a <strong><code class="docutils literal notranslate"><span class="pre">step</span></code></strong> or <strong><code class="docutils literal notranslate"><span class="pre">interpolate</span></code></strong> expression. Or, try to add a legend (see lecture notes).</p>
+<details>
+<summary><b>Common bugs to check for, if something is off. Click to expand</b></summary>
+<ul class="simple">
+<li><p><strong>Clicking a point does nothing.</strong> The <code class="docutils literal notranslate"><span class="pre">map.on('click',</span> <span class="pre">'your-layer-id',</span> <span class="pre">...)</span></code> listener must use the exact <code class="docutils literal notranslate"><span class="pre">id</span></code> of your circle layer and be registered inside <code class="docutils literal notranslate"><span class="pre">map.on('load',</span> <span class="pre">...)</span></code>.</p></li>
+<li><p><strong>The points appear in the wrong place.</strong> Check <code class="docutils literal notranslate"><span class="pre">[lng,</span> <span class="pre">lat]</span></code> order in every feature’s <code class="docutils literal notranslate"><span class="pre">coordinates</span></code>.</p></li>
+<li><p><strong>The popup says <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.</strong> The name inside <code class="docutils literal notranslate"><span class="pre">e.features[0].properties.___</span></code> must match your property name exactly.</p></li>
+</ul>
+</details>
+</section>
+<section id="exercise-5-working-with-3d-buildings">
+<h3>Exercise 5: Working with 3D Buildings<a class="headerlink" href="#exercise-5-working-with-3d-buildings" title="Link to this heading">#</a></h3>
+<p><em>Lecture reference: Part 8, 3D Extrusions (Example Map 6-8)</em></p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">docs/map5.html</span></code></p>
+<ul class="simple">
+<li><p>Set up a 3D map centered on a <strong>city of your choice</strong> with a zoom of about 15 to 17, a <strong>pitch of at least 45 degrees</strong>, and a non-zero bearing. Include <code class="docutils literal notranslate"><span class="pre">canvasContextAttributes:</span> <span class="pre">{</span> <span class="pre">antialias:</span> <span class="pre">true</span> <span class="pre">}</span></code>.</p></li>
+<li><p>Add an extruded building layer from the OpenFreeMap vector source using <code class="docutils literal notranslate"><span class="pre">fill-extrusion</span></code>, with height driven by <code class="docutils literal notranslate"><span class="pre">render_height</span></code>, and insert it beneath the label layer as in the lecture code.</p></li>
+<li><p>Use a <strong>custom color gradient of at least three stops</strong> tied to <code class="docutils literal notranslate"><span class="pre">render_height</span></code>. Your stops must be different from the lecture example, and the height breakpoints should make sense for the city you chose.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">NavigationControl</span></code> with <code class="docutils literal notranslate"><span class="pre">visualizePitch:</span> <span class="pre">true</span></code> so the user can see and reset the tilt.</p></li>
+</ul>
+<p><strong>Tip:</strong> OpenStreetMap building-height data is much more complete in large, dense cities (for example New York, Chicago, Toronto, London, Tokyo) than in small towns, where many buildings default to a low, uniform height. If your extrusions all look the same, try a denser city.</p>
+<details>
+<summary><b>Common bugs to check for, if something is off. Click to expand</b></summary>
+<ul class="simple">
+<li><p><strong>No buildings appear.</strong> The lecture layer has <code class="docutils literal notranslate"><span class="pre">minzoom:</span> <span class="pre">15</span></code>. Zoom in closer than that.</p></li>
+<li><p><strong>Buildings look flat.</strong> The map has a pitch of 0. Set a pitch of 45 or more, or drag with the right mouse button to tilt.</p></li>
+<li><p><strong>All buildings are the same color.</strong> Your color stops do not match the range of heights in your city. A small-town gradient (3, 6, 12 meters) will not spread across skyscrapers; use larger breakpoints such as 10, 30, and 100.</p></li>
+<li><p><strong>The lecture code is copied but nothing changes.</strong> The center and zoom are still the lecture’s. Update them for your own city.</p></li>
+</ul>
+</details>
+</section>
+</section>
+<section id="step-4-create">
+<h2>Step 4: Create<a class="headerlink" href="#step-4-create" title="Link to this heading">#</a></h2>
+<p>Your five maps are built. Now turn your repository into a published gallery.</p>
+<details>
+<summary><b>Part 1: Update your gallery page (<code>docs/index.html</code>). Click to expand</b></summary>
+<p>Open <code class="docutils literal notranslate"><span class="pre">docs/index.html</span></code>. It looks like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>GISS 366 Lab 05<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>[update your title here]<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;map1.html&quot;</span><span class="p">&gt;</span>[update map description here]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;map2.html&quot;</span><span class="p">&gt;</span>[update map description here]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;map3.html&quot;</span><span class="p">&gt;</span>[update map description here]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;map4.html&quot;</span><span class="p">&gt;</span>[update map description here]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;map5.html&quot;</span><span class="p">&gt;</span>[update map description here]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">[update</span> <span class="pre">your</span> <span class="pre">title</span> <span class="pre">here]</span></code> with a title for your gallery (for example, “Lisbon and Beyond: MapLibre Web Maps”).</p></li>
+<li><p>Replace each <code class="docutils literal notranslate"><span class="pre">[update</span> <span class="pre">map</span> <span class="pre">description</span> <span class="pre">here]</span></code> with a <strong>short description of that map</strong>: a phrase or sentence naming the location and what the map shows. <strong>Do not change the <code class="docutils literal notranslate"><span class="pre">href</span></code> links.</strong></p></li>
+<li><p>Preview in Live Server, and click each link to confirm it opens the right map.</p></li>
+</ol>
+<p>Example:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;map1.html&quot;</span><span class="p">&gt;</span>Tilted view of Lisbon with a dark/light basemap switcher<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Common bug:</strong> if a description mentions something your map does not actually do (or omits something it does), the grader will notice. Keep each description in sync with the map behind the link.</p>
+</details>
+<details>
+<summary><b>Part 2: Update your <code>README.md</code>. Click to expand</b></summary>
+<p>Open <code class="docutils literal notranslate"><span class="pre">README.md</span></code>. It looks like this:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># GISS 366 Lab 05</span>
+[update your description here]
+
+<span class="gu">## Web Map Gallery</span>
+
+Gallery Link: [insert your github pages link]
+
+---
+
+All maps are hosted via <span class="gs">**GitHub Pages**</span> and open directly in the browser. All files within data folder are sourced from publicly available [<span class="nt">New Mexico Resource Geographic Information System</span>](<span class="na">https://rgis.unm.edu/</span>), accessed 09/24/2026.
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">[update</span> <span class="pre">your</span> <span class="pre">description</span> <span class="pre">here]</span></code> with a <strong>two to three sentence description</strong> of your lab: what you built and which locations or themes you chose.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">[insert</span> <span class="pre">your</span> <span class="pre">github</span> <span class="pre">pages</span> <span class="pre">link]</span></code> with your live GitHub Pages URL. You will get this URL in Part 4, so you can come back and fill this in afterward. It has this form: <code class="docutils literal notranslate"><span class="pre">https://&lt;your-username&gt;.github.io/&lt;your-repo-name&gt;/</span></code></p></li>
+<li><p>If you added any data beyond the files provided in <code class="docutils literal notranslate"><span class="pre">docs/data/</span></code>, add a sentence at the bottom naming the source of that data.</p></li>
+</ol>
+</details>
+<details>
+<summary><b>Part 3: Commit and push. Click to expand</b></summary>
+<p>Same process as Labs 3 and 4:</p>
+<ol class="arabic simple">
+<li><p><strong>Stage and commit</strong>, using VS Code’s Source Control panel. Stage <code class="docutils literal notranslate"><span class="pre">docs/index.html</span></code>, <code class="docutils literal notranslate"><span class="pre">docs/map1.html</span></code> through <code class="docutils literal notranslate"><span class="pre">docs/map5.html</span></code>, and <code class="docutils literal notranslate"><span class="pre">README.md</span></code> (plus any data files you added). Write a commit message (for example, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">five</span> <span class="pre">MapLibre</span> <span class="pre">maps</span> <span class="pre">for</span> <span class="pre">Lab</span> <span class="pre">5</span></code>), and commit.</p></li>
+<li><p><strong>Push</strong>, using Sync Changes / Push.</p></li>
+<li><p>On GitHub, refresh your repository and confirm your updated files appear.</p></li>
+</ol>
+</details>
+<details>
+<summary><b>Part 4: Publish with GitHub Pages from the <code>/docs</code> folder. Click to expand</b></summary>
+<p>This is the one step that is different from Lab 4: you will publish from the <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder instead of the root.</p>
+<ol class="arabic">
+<li><p>In your repository on GitHub, go to <strong>Settings</strong> → <strong>Pages</strong>.</p></li>
+<li><p>Under <strong>Build and deployment</strong>, set <strong>Source</strong> to <strong>Deploy from a branch</strong>.</p></li>
+<li><p>Under <strong>Branch</strong>, select <code class="docutils literal notranslate"><span class="pre">main</span></code> and change the folder from <code class="docutils literal notranslate"><span class="pre">/</span> <span class="pre">(root)</span></code> to <strong><code class="docutils literal notranslate"><span class="pre">/docs</span></code></strong>, then click <strong>Save</strong>.</p></li>
+<li><p>Wait a minute or two, then refresh the Pages settings screen. Your site URL will appear at the top:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p>Because you chose the <code class="docutils literal notranslate"><span class="pre">/docs</span></code> folder, this URL opens your <code class="docutils literal notranslate"><span class="pre">index.html</span></code> gallery page directly, and each map is available at <code class="docutils literal notranslate"><span class="pre">.../map1.html</span></code>, <code class="docutils literal notranslate"><span class="pre">.../map2.html</span></code>, and so on.</p>
+</li>
+<li><p>Go back to your <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and paste this URL in as your <strong>Gallery Link</strong>. Commit and push again.</p></li>
+</ol>
+<p><strong>Final check.</strong> Open your Pages URL in a <strong>private/incognito browser window</strong> and confirm:</p>
+<ul class="simple">
+<li><p>The gallery page loads with your title and descriptions.</p></li>
+<li><p><strong>All five map links open and display correctly</strong>, and match what you saw in Live Server (local data layers, popups, and controls included).</p></li>
+</ul>
+<p><strong>If your site shows your README or a 404 instead of your gallery,</strong> return to Settings → Pages and confirm the folder is set to <code class="docutils literal notranslate"><span class="pre">/docs</span></code>. After each push, it can take a minute or two for the live site to update.</p>
+</details>
+</section>
+<section id="step-5-act">
+<h2>Step 5: Act<a class="headerlink" href="#step-5-act" title="Link to this heading">#</a></h2>
+<section id="what-to-turn-in-graded-lab-exercises">
+<h3>What to turn in (graded: Lab Exercises)<a class="headerlink" href="#what-to-turn-in-graded-lab-exercises" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>The link to your GitHub repository (Collect, Part B).</p></li>
+<li><p>The link to your published GitHub Pages gallery (Create, Part 4).</p></li>
+<li><p>A short written reflection (~300 words) answering:</p>
+<ul class="simple">
+<li><p>Revisit the <strong>Lab 5 Question</strong> and your Step 1 predictions. How much of a MapLibre map were you able to customize, and what limits did you actually run into? Which exercise took more (or less) code than you expected?</p></li>
+<li><p>Name one specific bug you hit while building your maps, and how you found and fixed it (console error, swapped coordinates, mismatched layer type, a legend that did not match the expression, etc.).</p></li>
+<li><p>Name the customization that you thought turned out the best, and explain why.</p></li>
+<li><p>Compare today to Lab 4: what could you do with MapLibre that you could not have done with Leaflet, and what felt harder?</p></li>
+</ul>
+</li>
+</ol>
+<p>Confirm all five links open correctly in an incognito window before you submit. Submit your GitHub links and written reflection to this week’s submission space in Canvas.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lab-5-rubric-40-pts">
+<h2>Lab 5 Rubric (40 pts)<a class="headerlink" href="#lab-5-rubric-40-pts" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="lab-5-ai-policy-level-2">
+<h3>Lab 5 AI Policy: Level 2<a class="headerlink" href="#lab-5-ai-policy-level-2" title="Link to this heading">#</a></h3>
+<p>This lab permits optional use of AI to support student learning. Permitted uses can include using AI to help troubleshoot GIS workflows and debug JavaScript errors (for example, pasting a console error message to ask what it means), however, independent installation and use of AI agents to complete GIS tasks is not permitted at this time. AI may also be used to support general writing procedures (outlining a project, improving clarity or grammar, etc.), but all code and written responses must remain original to each student as a sole responsible author. Disclosure of AI use is not required for this Level 2 assignment. Using AI is a choice with ethical considerations, and it is asked that students weigh those considerations accordingly as they complete this work.</p>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Week 6 lecture notebook: <em>MapLibre GL JS</em></p></li>
+<li><p><a class="reference external" href="https://github.com/asivitskis/GISS366-MapLibre-Examples">GISS 366 MapLibre Examples Repo</a></p></li>
+<li><p><a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/">MapLibre GL JS Documentation</a></p></li>
+<li><p><a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/examples/">MapLibre GL JS Examples Gallery</a></p></li>
+<li><p><a class="reference external" href="https://maplibre.org/maplibre-style-spec/">MapLibre Style Specification</a> (every <code class="docutils literal notranslate"><span class="pre">paint</span></code> / <code class="docutils literal notranslate"><span class="pre">layout</span></code> property and expression)</p></li>
+<li><p><a class="reference external" href="https://openfreemap.org">OpenFreeMap</a></p></li>
+<li><p><a class="reference external" href="https://developer.mozilla.org/">MDN Web Docs</a></p></li>
+<li><p>Dorman, M. <em><a class="reference external" href="https://bgu-geography.com/web-mapping/maplibre.html">Introduction to Web Mapping</a></em>, Chapter 14: MapLibre GL JS</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Docs: Configuring a publishing source for your GitHub Pages site</a></p></li>
+</ul>
+</section>
+</section>
+<section id="appendix-a-openfreemap-basemap-styles">
+<h2>Appendix A: OpenFreeMap Basemap Styles<a class="headerlink" href="#appendix-a-openfreemap-basemap-styles" title="Link to this heading">#</a></h2>
+<p><em>(Use with any exercise that asks for a basemap. All of these are free, require no account, and need no API key.)</em></p>
+<p>Set the map’s <code class="docutils literal notranslate"><span class="pre">style</span></code> property to one of these URLs, or pass one to <code class="docutils literal notranslate"><span class="pre">map.setStyle(...)</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Style</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Positron (light)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://tiles.openfreemap.org/styles/positron</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Liberty</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://tiles.openfreemap.org/styles/liberty</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bright</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://tiles.openfreemap.org/styles/bright</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dark</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://tiles.openfreemap.org/styles/dark</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Fiord (dark blue)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://tiles.openfreemap.org/styles/fiord</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>MapTiler-hosted styles (<code class="docutils literal notranslate"><span class="pre">streets</span></code>, <code class="docutils literal notranslate"><span class="pre">satellite</span></code>, <code class="docutils literal notranslate"><span class="pre">hybrid</span></code>, <code class="docutils literal notranslate"><span class="pre">topo</span></code>) also work with MapLibre, but they require an API key. This lab does not need one, and you should never commit a real key to a public repository.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-366",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_04_javascript_leaflet.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 4</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../final-project/00-project-overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Final Project: Public Web GIS Inquiry</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maplibre-gl-js-in-practice-how-much-can-we-customize-a-web-map">MapLibre GL JS in Practice: How Much Can We Customize a Web Map?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giss-geog-366-368-web-mapping-web-gis">GISS/GEOG 366/368 · Web Mapping &amp; Web GIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before You Begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ask">Step 1: Ask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-collect">Step 2: Collect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-confirm-access">Part A: Confirm access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-clone-the-repo">Part B: Clone the repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-explore-what-you-cloned">Part C: Explore what you cloned</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-d-refer-back-to-the-lecture-starter-template">Part D: Refer back to the lecture starter template</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize">Step 3: Visualize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customization-requirement">Customization Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-basic-map-camera-view-basemap-selection">Exercise 1: Basic Map, Camera View &amp; Basemap Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-map-controls">Exercise 2: Adding Map Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-overlaying-data-layers">Exercise 3: Overlaying Data Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-popups">Exercise 4: Popups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">Exercise 5: Working with 3D Buildings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create">Step 4: Create</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-act">Step 5: Act</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-turn-in-graded-lab-exercises">What to turn in (graded: Lab Exercises)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-rubric-40-pts">Lab 5 Rubric (40 pts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-5-ai-policy-level-2">Lab 5 AI Policy: Level 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-openfreemap-basemap-styles">Appendix A: OpenFreeMap Basemap Styles</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
