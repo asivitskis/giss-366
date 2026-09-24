@@ -17,6 +17,8 @@ So far your maps have been built with Leaflet, loaded from local `js/` and `css/
 
 *This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu's [geog-510](https://github.com/giswqs/geog-510) course materials, adapted here for MapLibre GL JS. All code examples are built with reference to [MapLibre Examples](https://maplibre.org/maplibre-gl-js/docs/examples/).*
 
+Examples of all maps from the sections below can be found hosted at this [GISS 366 MapLibre Examples Repo](https://github.com/asivitskis/GISS366-MapLibre-Examples)
+
 ### Why MapLibre GL JS?
 
 Leaflet renders vector graphics as SVG or Canvas, both are strictly 2D, and both treat "layers" as pre-rendered image tiles or drawn shapes. MapLibre GL JS instead renders everything through **WebGL**, talking directly to your computer's GPU. Two consequences follow directly from that:
@@ -26,6 +28,8 @@ Leaflet renders vector graphics as SVG or Canvas, both are strictly 2D, and both
 
 
 ## Basic MapLibre Map with CDN
+
+Example Map 6-2: [Basic MapLibre Example](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_2_BasicMap.html)
 
 Your Leaflet repos have followed this shape:
 
@@ -125,6 +129,8 @@ style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`
 
 ## Map Controls
 
+Example Map 6-3: [MapLibre Map with Controls](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_2_BasicMap.html)
+
 Controls are added inside a `'load'` event listener, so the map object exists first:
 
 ```js
@@ -192,6 +198,8 @@ Access what the user drew with `draw.getSelected()` (selected only) or `draw.get
 
 
 ## Adding Markers & Geometries
+
+Example Map 6-4: [Simple MapLibre Styled Point Map](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_4_AddingGeometry.html)
 
 Similar to Leaflet, MapLibre is able to add and draw geometries. Check out the Part 4 example to modify and explore these options. Remember to update your map center and Zoom accordingly for each new addition. 
 
@@ -288,7 +296,6 @@ map.addLayer({
 ```
 
 **Try it:** change `fill-opacity` and `fill-color`, then the outline's `line-width`.
-```
 
 ## Data Sources
 
@@ -307,6 +314,9 @@ Recall the guiding question from Lab 0: what's the difference between Web Mappin
 Layer `id`s must be unique, so give each new layer its own name.
 
 ### Static files: Local Data Source
+
+Example Map 6-5-1: [Local Data Loaded onto MapLibre](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_5a_Local_Data.html)
+*view the file structure at this [repo](https://github.com/asivitskis/GISS366-MapLibre-Examples/tree/main/docs)*
 
 In the MapLibre Examples file, a `data` is included within the docs folder that has a selection of public data downloaded in the geojson format from rgis. These files include:
  - `nm_populated places.geojson`
@@ -334,6 +344,9 @@ map.on('load', () => {
         });
 ```
 ### Static Files: Remotely Hosted
+
+Example Map 6-5-2: [MapLibre Map with Data from Hosted Source](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_5b_Hosted_Data.html)
+
 You can use the same same `addSource` call for static datasets that are hosted remotely. Remember to update style features accordingly.
 
 Here are some example datasets we can use from public test data hosting environments [GeoJson XYZ](https://geojson.xyz/) and [OpenGeos Data Repository](https://github.com/opengeos/data)
@@ -355,6 +368,8 @@ map.addSource('update this name', {
 > **CORS note:** a remote GeoJSON URL only works if the server hosting it allows cross-origin requests. GitHub Pages does this by default, which is one reason it's a convenient place to host course data; some other hosts won't, and the fetch will fail silently in the console with a CORS error rather than a missing-file error.
 
 ### Live data: an ArcGIS Online feature service
+
+Example Map 6-5-3: [Adding Hosted Feature Service to MapLibre](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_5c_ESRI_Rest.html)
 
 Both examples above are static files: the browser downloads the whole thing once and MapLibre draws it. An ArcGIS Online **feature service** is different. Instead of a file, you're pointing at a live, queryable API, the same kind of endpoint you worked with in Lab 1 when you published your own hosted feature layer.
 
@@ -438,6 +453,8 @@ earthquakes.addSourcesTo(map);
 **Key difference from a static GeoJSON:** the feature service stays live. Change the `where` clause in a query option and re-run `fromUrl()`, and you get fresh data with no change to your styling code.
 
 ## Popups & Dynamic Options
+
+Example Map 6-6: [Simple MapLibre Map with Pop-Ups](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_6_PopUps.html) 
 
 ### Pop-Ups
 
@@ -548,6 +565,8 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
 
 ## Raster and WMS layers
 
+Example Map 6-7: [Adding Raster Layers to MapLibre](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_7_Raster.html)
+
 ### XYZ raster tiles
 
 You can add raster data like xyz tile layers on top of your standard basemaps. 
@@ -616,6 +635,8 @@ map.on('load', () => {
 
 
 ## 3D Extrusions
+
+Example Map 3-8: [WNMU 3D Building Map](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_8_3D_Extrusions.html)
 
 This is the one category of map that Leaflet genuinely cannot produce, extrusion needs the WebGL/3D pipeline that only MapLibre (or another WebGL-based library) provides.
 
@@ -693,7 +714,13 @@ map.on('load', () => {
 ```
 
 
-## 3D Terramin; Camera & Interaction Control
+## 3D Terrain; Camera & Interaction Control
+
+Example Map 3-9: [Silver City 3D Terrain Map Demo](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_9_3D_Terrain.html#12/32.7764/-108.2833/-17.6/70)
+
+### Custom Camera Controls
+
+Use the following commands to help set defeault zoom levels and make dynamic adjustments. 
 
 ```js
 // Fit to a bounding box, e.g. after loading a GeoJSON file
@@ -720,7 +747,9 @@ map.on('mousemove', (e) => {
         `${e.lngLat.lng.toFixed(4)}, ${e.lngLat.lat.toFixed(4)}`;
 });
 ```
+### Building a 3D Terrain View
 
+MapLibre is able to display 3D terrain through straightforward additions of DEM and hillshade layers. Review this full [MapLibre Tutorial](https://maplibre.org/maplibre-gl-js/docs/examples/3d-terrain/) for the base code. Update center locations, view orientations, and terrain exaggeration for customization.
 
 ```js
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.11.0/dist/maplibre-gl.mjs';
