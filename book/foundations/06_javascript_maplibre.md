@@ -15,9 +15,9 @@ By the end of this unit, you will be able to:
 
 So far your maps have been built with Leaflet, loaded from local `js/` and `css/` folders alongside a `map.js` file. This unit introduces **MapLibre GL JS**, a different mapping engine with native support for vector tiles and 3D. We'll build every example as a **single self-contained HTML file**, loading MapLibre straight from a CDN, so you can go from a blank file to a working interactive map without setting up a project folder at all.
 
-*This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu's [geog-510](https://github.com/giswqs/geog-510) course materials, adapted here for MapLibre GL JS.*
+*This lecture was developed with reference to the open-source MapLibre lecture notebook from Dr. Qiusheng Wu's [geog-510](https://github.com/giswqs/geog-510) course materials, adapted here for MapLibre GL JS. All code examples are built with reference to [MapLibre Examples](https://maplibre.org/maplibre-gl-js/docs/examples/).*
 
-## Part 1: Why MapLibre GL JS?
+## Why MapLibre GL JS?
 
 Leaflet renders vector graphics as SVG or Canvas, both are strictly 2D, and both treat "layers" as pre-rendered image tiles or drawn shapes. MapLibre GL JS instead renders everything through **WebGL**, talking directly to your computer's GPU. Two consequences follow directly from that:
 
@@ -25,7 +25,7 @@ Leaflet renders vector graphics as SVG or Canvas, both are strictly 2D, and both
 2. **3D is possible.** Buildings can be extruded, terrain can be given real elevation, and the camera can pitch and rotate, none of which Leaflet can do.
 
 
-## Part 2: Basic MapLibre Map with CDN
+## Basic MapLibre Map with CDN
 
 Your Leaflet repos have followed this shape:
 
@@ -123,7 +123,7 @@ style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`
 > Watch the basemap swap out live.
 
 
-## Part 3: Map Controls
+## Map Controls
 
 Controls are added inside a `'load'` event listener, so the map object exists first:
 
@@ -191,7 +191,7 @@ Multiple additional drawing options include the following, try some of these out
 Access what the user drew with `draw.getSelected()` (selected only) or `draw.getAll()` (everything).
 
 
-## Part 4: Adding Markers & Geometries
+## Adding Markers & Geometries
 
 Similar to Leaflet, MapLibre is able to add and draw geometries. Check out the Part 4 example to modify and explore these options. Remember to update your map center and Zoom accordingly for each new addition. 
 
@@ -203,257 +203,241 @@ const marker = new maplibregl.Marker()
     .addTo(map);
 
 ```
+For more complex geometries, MapLibre separates where the data comes from (a **source**) from how it's drawn (a **layer**). Add both inside the `'load'` listener, alongside your controls. All examples below go inside `map.on('load', () => { ... })`.
 
-For more complex geometries, MapLibre always separates where the data comes from (a source) from how it’s drawn (a layer). You add both inside the `'load'` listener, right alongside your controls.
+### Anatomy of a layer
+
+Every `addLayer` call is an object with the same top-level keys:
+
+| Key | What it does |
+|---|---|
+| `id` | A unique name for this layer (no two layers can share one) |
+| `source` | Which source's data to draw |
+| `type` | *How* to draw it: `circle`, `line`, or `fill` |
+| `layout` | Structural options (e.g. `line-cap`, `line-join`, `visibility`) |
+| `paint` | Visual options (color, size, opacity) |
+
+The `type` must match the geometry in your source:
+
+| Geometry | Layer `type` | Common `paint` properties |
+|---|---|---|
+| Point | `circle` | `circle-radius`, `circle-color`, `circle-opacity`, `circle-stroke-width`, `circle-stroke-color` |
+| LineString | `line` | `line-color`, `line-width`, `line-opacity`, `line-dasharray` |
+| Polygon | `fill` | `fill-color`, `fill-opacity`, `fill-outline-color` |
+
+Every property is listed in the [MapLibre Style Spec](https://maplibre.org/maplibre-style-spec/layers/). Once you know these five keys, you can style any layer in this lab.
+
+### Points
+
+Markers are quick, but a `circle` layer is what you'll use with real datasets.
+
+```js
+map.addSource('site-source', {
+    type: 'geojson',
+    data: { type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [-108.2833, 32.7764] } }
+});
+map.addLayer({
+    id: 'site-circle', type: 'circle', source: 'site-source',
+    paint: { 'circle-radius': 10, 'circle-color': '#e25822', 'circle-stroke-width': 2, 'circle-stroke-color': '#ffffff' }
+});
+```
+
+**Try it:** change the radius, then add `'circle-opacity': 0.5`.
 
 ### Lines
 
 ```js
-map.on('load', () => {
-    map.addSource('route', {
-        'type': 'geojson',
-        'data': {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-                'type': 'LineString',
-                'coordinates': [
-                    [-108.2750622, 32.7796674],
-                    [-108.272518, 32.7823097],
-                    [-108.270348, 32.7830646],
-                    [-108.266831, 32.7831904],
-                    [-108.2612936, 32.7851407],
-                    [-108.2548583, 32.7871537],
-                    [-108.2487223, 32.7874683],
-                    [-108.2382965, 32.7864721],
-                    [-108.2046233, 32.783012],
-                    [-108.1890922, 32.7805237],
-                    [-108.1822079, 32.7798317],
-                    [-108.1756229, 32.7793913],
-                    [-108.1696366, 32.7804608],
-                    [-108.1594598, 32.7822223],
-                    [-108.1510789, 32.7820965],
-                    [-108.1481606, 32.7786992],
-                    [-108.1479361, 32.7736659],
-                    [-108.1483102, 32.7706458],
-                    [-108.1478887, 32.7662977],
-                    [-108.1448956, 32.7598794],
-                    [-108.143399, 32.7585579],
-                    [-108.1397323, 32.7578028],
-                    [-108.1377868, 32.758432],
-                    [-108.1349433, 32.7590613],
-                    [-108.1314263, 32.7590613]
-                ]
-            }
-        }
-    });
-    map.addLayer({
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
-            'line-join': 'round',
-            'line-cap': 'round'
-        },
-        'paint': {
-            'line-color': '#888',
-            'line-width': 8
-        }
-    });
+map.addSource('route-source', {
+    type: 'geojson',
+    data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [
+        [-108.2750622, 32.7796674], [-108.270348, 32.7830646], [-108.2612936, 32.7851407],
+        [-108.2487223, 32.7874683], [-108.2046233, 32.783012], [-108.1822079, 32.7798317],
+        [-108.1594598, 32.7822223], [-108.1510789, 32.7820965]
+    ] } }
+});
+map.addLayer({
+    id: 'route-line', type: 'line', source: 'route-source',
+    layout: { 'line-join': 'round', 'line-cap': 'round' },
+    paint: { 'line-color': '#888', 'line-width': 8 }
 });
 ```
+
+**Try it:** change `line-width`, add `'line-dasharray': [2, 2]`, and set `line-cap` to `'butt'`.
 
 ### Polygons
 
-```js
-map.on('load', () => {
-    map.addSource('maine', {
-        'type': 'geojson',
-        'data': {
-            'type': 'Feature',
-            'geometry': {
-                'type': 'Polygon',
-                'coordinates': [
-                    [
-                        [-108.2853603, 32.77102],
-                        [-108.2982235, 32.7688568],
-                        [-108.3009621, 32.76132],
-                        [-108.294323, 32.7538525],
-                        [-108.2866051, 32.7528754],
-                        [-108.2824557, 32.7575514],
-                        [-108.280381, 32.7606222],
-                        [-108.2810449, 32.7701128],
-                        [-108.2853603, 32.77102]
-                    ]
-                ]
-            }
-        }
-    });
-    map.addLayer({
-        'id': 'maine',
-        'type': 'fill',
-        'source': 'maine',
-        'layout': {},
-        'paint': {
-            'fill-color': '#088',
-            'fill-opacity': 0.8
-        }
-    });
-});
-```
-
-### Local vs. remote data
-
-The `data` value can be a URL string (as above) or an inline JavaScript object:
+One source can feed more than one layer. Here the same polygon gets a fill and a separate outline (`fill-outline-color` is always 1px wide, so a `line` layer is the way to get a thicker border).
 
 ```js
-map.addSource('inline', {
+map.addSource('park-source', {
     type: 'geojson',
-    data: { type: 'FeatureCollection', features: [ /* ... */ ] }
+    data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[
+        [-108.2853603, 32.77102], [-108.2982235, 32.7688568], [-108.3009621, 32.76132],
+        [-108.294323, 32.7538525], [-108.2866051, 32.7528754], [-108.2824557, 32.7575514],
+        [-108.280381, 32.7606222], [-108.2810449, 32.7701128], [-108.2853603, 32.77102]
+    ]] } }
+});
+map.addLayer({
+    id: 'park-fill', type: 'fill', source: 'park-source',
+    paint: { 'fill-color': '#088', 'fill-opacity': 0.8 }
+});
+map.addLayer({
+    id: 'park-outline', type: 'line', source: 'park-source',   // same source, second layer
+    paint: { 'line-color': '#044', 'line-width': 3 }
 });
 ```
 
+**Try it:** change `fill-opacity` and `fill-color`, then the outline's `line-width`.
+```
 
-## Part 5: Clustering Points
+## Data Sources
 
-Clustering is a property of the **source**, and it's drawn with three separate layers: clusters, cluster counts, and unclustered points. The example below uses earthquake epicenters across the U.S. (see [Maplibre Tutorial](https://maplibre.org/maplibre-gl-js/docs/examples/create-and-style-clusters/))
+So far every `data` value you've written has been an inline JavaScript object, typed directly into the script. That works for a quick example, but it doesn't scale, and it isn't how real maps get their data. This section covers where a GeoJSON source's data can actually live, and introduces one new kind of source that isn't a file at all.
+
+Recall the guiding question from Lab 0: what's the difference between Web Mapping and WebGIS? The two static sources below (local and remote) are still Web Mapping, since the browser is just fetching a fixed file. The ArcGIS Online source at the end of this section crosses into WebGIS territory, since the browser is querying a live, filterable service instead.
+
+**The source changes, but the layer doesn't.** When adding these sources, pick the layer `type` that matches your data's geometry (see *Anatomy of a layer*), then restyle with `paint`:
+
+| If your data contains... | Use `type` | Try styling with |
+|---|---|---|
+| Points | `circle` | `circle-radius`, `circle-color` |
+| Lines | `line` | `line-color`, `line-width` |
+| Polygons | `fill` | `fill-color`, `fill-opacity` |
+
+Layer `id`s must be unique, so give each new layer its own name.
+
+### Static files: Local Data Source
+
+In the MapLibre Examples file, a `data` is included within the docs folder that has a selection of public data downloaded in the geojson format from rgis. These files include:
+ - `nm_populated places.geojson`
+ - `mora_county_roads.geojson`
+ - `nm_counties.geojson`
+
+You'll use the same `addSource` call for each example. And with the `addLayer` component, you include how the object is identified and painted. Below is a code snipped to load the example point data. Try swapping out the file path for the other example datasets, modify the add layer example from part [add part here] to update their styling.
 
 ```js
-const map = new maplibregl.Map({
-    container: 'map',
-    style: 'https://demotiles.maplibre.org/style.json',
-    center: [-103.59179687498357, 40.66995747013945],
-    zoom: 3,
-    fadeDuration: 0 // this is in order for the text and circles to move "as-one"
-});
-
+// A file sitting in a data/ folder next to this HTML file
 map.on('load', () => {
-    // Add a new source from our GeoJSON data and
-    // set the 'cluster' option to true. GL-JS will
-    // add the point_count property to your source data.
-    map.addSource('earthquakes', {
-        type: 'geojson',
-        // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
-        // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
-        data: 'https://maplibre.org/maplibre-gl-js/docs/assets/earthquakes.geojson',
-        cluster: true,
-        clusterMaxZoom: 14, // Max zoom to cluster points on
-        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
-    });
-
-    map.addLayer({
-        id: 'clusters',
-        type: 'circle',
-        source: 'earthquakes',
-        filter: ['has', 'point_count'],
-        paint: {
-            // Use step expressions (https://maplibre.org/maplibre-style-spec/#expressions-step)
-            // with three steps to implement three types of circles:
-            //   * Blue, 20px circles when point count is less than 100
-            //   * Yellow, 30px circles when point count is between 100 and 750
-            //   * Pink, 40px circles when point count is greater than or equal to 750
-            'circle-color': [
-                'step',
-                ['get', 'point_count'],
-                '#51bbd6',
-                100,
-                '#f1f075',
-                750,
-                '#f28cb1'
-            ],
-            'circle-radius': [
-                'step',
-                ['get', 'point_count'],
-                20,
-                100,
-                30,
-                750,
-                40
-            ]
-        }
-    });
-
-    map.addLayer({
-        id: 'cluster-count',
-        type: 'symbol',
-        source: 'earthquakes',
-        filter: ['has', 'point_count'],
-        layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['Noto Sans Regular'],
-            'text-size': 12
-        }
-    });
-
-    map.addLayer({
-        id: 'unclustered-point',
-        type: 'circle',
-        source: 'earthquakes',
-        filter: ['!', ['has', 'point_count']],
-        paint: {
-            'circle-color': '#11b4da',
-            'circle-radius': 4,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
-        }
-    });
-
-    // inspect a cluster on click
-    map.on('click', 'clusters', async (e) => {
-        const features = map.queryRenderedFeatures(e.point, {
-            layers: ['clusters']
+        map.addSource('cities', {
+            type: 'geojson',
+            data: 'data/nm_populated_places.geojson'
         });
-        const clusterId = features[0].properties.cluster_id;
-        const zoom = await map.getSource('earthquakes').getClusterExpansionZoom(clusterId);
-        map.easeTo({
-            center: features[0].geometry.coordinates,
-            zoom
+
+        map.addLayer({
+            id: 'cities-points',
+            type: 'circle',
+            source: 'cities',
+            paint: {
+                'circle-radius': 4,
+                'circle-color': '#007cbf'
+            }
         });
-    });
+```
+### Static Files: Remotely Hosted
+You can use the same same `addSource` call for static datasets that are hosted remotely. Remember to update style features accordingly.
 
-    // When a click event occurs on a feature in
-    // the unclustered-point layer, open a popup at
-    // the location of the feature, with
-    // description HTML from its properties.
-    map.on('click', 'unclustered-point', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const mag = e.features[0].properties.mag;
-        let tsunami;
+Here are some example datasets we can use from public test data hosting environments [GeoJson XYZ](https://geojson.xyz/) and [OpenGeos Data Repository](https://github.com/opengeos/data)
 
-        if (e.features[0].properties.tsunami === 1) {
-            tsunami = 'yes';
-        } else {
-            tsunami = 'no';
-        }
+ - point: https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_populated_places_simple.geojson
+ - line: https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_rivers_lake_centerlines.geojson
+ - polygon: https://github.com/opengeos/data/blob/main/raster/basin.geojson
 
-        // Ensure that if the map is zoomed out such that
-        // multiple copies of the feature are visible, the
-        // popup appears over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
+Simply update the `data` section of your `.addSource` call to reflect the statically hosted geojson. Then make sure to update the style features when you use `map.addLayer`
 
-        new maplibregl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(
-                `magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`
-            )
-            .addTo(map);
-    });
-
-    map.on('mouseenter', 'clusters', () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-    map.on('mouseleave', 'clusters', () => {
-        map.getCanvas().style.cursor = '';
-    });
+```js
+// Example for adding a remote GeoJson
+map.addSource('update this name', {
+    type: 'geojson',
+    data: '[put your desired URL here]'
 });
 ```
 
-The `['step', ...]` expression buckets clusters by point count and colors/sizes them accordingly.
+> **CORS note:** a remote GeoJSON URL only works if the server hosting it allows cross-origin requests. GitHub Pages does this by default, which is one reason it's a convenient place to host course data; some other hosts won't, and the fetch will fail silently in the console with a CORS error rather than a missing-file error.
+
+### Live data: an ArcGIS Online feature service
+
+Both examples above are static files: the browser downloads the whole thing once and MapLibre draws it. An ArcGIS Online **feature service** is different. Instead of a file, you're pointing at a live, queryable API, the same kind of endpoint you worked with in Lab 1 when you published your own hosted feature layer.
+
+The MapLibre ArcGIS plugin allows you to easily access and work with the ArcGIS Basemap Styles service, feature services, and vector tile services. To use the library you must first install the MapLibre GL JS library in your project. See the full ESRI documentation [here](https://developers.arcgis.com/maplibre-gl-js/api-reference/).
+
+**1. Add the MapLibre ArcGIS plugin via an import map, alongside MapLibre GL JS itself:**
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "maplibre-gl": "https://unpkg.com/maplibre-gl@6.10.0/dist/maplibre-gl.mjs",
+      "@esri/maplibre-arcgis": "https://unpkg.com/@esri/maplibre-arcgis@1.3.1/dist/esm/maplibre-arcgis.min.js"
+    }
+  }
+</script>
+```
+
+**2. Import both libraries in your module script:**
+
+```javascript
+import * as maplibregl from 'maplibre-gl';
+import * as maplibreArcGIS from '@esri/maplibre-arcgis';
+```
+
+**3. Once the map has loaded, point `FeatureLayer.fromUrl()` at the service's REST endpoint and add it to the map:**
+Remember, if your feature service has more than one layer. you need to specific which layer you are requesting at the end of the URL. Upate the `/0` to match the correct layer index. 
+
+```javascript
+map.on('load', async () => {
+    const ptService = "YOUR_FEATURE_SERVICE_URL/FeatureServer/0";
+    const layer = await maplibreArcGIS.FeatureLayer.fromUrl(ptService);
+    layer.addSourcesAndLayersTo(map);
+});
+```
+
+That's the whole pattern: `fromUrl()` fetches the schema and features, `addSourcesAndLayersTo()` wires up a MapLibre source and a default-styled layer in one call. 
+
+#### Custom styling a feature service
+
+The default renderer from `addSourcesAndLayersTo()` is fine for a quick look, but for full control over paint properties, split the process into two steps: add the source, then write your own layer. Swap in `addSourcesTo()` instead if you want to write your own `map.addLayer()` call for custom styling, same as with a local or GitHub-hosted GeoJSON.
+
+**1. Use `addSourcesTo()` instead of `addSourcesAndLayersTo()`.** This creates the MapLibre source (querying the live feature service) but skips the default layer:
+
+```javascript
+const earthquakes = await maplibreArcGIS.FeatureLayer.fromUrl(ptService);
+earthquakes.addSourcesTo(map);
+```
+
+**2. Write your own `map.addLayer()` call, spreading in `earthquakes.layer`.** This gives you the correct `id` and `source` already wired up, so you only need to set `type` and `paint`:
+
+```javascript
+map.addLayer({
+    ...earthquakes.layer,
+    type: 'circle',
+    paint: {
+        'circle-radius': 6,
+        'circle-color': '#e25822',
+        'circle-stroke-width': 1,
+        'circle-stroke-color': '#ffffff'
+    }
+});
+```
+This is the same pattern you already know from styling a local or GitHub-hosted GeoJSON source: a `type`, a `paint` block, standard MapLibre paint properties. The only difference is where the `id`/`source` values come from. Swap in your own examples.
+
+### Querying a feature service
+Just like in Lab 01, we can use a query to dynamically querry the layer for only the data that we want to display:
+Because you're pointing at a live API rather than a static file, you can ask the service to filter and trim the data before it ever reaches the browser. Pass a `query` option as the second argument to `fromUrl()`:
+
+```javascript
+const earthquakes = await maplibreArcGIS.FeatureLayer.fromUrl(ptService, {
+    query: {
+        outFields: ['mag', 'depth', 'time'],
+        where: 'mag > 4'
+    }
+});
+
+earthquakes.addSourcesTo(map);
 
 
-## Part 6: Popups
+**Key difference from a static GeoJSON:** the feature service stays live. Change the `where` clause in a query option and re-run `fromUrl()`, and you get fresh data with no change to your styling code.
+
+## Popups & Dynamics Options
 
 ### Pop-Ups
 
@@ -562,7 +546,7 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
 ```
 
 
-## Part 7: Raster and WMS layers
+## Raster and WMS layers
 
 ### XYZ raster tiles
 
@@ -631,7 +615,7 @@ map.on('load', () => {
 ```
 
 
-## Part 8: 3D Extrusions
+## 3D Extrusions
 
 This is the one category of map that Leaflet genuinely cannot produce, extrusion needs the WebGL/3D pipeline that only MapLibre (or another WebGL-based library) provides.
 
@@ -709,7 +693,7 @@ map.on('load', () => {
 ```
 
 
-## Part 9: Camera & Interaction Control; 3D Terrain
+## 3D Terramin; Camera & Interaction Control
 
 ```js
 // Fit to a bounding box, e.g. after loading a GeoJSON file
@@ -858,14 +842,14 @@ Putting the pieces above together, here's a full page combining a styled basemap
                         0, '#fef0d9', 5, '#fdcc8a', 20, '#fc8d59', 75, '#e34a33', 200, '#b30000'
                     ],
                     'fill-outline-color': 'black',
-                    'fill-opacity': 0.8
+                    'fill-opacity': 0.3
                 }
             });
 
             map.on('click', 'nm_counties_layer', function (e) {
                 new maplibregl.Popup()
                     .setLngLat(e.lngLat)
-                    .setHTML(`Density: ${Math.round(e.features[0].properties.density)}`)
+                    .setHTML(`Name: ${e.features[0].properties.NAME}`)
                     .addTo(map);
             });
         });
@@ -891,8 +875,8 @@ Add a `GeolocateControl` (top-left), a `FullscreenControl` (top-right), and a Dr
 ### Exercise 4: Markers, Lines & Polygons
 Add a default `Marker` at a location of your choice. Then, using `addSource`/`addLayer`, draw a `LineString` representing a route you know well and a `Polygon` representing a boundary (a park, campus, or neighborhood). Style the line and polygon with colors and opacity that make sense together.
 
-### Exercise 5: Clustering Points
-Adapt the earthquake clustering example to a dataset of your choice (or keep the earthquake data, but change the `clusterRadius`/`clusterMaxZoom` values and the `step` color/radius breakpoints). Confirm that clicking a cluster zooms in appropriately, and that clicking an individual point still opens a popup.
+### Exercise 5: Adding geometries
+Add any data set from the local geojson examples or ArcGIS online feature services to a map of your choice. For ArcGIS online, practice setting a custom query with an appropraite `where` clause to customize the data request of your map.
 
 ### Exercise 6: Popups & Legend
 Build a small GeoJSON `FeatureCollection` of 4-5 points of your choice, and wire up click-popups for them following the Part 6 pattern (including the cursor change on hover). Then add an HTML/CSS legend, like the one in the Quick Recap example, explaining what the points represent.
@@ -918,4 +902,143 @@ Using the Part 9 techniques, build a map that `fitBounds` to a region of your ch
 - [MapLibre GL JS Examples Gallery](https://maplibre.org/maplibre-gl-js/docs/examples/)
 - [OpenFreeMap](https://openfreemap.org): free, no-API-key vector basemap styles
 - [Mapbox Style Specification](https://maplibre.org/maplibre-style-spec/): the reference for every `paint`/`layout` property and expression used above (MapLibre's style spec is a fork of this one)
+
+
+## Appendix A: Clustering Points
+
+Clustering is a property of the **source**, and it's drawn with three separate layers: clusters, cluster counts, and unclustered points. The example below uses earthquake epicenters across the U.S. (see [Maplibre Tutorial](https://maplibre.org/maplibre-gl-js/docs/examples/create-and-style-clusters/))
+
+```js
+const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://demotiles.maplibre.org/style.json',
+    center: [-103.59179687498357, 40.66995747013945],
+    zoom: 3,
+    fadeDuration: 0 // this is in order for the text and circles to move "as-one"
+});
+
+map.on('load', () => {
+    // Add a new source from our GeoJSON data and
+    // set the 'cluster' option to true. GL-JS will
+    // add the point_count property to your source data.
+    map.addSource('earthquakes', {
+        type: 'geojson',
+        // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+        // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+        data: 'https://maplibre.org/maplibre-gl-js/docs/assets/earthquakes.geojson',
+        cluster: true,
+        clusterMaxZoom: 14, // Max zoom to cluster points on
+        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+    });
+
+    map.addLayer({
+        id: 'clusters',
+        type: 'circle',
+        source: 'earthquakes',
+        filter: ['has', 'point_count'],
+        paint: {
+            // Use step expressions (https://maplibre.org/maplibre-style-spec/#expressions-step)
+            // with three steps to implement three types of circles:
+            //   * Blue, 20px circles when point count is less than 100
+            //   * Yellow, 30px circles when point count is between 100 and 750
+            //   * Pink, 40px circles when point count is greater than or equal to 750
+            'circle-color': [
+                'step',
+                ['get', 'point_count'],
+                '#51bbd6',
+                100,
+                '#f1f075',
+                750,
+                '#f28cb1'
+            ],
+            'circle-radius': [
+                'step',
+                ['get', 'point_count'],
+                20,
+                100,
+                30,
+                750,
+                40
+            ]
+        }
+    });
+
+    map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'earthquakes',
+        filter: ['has', 'point_count'],
+        layout: {
+            'text-field': '{point_count_abbreviated}',
+            'text-font': ['Noto Sans Regular'],
+            'text-size': 12
+        }
+    });
+
+    map.addLayer({
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'earthquakes',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+            'circle-color': '#11b4da',
+            'circle-radius': 4,
+            'circle-stroke-width': 1,
+            'circle-stroke-color': '#fff'
+        }
+    });
+
+    // inspect a cluster on click
+    map.on('click', 'clusters', async (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+            layers: ['clusters']
+        });
+        const clusterId = features[0].properties.cluster_id;
+        const zoom = await map.getSource('earthquakes').getClusterExpansionZoom(clusterId);
+        map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom
+        });
+    });
+
+    // When a click event occurs on a feature in
+    // the unclustered-point layer, open a popup at
+    // the location of the feature, with
+    // description HTML from its properties.
+    map.on('click', 'unclustered-point', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const mag = e.features[0].properties.mag;
+        let tsunami;
+
+        if (e.features[0].properties.tsunami === 1) {
+            tsunami = 'yes';
+        } else {
+            tsunami = 'no';
+        }
+
+        // Ensure that if the map is zoomed out such that
+        // multiple copies of the feature are visible, the
+        // popup appears over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new maplibregl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(
+                `magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`
+            )
+            .addTo(map);
+    });
+
+    map.on('mouseenter', 'clusters', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'clusters', () => {
+        map.getCanvas().style.cursor = '';
+    });
+});
+```
+
+The `['step', ...]` expression buckets clusters by point count and colors/sizes them accordingly.
 
