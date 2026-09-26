@@ -462,7 +462,7 @@ earthquakes.addSourcesTo(map);
 
 Example Map 6-6: [Simple MapLibre Map with Pop-Ups](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_6_PopUps.html) 
 
-### Pop-Ups
+### Simple Pop-Ups
 
 Simple pop-ups can be added like default markers.
 
@@ -577,7 +577,7 @@ Simple pop-ups can be added by identifying your layer's `id`, and setting the HT
     });
 
 ```
-#### Customizing Popup Text
+### Customizing Popup Text
 
 We can modify the .setHTML expression to change how we want a popup to be visualized. This is all done with HTML styling code.
 
