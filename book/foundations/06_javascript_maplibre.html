@@ -536,11 +536,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-dynamic-options">6.6. Popups &amp; Dynamic Options</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-ups">6.6.1. Pop-Ups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-popup-text">6.6.2.1. Customizing Popup Text</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-pop-ups">6.6.1. Simple Pop-Ups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-popup-text">6.6.3. Customizing Popup Text</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-and-wms-layers">6.7. Raster and WMS layers</a><ul class="nav section-nav flex-column">
@@ -1063,8 +1061,8 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <section id="popups-dynamic-options">
 <h2><span class="section-number">6.6. </span>Popups &amp; Dynamic Options<a class="headerlink" href="#popups-dynamic-options" title="Link to this heading">#</a></h2>
 <p>Example Map 6-6: <a class="reference external" href="https://asivitskis.github.io/GISS366-MapLibre-Examples/6_6_PopUps.html">Simple MapLibre Map with Pop-Ups</a></p>
-<section id="pop-ups">
-<h3><span class="section-number">6.6.1. </span>Pop-Ups<a class="headerlink" href="#pop-ups" title="Link to this heading">#</a></h3>
+<section id="simple-pop-ups">
+<h3><span class="section-number">6.6.1. </span>Simple Pop-Ups<a class="headerlink" href="#simple-pop-ups" title="Link to this heading">#</a></h3>
 <p>Simple pop-ups can be added like default markers.</p>
 <p>Just like we learned in Week 4 - HTML is the langauge controlling the content displayed within our web interface. Popups will use the .setHTML properties to indicate what you want displayed.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">popup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">Popup</span><span class="p">({</span><span class="nx">closeOnClick</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">})</span>
@@ -1173,8 +1171,9 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="w">    </span><span class="p">});</span>
 </pre></div>
 </div>
+</section>
 <section id="customizing-popup-text">
-<h4><span class="section-number">6.6.2.1. </span>Customizing Popup Text<a class="headerlink" href="#customizing-popup-text" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">6.6.3. </span>Customizing Popup Text<a class="headerlink" href="#customizing-popup-text" title="Link to this heading">#</a></h3>
 <p>We can modify the .setHTML expression to change how we want a popup to be visualized. This is all done with HTML styling code.</p>
 <p>For multiline popups we can use <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code> tags to introduce a line break between called properties. See this <a class="reference external" href="https://www.w3schools.com/tags/tag_br.asp">HTML Tutorial</a> for additional reference.</p>
 <p>Complex popups in MapLibre can be challenge, see these <a class="reference external" href="https://stackoverflow.com/questions/54731968/how-do-i-display-multiple-geojson-properties-in-a-popup-using-mapbox-gl">Stacker Overflow</a> or <a class="reference internal" href="#"><span class="xref myst">GitHub Discussion</span></a> threads for real life examples of people working through these considerations.</p>
@@ -1191,7 +1190,6 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </pre></div>
 </div>
 <p><strong>Try it:</strong> for the Pop-Ups on click example above (6.6.2), how might you use a <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code> tag within the .setHTML expression to also include the <code class="docutils literal notranslate"><span class="pre">rating</span></code> example property within the pop up?</p>
-</section>
 </section>
 </section>
 <section id="raster-and-wms-layers">
@@ -1793,11 +1791,9 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-dynamic-options">6.6. Popups &amp; Dynamic Options</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-ups">6.6.1. Pop-Ups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-popup-text">6.6.2.1. Customizing Popup Text</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-pop-ups">6.6.1. Simple Pop-Ups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-popup-text">6.6.3. Customizing Popup Text</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-and-wms-layers">6.7. Raster and WMS layers</a><ul class="nav section-nav flex-column">
