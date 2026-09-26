@@ -129,7 +129,7 @@ style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`
 
 ## Map Controls
 
-Example Map 6-3: [MapLibre Map with Controls](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_2_BasicMap.html)
+Example Map 6-3: [MapLibre Map with Controls](https://asivitskis.github.io/GISS366-MapLibre-Examples/6_3_MapControls.html)
 
 Controls are added inside a `'load'` event listener, so the map object exists first:
 
@@ -240,13 +240,15 @@ Every property is listed in the [MapLibre Style Spec](https://maplibre.org/mapli
 Markers are quick, but a `circle` layer is what you'll use with real datasets.
 
 ```js
-map.addSource('site-source', {
-    type: 'geojson',
-    data: { type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [-108.2833, 32.7764] } }
-});
-map.addLayer({
-    id: 'site-circle', type: 'circle', source: 'site-source',
-    paint: { 'circle-radius': 10, 'circle-color': '#e25822', 'circle-stroke-width': 2, 'circle-stroke-color': '#ffffff' }
+map.on('load', () => {
+    map.addSource('site-source', {
+        type: 'geojson',
+        data: { type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [-108.2833, 32.7764] } }
+    });
+    map.addLayer({
+        id: 'site-circle', type: 'circle', source: 'site-source',
+        paint: { 'circle-radius': 10, 'circle-color': '#e25822', 'circle-stroke-width': 2, 'circle-stroke-color': '#ffffff' }
+    });
 });
 ```
 
@@ -255,18 +257,20 @@ map.addLayer({
 ### Lines
 
 ```js
-map.addSource('route-source', {
-    type: 'geojson',
-    data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [
-        [-108.2750622, 32.7796674], [-108.270348, 32.7830646], [-108.2612936, 32.7851407],
-        [-108.2487223, 32.7874683], [-108.2046233, 32.783012], [-108.1822079, 32.7798317],
-        [-108.1594598, 32.7822223], [-108.1510789, 32.7820965]
-    ] } }
-});
-map.addLayer({
-    id: 'route-line', type: 'line', source: 'route-source',
-    layout: { 'line-join': 'round', 'line-cap': 'round' },
-    paint: { 'line-color': '#888', 'line-width': 8 }
+map.on('load', () => {
+    map.addSource('route-source', {
+        type: 'geojson',
+        data: { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [
+            [-108.2750622, 32.7796674], [-108.270348, 32.7830646], [-108.2612936, 32.7851407],
+            [-108.2487223, 32.7874683], [-108.2046233, 32.783012], [-108.1822079, 32.7798317],
+            [-108.1594598, 32.7822223], [-108.1510789, 32.7820965]
+        ] } }
+    });
+    map.addLayer({
+        id: 'route-line', type: 'line', source: 'route-source',
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: { 'line-color': '#888', 'line-width': 8 }
+    });
 });
 ```
 
@@ -274,24 +278,26 @@ map.addLayer({
 
 ### Polygons
 
-One source can feed more than one layer. Here the same polygon gets a fill and a separate outline (`fill-outline-color` is always 1px wide, so a `line` layer is the way to get a thicker border).
+One source can feed more than one layer. Here the same polygon gets a fill and a separate outline (`fill-outline-color` is always 1px wide, so a `line` layer is the way to get a thicker border). Here's an example webmap that uses this stacked layer, single source technique [link.](https://asivitskis.github.io/OpenMaps/CBC_demo_map.html)
 
 ```js
-map.addSource('park-source', {
-    type: 'geojson',
-    data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[
-        [-108.2853603, 32.77102], [-108.2982235, 32.7688568], [-108.3009621, 32.76132],
-        [-108.294323, 32.7538525], [-108.2866051, 32.7528754], [-108.2824557, 32.7575514],
-        [-108.280381, 32.7606222], [-108.2810449, 32.7701128], [-108.2853603, 32.77102]
-    ]] } }
-});
-map.addLayer({
-    id: 'park-fill', type: 'fill', source: 'park-source',
-    paint: { 'fill-color': '#088', 'fill-opacity': 0.8 }
-});
-map.addLayer({
-    id: 'park-outline', type: 'line', source: 'park-source',   // same source, second layer
-    paint: { 'line-color': '#044', 'line-width': 3 }
+map.on('load', () => {
+    map.addSource('park-source', {
+        type: 'geojson',
+        data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[
+            [-108.2853603, 32.77102], [-108.2982235, 32.7688568], [-108.3009621, 32.76132],
+            [-108.294323, 32.7538525], [-108.2866051, 32.7528754], [-108.2824557, 32.7575514],
+            [-108.280381, 32.7606222], [-108.2810449, 32.7701128], [-108.2853603, 32.77102]
+        ]] } }
+    });
+    map.addLayer({
+        id: 'park-fill', type: 'fill', source: 'park-source',
+        paint: { 'fill-color': '#088', 'fill-opacity': 0.8 }
+    });
+    map.addLayer({
+        id: 'park-outline', type: 'line', source: 'park-source',   // same source, second layer
+        paint: { 'line-color': '#044', 'line-width': 3 }
+    });
 });
 ```
 
@@ -459,6 +465,9 @@ Example Map 6-6: [Simple MapLibre Map with Pop-Ups](https://asivitskis.github.io
 ### Pop-Ups
 
 Simple pop-ups can be added like default markers.
+
+Just like we learned in Week 4 - HTML is the langauge controlling the content displayed within our web interface. Popups will use the .setHTML properties to indicate what you want displayed. 
+
 ```js
 const popup = new maplibregl.Popup({closeOnClick: false})
     .setLngLat([-96, 37.8])
@@ -469,6 +478,9 @@ const popup = new maplibregl.Popup({closeOnClick: false})
 ### Popups on click
 
 Custom popups on click require additional event listeners. (See [MapLibre Popup Example](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-click/))
+
+Simple pop-ups can be added by identifying your layer's `id`, and setting the HTML properties to your layer's attributes. For example change the `Name` and the `properties.NAME` to reflect your feature.
+
 ```js
 // Add your points as GeoJSON
     map.addSource('places', {
@@ -479,7 +491,8 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
                 {
                     type: 'Feature',
                     properties: {
-                        name: 'Point 1'
+                        name: 'Point 1',
+                        rating: 1
                     },
                     geometry: {
                         type: 'Point',
@@ -489,7 +502,8 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
                 {
                     type: 'Feature',
                     properties: {
-                        name: 'Point 2'
+                        name: 'Point 2',
+                        rating: 2
                     },
                     geometry: {
                         type: 'Point',
@@ -499,7 +513,8 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
                 {
                     type: 'Feature',
                     properties: {
-                        name: 'Point 3'
+                        name: 'Point 3',
+                        rating: 3
                     },
                     geometry: {
                         type: 'Point',
@@ -509,7 +524,8 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
                 {
                     type: 'Feature',
                     properties: {
-                        name: 'Point 4'
+                        name: 'Point 4',
+                        rating: 4
                     },
                     geometry: {
                         type: 'Point',
@@ -546,7 +562,7 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
 
         new maplibregl.Popup()
             .setLngLat(coordinates)
-            .setHTML(`<strong>${name}</strong>`)
+            .setHTML(`<strong>${name}</strong>`) // This is where the pop-up content is identified. 
             .addTo(map);
     });
 
@@ -561,7 +577,30 @@ Custom popups on click require additional event listeners. (See [MapLibre Popup 
     });
 
 ```
+#### Customizing Popup Text
 
+We can modify the .setHTML expression to change how we want a popup to be visualized. This is all done with HTML styling code.
+
+For multiline popups we can use `<br>` tags to introduce a line break between called properties. See this [HTML Tutorial](https://www.w3schools.com/tags/tag_br.asp) for additional reference. 
+
+Complex popups in MapLibre can be challenge, see these [Stacker Overflow](https://stackoverflow.com/questions/54731968/how-do-i-display-multiple-geojson-properties-in-a-popup-using-mapbox-gl) or [GitHub Discussion]() threads for real life examples of people working through these considerations.
+
+Below is a quick example of displaying multiple Geojson properties for the sample `nm_populated_places.geojson` dataset within the tutorial `/data` folder. 
+
+```js
+
+// note the <br> tag within the .setHTML expression which adds a line break and new property
+
+    map.on('click', 'cities-points', function (e) {
+                new maplibregl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setHTML(`Name: ${e.features[0].properties.FEATURE_NA}<br>
+                    County Name: ${e.features[0].properties.COUNTY_NAM}`)
+                    .addTo(map);
+            });
+```
+
+**Try it:** for the Pop-Ups on click example above (6.6.2), how might you use a `<br>` tag within the .setHTML expression to also include the `rating` example property within the pop up?
 
 ## Raster and WMS layers
 
