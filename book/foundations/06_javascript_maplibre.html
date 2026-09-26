@@ -537,7 +537,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-dynamic-options">6.6. Popups &amp; Dynamic Options</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-ups">6.6.1. Pop-Ups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-popup-text">6.6.2.1. Customizing Popup Text</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-and-wms-layers">6.7. Raster and WMS layers</a><ul class="nav section-nav flex-column">
@@ -1063,6 +1066,7 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <section id="pop-ups">
 <h3><span class="section-number">6.6.1. </span>Pop-Ups<a class="headerlink" href="#pop-ups" title="Link to this heading">#</a></h3>
 <p>Simple pop-ups can be added like default markers.</p>
+<p>Just like we learned in Week 4 - HTML is the langauge controlling the content displayed within our web interface. Popups will use the .setHTML properties to indicate what you want displayed.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">popup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">Popup</span><span class="p">({</span><span class="nx">closeOnClick</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">})</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">setLngLat</span><span class="p">([</span><span class="o">-</span><span class="mf">96</span><span class="p">,</span><span class="w"> </span><span class="mf">37.8</span><span class="p">])</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">setHTML</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Hello World!&lt;/h1&gt;&#39;</span><span class="p">)</span>
@@ -1074,14 +1078,6 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <h3><span class="section-number">6.6.2. </span>Popups on click<a class="headerlink" href="#popups-on-click" title="Link to this heading">#</a></h3>
 <p>Custom popups on click require additional event listeners. (See <a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-click/">MapLibre Popup Example</a>)</p>
 <p>Simple pop-ups can be added by identifying your layer’s <code class="docutils literal notranslate"><span class="pre">id</span></code>, and setting the HTML properties to your layer’s attributes. For example change the <code class="docutils literal notranslate"><span class="pre">Name</span></code> and the <code class="docutils literal notranslate"><span class="pre">properties.NAME</span></code> to reflect your feature.</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;nm_counties_layer&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">Popup</span><span class="p">()</span>
-<span class="w">                    </span><span class="p">.</span><span class="nx">setLngLat</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">lngLat</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">.</span><span class="nx">setHTML</span><span class="p">(</span><span class="sb">`Name: </span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">features</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">properties</span><span class="p">.</span><span class="nx">NAME</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">.</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
-<span class="w">            </span><span class="p">});</span>
-</pre></div>
-</div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Add your points as GeoJSON</span>
 <span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s1">&#39;places&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;geojson&#39;</span><span class="p">,</span>
@@ -1091,7 +1087,8 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 1&#39;</span>
+<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 1&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span>
@@ -1101,7 +1098,8 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 2&#39;</span>
+<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 2&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span>
@@ -1111,7 +1109,8 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 3&#39;</span>
+<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 3&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span>
@@ -1121,7 +1120,8 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 4&#39;</span>
+<span class="w">                        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point 4&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span>
@@ -1158,7 +1158,7 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 
 <span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">Popup</span><span class="p">()</span>
 <span class="w">            </span><span class="p">.</span><span class="nx">setLngLat</span><span class="p">(</span><span class="nx">coordinates</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="nx">setHTML</span><span class="p">(</span><span class="sb">`&lt;strong&gt;</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/strong&gt;`</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="nx">setHTML</span><span class="p">(</span><span class="sb">`&lt;strong&gt;</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/strong&gt;`</span><span class="p">)</span><span class="w"> </span><span class="c1">// This is where the pop-up content is identified. </span>
 <span class="w">            </span><span class="p">.</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 
@@ -1173,6 +1173,25 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 <span class="w">    </span><span class="p">});</span>
 </pre></div>
 </div>
+<section id="customizing-popup-text">
+<h4><span class="section-number">6.6.2.1. </span>Customizing Popup Text<a class="headerlink" href="#customizing-popup-text" title="Link to this heading">#</a></h4>
+<p>We can modify the .setHTML expression to change how we want a popup to be visualized. This is all done with HTML styling code.</p>
+<p>For multiline popups we can use <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code> tags to introduce a line break between called properties. See this <a class="reference external" href="https://www.w3schools.com/tags/tag_br.asp">HTML Tutorial</a> for additional reference.</p>
+<p>Complex popups in MapLibre can be challenge, see these <a class="reference external" href="https://stackoverflow.com/questions/54731968/how-do-i-display-multiple-geojson-properties-in-a-popup-using-mapbox-gl">Stacker Overflow</a> or <a class="reference internal" href="#"><span class="xref myst">GitHub Discussion</span></a> threads for real life examples of people working through these considerations.</p>
+<p>Below is a quick example of displaying multiple Geojson properties for the sample <code class="docutils literal notranslate"><span class="pre">nm_populated_places.geojson</span></code> dataset within the tutorial <code class="docutils literal notranslate"><span class="pre">/data</span></code> folder.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// note the &lt;br&gt; tag within the .setHTML expression which adds a line break and new property</span>
+
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cities-points&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="ow">new</span><span class="w"> </span><span class="nx">maplibregl</span><span class="p">.</span><span class="nx">Popup</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="nx">setLngLat</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">lngLat</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">.</span><span class="nx">setHTML</span><span class="p">(</span><span class="sb">`Name: </span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">features</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">properties</span><span class="p">.</span><span class="nx">FEATURE_NA</span><span class="si">}</span><span class="sb">&lt;br&gt;</span>
+<span class="sb">                    County Name: </span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">features</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">properties</span><span class="p">.</span><span class="nx">COUNTY_NAM</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">.</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">map</span><span class="p">);</span>
+<span class="w">            </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Try it:</strong> for the Pop-Ups on click example above (6.6.2), how might you use a <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code> tag within the .setHTML expression to also include the <code class="docutils literal notranslate"><span class="pre">rating</span></code> example property within the pop up?</p>
+</section>
 </section>
 </section>
 <section id="raster-and-wms-layers">
@@ -1775,7 +1794,10 @@ Because you’re pointing at a live API rather than a static file, you can ask t
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-dynamic-options">6.6. Popups &amp; Dynamic Options</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-ups">6.6.1. Pop-Ups</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-on-click">6.6.2. Popups on click</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-popup-text">6.6.2.1. Customizing Popup Text</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-and-wms-layers">6.7. Raster and WMS layers</a><ul class="nav section-nav flex-column">
