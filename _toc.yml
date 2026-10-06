@@ -37,7 +37,7 @@ parts:
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/create/building_web_apps
+      - file: book/create/08_experience_builder
   - caption: Labs
     numbered: false
     maxdepth: 2
@@ -49,6 +49,7 @@ parts:
       - file: book/labs/lab_03_weblanguages
       - file: book/labs/lab_04_javascript_leaflet
       - file: book/labs/lab_05_javascript_maplibre
+      - file: book/labs/lab_06_experience_builder
   - caption: Final Project
     numbered: false
     maxdepth: 2
