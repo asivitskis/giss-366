@@ -38,6 +38,7 @@ parts:
     maxdepth: 2
     chapters:
       - file: book/create/08_experience_builder
+      - file: book/create/09_dashboards_arcade
   - caption: Labs
     numbered: false
     maxdepth: 2
