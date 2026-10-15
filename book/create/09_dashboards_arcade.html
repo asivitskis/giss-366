@@ -528,10 +528,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-finish-the-fire-dashboard">8.18. In-Class Exercise: Finish the Fire Dashboard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wednesday-practice-recommended-ungraded">8.19. Wednesday Practice (recommended, ungraded)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday-in-class-arcade-cards">8.20. Thursday In-Class: Arcade Cards</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor-about-3-minutes">8.20.1. Card 1: Tour the editor (about 3 minutes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change-about-5-minutes">8.20.2. Card 2: Paste and change (about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor">8.20.1. Card 1: Tour the editor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change">8.20.2. Card 2: Paste and change</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-serial-chart-update">8.20.3. Card 3: Serial Chart Update</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-add-a-custom-list-element-early-finishers-about-5-minutes">8.20.4. Card 4: Add a custom list element (early finishers, about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-add-a-custom-list-element">8.20.4. Card 4: Add a custom list element</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">8.21. Looking Ahead: Lab 7</a></li>
@@ -1119,8 +1119,8 @@ Grouped by state:
 <section id="thursday-in-class-arcade-cards">
 <h2><span class="section-number">8.20. </span>Thursday In-Class: Arcade Cards<a class="headerlink" href="#thursday-in-class-arcade-cards" title="Link to this heading">#</a></h2>
 <p>Work in your breakout group, inside <strong>your own copy of Tuesday’s dashboard</strong> (the one saved with your initials). Do the cards in order. Card 4 is for groups that finish early. Record your answers in the shared document.</p>
-<section id="card-1-tour-the-editor-about-3-minutes">
-<h3><span class="section-number">8.20.1. </span>Card 1: Tour the editor (about 3 minutes)<a class="headerlink" href="#card-1-tour-the-editor-about-3-minutes" title="Link to this heading">#</a></h3>
+<section id="card-1-tour-the-editor">
+<h3><span class="section-number">8.20.1. </span>Card 1: Tour the editor<a class="headerlink" href="#card-1-tour-the-editor" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Open your indicator’s settings, go to the <strong>Indicator</strong> tab, and click <strong>Enable</strong> under Advanced formatting. The Arcade editor opens.</p></li>
 <li><p>Click <strong>Run</strong>.</p></li>
@@ -1129,8 +1129,8 @@ Grouped by state:
 </ol>
 <p><em>Record:</em> What is the exact name of the value your indicator counts? What did Run show?</p>
 </section>
-<section id="card-2-paste-and-change-about-5-minutes">
-<h3><span class="section-number">8.20.2. </span>Card 2: Paste and change (about 5 minutes)<a class="headerlink" href="#card-2-paste-and-change-about-5-minutes" title="Link to this heading">#</a></h3>
+<section id="card-2-paste-and-change">
+<h3><span class="section-number">8.20.2. </span>Card 2: Paste and change<a class="headerlink" href="#card-2-paste-and-change" title="Link to this heading">#</a></h3>
 <p>Replace the editor’s contents with this expression. Swap in the name you found in Card 1.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Indicator: wildfire activity
 var n = $datapoint.[CHANGE THIS TO THE CORRECT FieldName];
@@ -1204,8 +1204,8 @@ return {
 </ol>
 <p><em>Record:</em> Which errors did you find, and what in the editor’s message pointed you to each one?</p>
 </section>
-<section id="card-4-add-a-custom-list-element-early-finishers-about-5-minutes">
-<h3><span class="section-number">8.20.4. </span>Card 4: Add a custom list element (early finishers, about 5 minutes)<a class="headerlink" href="#card-4-add-a-custom-list-element-early-finishers-about-5-minutes" title="Link to this heading">#</a></h3>
+<section id="card-4-add-a-custom-list-element">
+<h3><span class="section-number">8.20.4. </span>Card 4: Add a custom list element<a class="headerlink" href="#card-4-add-a-custom-list-element" title="Link to this heading">#</a></h3>
 <p>Add a new list element and set the layer to <code class="docutils literal notranslate"><span class="pre">Current</span> <span class="pre">Incidents.</span></code> Go to the <strong>List</strong> tab, and enable advanced formatting. Paste this expression, then swap in your acres field name from the Profile Variables panel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var acres = $datapoint.CalculatedAcres;   // use the acres field your chart uses
 var sizeClass = When(acres &gt;= 10000, &#39;Major&#39;, acres &gt;= 1000, &#39;Large&#39;, &#39;Small&#39;);
@@ -1355,10 +1355,10 @@ return {
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-finish-the-fire-dashboard">8.18. In-Class Exercise: Finish the Fire Dashboard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wednesday-practice-recommended-ungraded">8.19. Wednesday Practice (recommended, ungraded)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday-in-class-arcade-cards">8.20. Thursday In-Class: Arcade Cards</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor-about-3-minutes">8.20.1. Card 1: Tour the editor (about 3 minutes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change-about-5-minutes">8.20.2. Card 2: Paste and change (about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor">8.20.1. Card 1: Tour the editor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change">8.20.2. Card 2: Paste and change</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-serial-chart-update">8.20.3. Card 3: Serial Chart Update</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-add-a-custom-list-element-early-finishers-about-5-minutes">8.20.4. Card 4: Add a custom list element (early finishers, about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-add-a-custom-list-element">8.20.4. Card 4: Add a custom list element</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">8.21. Looking Ahead: Lab 7</a></li>
