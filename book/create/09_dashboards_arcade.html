@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. ArcGIS Dashboards and Arcade &#8212; WebMapping &amp; Web GIS</title>
+    <title>8. ArcGIS Dashboards and Arcade &#8212; WebMapping &amp; Web GIS</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Submission Instructions" href="../labs/instructions.html" />
-    <link rel="prev" title="8. ArcGIS Experience Builder" href="08_experience_builder.html" />
+    <link rel="prev" title="7. ArcGIS Experience Builder" href="08_experience_builder.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,12 +200,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../foundations/05_javascript_leaflet.html">5. JavaScript &amp; Leaflet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../foundations/06_javascript_maplibre.html">6. MapLibre GL JS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../foundations/07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="08_experience_builder.html">8. ArcGIS Experience Builder</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. ArcGIS Dashboards and Arcade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_experience_builder.html">7. ArcGIS Experience Builder</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. ArcGIS Dashboards and Arcade</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -223,6 +222,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../labs/lab_05_javascript_maplibre.html">Lab 5</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../labs/lab_06_experience_builder.html">Lab 6</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_07_dashboards_arcade.html">Lab 7</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
@@ -507,21 +508,34 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">9.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">9.2. How to Use This Page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-experience-to-dashboard">9.3. From Experience to Dashboard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dashboard-for">9.4. What Is a Dashboard For?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parts-of-a-dashboard">9.5. The Parts of a Dashboard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actions-how-elements-talk-to-each-other">9.6. Actions: How Elements Talk to Each Other</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-access">9.7. Design and Access</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-a-dashboard-from-its-item-id">9.8. Copying a Dashboard from Its Item ID</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-look-at-arcade">9.9. A First Look at Arcade</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arcade-and-the-javascript-you-know">9.10. Arcade and the JavaScript You Know</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-arcade-fits-on-the-continuum">9.11. Where Arcade Fits on the Continuum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-finish-the-fire-dashboard">9.12. In-Class Exercise: Finish the Fire Dashboard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wednesday-practice-recommended-ungraded">9.13. Wednesday Practice (recommended, ungraded)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">9.14. Looking Ahead: Lab 7</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">9.15. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">8.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">8.2. How to Use This Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-experience-to-dashboard">8.3. From Experience to Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dashboard-for">8.4. What Is a Dashboard For?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parts-of-a-dashboard">8.5. The Parts of a Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actions-how-elements-talk-to-each-other">8.6. Actions: How Elements Talk to Each Other</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-access">8.7. Design and Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-a-dashboard-from-its-item-id">8.8. Copying a Dashboard from Its Item ID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-look-at-arcade">8.9. A First Look at Arcade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arcade-and-the-javascript-you-know">8.10. Arcade and the JavaScript You Know</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-arcade-expression">8.11. Anatomy of an Arcade Expression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-an-expression-one-line-at-a-time">8.12. Reading an Expression One Line at a Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-starter-toolkit">8.13. A Starter Toolkit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-expressions-what-each-element-accepts">8.14. Formatting Expressions: What Each Element Accepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-expressions-building-a-new-data-source">8.15. Data Expressions: Building a New Data Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-habits-for-writing-arcade">8.16. Working Habits for Writing Arcade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-arcade-fits-on-the-continuum">8.17. Where Arcade Fits on the Continuum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-finish-the-fire-dashboard">8.18. In-Class Exercise: Finish the Fire Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wednesday-practice-recommended-ungraded">8.19. Wednesday Practice (recommended, ungraded)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday-in-class-arcade-cards">8.20. Thursday In-Class: Arcade Cards</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor-about-3-minutes">8.20.1. Card 1: Tour the editor (about 3 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change-about-5-minutes">8.20.2. Card 2: Paste and change (about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-fix-it-about-5-minutes">8.20.3. Card 3: Fix it (about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-list-it-early-finishers-about-5-minutes">8.20.4. Card 4: List it (early finishers, about 5 minutes)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">8.21. Looking Ahead: Lab 7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">8.22. Readings &amp; Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -534,11 +548,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="arcgis-dashboards-and-arcade">
-<h1><span class="section-number">9. </span>ArcGIS Dashboards and Arcade<a class="headerlink" href="#arcgis-dashboards-and-arcade" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>ArcGIS Dashboards and Arcade<a class="headerlink" href="#arcgis-dashboards-and-arcade" title="Link to this heading">#</a></h1>
 <p><strong>Week 9 | Lecture + Lab 7: From Maps to Monitoring Screens</strong></p>
 <hr class="docutils" />
 <section id="learning-objectives">
-<h2><span class="section-number">9.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this unit, you will be able to:</p>
 <ul class="simple">
 <li><p>Explain what a dashboard is for and how it differs from an Experience Builder experience</p></li>
@@ -546,16 +560,19 @@ document.write(`
 <li><p>Identify the parts of a dashboard (elements, data sources, layout, views, theme) and describe how actions link elements</p></li>
 <li><p>Explain how a public dashboard can be copied from its item ID and what to check before reusing someone else’s work</p></li>
 <li><p>Describe what Arcade is and tell data expressions from formatting expressions</p></li>
-<li><p>Read and modify a short Arcade expression for a dashboard element (Lab 7)</p></li>
+<li><p>Read a short Arcade expression and say what it takes in, what it does, and what it must return</p></li>
+<li><p>Modify a formatting expression for an indicator or list, and diagnose a broken one with Run and Console</p></li>
+<li><p>Explain what a data expression returns, and read a short GroupBy example line by line</p></li>
+<li><p>Plan the Arcade tier you will aim for in Lab 7</p></li>
 </ul>
 </section>
 <section id="how-to-use-this-page">
-<h2><span class="section-number">9.2. </span>How to Use This Page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>How to Use This Page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h2>
 <p>The primary texts for this week are Esri’s <a class="reference external" href="https://doc.arcgis.com/en/dashboards/latest/get-started/what-is-a-dashboard.htm"><strong>ArcGIS Dashboards documentation and tutorials</strong></a>, and Esri’s web course <a class="reference external" href="https://www.esri.com/en-us/training/catalog/6010a52b03ffb92c80d3d356/introduction-to-arcgis-arcade"><strong>Introduction to ArcGIS Arcade</strong></a>, which is the reference you will draw on for Lab 7. This page explains how the ideas connect to what you have already built and points to the place where Esri’s full explanation lives. Read the Esri pages for detail, and use this page to see how the pieces fit together.</p>
 </section>
 <hr class="docutils" />
 <section id="from-experience-to-dashboard">
-<h2><span class="section-number">9.3. </span>From Experience to Dashboard<a class="headerlink" href="#from-experience-to-dashboard" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>From Experience to Dashboard<a class="headerlink" href="#from-experience-to-dashboard" title="Link to this heading">#</a></h2>
 <p>Last week you assembled an experience from widgets. A dashboard uses the same architecture underneath: data sits on a server, and a browser client asks for it and draws it. What changes is the job the screen does. An experience invites someone to explore or follow a story. A dashboard puts several views of the same data on one screen so someone can monitor what is happening, make a decision, or spot a trend at a glance.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -582,7 +599,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="what-is-a-dashboard-for">
-<h2><span class="section-number">9.4. </span>What Is a Dashboard For?<a class="headerlink" href="#what-is-a-dashboard-for" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>What Is a Dashboard For?<a class="headerlink" href="#what-is-a-dashboard-for" title="Link to this heading">#</a></h2>
 <p>A dashboard is a presentation of geographic information and data that helps you monitor events, make decisions, inform others, and see trends. Its elements work together on a single screen. Esri groups dashboards by purpose, and the right purpose follows from who is looking and what they need to do next.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -624,7 +641,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="the-parts-of-a-dashboard">
-<h2><span class="section-number">9.5. </span>The Parts of a Dashboard<a class="headerlink" href="#the-parts-of-a-dashboard" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.5. </span>The Parts of a Dashboard<a class="headerlink" href="#the-parts-of-a-dashboard" title="Link to this heading">#</a></h2>
 <p><strong>Elements</strong> are the building blocks. Common ones are maps, lists, charts, gauges, indicators, and tables. Most elements are data driven, which means each one needs a data source: a layer, a web map’s layers, or a data expression (more on those below).</p>
 <p>A practical habit: add a <strong>map element first</strong>. A web map’s operational layers then show up as data sources when you configure the other elements.</p>
 <p>Every element is configured through a few areas: a header for a title and more information, an optional top caption and bottom caption, the visualization itself, and an accessibility tab where you set the name a screen reader will read. Give each element a clear name early, because those names are what you pick from when you link elements together.</p>
@@ -633,7 +650,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="actions-how-elements-talk-to-each-other">
-<h2><span class="section-number">9.6. </span>Actions: How Elements Talk to Each Other<a class="headerlink" href="#actions-how-elements-talk-to-each-other" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.6. </span>Actions: How Elements Talk to Each Other<a class="headerlink" href="#actions-how-elements-talk-to-each-other" title="Link to this heading">#</a></h2>
 <p>One feature turns a set of charts on a page into a dashboard: <strong>actions</strong>. When actions are enabled, interacting with one element updates another. In Esri’s wildfire tutorial, two links do most of the work:</p>
 <ul class="simple">
 <li><p>The <strong>serial chart</strong> is set to pan and zoom the map, so choosing a bar takes you to that fire.</p></li>
@@ -643,7 +660,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="design-and-access">
-<h2><span class="section-number">9.7. </span>Design and Access<a class="headerlink" href="#design-and-access" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.7. </span>Design and Access<a class="headerlink" href="#design-and-access" title="Link to this heading">#</a></h2>
 <p>A <strong>theme</strong> is a set of colors and styling options saved with the dashboard and applied to both views. The light theme is the default, and you can choose a provided theme or customize one. A few basic colors drive most of the design, and the others are calculated from them. When the dashboard has a map, matching a light or dark basemap to the theme keeps the screen consistent.</p>
 <p>Three habits keep a dashboard readable for the widest range of people:</p>
 <ul class="simple">
@@ -655,7 +672,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="copying-a-dashboard-from-its-item-id">
-<h2><span class="section-number">9.8. </span>Copying a Dashboard from Its Item ID<a class="headerlink" href="#copying-a-dashboard-from-its-item-id" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.8. </span>Copying a Dashboard from Its Item ID<a class="headerlink" href="#copying-a-dashboard-from-its-item-id" title="Link to this heading">#</a></h2>
 <p>Every dashboard is an item with an ID. That makes it possible to start a new dashboard from an existing one, and it is a quick way to learn how a dashboard was built.</p>
 <p>The pattern, as described in Esri’s first tutorial:</p>
 <ol class="arabic simple">
@@ -675,7 +692,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="a-first-look-at-arcade">
-<h2><span class="section-number">9.9. </span>A First Look at Arcade<a class="headerlink" href="#a-first-look-at-arcade" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.9. </span>A First Look at Arcade<a class="headerlink" href="#a-first-look-at-arcade" title="Link to this heading">#</a></h2>
 <p><strong>Arcade</strong> is a portable, lightweight, and secure expression language. It can do math, work with text, and evaluate logic. You may have seen it already in web maps, where it writes custom pop-ups, labels, and styles. Dashboards add two more uses.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -697,35 +714,38 @@ document.write(`
 <td><p>Data-driven elements</p></td>
 <td><p>Indicator, list, and table elements</p></td>
 </tr>
-<tr class="row-odd"><td><p>Environment</p></td>
-<td><p>The Dashboard data profile</p></td>
-<td><p>A formatting profile for each element type</p></td>
+<tr class="row-odd"><td><p>Runs</p></td>
+<td><p>When the data loads</p></td>
+<td><p>Once for each data point the element draws</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Formatting is the easiest place to start. Say an indicator shows the number of current wildfires, and you want the number to turn red when the count is high. A formatting expression looks at the value, makes a decision, and returns the colors and text to display. A sketch of the shape:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Arcade formatting expression for an indicator (illustrative sketch)
-var count = $datapoint[&quot;fire_count&quot;];
-var color = &quot;#2e7d32&quot;;
-
-if (count &gt;= 50) {
-  color = &quot;#b8312f&quot;;
-} else if (count &gt;= 20) {
-  color = &quot;#d98a00&quot;;
-}
+<p>Formatting is the easiest place to start. Say an indicator shows the number of current wildfires, and you want the number to turn red when the count is high. A formatting expression looks at the value, makes a decision, and returns the colors and text to display. Esri’s advanced formatting page lists the property names an indicator accepts, and the expression below uses real ones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Arcade formatting expression for an indicator
+var n = $datapoint.count_IncidentName;   // confirm this name in the Profile Variables panel
+var color = When(n &gt;= 50, &#39;#b8312f&#39;, n &gt;= 20, &#39;#d98a00&#39;, &#39;#2e7d32&#39;);
+var label = When(n &gt;= 50, &#39;High activity&#39;, n &gt;= 20, &#39;Moderate activity&#39;, &#39;Low activity&#39;);
 
 return {
-  textColor: color,
-  topText: &quot;Current wildfires&quot;
+  topText: &#39;Current wildfires in view&#39;,
+  middleText: Text(n, &#39;#,###&#39;),
+  middleTextColor: color,
+  bottomText: label,
+  bottomTextColor: color
 };
 </pre></div>
 </div>
-<p>This is a sketch to show the shape of an expression. The names of the fields and the set of keys that an element accepts depend on the element, and Esri’s formatting profile pages list them. You will work with real, tested expressions in class and in Lab 7.</p>
+<p>Three details to notice:</p>
+<ol class="arabic simple">
+<li><p>The expression runs once per data point. An indicator draws one data point. A list draws one per row.</p></li>
+<li><p>What <code class="docutils literal notranslate"><span class="pre">$datapoint</span></code> contains depends on how the element is set up. An indicator built on a statistic receives a dictionary whose keys are the statistic names (Esri’s page shows <code class="docutils literal notranslate"><span class="pre">avg_Temperature</span></code> for the average of a Temperature field). An element built on features receives a feature with that layer’s fields. The Profile Variables panel in the editor shows what you really have, so look there before you type a name.</p></li>
+<li><p>The color travels with a text label, so the message does not depend on color alone.</p></li>
+</ol>
 </section>
 <hr class="docutils" />
 <section id="arcade-and-the-javascript-you-know">
-<h2><span class="section-number">9.10. </span>Arcade and the JavaScript You Know<a class="headerlink" href="#arcade-and-the-javascript-you-know" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.10. </span>Arcade and the JavaScript You Know<a class="headerlink" href="#arcade-and-the-javascript-you-know" title="Link to this heading">#</a></h2>
 <p>As we have written JavaScript in this course, some of Arcade will feel familiar. Treat the match as a helpful similarity, with real differences.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -750,28 +770,34 @@ return {
 </table>
 </div>
 <p>When you meet a function you do not know, look it up in the Arcade function reference. Reading the reference is part of the skill, and it is how working GIS staff learn new functions too.</p>
-<p><strong>Live in this notebook:</strong> the cell below uses Python to show the same decision logic an Arcade formatting expression uses. The function reads a count, makes a decision, and returns a dictionary of display settings. The key names here are illustrative.</p>
+<p><strong>Live in this notebook:</strong> the cell below uses Python to show the same decision logic that the indicator expression above uses. The function reads a count, makes a decision, and returns a dictionary of display settings. The key names match the ones Esri’s indicator formatting accepts, so the shape of the result is the same one Arcade returns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
 
-<span class="k">def</span> <span class="nf">indicator_format</span><span class="p">(</span><span class="n">fire_count</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">indicator_format</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a dictionary of display settings, the way an Arcade formatting expression does.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">fire_count</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
         <span class="n">color</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;#b8312f&quot;</span><span class="p">,</span> <span class="s2">&quot;High activity&quot;</span>
-    <span class="k">elif</span> <span class="n">fire_count</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
         <span class="n">color</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;#d98a00&quot;</span><span class="p">,</span> <span class="s2">&quot;Moderate activity&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">color</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;#2e7d32&quot;</span><span class="p">,</span> <span class="s2">&quot;Low activity&quot;</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;textColor&quot;</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span> <span class="s2">&quot;topText&quot;</span><span class="p">:</span> <span class="s2">&quot;Current wildfires&quot;</span><span class="p">,</span> <span class="s2">&quot;bottomText&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;topText&quot;</span><span class="p">:</span> <span class="s2">&quot;Current wildfires in view&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;middleText&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;middleTextColor&quot;</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span>
+        <span class="s2">&quot;bottomText&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+        <span class="s2">&quot;bottomTextColor&quot;</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span>
+    <span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">show_indicator</span><span class="p">(</span><span class="n">fire_count</span><span class="p">):</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">indicator_format</span><span class="p">(</span><span class="n">fire_count</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_indicator</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">indicator_format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;&#39;&gt;&quot;</span>
         <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;font-size: 13px; color: #333;&#39;&gt;</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;topText&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;font-size: 40px; font-weight: bold; color: </span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;textColor&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">;&#39;&gt;</span><span class="si">{</span><span class="n">fire_count</span><span class="si">}</span><span class="s2">&lt;/div&gt;&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;font-size: 13px; color: #333;&#39;&gt;</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;bottomText&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;&lt;/div&gt;&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;font-size: 40px; font-weight: bold; color: </span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;middleTextColor&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">;&#39;&gt;</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;middleText&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;&lt;div style=&#39;font-size: 13px; color: </span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;bottomTextColor&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">;&#39;&gt;</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;bottomText&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/div&gt;&lt;/div&gt;&quot;</span>
     <span class="p">))</span>
 
 <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">63</span><span class="p">):</span>
@@ -782,18 +808,282 @@ return {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div style='font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;'><div style='font-size: 13px; color: #333;'>Current wildfires</div><div style='font-size: 40px; font-weight: bold; color: #2e7d32;'>8</div><div style='font-size: 13px; color: #333;'>Low activity</div></div></div><div class="output text_html"><div style='font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;'><div style='font-size: 13px; color: #333;'>Current wildfires</div><div style='font-size: 40px; font-weight: bold; color: #d98a00;'>27</div><div style='font-size: 13px; color: #333;'>Moderate activity</div></div></div><div class="output text_html"><div style='font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;'><div style='font-size: 13px; color: #333;'>Current wildfires</div><div style='font-size: 40px; font-weight: bold; color: #b8312f;'>63</div><div style='font-size: 13px; color: #333;'>High activity</div></div></div></div>
+<div class="output text_html"><div style='font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;'><div style='font-size: 13px; color: #333;'>Current wildfires in view</div><div style='font-size: 40px; font-weight: bold; color: #2e7d32;'>8</div><div style='font-size: 13px; color: #2e7d32;'>Low activity</div></div></div><div class="output text_html"><div style='font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;'><div style='font-size: 13px; color: #333;'>Current wildfires in view</div><div style='font-size: 40px; font-weight: bold; color: #d98a00;'>27</div><div style='font-size: 13px; color: #d98a00;'>Moderate activity</div></div></div><div class="output text_html"><div style='font-family: Georgia, serif; border: 1px solid #999; padding: 10px; width: 220px; background: #f4f8fb;'><div style='font-size: 13px; color: #333;'>Current wildfires in view</div><div style='font-size: 40px; font-weight: bold; color: #b8312f;'>63</div><div style='font-size: 13px; color: #b8312f;'>High activity</div></div></div></div>
 </div>
 </section>
 <hr class="docutils" />
+<section id="anatomy-of-an-arcade-expression">
+<h2><span class="section-number">8.11. </span>Anatomy of an Arcade Expression<a class="headerlink" href="#anatomy-of-an-arcade-expression" title="Link to this heading">#</a></h2>
+<p><strong>Inputs, expression, result.</strong> An Arcade expression works like a formula in a spreadsheet cell. You give it inputs (values from your data), it evaluates them, and it hands back a result. Every expression has to return a value. What that value must look like depends on where the expression runs: a dictionary for a formatting expression, a FeatureSet for a data expression.</p>
+<p><strong>Profiles.</strong> Arcade runs in many places, including pop-ups, labels, field calculations, forms, and dashboards. Each place is a <em>profile</em>. The profile decides which variables you can read (<code class="docutils literal notranslate"><span class="pre">$feature</span></code> in pop-ups and labels, <code class="docutils literal notranslate"><span class="pre">$datapoint</span></code> in dashboard formatting), which function bundles exist, and what the expression has to return. Two questions come before the first line of any expression:</p>
+<ol class="arabic simple">
+<li><p>What can I read here?</p></li>
+<li><p>What must I return here?</p></li>
+</ol>
+<p><strong>Three language features</strong> make up most expressions:</p>
+<ul class="simple">
+<li><p><strong>Functions</strong> are preset actions. They cover text, math, dates, arrays, and features. A core bundle is available in every profile, and some profiles add bundles for data access, geometry, or portal items.</p></li>
+<li><p><strong>Variables</strong> hold values under a name. You create one with <code class="docutils literal notranslate"><span class="pre">var</span></code>. Profile variables start with <code class="docutils literal notranslate"><span class="pre">$</span></code> and give you access to the data. Constants such as pi are built in.</p></li>
+<li><p><strong>Loops</strong> repeat a block of code. A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop visits each item in an array or each feature in a FeatureSet. A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop repeats as long as a condition holds.</p></li>
+</ul>
+<p><strong>The editor</strong> gives you three tools you will use constantly. The <strong>Run</strong> button evaluates your expression with sample data and shows the output. The <strong>Console</strong> function writes a value of your choosing to a console tab, which lets you see what is happening in the middle of an expression. The <strong>side panel</strong> lists the profile variables and functions that exist in the current profile, with a short help entry for each function. The <a class="reference external" href="https://developers.arcgis.com/arcade/playground/">Arcade Playground</a> is a free web page for testing logic without opening a dashboard.</p>
+</section>
+<hr class="docutils" />
+<section id="reading-an-expression-one-line-at-a-time">
+<h2><span class="section-number">8.12. </span>Reading an Expression One Line at a Time<a class="headerlink" href="#reading-an-expression-one-line-at-a-time" title="Link to this heading">#</a></h2>
+<p>Here is the indicator expression from earlier, taken apart:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Line</p></th>
+<th class="head"><p>What happens</p></th>
+<th class="head"><p>Language feature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">$datapoint.count_IncidentName;</span></code></p></td>
+<td><p>Reads the statistic from the data point and stores it under the name <code class="docutils literal notranslate"><span class="pre">n</span></code></p></td>
+<td><p>Profile variable, variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">color</span> <span class="pre">=</span> <span class="pre">When(n</span> <span class="pre">&gt;=</span> <span class="pre">50,</span> <span class="pre">'#b8312f',</span> <span class="pre">...</span> <span class="pre">,</span> <span class="pre">'#2e7d32');</span></code></p></td>
+<td><p>Tests the conditions in order and returns the value for the first one that is true. The last value is the default</p></td>
+<td><p>Function</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">label</span> <span class="pre">=</span> <span class="pre">When(...);</span></code></p></td>
+<td><p>Does the same for the text label</p></td>
+<td><p>Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">};</span></code></p></td>
+<td><p>Builds a dictionary of display properties and hands it back to the indicator</p></td>
+<td><p>Return, dictionary</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">middleText:</span> <span class="pre">Text(n,</span> <span class="pre">'#,###')</span></code></p></td>
+<td><p>Converts the number to text and adds thousands separators</p></td>
+<td><p>Function, number pattern</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<details>
+<summary><b>Try it on paper, then click to check</b></summary>
+<p>If <code class="docutils literal notranslate"><span class="pre">n</span></code> is 27, what text and what color does the indicator show?</p>
+<p>The middle text is <code class="docutils literal notranslate"><span class="pre">27</span></code>, the bottom text is <code class="docutils literal notranslate"><span class="pre">Moderate</span> <span class="pre">activity</span></code>, and both use the amber color <code class="docutils literal notranslate"><span class="pre">#d98a00</span></code>, because 27 is at least 20 and below 50.</p>
+</details></section>
+<hr class="docutils" />
+<section id="a-starter-toolkit">
+<h2><span class="section-number">8.13. </span>A Starter Toolkit<a class="headerlink" href="#a-starter-toolkit" title="Link to this heading">#</a></h2>
+<p>Ten functions cover most of what you will write in Lab 7. Use Esri’s <a class="reference external" href="https://developers.arcgis.com/arcade/function-reference/">function reference</a> for the full list, and the information button next to any function in the editor for its syntax.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>You need to</p></th>
+<th class="head"><p>Function</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Turn a number or date into text with a pattern</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Text(n,</span> <span class="pre">'#,###')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Round a number</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Round</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Round(acres</span> <span class="pre">/</span> <span class="pre">1000,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Choose among several conditions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">When</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">When(a</span> <span class="pre">&gt;</span> <span class="pre">9,</span> <span class="pre">'High',</span> <span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">4,</span> <span class="pre">'Mid',</span> <span class="pre">'Low')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Choose between two outcomes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IIf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IIf(n</span> <span class="pre">&gt;</span> <span class="pre">40,</span> <span class="pre">'Fast',</span> <span class="pre">'Slow')</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Match values to labels</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Decode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Decode(alert,</span> <span class="pre">'GREEN',</span> <span class="pre">'Low',</span> <span class="pre">'RED',</span> <span class="pre">'Severe',</span> <span class="pre">'Unknown')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Measure time passed</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DateDiff</span></code>, <code class="docutils literal notranslate"><span class="pre">Now</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DateDiff(Now(),</span> <span class="pre">startDate,</span> <span class="pre">'days')</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Add an item to an array</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Push</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Push(rows,</span> <span class="pre">item)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Load a layer by item ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FeatureSetByPortalItem</span></code></p></td>
+<td><p>used in a data expression</p></td>
+</tr>
+<tr class="row-even"><td><p>Summarize groups of features</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GroupBy</span></code></p></td>
+<td><p>used in a data expression</p></td>
+</tr>
+<tr class="row-odd"><td><p>Show a value while debugging</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Console</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Console(n)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Text joins with <code class="docutils literal notranslate"><span class="pre">+</span></code>, so <code class="docutils literal notranslate"><span class="pre">'Fires</span> <span class="pre">in</span> <span class="pre">view:</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">Text(n)</span></code> builds a sentence.</p>
+<p>A caution about outside help: AI tools often suggest Arcade functions or dictionary keys that do not exist. Before you trust anything a tool suggests, find the function in the reference or run the expression in the editor.</p>
+</section>
+<hr class="docutils" />
+<section id="formatting-expressions-what-each-element-accepts">
+<h2><span class="section-number">8.14. </span>Formatting Expressions: What Each Element Accepts<a class="headerlink" href="#formatting-expressions-what-each-element-accepts" title="Link to this heading">#</a></h2>
+<p>Esri’s <a class="reference external" href="https://doc.arcgis.com/en/dashboards/latest/create-and-share/advanced-formatting.htm">advanced formatting page</a> is the reference for the full property lists. The main ideas are below.</p>
+<p><strong>Indicator.</strong> The expression returns a dictionary. The text sits in three bands (top, middle, bottom), and each band has its own text and color properties, with extra properties for outline, weight, and size. There are also properties for the overall text color and background color, an icon (you add the icon in the area below the editor, give it a name, and return that name as <code class="docutils literal notranslate"><span class="pre">iconName</span></code>), icon color and placement, and a <code class="docutils literal notranslate"><span class="pre">noValue</span></code> flag that shows “no value” text in place of the indicator. When you switch on advanced formatting, the element’s normal color and value-format settings turn off, so the expression has to do that work.</p>
+<p><strong>List.</strong> The expression runs once for each line item. It returns colors for the text, background, separator line, and selected state.</p>
+<p><strong>Table.</strong> The expression returns a <code class="docutils literal notranslate"><span class="pre">cells</span></code> dictionary with one entry for each column. Each cell needs <code class="docutils literal notranslate"><span class="pre">displayText</span></code> and can also set its own colors, alignment, and icon.</p>
+<p><strong>Your own attributes.</strong> Any expression can return an <code class="docutils literal notranslate"><span class="pre">attributes</span></code> dictionary. Whatever you put there can be reused in the element’s template, title, or captions by writing <code class="docutils literal notranslate"><span class="pre">{expression/yourName}</span></code>. This is how a list can show a computed size class next to each incident name.</p>
+<p><strong>Details that cause errors:</strong></p>
+<ul class="simple">
+<li><p>Colors must be strings: hex (<code class="docutils literal notranslate"><span class="pre">'#b8312f'</span></code>), <code class="docutils literal notranslate"><span class="pre">rgb(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">rgba(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">hsl(...)</span></code>, or <code class="docutils literal notranslate"><span class="pre">hsla(...)</span></code>.</p></li>
+<li><p>Put a comma after every property in the dictionary except the last one.</p></li>
+<li><p>Field names with spaces or special characters cannot be read, so use the name the Profile Variables panel gives you.</p></li>
+<li><p>Geometry functions are not available in list formatting.</p></li>
+<li><p>If your expression uses <code class="docutils literal notranslate"><span class="pre">Now()</span></code>, turn on the <strong>Refresh script</strong> setting and choose an interval so the result stays current.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="data-expressions-building-a-new-data-source">
+<h2><span class="section-number">8.15. </span>Data Expressions: Building a New Data Source<a class="headerlink" href="#data-expressions-building-a-new-data-source" title="Link to this heading">#</a></h2>
+<p>A data expression builds a new data source for an element. It always returns a <strong>FeatureSet</strong>, and elements can choose it in the data source window the same way they choose a layer. The usual pattern has two steps: load a layer by its item ID with <code class="docutils literal notranslate"><span class="pre">FeatureSetByPortalItem</span></code>, then transform it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FeatureSetByPortalItem</span></code> takes the portal address, the item ID, the sublayer number, a list of fields (<code class="docutils literal notranslate"><span class="pre">['*']</span></code> means all), and whether to include geometry. The item ID is in the web address of the item page, after <code class="docutils literal notranslate"><span class="pre">id=</span></code>. The sublayer number is the number at the end of the layer’s service address.</p>
+<p><strong>Example 1: summarize by group.</strong> This expression counts incidents and totals acres for each state. The result has one row per state, which makes it ready for a serial chart.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">FeatureSetByPortalItem</span><span class="p">(</span>
+  <span class="n">Portal</span><span class="p">(</span><span class="s1">&#39;https://www.arcgis.com&#39;</span><span class="p">),</span>
+  <span class="s1">&#39;YOUR_ITEM_ID&#39;</span><span class="p">,</span>     <span class="o">//</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">item</span> <span class="n">page</span> <span class="n">address</span><span class="p">,</span> <span class="n">after</span> <span class="nb">id</span><span class="o">=</span>
+  <span class="mi">0</span><span class="p">,</span>                  <span class="o">//</span> <span class="n">sublayer</span> <span class="n">number</span>
+  <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">],</span>
+  <span class="n">false</span>
+<span class="p">);</span>
+
+<span class="k">return</span> <span class="n">GroupBy</span><span class="p">(</span>
+  <span class="n">fs</span><span class="p">,</span>
+  <span class="p">[</span><span class="s1">&#39;POOState&#39;</span><span class="p">],</span>       <span class="o">//</span> <span class="n">the</span> <span class="n">field</span> <span class="n">to</span> <span class="n">group</span> <span class="n">by</span><span class="p">;</span> <span class="n">confirm</span> <span class="n">the</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">layer</span>
+  <span class="p">[</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;incidents&#39;</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">statistic</span><span class="p">:</span> <span class="s1">&#39;COUNT&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;total_acres&#39;</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="s1">&#39;IncidentSize&#39;</span><span class="p">,</span> <span class="n">statistic</span><span class="p">:</span> <span class="s1">&#39;SUM&#39;</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Example 2: derive a field the data never had.</strong> The layer has acres but no size class. A loop can build one. The loop reads each feature, decides its class, and collects the rows. The last line turns the collected rows into a FeatureSet.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">FeatureSetByPortalItem</span><span class="p">(</span>
+  <span class="n">Portal</span><span class="p">(</span><span class="s1">&#39;https://www.arcgis.com&#39;</span><span class="p">),</span> <span class="s1">&#39;YOUR_ITEM_ID&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">],</span> <span class="n">false</span>
+<span class="p">);</span>
+
+<span class="n">var</span> <span class="n">rows</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">var</span> <span class="n">acres</span> <span class="o">=</span> <span class="n">IIf</span><span class="p">(</span><span class="n">IsEmpty</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">IncidentSize</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">IncidentSize</span><span class="p">);</span>
+  <span class="n">var</span> <span class="n">sizeClass</span> <span class="o">=</span> <span class="n">When</span><span class="p">(</span>
+    <span class="n">acres</span> <span class="o">&gt;=</span> <span class="mi">10000</span><span class="p">,</span> <span class="s1">&#39;Major (10,000 acres or more)&#39;</span><span class="p">,</span>
+    <span class="n">acres</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;Large (1,000 to 9,999)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Small (under 1,000)&#39;</span>
+  <span class="p">);</span>
+  <span class="n">Push</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="p">{</span> <span class="n">attributes</span><span class="p">:</span> <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">IncidentName</span><span class="p">,</span> <span class="n">acres</span><span class="p">:</span> <span class="n">acres</span><span class="p">,</span> <span class="n">sizeClass</span><span class="p">:</span> <span class="n">sizeClass</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">var</span> <span class="n">out</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">fields</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;esriFieldTypeString&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;acres&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;esriFieldTypeDouble&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;sizeClass&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;esriFieldTypeString&#39;</span> <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="n">geometryType</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="n">features</span><span class="p">:</span> <span class="n">rows</span>
+<span class="p">};</span>
+
+<span class="k">return</span> <span class="n">FeatureSet</span><span class="p">(</span><span class="n">Text</span><span class="p">(</span><span class="n">out</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><strong>Things to know before you use one:</strong></p>
+<ul class="simple">
+<li><p>A FeatureSet built this way has no map geometry, so it can feed a chart, list, table, indicator, or selector. The map keeps using the web map’s own layers.</p></li>
+<li><p>Derived values exist only inside the dashboard. The thresholds are your decisions, so say what they are somewhere your audience can see.</p></li>
+<li><p>Both examples need a real item ID and real field names. The editor’s Run button shows the output table, so check it before you attach the expression to an element.</p></li>
+<li><p>Esri’s support article on <a class="reference external" href="https://support.esri.com/en-us/knowledge-base/how-to-calculate-the-mean-and-use-the-groupby-function--000027670">calculating a mean and using GroupBy in a dashboard table</a> shows the same pattern with a table element.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="c1"># A tiny made-up table that stands in for a layer (these are not real incidents)</span>
+<span class="n">incidents</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Fire A&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;NM&quot;</span><span class="p">,</span> <span class="s2">&quot;acres&quot;</span><span class="p">:</span> <span class="mi">12400</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Fire B&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;NM&quot;</span><span class="p">,</span> <span class="s2">&quot;acres&quot;</span><span class="p">:</span> <span class="mi">850</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Fire C&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;AZ&quot;</span><span class="p">,</span> <span class="s2">&quot;acres&quot;</span><span class="p">:</span> <span class="mi">3100</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Fire D&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;AZ&quot;</span><span class="p">,</span> <span class="s2">&quot;acres&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example Fire E&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span> <span class="s2">&quot;acres&quot;</span><span class="p">:</span> <span class="mi">15200</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="c1"># Data expression idea 1: derive a field the data never had (like the loop in Example 2)</span>
+<span class="k">def</span> <span class="nf">size_class</span><span class="p">(</span><span class="n">acres</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">acres</span> <span class="o">&gt;=</span> <span class="mi">10000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Major&quot;</span>
+    <span class="k">if</span> <span class="n">acres</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Large&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;Small&quot;</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incidents</span><span class="p">:</span>
+    <span class="n">row</span><span class="p">[</span><span class="s2">&quot;sizeClass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">size_class</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;acres&quot;</span><span class="p">])</span>
+
+<span class="c1"># Data expression idea 2: summarize by group (like GroupBy in Example 1)</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;incidents&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;total_acres&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incidents</span><span class="p">:</span>
+    <span class="n">summary</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]][</span><span class="s2">&quot;incidents&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">summary</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]][</span><span class="s2">&quot;total_acres&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;acres&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Derived field:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incidents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;16</span><span class="si">}{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;acres&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8,</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;sizeClass&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Grouped by state:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">summary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">  incidents=</span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;incidents&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">  total_acres=</span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;total_acres&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Try it: change a threshold and rerun. Which fire changes class? Who should get to decide where &#39;Major&#39; starts?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derived field:
+  Example Fire A    12,400  Major
+  Example Fire B       850  Small
+  Example Fire C     3,100  Large
+  Example Fire D        40  Small
+  Example Fire E    15,200  Major
+
+Grouped by state:
+  NM  incidents=2  total_acres=13,250
+  AZ  incidents=2  total_acres=3,140
+  CO  incidents=1  total_acres=15,200
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="working-habits-for-writing-arcade">
+<h2><span class="section-number">8.16. </span>Working Habits for Writing Arcade<a class="headerlink" href="#working-habits-for-writing-arcade" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Run early and often.</strong> Run after every small change. A short expression that works is a better base than a long one that fails.</p></li>
+<li><p><strong>Read the error before you change anything.</strong> The message usually names a line and a problem. Fix that one thing and run again.</p></li>
+<li><p><strong>Look at what you have.</strong> Open the Profile Variables panel to see the exact field and statistic names.</p></li>
+<li><p><strong>Log the middle.</strong> <code class="docutils literal notranslate"><span class="pre">Console(n)</span></code> shows what a variable holds at that point. When the result looks wrong, log the values that feed it.</p></li>
+<li><p><strong>Look it up.</strong> Check each unfamiliar function in the reference or the editor’s help entry.</p></li>
+<li><p><strong>Name and comment.</strong> Give each expression a title and a one-line comment that states its thresholds, so that you and your audience can see what it decides.</p></li>
+<li><p><strong>Verify outside help.</strong> If a person or a tool hands you an expression, run it and check every function and key against the reference before you rely on it.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
 <section id="where-arcade-fits-on-the-continuum">
-<h2><span class="section-number">9.11. </span>Where Arcade Fits on the Continuum<a class="headerlink" href="#where-arcade-fits-on-the-continuum" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.17. </span>Where Arcade Fits on the Continuum<a class="headerlink" href="#where-arcade-fits-on-the-continuum" title="Link to this heading">#</a></h2>
 <p>Last week’s continuum ended with a row for low-code customization of ArcGIS Online items. This week you move one row down. A dashboard still needs no code to build, and Arcade adds a small amount of code in exactly the places where configuration alone cannot do what you need.</p>
 <p>Arcade is also used well beyond dashboards. Esri’s <strong>Introduction to ArcGIS Arcade</strong> course walks through three common workflows: formatting complex labels, creating informative pop-ups, and visualizing features based on an expression. The expressions you learn there carry over to dashboard elements, and that course is the content reference for Lab 7.</p>
 </section>
 <hr class="docutils" />
 <section id="in-class-exercise-finish-the-fire-dashboard">
-<h2><span class="section-number">9.12. </span>In-Class Exercise: Finish the Fire Dashboard<a class="headerlink" href="#in-class-exercise-finish-the-fire-dashboard" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.18. </span>In-Class Exercise: Finish the Fire Dashboard<a class="headerlink" href="#in-class-exercise-finish-the-fire-dashboard" title="Link to this heading">#</a></h2>
 <p>Work in your breakout group to complete the unfinished copy of the fire dashboard and a set of step cards.</p>
 <ol class="arabic simple">
 <li><p><strong>Make a copy.</strong> Use the create link and the item ID to open your own copy. Save it with your initials.</p></li>
@@ -815,33 +1105,137 @@ return {
 </section>
 <hr class="docutils" />
 <section id="wednesday-practice-recommended-ungraded">
-<h2><span class="section-number">9.13. </span>Wednesday Practice (recommended, ungraded)<a class="headerlink" href="#wednesday-practice-recommended-ungraded" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.19. </span>Wednesday Practice (recommended, ungraded)<a class="headerlink" href="#wednesday-practice-recommended-ungraded" title="Link to this heading">#</a></h2>
 <p>Plan on about 45 minutes. Choose one path.</p>
 <ul class="simple">
 <li><p><strong>Path A: finish the wildfire dashboard.</strong> Work through Esri’s tutorial for building a wildfire dashboard, filling in anything you did not reach in class. <a class="reference external" href="https://learn.arcgis.com/en/projects/make-a-dashboard-to-monitor-wildfires/">Tutorial Link</a></p></li>
 <li><p><strong>Path B: copy and swap.</strong> Work through Esri’s tutorial for configuring a dashboard from a template, which uses the item ID technique and the data source window. <a class="reference external" href="https://learn.arcgis.com/en/projects/configure-a-dashboard-from-a-template/">Tutorial Link</a></p></li>
 <li><p><strong>Path C: first Arcade steps.</strong> Read Esri’s blog post <a class="reference external" href="https://www.esri.com/arcgis-blog/products/ops-dashboard/real-time/getting-started-with-arcade-in-arcgis-dashboards">Getting started with Arcade in ArcGIS Dashboards</a>, then make one small change to an expression your instructor provides, such as changing a threshold or a color.</p></li>
+<li><p><strong>Path D: go deeper on Arcade (optional).</strong> Esri’s <em>Introduction to ArcGIS Arcade</em> course has short exercises on labels, pop-ups, and expressions that read from other layers. They run in Map Viewer, not Dashboards, so they build the same skills in a different place. Pick one exercise, then notice which parts of the expression would carry over to a dashboard element.</p></li>
 </ul>
 <p>During class, be prepared to share a quick reflection on <strong>one muddiest point</strong>: the thing you would most like explained again on Thursday. Short and specific is best.</p>
 </section>
 <hr class="docutils" />
+<section id="thursday-in-class-arcade-cards">
+<h2><span class="section-number">8.20. </span>Thursday In-Class: Arcade Cards<a class="headerlink" href="#thursday-in-class-arcade-cards" title="Link to this heading">#</a></h2>
+<p>Work in your breakout group, inside <strong>your own copy of Tuesday’s dashboard</strong> (the one saved with your initials). Do the cards in order. Card 4 is for groups that finish early. Record your answers in the shared document.</p>
+<section id="card-1-tour-the-editor-about-3-minutes">
+<h3><span class="section-number">8.20.1. </span>Card 1: Tour the editor (about 3 minutes)<a class="headerlink" href="#card-1-tour-the-editor-about-3-minutes" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Open your indicator’s settings, go to the <strong>Indicator</strong> tab, and click <strong>Enable</strong> under Advanced formatting. The Arcade editor opens.</p></li>
+<li><p>Click <strong>Run</strong>.</p></li>
+<li><p>In the side panel, open <strong>Profile Variables</strong> and expand <code class="docutils literal notranslate"><span class="pre">$datapoint</span></code>.</p></li>
+<li><p>Open <strong>Functions</strong> and search for <code class="docutils literal notranslate"><span class="pre">Text</span></code>, then for <code class="docutils literal notranslate"><span class="pre">Console</span></code>.</p></li>
+</ol>
+<p><em>Record:</em> What is the exact name of the value your indicator counts? What did Run show?</p>
+</section>
+<section id="card-2-paste-and-change-about-5-minutes">
+<h3><span class="section-number">8.20.2. </span>Card 2: Paste and change (about 5 minutes)<a class="headerlink" href="#card-2-paste-and-change-about-5-minutes" title="Link to this heading">#</a></h3>
+<p>Replace the editor’s contents with this expression. Swap in the name you found in Card 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Indicator: wildfire activity
+var n = $datapoint.count_IncidentName;
+var color = When(n &gt;= 50, &#39;#b8312f&#39;, n &gt;= 20, &#39;#d98a00&#39;, &#39;#2e7d32&#39;);
+var label = When(n &gt;= 50, &#39;High activity&#39;, n &gt;= 20, &#39;Moderate activity&#39;, &#39;Low activity&#39;);
+
+return {
+  topText: &#39;Current wildfires in view&#39;,
+  middleText: Text(n, &#39;#,###&#39;),
+  middleTextColor: color,
+  bottomText: label,
+  bottomTextColor: color
+};
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Run it, then click <strong>Done</strong>.</p></li>
+<li><p>Change the middle threshold from 20 to 5 and run again.</p></li>
+<li><p>Add a fourth level, <code class="docutils literal notranslate"><span class="pre">Extreme</span></code>, for 100 or more, with its own color.</p></li>
+<li><p>Change the bottom text so it reads like <code class="docutils literal notranslate"><span class="pre">Moderate</span> <span class="pre">activity</span> <span class="pre">(27</span> <span class="pre">fires)</span></code>, using <code class="docutils literal notranslate"><span class="pre">+</span></code> to join the label to <code class="docutils literal notranslate"><span class="pre">Text(n)</span></code>.</p></li>
+<li><p>Move the map and watch the indicator.</p></li>
+</ol>
+<p><em>Record:</em> What changed on the dashboard, and what stayed the same?</p>
+</section>
+<section id="card-3-fix-it-about-5-minutes">
+<h3><span class="section-number">8.20.3. </span>Card 3: Fix it (about 5 minutes)<a class="headerlink" href="#card-3-fix-it-about-5-minutes" title="Link to this heading">#</a></h3>
+<p>This expression has three errors. Run it after each fix and read the message before you change anything.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var n = $datapoint.count_IncidentName
+var color = When(n &gt;= 50, #b8312f, n &gt;= 20, &#39;#d98a00&#39;, &#39;#2e7d32&#39;);
+
+return {
+  topText: &#39;Current wildfires in view&#39;
+  middleText: Text(n, &#39;#,###&#39;),
+  middleTextColor: colour,
+  bottomText: &#39;Fires in view&#39;
+};
+</pre></div>
+</div>
+<p>When it works, add <code class="docutils literal notranslate"><span class="pre">Console(n);</span></code> on a new line after the first one, run it, and find the <strong>Console</strong> tab.</p>
+<p><em>Record:</em> Which errors did you find, and what in the editor’s message pointed you to each one?</p>
+</section>
+<section id="card-4-list-it-early-finishers-about-5-minutes">
+<h3><span class="section-number">8.20.4. </span>Card 4: List it (early finishers, about 5 minutes)<a class="headerlink" href="#card-4-list-it-early-finishers-about-5-minutes" title="Link to this heading">#</a></h3>
+<p>Open your list element, go to the <strong>List</strong> tab, and enable advanced formatting. Paste this expression, then swap in your acres field name from the Profile Variables panel.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var acres = $datapoint.CalculatedAcres;   // use the acres field your chart uses
+var sizeClass = When(acres &gt;= 10000, &#39;Major&#39;, acres &gt;= 1000, &#39;Large&#39;, &#39;Small&#39;);
+var shade = When(acres &gt;= 10000, &#39;#F3DED7&#39;, acres &gt;= 1000, &#39;#FBEFD5&#39;, &#39;&#39;);
+
+return {
+  backgroundColor: shade,
+  attributes: {
+    sizeClass: sizeClass
+  }
+};
+</pre></div>
+</div>
+<p>Then set the list’s template to show the incident name and the new attribute, for example <code class="docutils literal notranslate"><span class="pre">{IncidentName}</span> <span class="pre">({expression/sizeClass})</span></code>.</p>
+<p><em>Record:</em> Which rows are shaded? Do the thresholds seem right for this data, and who should decide?</p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="looking-ahead-lab-7">
-<h2><span class="section-number">9.14. </span>Looking Ahead: Lab 7<a class="headerlink" href="#looking-ahead-lab-7" title="Link to this heading">#</a></h2>
-<p>Lab 7 is a semi-open dashboard build. You will choose a data source, build a dashboard with required components, and add one Arcade customization at a level you choose. Thursday’s session introduces the lab and works through an Arcade expression together. The full lab instructions will be on the Lab 7 page.</p>
+<h2><span class="section-number">8.21. </span>Looking Ahead: Lab 7<a class="headerlink" href="#looking-ahead-lab-7" title="Link to this heading">#</a></h2>
+<p>Lab 7 is a semi-open dashboard build. You choose a data option (current wildfires, recent earthquakes, or your own layer), build a dashboard with required elements that talk to each other, and add Arcade at the level you choose. Thursday’s session introduces the lab and works through Arcade together.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tier</p></th>
+<th class="head"><p>What you write</p></th>
+<th class="head"><p>What it adds to the dashboard</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1 (required)</strong></p></td>
+<td><p>A formatting expression on an indicator, list, or table</p></td>
+<td><p>Color, text, or an icon that responds to the values</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
+<td><p>A data expression that uses <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code></p></td>
+<td><p>A summary by group, such as acres by state, that feeds a chart or list</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p>A data expression with a loop</p></td>
+<td><p>A new field the data never had, such as a size or severity class</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A working Tier 2 or Tier 3 expression puts your Arcade work in the top band of the rubric. The full instructions are on the Lab 7 page.</p>
 </section>
 <hr class="docutils" />
 <section id="readings-resources">
-<h2><span class="section-number">9.15. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.22. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Esri, <a class="reference external" href="https://doc.arcgis.com/en/dashboards/">ArcGIS Dashboards documentation</a>: the primary reference for elements, layouts, themes, and tutorials</p></li>
 <li><p>Esri, <strong>Introduction to ArcGIS Arcade</strong> (<a class="reference external" href="https://www.esri.com/en-us/training/catalog/6010a52b03ffb92c80d3d356/introduction-to-arcgis-arcade">https://www.esri.com/en-us/training/catalog/6010a52b03ffb92c80d3d356/introduction-to-arcgis-arcade</a>): the content reference for Lab 7</p></li>
 <li><p>Esri, <a class="reference external" href="https://developers.arcgis.com/arcade/">ArcGIS Arcade documentation</a>: the function reference and profiles</p></li>
+<li><p>Esri, <a class="reference external" href="https://doc.arcgis.com/en/dashboards/latest/create-and-share/advanced-formatting.htm">Use advanced formatting</a>: the property lists for indicator, list, and table formatting expressions</p></li>
+<li><p>Esri, <a class="reference external" href="https://developers.arcgis.com/arcade/function-reference/">Arcade function reference</a> and <a class="reference external" href="https://developers.arcgis.com/arcade/playground/">Arcade Playground</a>: look up functions and test logic</p></li>
+<li><p>Esri Support, <a class="reference external" href="https://support.esri.com/en-us/knowledge-base/how-to-calculate-the-mean-and-use-the-groupby-function--000027670">Calculate the mean and use GroupBy in ArcGIS Dashboards</a>: a worked data expression</p></li>
 <li><p>Esri Blog, <a class="reference external" href="https://www.esri.com/arcgis-blog/products/ops-dashboard/real-time/getting-started-with-arcade-in-arcgis-dashboards">Getting started with Arcade in ArcGIS Dashboards</a></p></li>
 <li><p>Esri Community, <a class="reference external" href="https://community.esri.com/en/discussion/888765/how-did-they-make-that-dashboard">How did they make that dashboard?</a></p></li>
 <li><p><a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines overview</a>: general accessibility background</p></li>
 </ul>
 <hr class="docutils" />
-<p><em>Attribution: This page summarizes ideas from Esri’s ArcGIS Dashboards documentation and tutorials and the Esri Training course Introduction to ArcGIS Arcade, and points to them for the full explanations. All Esri text, exercises, and images belong to Esri and are not reproduced here. This page is an independent teaching resource and is not affiliated with or endorsed by Esri. ArcGIS, ArcGIS Dashboards, and Arcade are trademarks of Esri.</em></p>
+<p><em>Attribution: This page summarizes and paraphrases ideas from Esri’s ArcGIS Dashboards documentation, the Arcade documentation, and the Esri Training course Introduction to ArcGIS Arcade, and points to them for the full explanations. The code examples are original teaching examples that use the property names and function patterns those resources document. All Esri text, exercises, and images belong to Esri and are not reproduced here. This page is an independent teaching resource and is not affiliated with or endorsed by Esri. ArcGIS, ArcGIS Dashboards, and Arcade are trademarks of Esri.</em></p>
 </section>
 </section>
 
@@ -881,7 +1275,7 @@ return {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>ArcGIS Experience Builder</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>ArcGIS Experience Builder</p>
       </div>
     </a>
     <a class="right-next"
@@ -909,21 +1303,34 @@ return {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">9.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">9.2. How to Use This Page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-experience-to-dashboard">9.3. From Experience to Dashboard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dashboard-for">9.4. What Is a Dashboard For?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parts-of-a-dashboard">9.5. The Parts of a Dashboard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actions-how-elements-talk-to-each-other">9.6. Actions: How Elements Talk to Each Other</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-access">9.7. Design and Access</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-a-dashboard-from-its-item-id">9.8. Copying a Dashboard from Its Item ID</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-look-at-arcade">9.9. A First Look at Arcade</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arcade-and-the-javascript-you-know">9.10. Arcade and the JavaScript You Know</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-arcade-fits-on-the-continuum">9.11. Where Arcade Fits on the Continuum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-finish-the-fire-dashboard">9.12. In-Class Exercise: Finish the Fire Dashboard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wednesday-practice-recommended-ungraded">9.13. Wednesday Practice (recommended, ungraded)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">9.14. Looking Ahead: Lab 7</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">9.15. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">8.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">8.2. How to Use This Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-experience-to-dashboard">8.3. From Experience to Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dashboard-for">8.4. What Is a Dashboard For?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parts-of-a-dashboard">8.5. The Parts of a Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actions-how-elements-talk-to-each-other">8.6. Actions: How Elements Talk to Each Other</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-access">8.7. Design and Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-a-dashboard-from-its-item-id">8.8. Copying a Dashboard from Its Item ID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-look-at-arcade">8.9. A First Look at Arcade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arcade-and-the-javascript-you-know">8.10. Arcade and the JavaScript You Know</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-arcade-expression">8.11. Anatomy of an Arcade Expression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-an-expression-one-line-at-a-time">8.12. Reading an Expression One Line at a Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-starter-toolkit">8.13. A Starter Toolkit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-expressions-what-each-element-accepts">8.14. Formatting Expressions: What Each Element Accepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-expressions-building-a-new-data-source">8.15. Data Expressions: Building a New Data Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-habits-for-writing-arcade">8.16. Working Habits for Writing Arcade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-arcade-fits-on-the-continuum">8.17. Where Arcade Fits on the Continuum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-finish-the-fire-dashboard">8.18. In-Class Exercise: Finish the Fire Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wednesday-practice-recommended-ungraded">8.19. Wednesday Practice (recommended, ungraded)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday-in-class-arcade-cards">8.20. Thursday In-Class: Arcade Cards</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor-about-3-minutes">8.20.1. Card 1: Tour the editor (about 3 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change-about-5-minutes">8.20.2. Card 2: Paste and change (about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-fix-it-about-5-minutes">8.20.3. Card 3: Fix it (about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-list-it-early-finishers-about-5-minutes">8.20.4. Card 4: List it (early finishers, about 5 minutes)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">8.21. Looking Ahead: Lab 7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">8.22. Readings &amp; Resources</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. ArcGIS Experience Builder &#8212; WebMapping &amp; Web GIS</title>
+    <title>7. ArcGIS Experience Builder &#8212; WebMapping &amp; Web GIS</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9. ArcGIS Dashboards and Arcade" href="09_dashboards_arcade.html" />
-    <link rel="prev" title="7. Proprietary App Builders &amp; SDKs" href="../foundations/07_app_builders.html" />
+    <link rel="next" title="8. ArcGIS Dashboards and Arcade" href="09_dashboards_arcade.html" />
+    <link rel="prev" title="6. MapLibre GL JS" href="../foundations/06_javascript_maplibre.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,12 +200,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../foundations/05_javascript_leaflet.html">5. JavaScript &amp; Leaflet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../foundations/06_javascript_maplibre.html">6. MapLibre GL JS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../foundations/07_app_builders.html">7. Proprietary App Builders &amp; SDKs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. ArcGIS Experience Builder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_dashboards_arcade.html">9. ArcGIS Dashboards and Arcade</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. ArcGIS Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_dashboards_arcade.html">8. ArcGIS Dashboards and Arcade</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -223,6 +222,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../labs/lab_05_javascript_maplibre.html">Lab 5</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../labs/lab_06_experience_builder.html">Lab 6</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_07_dashboards_arcade.html">Lab 7</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
@@ -507,23 +508,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">8.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">8.2. How to Use This Page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-hand-built-to-experience-builder">8.3. From Hand-Built to Experience Builder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-before-you-build">8.4. Plan Before You Build</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-for-people">8.4.1. Design for People</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">7.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">7.2. How to Use This Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-hand-built-to-experience-builder">7.3. From Hand-Built to Experience Builder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-before-you-build">7.4. Plan Before You Build</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-for-people">7.4.1. Design for People</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builder-basics-offerings-modes-templates-and-pages">8.5. Builder Basics: Offerings, Modes, Templates, and Pages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-actions">8.6. Widgets and Actions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#themes-and-customizing">8.7. Themes and Customizing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying-and-iterating">8.8. Deploying and Iterating</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-continuum-how-much-do-you-want-to-build">8.9. The Continuum: How Much Do You Want to Build?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">8.9.1. 5-minute discussion (breakout or whole-class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builder-basics-offerings-modes-templates-and-pages">7.5. Builder Basics: Offerings, Modes, Templates, and Pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-actions">7.6. Widgets and Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#themes-and-customizing">7.7. Themes and Customizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying-and-iterating">7.8. Deploying and Iterating</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-continuum-how-much-do-you-want-to-build">7.9. The Continuum: How Much Do You Want to Build?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">7.9.1. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-gallery-walk">8.10. In-Class Exercise: Gallery Walk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">8.11. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-gallery-walk">7.10. In-Class Exercise: Gallery Walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">7.11. Readings &amp; Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -536,11 +537,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="arcgis-experience-builder">
-<h1><span class="section-number">8. </span>ArcGIS Experience Builder<a class="headerlink" href="#arcgis-experience-builder" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>ArcGIS Experience Builder<a class="headerlink" href="#arcgis-experience-builder" title="Link to this heading">#</a></h1>
 <p><strong>Week 8 | Lecture + Lab 6: Building a Web App Without Code</strong></p>
 <hr class="docutils" />
 <section id="learning-objectives">
-<h2><span class="section-number">8.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this unit, you will be able to:</p>
 <ul class="simple">
 <li><p>Explain how Experience Builder relates to the maps we’ve built throughout the course.</p></li>
@@ -551,12 +552,12 @@ document.write(`
 </ul>
 </section>
 <section id="how-to-use-this-page">
-<h2><span class="section-number">8.2. </span>How to Use This Page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>How to Use This Page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h2>
 <p>The primary text for this week is Esri’s free course, <strong>ArcGIS Experience Builder Basics</strong> (<a class="reference external" href="https://www.esri.com/en-us/training/catalog/6982495a2080b4324eb73a38/arc-gis-experience-builder-basics">course link</a>). This page explains how the ideas connect to what you have already built with a pointer to the part of the Esri course where the full explanation lives. Read the Esri pages for detail, and use this page to see how the pieces fit together.</p>
 </section>
 <hr class="docutils" />
 <section id="from-hand-built-to-experience-builder">
-<h2><span class="section-number">8.3. </span>From Hand-Built to Experience Builder<a class="headerlink" href="#from-hand-built-to-experience-builder" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>From Hand-Built to Experience Builder<a class="headerlink" href="#from-hand-built-to-experience-builder" title="Link to this heading">#</a></h2>
 <p>For seven weeks you have built maps by writing or configuring each piece yourself. Experience Builder gives you prebuilt versions of many of those pieces and lets you assemble them by dragging and configuring. The architecture underneath has not changed: data sits on a server, and a browser client asks for it and draws it. What changes is how much of the client you author.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -592,12 +593,12 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="plan-before-you-build">
-<h2><span class="section-number">8.4. </span>Plan Before You Build<a class="headerlink" href="#plan-before-you-build" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Plan Before You Build<a class="headerlink" href="#plan-before-you-build" title="Link to this heading">#</a></h2>
 <p>Esri organizes the work into six steps: <strong>Plan, Design, Configure, Customize, Deploy, Iterate</strong>. The last three loop back on each other, so an app is revisited after launch and never finished once.</p>
 <p>Planning starts with two questions: what problem is this app meant to solve, and who will use it? Everything else follows from those answers, including which widgets you need, which devices matter, and what data your audience is actually allowed to see. An app built without a clear purpose tends to collect features nobody asked for, and an app built without a clear audience tends to work for its builder only.</p>
 <p>A useful planning habit is to write the answers down and keep them within reach while you build, then sketch a rough wireframe of the pages. The wireframe is a starting point that you expect to change.</p>
 <section id="design-for-people">
-<h3><span class="section-number">8.4.1. </span>Design for People<a class="headerlink" href="#design-for-people" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.4.1. </span>Design for People<a class="headerlink" href="#design-for-people" title="Link to this heading">#</a></h3>
 <p>Three design decisions shape how an app feels to use:</p>
 <ul class="simple">
 <li><p><strong>User experience and accessibility.</strong> Can someone find what they need without instructions? Do images have text descriptions, can the app be used with a screen reader, and does the color scheme work for people with color vision differences?</p></li>
@@ -608,7 +609,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="builder-basics-offerings-modes-templates-and-pages">
-<h2><span class="section-number">8.5. </span>Builder Basics: Offerings, Modes, Templates, and Pages<a class="headerlink" href="#builder-basics-offerings-modes-templates-and-pages" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Builder Basics: Offerings, Modes, Templates, and Pages<a class="headerlink" href="#builder-basics-offerings-modes-templates-and-pages" title="Link to this heading">#</a></h2>
 <p>You will use the <strong>ArcGIS Online</strong> offering in this course. Experience Builder also ships with <strong>ArcGIS Enterprise</strong> (which can include custom widgets made by your organization) and as a locally installed <strong>developer edition</strong> (which lets you build custom themes and widgets). The further you move toward the developer edition, the more control you gain and the more setup and skill you need.</p>
 <p>When you create an experience you choose a <strong>mode</strong>. Full mode starts from a blank page or a template and supports multiple pages and windows. Express mode is a streamlined, single-page starting point. You can move from express to full mode, but not back, so choose with that in mind.</p>
 <p><strong>Templates</strong> are layouts with placeholder widgets for common cases such as dashboards, map tours, and timelines. A <strong>page</strong> holds your widgets, and an experience can have several. You will meet the interface panel by panel during the lab, so skim the Esri interface overview now and expect it to make more sense once you have the builder open.</p>
@@ -616,7 +617,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="widgets-and-actions">
-<h2><span class="section-number">8.6. </span>Widgets and Actions<a class="headerlink" href="#widgets-and-actions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>Widgets and Actions<a class="headerlink" href="#widgets-and-actions" title="Link to this heading">#</a></h2>
 <p><strong>Widgets</strong> are the building blocks of an experience. They fall into categories by purpose: map-centric, data-centric, page element, menu and toolbar, layout, and section. Layout and section widgets mostly hold and organize other widgets, which is part of how an experience adapts to different screens.</p>
 <p>Each widget is set up through up to three parts:</p>
 <ul class="simple">
@@ -629,7 +630,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="themes-and-customizing">
-<h2><span class="section-number">8.7. </span>Themes and Customizing<a class="headerlink" href="#themes-and-customizing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Themes and Customizing<a class="headerlink" href="#themes-and-customizing" title="Link to this heading">#</a></h2>
 <p>A <strong>theme</strong> is a shared set of design choices (colors, fonts, button styles) applied across the experience. You can override the theme on any page, widget, or element. If that sounds like CSS, it should: a general rule sets the default, and a more specific rule wins. Themes also make it easier to keep several experiences looking alike inside one organization.</p>
 <p>Customizing covers two things: functionality (adding actions that make the app easier to use) and visuals (images, theme, typeface). Configuring gets the features working. Customizing makes them usable.</p>
 <p><strong>Live in this notebook:</strong> the cell below uses the CSS you learned in Week 4 to mimic a theme with one override. The general rule styles every button, and the more specific rule wins for the one button that carries the extra class.</p>
@@ -683,14 +684,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="deploying-and-iterating">
-<h2><span class="section-number">8.8. </span>Deploying and Iterating<a class="headerlink" href="#deploying-and-iterating" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.8. </span>Deploying and Iterating<a class="headerlink" href="#deploying-and-iterating" title="Link to this heading">#</a></h2>
 <p>Esri’s deployment sequence is <strong>preview, update sharing, deploy, test, refine</strong>. Two points matter most.</p>
 <p>First, <strong>sharing has a floor.</strong> An experience and every web map and data source it uses must be shared at the same level or wider. The four levels are public (anyone with the link), organization (members of your ArcGIS Online organization), group (members of a chosen group), and owner (only you). Publishing an experience at one level while its data sits at a narrower level is a common reason an app opens for its builder and fails for everyone else.</p>
 <p>Second, <strong>test like a visitor.</strong> After publishing, open the app with a different account and on a different device. Preview inside the builder cannot show you what a stranger sees.</p>
 </section>
 <hr class="docutils" />
 <section id="the-continuum-how-much-do-you-want-to-build">
-<h2><span class="section-number">8.9. </span>The Continuum: How Much Do You Want to Build?<a class="headerlink" href="#the-continuum-how-much-do-you-want-to-build" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.9. </span>The Continuum: How Much Do You Want to Build?<a class="headerlink" href="#the-continuum-how-much-do-you-want-to-build" title="Link to this heading">#</a></h2>
 <p>Experience Builder is one point on a longer line. This course has covered both ends of it.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -731,7 +732,7 @@ document.write(`
 </div>
 <p>This week only the first row is hands-on. The others are named so you can see where each choice leads. Moving down the table buys control and costs skill, setup, and time. Moving up the table buys speed and polish and costs flexibility. Neither direction is correct in general, and the right choice depends on the audience and the team.</p>
 <section id="minute-discussion-breakout-or-whole-class">
-<h3><span class="section-number">8.9.1. </span>5-minute discussion (breakout or whole-class)<a class="headerlink" href="#minute-discussion-breakout-or-whole-class" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.9.1. </span>5-minute discussion (breakout or whole-class)<a class="headerlink" href="#minute-discussion-breakout-or-whole-class" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Think of an organization with no developer on staff. What does a no-code builder make possible for them, and what does it quietly decide on their behalf?</p></li>
 <li><p>Picture a published app that works for you and shows a blank map to a visitor. List every cause you can think of, and say how you would test for each.</p></li>
@@ -740,7 +741,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="in-class-exercise-gallery-walk">
-<h2><span class="section-number">8.10. </span>In-Class Exercise: Gallery Walk<a class="headerlink" href="#in-class-exercise-gallery-walk" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.10. </span>In-Class Exercise: Gallery Walk<a class="headerlink" href="#in-class-exercise-gallery-walk" title="Link to this heading">#</a></h2>
 <p>Work in small groups. Open the <a class="reference external" href="https://doc.arcgis.com/en/experience-builder/gallery/">Experience Builder gallery</a> and choose two experiences in a field you care about (zoology, statistics, community planning, or something else). For each one, answer these in the shared worksheet:</p>
 <ol class="arabic simple">
 <li><p><strong>Purpose and audience:</strong> In one sentence, what problem does it solve, and who is it for? What on the page told you?</p></li>
@@ -754,7 +755,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="readings-resources">
-<h2><span class="section-number">8.11. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.11. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Esri, <strong>ArcGIS Experience Builder Basics</strong> (<a class="reference external" href="https://www.esri.com/en-us/training/catalog/6982495a2080b4324eb73a38/arc-gis-experience-builder-basics">course link</a>): the primary reading and the source of the Lab 6 exercises</p></li>
 <li><p><a class="reference external" href="https://doc.arcgis.com/en/experience-builder/">ArcGIS Experience Builder documentation</a></p></li>
@@ -797,12 +798,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../foundations/07_app_builders.html"
+       href="../foundations/06_javascript_maplibre.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Proprietary App Builders &amp; SDKs</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>MapLibre GL JS</p>
       </div>
     </a>
     <a class="right-next"
@@ -810,7 +811,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>ArcGIS Dashboards and Arcade</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>ArcGIS Dashboards and Arcade</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -830,23 +831,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">8.1. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">8.2. How to Use This Page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-hand-built-to-experience-builder">8.3. From Hand-Built to Experience Builder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-before-you-build">8.4. Plan Before You Build</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-for-people">8.4.1. Design for People</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">7.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">7.2. How to Use This Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-hand-built-to-experience-builder">7.3. From Hand-Built to Experience Builder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-before-you-build">7.4. Plan Before You Build</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-for-people">7.4.1. Design for People</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builder-basics-offerings-modes-templates-and-pages">8.5. Builder Basics: Offerings, Modes, Templates, and Pages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-actions">8.6. Widgets and Actions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#themes-and-customizing">8.7. Themes and Customizing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying-and-iterating">8.8. Deploying and Iterating</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-continuum-how-much-do-you-want-to-build">8.9. The Continuum: How Much Do You Want to Build?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">8.9.1. 5-minute discussion (breakout or whole-class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builder-basics-offerings-modes-templates-and-pages">7.5. Builder Basics: Offerings, Modes, Templates, and Pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-actions">7.6. Widgets and Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#themes-and-customizing">7.7. Themes and Customizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying-and-iterating">7.8. Deploying and Iterating</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-continuum-how-much-do-you-want-to-build">7.9. The Continuum: How Much Do You Want to Build?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">7.9.1. 5-minute discussion (breakout or whole-class)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-gallery-walk">8.10. In-Class Exercise: Gallery Walk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">8.11. Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-gallery-walk">7.10. In-Class Exercise: Gallery Walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">7.11. Readings &amp; Resources</a></li>
 </ul>
   </nav></div>
 
