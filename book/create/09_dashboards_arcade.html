@@ -530,8 +530,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday-in-class-arcade-cards">8.20. Thursday In-Class: Arcade Cards</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor-about-3-minutes">8.20.1. Card 1: Tour the editor (about 3 minutes)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change-about-5-minutes">8.20.2. Card 2: Paste and change (about 5 minutes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-fix-it-about-5-minutes">8.20.3. Card 3: Fix it (about 5 minutes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-list-it-early-finishers-about-5-minutes">8.20.4. Card 4: List it (early finishers, about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-serial-chart-update">8.20.3. Card 3: Serial Chart Update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-add-a-custom-list-element-early-finishers-about-5-minutes">8.20.4. Card 4: Add a custom list element (early finishers, about 5 minutes)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">8.21. Looking Ahead: Lab 7</a></li>
@@ -723,7 +723,7 @@ document.write(`
 </div>
 <p>Formatting is the easiest place to start. Say an indicator shows the number of current wildfires, and you want the number to turn red when the count is high. A formatting expression looks at the value, makes a decision, and returns the colors and text to display. Esri’s advanced formatting page lists the property names an indicator accepts, and the expression below uses real ones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Arcade formatting expression for an indicator
-var n = $datapoint.count_IncidentName;   // confirm this name in the Profile Variables panel
+var n = $datapoint.count_COUNT_OBJECTID;  
 var color = When(n &gt;= 50, &#39;#b8312f&#39;, n &gt;= 20, &#39;#d98a00&#39;, &#39;#2e7d32&#39;);
 var label = When(n &gt;= 50, &#39;High activity&#39;, n &gt;= 20, &#39;Moderate activity&#39;, &#39;Low activity&#39;);
 
@@ -1133,7 +1133,7 @@ Grouped by state:
 <h3><span class="section-number">8.20.2. </span>Card 2: Paste and change (about 5 minutes)<a class="headerlink" href="#card-2-paste-and-change-about-5-minutes" title="Link to this heading">#</a></h3>
 <p>Replace the editor’s contents with this expression. Swap in the name you found in Card 1.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Indicator: wildfire activity
-var n = $datapoint.count_IncidentName;
+var n = $datapoint.[CHANGE THIS TO THE CORRECT FieldName];
 var color = When(n &gt;= 50, &#39;#b8312f&#39;, n &gt;= 20, &#39;#d98a00&#39;, &#39;#2e7d32&#39;);
 var label = When(n &gt;= 50, &#39;High activity&#39;, n &gt;= 20, &#39;Moderate activity&#39;, &#39;Low activity&#39;);
 
@@ -1147,6 +1147,7 @@ return {
 </pre></div>
 </div>
 <ol class="arabic simple">
+<li><p>Change the correct field name to <code class="docutils literal notranslate"><span class="pre">.count_OBJECTID</span></code> for the variable n</p></li>
 <li><p>Run it, then click <strong>Done</strong>.</p></li>
 <li><p>Change the middle threshold from 20 to 5 and run again.</p></li>
 <li><p>Add a fourth level, <code class="docutils literal notranslate"><span class="pre">Extreme</span></code>, for 100 or more, with its own color.</p></li>
@@ -1155,26 +1156,57 @@ return {
 </ol>
 <p><em>Record:</em> What changed on the dashboard, and what stayed the same?</p>
 </section>
-<section id="card-3-fix-it-about-5-minutes">
-<h3><span class="section-number">8.20.3. </span>Card 3: Fix it (about 5 minutes)<a class="headerlink" href="#card-3-fix-it-about-5-minutes" title="Link to this heading">#</a></h3>
-<p>This expression has three errors. Run it after each fix and read the message before you change anything.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var n = $datapoint.count_IncidentName
-var color = When(n &gt;= 50, #b8312f, n &gt;= 20, &#39;#d98a00&#39;, &#39;#2e7d32&#39;);
+<section id="card-3-serial-chart-update">
+<h3><span class="section-number">8.20.3. </span>Card 3: Serial Chart Update<a class="headerlink" href="#card-3-serial-chart-update" title="Link to this heading">#</a></h3>
+<p>We can update our serial chart by creating a new custom feature set to call on. Run this example within the Serial Chart to build an updated chart.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">FeatureSetByPortalItem</span><span class="p">(</span>
+  <span class="n">Portal</span><span class="p">(</span><span class="s1">&#39;https://www.arcgis.com&#39;</span><span class="p">),</span>
+  <span class="s1">&#39;d957997ccee7408287a963600a77f61f&#39;</span><span class="p">,</span>
+  <span class="mi">0</span><span class="p">,</span>
+  <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">],</span>
+  <span class="n">false</span>
+<span class="p">);</span>
 
-return {
-  topText: &#39;Current wildfires in view&#39;
-  middleText: Text(n, &#39;#,###&#39;),
-  middleTextColor: colour,
-  bottomText: &#39;Fires in view&#39;
-};
+<span class="o">//</span> <span class="n">Drop</span> <span class="n">rows</span> <span class="k">with</span> <span class="n">no</span> <span class="n">state</span> <span class="n">so</span> <span class="n">a</span> <span class="n">blank</span> <span class="n">category</span> <span class="n">doesn</span><span class="s1">&#39;t show up</span>
+<span class="n">var</span> <span class="n">withState</span> <span class="o">=</span> <span class="n">Filter</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="s1">&#39;POOState IS NOT NULL&#39;</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">byState</span> <span class="o">=</span> <span class="n">GroupBy</span><span class="p">(</span>
+  <span class="n">withState</span><span class="p">,</span>
+  <span class="p">[</span><span class="s1">&#39;POOState&#39;</span><span class="p">],</span>
+  <span class="p">[</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;incidents&#39;</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">statistic</span><span class="p">:</span> <span class="s1">&#39;COUNT&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;total_acres&#39;</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="s1">&#39;DailyAcres&#39;</span><span class="p">,</span> <span class="n">statistic</span><span class="p">:</span> <span class="s1">&#39;SUM&#39;</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="k">return</span> <span class="n">byState</span>
+
+<span class="o">//</span> <span class="n">Sort</span> <span class="n">largest</span> <span class="n">first</span><span class="p">,</span> <span class="n">then</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">top</span> <span class="mi">10</span>
+<span class="k">return</span> <span class="n">Top</span><span class="p">(</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">byState</span><span class="p">,</span> <span class="s1">&#39;total_acres DESC&#39;</span><span class="p">),</span> <span class="mi">10</span><span class="p">);</span>
+
 </pre></div>
 </div>
-<p>When it works, add <code class="docutils literal notranslate"><span class="pre">Console(n);</span></code> on a new line after the first one, run it, and find the <strong>Console</strong> tab.</p>
+<ol class="arabic simple">
+<li><p>Configure the Serial Chart - under data &gt; settings &gt; layer select <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">data</span> <span class="pre">expression</span></code></p></li>
+<li><p>Paste the code above, then click <strong>Run</strong>.</p></li>
+<li><p>Confirm that a new featureSet is output.</p></li>
+<li><p>Rename the expression to “DailyAcres by State”</p></li>
+<li><p>Back under data options, use the following settings</p></li>
+</ol>
+<ul class="simple">
+<li><p>Category field to <code class="docutils literal notranslate"><span class="pre">POOState</span></code></p></li>
+<li><p>Add series to <code class="docutils literal notranslate"><span class="pre">total_acres</span></code></p></li>
+<li><p>Sort by <code class="docutils literal notranslate"><span class="pre">total_acres</span></code> descending</p></li>
+<li><p>Change maximum categories to <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Click done to examine the new serial chart.</p></li>
+</ol>
 <p><em>Record:</em> Which errors did you find, and what in the editor’s message pointed you to each one?</p>
 </section>
-<section id="card-4-list-it-early-finishers-about-5-minutes">
-<h3><span class="section-number">8.20.4. </span>Card 4: List it (early finishers, about 5 minutes)<a class="headerlink" href="#card-4-list-it-early-finishers-about-5-minutes" title="Link to this heading">#</a></h3>
-<p>Open your list element, go to the <strong>List</strong> tab, and enable advanced formatting. Paste this expression, then swap in your acres field name from the Profile Variables panel.</p>
+<section id="card-4-add-a-custom-list-element-early-finishers-about-5-minutes">
+<h3><span class="section-number">8.20.4. </span>Card 4: Add a custom list element (early finishers, about 5 minutes)<a class="headerlink" href="#card-4-add-a-custom-list-element-early-finishers-about-5-minutes" title="Link to this heading">#</a></h3>
+<p>Add a new list element and set the layer to <code class="docutils literal notranslate"><span class="pre">Current</span> <span class="pre">Incidents.</span></code> Go to the <strong>List</strong> tab, and enable advanced formatting. Paste this expression, then swap in your acres field name from the Profile Variables panel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var acres = $datapoint.CalculatedAcres;   // use the acres field your chart uses
 var sizeClass = When(acres &gt;= 10000, &#39;Major&#39;, acres &gt;= 1000, &#39;Large&#39;, &#39;Small&#39;);
 var shade = When(acres &gt;= 10000, &#39;#F3DED7&#39;, acres &gt;= 1000, &#39;#FBEFD5&#39;, &#39;&#39;);
@@ -1325,8 +1357,8 @@ return {
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday-in-class-arcade-cards">8.20. Thursday In-Class: Arcade Cards</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-1-tour-the-editor-about-3-minutes">8.20.1. Card 1: Tour the editor (about 3 minutes)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-2-paste-and-change-about-5-minutes">8.20.2. Card 2: Paste and change (about 5 minutes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-fix-it-about-5-minutes">8.20.3. Card 3: Fix it (about 5 minutes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-list-it-early-finishers-about-5-minutes">8.20.4. Card 4: List it (early finishers, about 5 minutes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-3-serial-chart-update">8.20.3. Card 3: Serial Chart Update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#card-4-add-a-custom-list-element-early-finishers-about-5-minutes">8.20.4. Card 4: Add a custom list element (early finishers, about 5 minutes)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-lab-7">8.21. Looking Ahead: Lab 7</a></li>
