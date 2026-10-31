@@ -1,0 +1,1397 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9. Mobile GIS &#8212; WebMapping &amp; Web GIS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/create/10_mobile_gis';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/create/10_mobile_gis.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Submission Instructions" href="../labs/instructions.html" />
+    <link rel="prev" title="8. ArcGIS Dashboards and Arcade" href="09_dashboards_arcade.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Software &amp; Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ArcGIS Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/github.html">Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/qgis.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1 - WebGIS Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/01_what_is_webgis.html">1. What is Web GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_open_web_standards.html">3. Open Web Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/05_javascript_leaflet.html">5. JavaScript &amp; Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/06_javascript_maplibre.html">6. MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08_experience_builder.html">7. ArcGIS Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_dashboards_arcade.html">8. ArcGIS Dashboards and Arcade</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Mobile GIS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01_agol.html">Lab 1</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_02_geoserver.html">Lab 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_03_weblanguages.html">Lab 3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_04_javascript_leaflet.html">Lab 4</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_05_javascript_maplibre.html">Lab 5</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_06_experience_builder.html">Lab 6</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_07_dashboards_arcade.html">Lab 7</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../final-project/00-project-overview.html">Final Project: Public Web GIS Inquiry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/create/10_mobile_gis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/create/10_mobile_gis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/create/10_mobile_gis.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/create/10_mobile_gis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/create/10_mobile_gis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mobile GIS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">9.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-week-at-a-glance">9.2. The Week at a Glance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">9.3. How to Use This Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-dashboards-to-the-field">9.4. From Dashboards to the Field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-mobile-gis">9.5. What Is Mobile GIS?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">9.5.1. Advantages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supporting-technologies">9.5.2. Supporting technologies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-observation-a-survey123-form">9.6. Your First Observation: A Survey123 Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volunteered-geographic-information-and-inaturalist">9.7. Volunteered Geographic Information and iNaturalist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-collecting-vgi">9.7.1. Tools for collecting VGI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-contributes">9.7.2. Who contributes?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mobile-gis-data-meets-other-layers-the-grant-county-inaturalist-dashboard">9.8. Mobile GIS Data Meets Other Layers: The Grant County iNaturalist Dashboard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geoinquiry-questions">9.8.1. GeoInquiry questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-layers-the-backbone">9.9. Feature Layers: The Backbone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views">9.9.1. Views</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-designs-the-form">9.10. Who Designs the Form?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-ways-to-build-a-mobile-app">9.11. Three Ways to Build a Mobile App</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#esri-apps-for-mobile-gis">9.12. Esri Apps for Mobile GIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-field-maps-can-do">9.12.1. What Field Maps can do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-design-happens-in-field-maps-designer">9.12.2. Where the design happens in Field Maps Designer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-option-qfield">9.13. Open Source Option: QField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-workflow-runs">9.13.1. How the workflow runs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qfield-and-field-maps-side-by-side">9.13.2. QField and Field Maps side by side</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-connects-to-the-rest-of-the-course">9.13.3. Why this connects to the rest of the course</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-mobile-gis-at-wnmu">9.14. Case Study: Mobile GIS at WNMU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treeplotter-and-field-maps">9.14.1. TreePlotter and Field Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guest-speaker-arica-scheetz-wnmu-arboretum">9.14.2. Guest speaker: Arica Scheetz, WNMU Arboretum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debrief-questions">9.14.3. Debrief questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-8-data-collection-with-arcgis-field-maps">9.15. Lab 8: Data Collection with ArcGIS Field Maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-tracks-for-part-c">9.15.1. Two tracks for Part C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-submit">9.15.2. What to submit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-notes-for-troubleshooting">9.15.3. Field notes for troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">9.16. 5-Minute Discussion (breakout or whole-class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-plan-your-form">9.17. In-Class Exercise: Plan Your Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">9.18. Readings &amp; Resources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mobile-gis">
+<h1><span class="section-number">9. </span>Mobile GIS<a class="headerlink" href="#mobile-gis" title="Link to this heading">#</a></h1>
+<p><strong>Week 10 | Lecture + Lab 8: Collect Data Where It Happens, Then Bring It Back to the Web</strong></p>
+<hr class="docutils" />
+<p>Mobile tools put GIS in people’s pockets. This week runs from community science with iNaturalist to custom forms you design yourself in ArcGIS Field Maps. It builds on the dashboards and web experiences from recent weeks, and it asks where the data in those products comes from in the first place.</p>
+<section id="learning-objectives">
+<h2><span class="section-number">9.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Define mobile GIS and volunteered geographic information (VGI), and connect both to an observation you submitted yourself</p></li>
+<li><p>Explain how one hosted feature layer can sit behind a survey, a field app, a web map, and a dashboard</p></li>
+<li><p>Sort mobile apps into browser-based, native, and hybrid, and say what Survey123, ArcGIS Field Maps, and QField are each used for</p></li>
+<li><p>Compare Esri and open source options, and TreePlotter and Field Maps, in terms of coordination and control</p></li>
+<li><p>Explain how a form’s fields, choice lists, and required questions shape what can be known about a place</p></li>
+<li><p>Name the four parts of Lab 8 and choose a place or topic to map</p></li>
+</ul>
+</section>
+<section id="the-week-at-a-glance">
+<h2><span class="section-number">9.2. </span>The Week at a Glance<a class="headerlink" href="#the-week-at-a-glance" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Meeting</p></th>
+<th class="head"><p>Focus</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Tuesday</strong></p></td>
+<td><p>Introduction to mobile GIS: your own Survey123 observation, iNaturalist, the Grant County iNaturalist dashboard, and the Esri apps</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wednesday</strong></p></td>
+<td><p>Recommended practice on your own time (ungraded)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Thursday</strong></p></td>
+<td><p>Mobile GIS in action: guest speaker Arica Scheetz (WNMU Arboretum), a debrief, and the launch of Lab 8</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Lab 8</strong></p></td>
+<td><p>Data collection in ArcGIS Field Maps</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Guiding question for the week: Who designs the data form, and how does that shape what we can know about a place?</strong></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="how-to-use-this-page">
+<h2><span class="section-number">9.3. </span>How to Use This Page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h2>
+<p>This page holds the concepts for the week. It explains how mobile GIS connects to the hosted layers, web maps, and dashboards you have already built. The step-by-step instructions for the lab live on the <strong>Lab 8 page</strong>, and the three Esri tutorials that go with it are linked at the bottom of this page.</p>
+<p>Two examples are embedded below so you can try them without leaving the page: the Survey123 form from Tuesday, and the Grant County iNaturalist dashboard. Each one also has a direct link underneath it, for anyone reading a printed or PDF copy or whose browser blocks the embed.</p>
+<p>Where things live: this course website holds the content and notes, the Esri documentation is where you practice, and Canvas is for submission only.</p>
+</section>
+<hr class="docutils" />
+<section id="from-dashboards-to-the-field">
+<h2><span class="section-number">9.4. </span>From Dashboards to the Field<a class="headerlink" href="#from-dashboards-to-the-field" title="Link to this heading">#</a></h2>
+<p>For nine weeks you have worked with data that already existed: layers you uploaded, services you connected to, and features you drew. Mobile GIS changes the direction. The device in your hand writes new records into a layer as well as reading from one. The architecture underneath has not changed: data sits on a server, and a client asks for it and draws it. What changes is where the client is, and who is standing in the place being mapped.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>What you did in this course</p></th>
+<th class="head"><p>Where it shows up in mobile GIS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Your hosted feature layer (Lab 1)</p></td>
+<td><p>The layer behind every survey and field app. Each record a collector submits becomes a row in it</p></td>
+</tr>
+<tr class="row-odd"><td><p>Your web map and pop-ups (Lab 1)</p></td>
+<td><p>The map a field app opens, and the map you share afterward</p></td>
+</tr>
+<tr class="row-even"><td><p>Experience Builder (Lab 6)</p></td>
+<td><p>A public-facing product built from the data people collected</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dashboards (Lab 7)</p></td>
+<td><p>A live summary of collected data. Indicators, lists, and charts update as new points arrive</p></td>
+</tr>
+<tr class="row-even"><td><p>Sharing levels, and the sharing floor</p></td>
+<td><p>Who can submit records, who can edit them, and who can only look</p></td>
+</tr>
+<tr class="row-odd"><td><p>Leaflet and MapLibre (open source libraries)</p></td>
+<td><p>The open source tools in mobile GIS, such as QField, sit on the same side of the continuum</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="what-is-mobile-gis">
+<h2><span class="section-number">9.5. </span>What Is Mobile GIS?<a class="headerlink" href="#what-is-mobile-gis" title="Link to this heading">#</a></h2>
+<p>Mobile GIS brings GIS to the place being mapped. A device that knows where it is can record what you see where you see it. A collector is often standing in the subject area, so they can see, touch, hear, smell, and feel what they are recording.</p>
+<section id="advantages">
+<h3><span class="section-number">9.5.1. </span>Advantages<a class="headerlink" href="#advantages" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Mobility:</strong> the tool goes where the subject is</p></li>
+<li><p><strong>Location awareness:</strong> positioning technologies give a device its location. These include GPS, cellular networks, Wi-Fi networks, and Bluetooth</p></li>
+<li><p><strong>The user is in the subject area:</strong> the person recording has direct sensory knowledge of what they are mapping</p></li>
+<li><p><strong>Near real-time information:</strong> a record can reach a map or dashboard within moments</p></li>
+<li><p><strong>A large volume of users:</strong> many people can contribute at once</p></li>
+<li><p><strong>A versatile means of communication:</strong> a phone carries text, photos, and location in one submission</p></li>
+</ul>
+</section>
+<section id="supporting-technologies">
+<h3><span class="section-number">9.5.2. </span>Supporting technologies<a class="headerlink" href="#supporting-technologies" title="Link to this heading">#</a></h3>
+<p>Mobile GIS depends on four kinds of technology working together: mobile devices, mobile operating systems, wireless communication technologies, and positioning technologies. A weak link in any of them shows up in the field as a missed GPS fix, a dropped signal, or a map that will not load.</p>
+<p><strong>Try it:</strong> pick two advantages from the list and match each to the observation you made on Tuesday. Which advantage did you notice most?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="your-first-observation-a-survey123-form">
+<h2><span class="section-number">9.6. </span>Your First Observation: A Survey123 Form<a class="headerlink" href="#your-first-observation-a-survey123-form" title="Link to this heading">#</a></h2>
+<p>On Tuesday you collected data before you heard any vocabulary. You opened a premade Survey123 form, stepped outside, and recorded something natural that you noticed in your place. The form asked three things: a quick description, a location on a map, and a photo.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arcg.is/u1qiW4">Opening Observation Form (Survey123)</a></p></li>
+<li><p><a class="reference external" href="https://wnmugis.maps.arcgis.com/apps/instant/attachmentviewer/index.html?appid=583cc85fa136424abb73b3cfe88da616">Class Web Map (attachment viewer)</a>: every submission appears here with its photo</p></li>
+</ul>
+<p>The form below is the same one, embedded. Submissions made from this page go to the same class layer, so use it for a test record only.</p>
+<iframe src="https://arcg.is/u1qiW4" title="Opening Observation Form (Survey123)" width="100%" height="650" style="border:1px solid #999;" allowfullscreen></iframe>
+<p><em>Embedded: Opening Observation Form (Survey123).</em> <strong><a class="reference external" href="https://arcg.is/u1qiW4">Open the form in its own tab</a></strong></p>
+<p><strong>Look back at the form.</strong> Someone chose to ask for a description, a map location, and a photo. Someone chose not to ask for a species name, a date, or how confident you were.</p>
+<ol class="arabic simple">
+<li><p>What did the form make easy to record?</p></li>
+<li><p>What did you want to say that it had no place for?</p></li>
+<li><p>Look at where the class observations fall on the map. What do the clusters and gaps suggest about who contributed?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="volunteered-geographic-information-and-inaturalist">
+<h2><span class="section-number">9.7. </span>Volunteered Geographic Information and iNaturalist<a class="headerlink" href="#volunteered-geographic-information-and-inaturalist" title="Link to this heading">#</a></h2>
+<p>After you submitted your observation, you compared it with the ten most recent iNaturalist observations near you. iNaturalist is a form of <strong>citizen science</strong>, and the data it produces is <strong>volunteered geographic information (VGI)</strong>.</p>
+<blockquote>
+<div><p><strong>VGI</strong> is digital spatial data produced voluntarily by citizens rather than by formal institutional data producers.</p>
+</div></blockquote>
+<p>VGI is a form of crowdsourcing that engages people to share observations on anything. Common examples include natural observations and invasive species records (iNaturalist), and accidents and police locations reported by mobile users (Waze). A growing number of recent scientific publications cite iNaturalist data, including local studies in entomology.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.inaturalist.org/observations?subview=map">iNaturalist observations map</a></p></li>
+</ul>
+<section id="tools-for-collecting-vgi">
+<h3><span class="section-number">9.7.1. </span>Tools for collecting VGI<a class="headerlink" href="#tools-for-collecting-vgi" title="Link to this heading">#</a></h3>
+<p>Survey123 works well for VGI because it does not require named users, so a person can contribute without being added to your organization. ArcGIS QuickCapture is another good Esri option. Citizen science platforms and open source providers fill the same role, and the open source side is covered later on this page.</p>
+</section>
+<section id="who-contributes">
+<h3><span class="section-number">9.7.2. </span>Who contributes?<a class="headerlink" href="#who-contributes" title="Link to this heading">#</a></h3>
+<p>VGI comes from people who choose to contribute. That choice shapes the data.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>VGI (iNaturalist, a public Survey123 form)</p></th>
+<th class="head"><p>Organizational field data (a campus inventory)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Who contributes</strong></p></td>
+<td><p>Volunteers, who often self-select</p></td>
+<td><p>Trained staff or a defined team</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Who designs the form</strong></p></td>
+<td><p>The platform or the project lead</p></td>
+<td><p>The team doing the work</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Strengths</strong></p></td>
+<td><p>Many contributors, wide coverage, fast arrival of records</p></td>
+<td><p>Consistent fields, controlled choice lists, known collectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Limits</strong></p></td>
+<td><p>Uneven coverage, and gaps where few people live, visit, or have device access and cell coverage</p></td>
+<td><p>Smaller coverage, and a dependence on the capacity of one team</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Think about it:</strong> who is likely to contribute in your area, and who might be missing? What could you safely conclude from a map of those records, and what could you not?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mobile-gis-data-meets-other-layers-the-grant-county-inaturalist-dashboard">
+<h2><span class="section-number">9.8. </span>Mobile GIS Data Meets Other Layers: The Grant County iNaturalist Dashboard<a class="headerlink" href="#mobile-gis-data-meets-other-layers-the-grant-county-inaturalist-dashboard" title="Link to this heading">#</a></h2>
+<p>Data collected on phones becomes more powerful when it joins other layers on the web. This dashboard explores biodiversity observations recorded in Grant County, New Mexico, using community science data from iNaturalist. It combines three layers:</p>
+<ul class="simple">
+<li><p>The <strong>iNaturalist Species Observations</strong> layer from the ArcGIS Living Atlas (see the <a class="reference external" href="https://www.esri.com/arcgis-blog/products/arcgis-living-atlas/announcements/inaturalist-living-atlas-beta-release">Esri announcement</a>)</p></li>
+<li><p>The U.S. Fish and Wildlife Service <strong>Critical Habitat for Threatened and Endangered Species</strong> layer, which shows proposed and designated critical habitat under the Endangered Species Act</p></li>
+<li><p>Current <strong>USA Wetlands</strong> from the National Wetlands Inventory</p></li>
+</ul>
+<p>The charts and indicators update with the current map view and the selected taxon group, the same actions you met in your Week 9 dashboards.</p>
+<iframe src="https://wnmugis.maps.arcgis.com/apps/dashboards/db4dfdefdbcc48c899089c6f3a535086" title="Grant County iNaturalist Dashboard" width="100%" height="700" style="border:1px solid #999;" allowfullscreen></iframe>
+<p><em>Embedded: Grant County iNaturalist Dashboard.</em> <strong><a class="reference external" href="https://wnmugis.maps.arcgis.com/apps/dashboards/db4dfdefdbcc48c899089c6f3a535086">Open the dashboard in its own tab</a></strong></p>
+<section id="geoinquiry-questions">
+<h3><span class="section-number">9.8.1. </span>GeoInquiry questions<a class="headerlink" href="#geoinquiry-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Where are people recording observations in Grant County?</strong> Zoom and pan across the map. Where do the points cluster? Compare those locations to towns, roads, and trails. What are the most common taxa and species observed?</p></li>
+<li><p><strong>Do observations line up with critical habitat?</strong> Zoom in on a critical habitat area and look at the points inside its boundary. How do they compare with other areas across the county?</p></li>
+<li><p><strong>What do the observations say about people as well as species?</strong> If a place has few points, does that mean few organisms, or few observers?</p></li>
+</ol>
+<p>Question 3 is the one to carry into the rest of the week.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="feature-layers-the-backbone">
+<h2><span class="section-number">9.9. </span>Feature Layers: The Backbone<a class="headerlink" href="#feature-layers-the-backbone" title="Link to this heading">#</a></h2>
+<p>Feature layers sit behind Esri mobile GIS products. They are the same kind of hosted layer you built in Lab 1 and used as a data source in your Week 9 dashboards. One layer can serve many products at once:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Product</p></th>
+<th class="head"><p>What it does with the layer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Survey123 form</strong></p></td>
+<td><p>Adds new records through a smart form</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Field Maps</strong></p></td>
+<td><p>Adds and edits points, lines, and areas using the map or GPS, with a map-driven form</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Web map</strong></p></td>
+<td><p>Displays the records, with pop-ups that show the form fields and photos</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dashboard</strong></p></td>
+<td><p>Summarizes the records with indicators, lists, and charts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="views">
+<h3><span class="section-number">9.9.1. </span>Views<a class="headerlink" href="#views" title="Link to this heading">#</a></h3>
+<p>A <strong>view</strong> and its <strong>source feature layer</strong> reference the same data. Each view can independently set:</p>
+<ul class="simple">
+<li><p>how it is <strong>shared</strong> with others</p></li>
+<li><p>how it is <strong>drawn</strong> (symbology)</p></li>
+<li><p>which features are <strong>displayed</strong> (filtering)</p></li>
+<li><p>whether the layer can be <strong>edited</strong></p></li>
+</ul>
+<p>This is how one dataset can be editable for the collection team and read-only for the public, with sensitive features filtered out of the public view.</p>
+<p><strong>Think about it:</strong> you want volunteers to add observations but not change or delete anyone else’s. Which of the four settings would you use?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="who-designs-the-form">
+<h2><span class="section-number">9.10. </span>Who Designs the Form?<a class="headerlink" href="#who-designs-the-form" title="Link to this heading">#</a></h2>
+<p>A form decides, before anyone collects a single point, what a collector is allowed to record. The two forms below ask about the same park bench. They are plain HTML, so you can click through them here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">form_demo</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;style&gt;</span>
+<span class="s2">  .fd { font-family: Georgia, serif; color: #1a3c5e; display: flex; gap: 16px; flex-wrap: wrap; }</span>
+<span class="s2">  .fd .card { flex: 1; min-width: 260px; border: 1px solid #999; padding: 12px; background: #f4f8fb; }</span>
+<span class="s2">  .fd h4 { margin: 0 0 6px 0; }</span>
+<span class="s2">  .fd label { display: block; margin-top: 10px; font-weight: bold; }</span>
+<span class="s2">  .fd input, .fd select { width: 100%; padding: 5px; margin-top: 3px; font-family: inherit; box-sizing: border-box; }</span>
+<span class="s2">  .fd .req { color: #b8312f; }</span>
+<span class="s2">  .fd small { display: block; margin-top: 8px; color: #555; }</span>
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">&lt;div class=&quot;fd&quot;&gt;</span>
+<span class="s2">  &lt;div class=&quot;card&quot;&gt;</span>
+<span class="s2">    &lt;h4&gt;Form A: free text&lt;/h4&gt;</span>
+<span class="s2">    &lt;label&gt;What is it?&lt;/label&gt;</span>
+<span class="s2">    &lt;input type=&quot;text&quot; placeholder=&quot;Type anything&quot;&gt;</span>
+<span class="s2">    &lt;label&gt;What shape is it in?&lt;/label&gt;</span>
+<span class="s2">    &lt;input type=&quot;text&quot; placeholder=&quot;Type anything&quot;&gt;</span>
+<span class="s2">    &lt;small&gt;Collectors could enter: bench, Bench, benches, picnic seat, wood thing by the path. Every answer is possible, and every answer needs cleaning before you can count anything.&lt;/small&gt;</span>
+<span class="s2">  &lt;/div&gt;</span>
+<span class="s2">  &lt;div class=&quot;card&quot;&gt;</span>
+<span class="s2">    &lt;h4&gt;Form B: choice lists and a required field&lt;/h4&gt;</span>
+<span class="s2">    &lt;label&gt;Amenity type &lt;span class=&quot;req&quot;&gt;* required&lt;/span&gt;&lt;/label&gt;</span>
+<span class="s2">    &lt;select&gt;</span>
+<span class="s2">      &lt;option&gt;Choose one&lt;/option&gt;&lt;option&gt;Bench&lt;/option&gt;&lt;option&gt;Picnic table&lt;/option&gt;</span>
+<span class="s2">      &lt;option&gt;Trash can&lt;/option&gt;&lt;option&gt;Restroom&lt;/option&gt;&lt;option&gt;Other&lt;/option&gt;</span>
+<span class="s2">    &lt;/select&gt;</span>
+<span class="s2">    &lt;label&gt;Condition &lt;span class=&quot;req&quot;&gt;* required&lt;/span&gt;&lt;/label&gt;</span>
+<span class="s2">    &lt;select&gt;</span>
+<span class="s2">      &lt;option&gt;Choose one&lt;/option&gt;&lt;option&gt;1 (unusable)&lt;/option&gt;&lt;option&gt;2 (poor)&lt;/option&gt;</span>
+<span class="s2">      &lt;option&gt;3 (good)&lt;/option&gt;&lt;option&gt;4 (excellent)&lt;/option&gt;</span>
+<span class="s2">    &lt;/select&gt;</span>
+<span class="s2">    &lt;label&gt;Accessibility note&lt;/label&gt;</span>
+<span class="s2">    &lt;input type=&quot;text&quot; placeholder=&quot;Optional, with a hint for the collector&quot;&gt;</span>
+<span class="s2">    &lt;small&gt;Every record can be counted and compared. A collector who finds a drinking fountain has to choose Other, or leave it out.&lt;/small&gt;</span>
+<span class="s2">  &lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">form_demo</span><span class="p">))</span>
+
+<span class="c1"># Try it: add an option such as &quot;Drinking fountain&quot; to Form B&#39;s amenity list,</span>
+<span class="c1"># or change the condition scale to three levels, and rerun the cell.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  .fd { font-family: Georgia, serif; color: #1a3c5e; display: flex; gap: 16px; flex-wrap: wrap; }
+  .fd .card { flex: 1; min-width: 260px; border: 1px solid #999; padding: 12px; background: #f4f8fb; }
+  .fd h4 { margin: 0 0 6px 0; }
+  .fd label { display: block; margin-top: 10px; font-weight: bold; }
+  .fd input, .fd select { width: 100%; padding: 5px; margin-top: 3px; font-family: inherit; box-sizing: border-box; }
+  .fd .req { color: #b8312f; }
+  .fd small { display: block; margin-top: 8px; color: #555; }
+</style>
+<div class="fd">
+  <div class="card">
+    <h4>Form A: free text</h4>
+    <label>What is it?</label>
+    <input type="text" placeholder="Type anything">
+    <label>What shape is it in?</label>
+    <input type="text" placeholder="Type anything">
+    <small>Collectors could enter: bench, Bench, benches, picnic seat, wood thing by the path. Every answer is possible, and every answer needs cleaning before you can count anything.</small>
+  </div>
+  <div class="card">
+    <h4>Form B: choice lists and a required field</h4>
+    <label>Amenity type <span class="req">* required</span></label>
+    <select>
+      <option>Choose one</option><option>Bench</option><option>Picnic table</option>
+      <option>Trash can</option><option>Restroom</option><option>Other</option>
+    </select>
+    <label>Condition <span class="req">* required</span></label>
+    <select>
+      <option>Choose one</option><option>1 (unusable)</option><option>2 (poor)</option>
+      <option>3 (good)</option><option>4 (excellent)</option>
+    </select>
+    <label>Accessibility note</label>
+    <input type="text" placeholder="Optional, with a hint for the collector">
+    <small>Every record can be counted and compared. A collector who finds a drinking fountain has to choose Other, or leave it out.</small>
+  </div>
+</div>
+</div></div>
+</div>
+<p>Form A keeps everything a collector wants to say. Form B keeps the data consistent. Neither is correct in general: a choice list makes records comparable, and it also decides which kinds of things exist in your dataset.</p>
+<p>In Lab 8 you are the one who designs the form.</p>
+</section>
+<hr class="docutils" />
+<section id="three-ways-to-build-a-mobile-app">
+<h2><span class="section-number">9.11. </span>Three Ways to Build a Mobile App<a class="headerlink" href="#three-ways-to-build-a-mobile-app" title="Link to this heading">#</a></h2>
+<p>Browser-based, native, and hybrid apps all put maps on phones. Each carries benefits and tradeoffs.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>How it works</p></th>
+<th class="head"><p>Examples</p></th>
+<th class="head"><p>Typical benefit</p></th>
+<th class="head"><p>Typical tradeoff</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Browser-based</strong></p></td>
+<td><p>Runs on the web inside the phone’s browser</p></td>
+<td><p>ArcGIS Web Apps</p></td>
+<td><p>Nothing to install, and one version for everyone</p></td>
+<td><p>Limited access to device features, and a weaker offline story</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Native</strong></p></td>
+<td><p>Installed on the device</p></td>
+<td><p>ArcGIS Field Maps, Survey123, QField</p></td>
+<td><p>Full use of GPS, camera, and offline maps</p></td>
+<td><p>Must be installed, and kept updated per platform</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hybrid</strong></p></td>
+<td><p>Native components combined with HTML, JavaScript, and CSS</p></td>
+<td><p>The simplest version loads HTML and JavaScript content inside a native app. More advanced versions use frameworks for deeper integration with the native platform</p></td>
+<td><p>Reuses web skills and code</p></td>
+<td><p>Sits between the other two, and depth of integration varies</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Chat check from Tuesday:</strong> name one benefit and one tradeoff of Esri apps, and one of open source apps. You will return to your answers in the case study.</p>
+</section>
+<hr class="docutils" />
+<section id="esri-apps-for-mobile-gis">
+<h2><span class="section-number">9.12. </span>Esri Apps for Mobile GIS<a class="headerlink" href="#esri-apps-for-mobile-gis" title="Link to this heading">#</a></h2>
+<p>Esri offers several apps for different kinds of field work.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Survey123</strong></p></th>
+<th class="head"><p><strong>ArcGIS QuickCapture</strong></p></th>
+<th class="head"><p><strong>ArcGIS Field Maps</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Best for</strong></p></td>
+<td><p>Simple data collection with smart forms</p></td>
+<td><p>Fast capture, and a good option for VGI</p></td>
+<td><p>Map-centered field work by a defined team</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interface</strong></p></td>
+<td><p>Web and native</p></td>
+<td><p>Native</p></td>
+<td><p>Native, with maps and forms authored in Field Maps Designer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Users</strong></p></td>
+<td><p>Can work without named users, which suits public contribution</p></td>
+<td><p>Works well for many contributors</p></td>
+<td><p>Signed-in members of your organization</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data</strong></p></td>
+<td><p>Records with questions, a location, and photos</p></td>
+<td><p>Points, lines, and areas</p></td>
+<td><p>Points, lines, areas, and related tables</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="what-field-maps-can-do">
+<h3><span class="section-number">9.12.1. </span>What Field Maps can do<a class="headerlink" href="#what-field-maps-can-do" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>View maps anywhere on a mobile device</p></li>
+<li><p>Collect and update data using the map or GPS</p></li>
+<li><p>Fill out easy-to-use, map-driven forms</p></li>
+<li><p>Attach photos to features</p></li>
+<li><p>Download maps and work offline</p></li>
+<li><p>Use professional-grade GPS receivers</p></li>
+<li><p>Search for places and features</p></li>
+<li><p>Support smarter forms and enhanced high-accuracy 3D data collection</p></li>
+</ul>
+<p>On Tuesday you used Survey123. In Lab 8 you will use Field Maps Designer to build the map and form, and the Field Maps app to collect data with them.</p>
+</section>
+<section id="where-the-design-happens-in-field-maps-designer">
+<h3><span class="section-number">9.12.2. </span>Where the design happens in Field Maps Designer<a class="headerlink" href="#where-the-design-happens-in-field-maps-designer" title="Link to this heading">#</a></h3>
+<p>The form controls what a collector can enter. The layer’s <strong>feature templates</strong> control which types of things a collector can add. Both are design decisions, and both are in your hands in Lab 8.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="open-source-option-qfield">
+<h2><span class="section-number">9.13. </span>Open Source Option: QField<a class="headerlink" href="#open-source-option-qfield" title="Link to this heading">#</a></h2>
+<p>The Esri apps are one family of tools. There is an open source family too, and <strong>QField</strong> is the one to know for field data collection.</p>
+<p>QField is an open source app for field work that connects to your <strong>QGIS</strong> projects. It works fully offline or connected, and it is released under the GPL, which means it is free to use and modify. It is available for Android and iOS, and it can also be used on the desktop (Windows, macOS, and Linux).</p>
+<section id="how-the-workflow-runs">
+<h3><span class="section-number">9.13.1. </span>How the workflow runs<a class="headerlink" href="#how-the-workflow-runs" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Design in QGIS on a computer.</strong> You set up your layers, forms, and symbology in a QGIS project.</p></li>
+<li><p><strong>Package the project with the QFieldSync plugin.</strong> The plugin checks your project and suggests changes so that it works well in the field.</p></li>
+<li><p><strong>Move the project to a device.</strong> One route is <strong>QFieldCloud</strong>, an optional cloud service that synchronizes data between your phone and your desktop. The QFieldCloud backend is itself open source. You can also transfer a project to the device without the cloud.</p></li>
+<li><p><strong>Collect data in QField.</strong> The interface is simplified and touch-friendly, and it supports GPS positioning and camera integration.</p></li>
+<li><p><strong>Synchronize back</strong> to the project on your computer.</p></li>
+</ol>
+</section>
+<section id="qfield-and-field-maps-side-by-side">
+<h3><span class="section-number">9.13.2. </span>QField and Field Maps side by side<a class="headerlink" href="#qfield-and-field-maps-side-by-side" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>QField</strong></p></th>
+<th class="head"><p><strong>ArcGIS Field Maps</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Authoring</strong></p></td>
+<td><p>QGIS on a computer, plus the QFieldSync plugin</p></td>
+<td><p>Field Maps Designer in ArcGIS Online</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Where the data lives</strong></p></td>
+<td><p>In your project, which can link to external databases or use simple geospatial formats, or in QFieldCloud</p></td>
+<td><p>In a hosted feature layer in ArcGIS Online</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cost and license</strong></p></td>
+<td><p>Open source and free to use</p></td>
+<td><p>Needs an ArcGIS account with the right role</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path to the web</strong></p></td>
+<td><p>You choose and build the web products yourself</p></td>
+<td><p>The same feature layer feeds a web map, an experience, or a dashboard directly</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>What you need to know</strong></p></td>
+<td><p>QGIS skills</p></td>
+<td><p>ArcGIS Online skills</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Who controls the stack</strong></p></td>
+<td><p>You do, from the data format to the code</p></td>
+<td><p>Esri’s platform sets the boundaries</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="why-this-connects-to-the-rest-of-the-course">
+<h3><span class="section-number">9.13.3. </span>Why this connects to the rest of the course<a class="headerlink" href="#why-this-connects-to-the-rest-of-the-course" title="Link to this heading">#</a></h3>
+<p>Early in the course you built maps with Leaflet and MapLibre, which are open source libraries. QField is the field collection counterpart. The pattern from Experience Builder week holds here as well: moving toward open source buys control and costs setup and skill, and moving toward the Esri products buys speed and integration and costs flexibility.</p>
+<p>Reasons a project might choose QField include a team that already works in QGIS, a limited budget for software licenses, and a need to keep data on servers the team controls. Reasons to choose Field Maps include an organization that already runs on ArcGIS Online, and a goal of getting from field to dashboard quickly.</p>
+<p>Other open source and community tools exist for field data collection, including KoboToolbox, Open Data Kit, and Mergin Maps. They are worth knowing by name if your project needs something QField does not offer.</p>
+<p><strong>Optional:</strong> to explore QField, start with the Get Started pages in the <a class="reference external" href="https://docs.qfield.org">QField documentation</a>. Lab 8 itself uses Field Maps.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="case-study-mobile-gis-at-wnmu">
+<h2><span class="section-number">9.14. </span>Case Study: Mobile GIS at WNMU<a class="headerlink" href="#case-study-mobile-gis-at-wnmu" title="Link to this heading">#</a></h2>
+<p>How can mobile GIS support a real project at our university? WNMU is taking an inventory of its local plant life using mobile GIS approaches. University staff have used two different tools for it.</p>
+<section id="treeplotter-and-field-maps">
+<h3><span class="section-number">9.14.1. </span>TreePlotter and Field Maps<a class="headerlink" href="#treeplotter-and-field-maps" title="Link to this heading">#</a></h3>
+<p><strong>TreePlotter</strong> is part of a larger statewide initiative led by the state’s urban forestry department to help local communities create urban tree inventories. It is an independent third-party application, and the team used it because it lets many communities gather and share data in one place. The statewide baseline from the New Mexico Urban Tree Inventory (2017 to 2018) is shared through TreePlotter.</p>
+<p><strong>ArcGIS Field Maps</strong> was chosen by the Arboretum team for the campus shrub survey, because it gives more granular control over what data is collected and how it is stored and accessed.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>TreePlotter</strong></p></th>
+<th class="head"><p><strong>ArcGIS Field Maps</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Used at WNMU for</strong></p></td>
+<td><p>Campus trees, within the statewide inventory</p></td>
+<td><p>The campus shrub survey</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>What it favors</strong></p></td>
+<td><p>Coordination: many communities, one shared dataset</p></td>
+<td><p>Control: the team decides what is collected, where it is stored, and who can see it</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Who designs the form</strong></p></td>
+<td><p>The statewide initiative and the application</p></td>
+<td><p>The Arboretum team</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cost of the choice</strong></p></td>
+<td><p>The team accepts fields it did not choose</p></td>
+<td><p>The team takes on the design and upkeep of its own form and data</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Choosing a platform is a decision about who collects data, who can use it, and what questions it can answer.</p>
+</section>
+<section id="guest-speaker-arica-scheetz-wnmu-arboretum">
+<h3><span class="section-number">9.14.2. </span>Guest speaker: Arica Scheetz, WNMU Arboretum<a class="headerlink" href="#guest-speaker-arica-scheetz-wnmu-arboretum" title="Link to this heading">#</a></h3>
+<p>On Thursday, Arica shared how the Arboretum team uses these tools to map plants across campus. The shrub viewer shown in class is a quick prototype of the data collected so far, and WNMU does not plan to publish it as an official app. Final public maps are in the works, so ask Arica about plans for sharing.</p>
+<p>The questions our class wrote on Tuesday:</p>
+<ol class="arabic simple">
+<li><p>Is there anyone in particular you hope uses these applications and data?</p></li>
+<li><p>Are there any goals within this to prioritize specific plants?</p></li>
+<li><p>Do you know which shrubs or trees are planned by the university and which were naturally occurring?</p></li>
+<li><p>What can improve the quality of applications and maps meant for the general public?</p></li>
+<li><p>What has surprised you about the data collected?</p></li>
+<li><p>For any fruit bearing trees, are they on public land, and can they be harvested from by community members?</p></li>
+</ol>
+<p>Notice how many of these are about people (audience, priorities, access, harvest rights) and how few are about software.</p>
+<p><em>Your notes from Arica’s talk and answers:</em></p>
+</section>
+<section id="debrief-questions">
+<h3><span class="section-number">9.14.3. </span>Debrief questions<a class="headerlink" href="#debrief-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>The team used TreePlotter for the statewide baseline and Field Maps for the shrubs. What did each tool let the team decide, and what did it decide for them?</p></li>
+<li><p>Think back to Tuesday’s Survey123 form and an iNaturalist observation. Who designed those questions, and what could you not say with them?</p></li>
+<li><p>If you were designing the shrub form, what is one field or choice list you would add, and why?</p></li>
+</ol>
+<p><strong>Going further:</strong></p>
+<ul class="simple">
+<li><p><strong>Design and control:</strong> if you inherited this shrub dataset in five years, what would the form need to tell you (field names, choice lists, dates, who collected it)?</p></li>
+<li><p><strong>Who contributes:</strong> whose knowledge of campus plants might not appear in a TreePlotter or Field Maps dataset?</p></li>
+<li><p><strong>Consistency and trust:</strong> how does a controlled form change what you can trust or compare, relative to free observations like iNaturalist?</p></li>
+<li><p><strong>Access and ownership:</strong> which parts of this data should be public, and which should stay with the university? Who decides?</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lab-8-data-collection-with-arcgis-field-maps">
+<h2><span class="section-number">9.15. </span>Lab 8: Data Collection with ArcGIS Field Maps<a class="headerlink" href="#lab-8-data-collection-with-arcgis-field-maps" title="Link to this heading">#</a></h2>
+<p>In Lab 8 you design a map and a data form in Field Maps Designer, collect data with it, and share what you collected. The guiding question for the week is the lab’s question too.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Part</p></th>
+<th class="head"><p>What you do</p></th>
+<th class="head"><p>Where to start</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>A. Create the map and layers</strong></p></td>
+<td><p>Build a map with four layers: Amenities (point), Paths (line), Boundaries (polygon), and Trees (point). Name it <strong>Lab8_&lt;your initials&gt;</strong></p></td>
+<td><p><a class="reference external" href="https://learn.arcgis.com/en/projects/create-a-map-with-field-maps-designer/">Tutorial 1: Create a map with Field Maps Designer</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>B. Build and customize the form</strong></p></td>
+<td><p>Build the Amenities form, then make at least one design change of your own and write down why</p></td>
+<td><p><a class="reference external" href="https://learn.arcgis.com/en/projects/build-a-form-with-field-maps-designer/">Tutorial 2: Build a form with Field Maps Designer</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>C. Collect data</strong></p></td>
+<td><p>Choose a track: collect at least 5 points and one streamed path in the Field Maps app, or work with the provided sample dataset</p></td>
+<td><p><a class="reference external" href="https://www.esri.com/arcgis-blog/products/field-maps/field-mobility/try-data-collection-in-arcgis-field-maps">Tutorial 3: Collect data in Field Maps</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D. Share your results</strong></p></td>
+<td><p>Present the data as a web map (Lab 1), a web experience (Lab 6), or a dashboard (Lab 7)</p></td>
+<td><p>Your earlier lab pages</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You may swap the park theme for a place you care about, as long as you keep the same four layer types.</p>
+<section id="two-tracks-for-part-c">
+<h3><span class="section-number">9.15.1. </span>Two tracks for Part C<a class="headerlink" href="#two-tracks-for-part-c" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Device track:</strong> install Field Maps, sign in with your WNMU ArcGIS account, and collect your own points in the field.</p></li>
+<li><p><strong>Sample dataset track:</strong> use the dataset provided with the lab and continue to Part D. If you prefer not to load the app, or do not have a compatible phone, this track is open to you.</p></li>
+</ul>
+<p>Both tracks complete Parts A, B, and D.</p>
+</section>
+<section id="what-to-submit">
+<h3><span class="section-number">9.15.2. </span>What to submit<a class="headerlink" href="#what-to-submit" title="Link to this heading">#</a></h3>
+<p>The link to your Part D product, the link to your Field Maps or web map and a screenshot of your finished form, confirmation that everything is shared with the organization or wider, and a short written reflection that returns to the guiding question. The Lab 8 page has the full instructions, the rubric, and the due date.</p>
+</section>
+<section id="field-notes-for-troubleshooting">
+<h3><span class="section-number">9.15.3. </span>Field notes for troubleshooting<a class="headerlink" href="#field-notes-for-troubleshooting" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Check that your ArcGIS Online role lets you create layers and open Field Maps Designer. If it does not, tell me right away.</p></li>
+<li><p>Save the map in Designer before you try to open it in the app.</p></li>
+<li><p>Allow location access when the app asks.</p></li>
+<li><p>Edit a map in only one browser tab at a time.</p></li>
+<li><p>If something fails, note what happened and how you found the cause. It belongs in your reflection.</p></li>
+<li><p>Test your sharing in a private browser window or on a second device.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="minute-discussion-breakout-or-whole-class">
+<h2><span class="section-number">9.16. </span>5-Minute Discussion (breakout or whole-class)<a class="headerlink" href="#minute-discussion-breakout-or-whole-class" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Think of a community group with no GIS staff. What does a ready-made platform like TreePlotter make possible for them, and what does it quietly decide on their behalf?</p></li>
+<li><p>A volunteer in your area could contribute through iNaturalist, a public Survey123 form, or a form you designed in Field Maps. Which would you choose, and what would each one leave out?</p></li>
+<li><p>Picture a Field Maps layer that is shared with your organization, and a public dashboard built from it. List every step where someone decided what a visitor would be able to see.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="in-class-exercise-plan-your-form">
+<h2><span class="section-number">9.17. </span>In-Class Exercise: Plan Your Form<a class="headerlink" href="#in-class-exercise-plan-your-form" title="Link to this heading">#</a></h2>
+<p>Choose the place you will map in Lab 8: a park, a campus area, a trail, a street, or a site you care about. In the space below, answer:</p>
+<ol class="arabic simple">
+<li><p><strong>Place and purpose:</strong> Which place will you map, and who might use the data? Name one decision it could help them make.</p></li>
+<li><p><strong>Three things a collector should record:</strong> What would each one be called, and would it be free text, a choice list, or a required field?</p></li>
+<li><p><strong>One thing your form will leave out:</strong> What is it, and how could leaving it out shape what someone later knows about the place?</p></li>
+<li><p><strong>Prediction:</strong> which part of the lab do you expect to be easy, and which hard? You will return to this in your reflection.</p></li>
+</ol>
+<p><em>Your answer here:</em></p>
+</section>
+<hr class="docutils" />
+<section id="readings-resources">
+<h2><span class="section-number">9.18. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<p><strong>For Lab 8 (in order):</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.arcgis.com/en/paths/get-started-with-field-maps-designer">Get started with Field Maps Designer</a>: the learning path that holds Tutorials 1 and 2</p></li>
+<li><p><a class="reference external" href="https://learn.arcgis.com/en/projects/create-a-map-with-field-maps-designer/">Tutorial 1: Create a map with Field Maps Designer</a></p></li>
+<li><p><a class="reference external" href="https://learn.arcgis.com/en/projects/build-a-form-with-field-maps-designer/">Tutorial 2: Build a form with Field Maps Designer</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/arcgis-blog/products/field-maps/field-mobility/try-data-collection-in-arcgis-field-maps">Tutorial 3: Collect data in Field Maps</a></p></li>
+<li><p>Optional reading: <a class="reference external" href="https://www.esri.com/arcgis-blog/products/field-maps/field-mobility/build-forms-in-arcgis-field-maps/">Build forms with ArcGIS Field Maps</a></p></li>
+</ul>
+<p><strong>Examples from this week:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arcg.is/u1qiW4">Opening Observation Form (Survey123)</a></p></li>
+<li><p><a class="reference external" href="https://wnmugis.maps.arcgis.com/apps/instant/attachmentviewer/index.html?appid=583cc85fa136424abb73b3cfe88da616">Class Web Map</a></p></li>
+<li><p><a class="reference external" href="https://www.inaturalist.org/observations?subview=map">iNaturalist observations map</a></p></li>
+<li><p><a class="reference external" href="https://wnmugis.maps.arcgis.com/apps/dashboards/db4dfdefdbcc48c899089c6f3a535086">Grant County iNaturalist Dashboard</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/arcgis-blog/products/arcgis-living-atlas/announcements/inaturalist-living-atlas-beta-release">iNaturalist layer in the ArcGIS Living Atlas</a></p></li>
+</ul>
+<p><strong>Open source:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.qfield.org">QField documentation</a>: covers QField, QFieldCloud, and the QFieldSync plugin</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Attribution: This page summarizes ideas from Esri tutorials and documentation and from the QField documentation, and points to them for the full explanations. Tutorial text, exercises, and images belong to their authors and are not reproduced here. This page is an independent teaching resource and is not affiliated with or endorsed by Esri or the QField project. ArcGIS, Survey123, and Field Maps are trademarks of Esri. QField is developed by <a class="reference external" href="http://OPENGIS.ch">OPENGIS.ch</a> and its community.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-366",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/create"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="09_dashboards_arcade.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>ArcGIS Dashboards and Arcade</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../labs/instructions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Submission Instructions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">9.1. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-week-at-a-glance">9.2. The Week at a Glance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">9.3. How to Use This Page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-dashboards-to-the-field">9.4. From Dashboards to the Field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-mobile-gis">9.5. What Is Mobile GIS?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">9.5.1. Advantages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supporting-technologies">9.5.2. Supporting technologies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-observation-a-survey123-form">9.6. Your First Observation: A Survey123 Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volunteered-geographic-information-and-inaturalist">9.7. Volunteered Geographic Information and iNaturalist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-collecting-vgi">9.7.1. Tools for collecting VGI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-contributes">9.7.2. Who contributes?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mobile-gis-data-meets-other-layers-the-grant-county-inaturalist-dashboard">9.8. Mobile GIS Data Meets Other Layers: The Grant County iNaturalist Dashboard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geoinquiry-questions">9.8.1. GeoInquiry questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-layers-the-backbone">9.9. Feature Layers: The Backbone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views">9.9.1. Views</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-designs-the-form">9.10. Who Designs the Form?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-ways-to-build-a-mobile-app">9.11. Three Ways to Build a Mobile App</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#esri-apps-for-mobile-gis">9.12. Esri Apps for Mobile GIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-field-maps-can-do">9.12.1. What Field Maps can do</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-design-happens-in-field-maps-designer">9.12.2. Where the design happens in Field Maps Designer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-option-qfield">9.13. Open Source Option: QField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-workflow-runs">9.13.1. How the workflow runs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qfield-and-field-maps-side-by-side">9.13.2. QField and Field Maps side by side</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-connects-to-the-rest-of-the-course">9.13.3. Why this connects to the rest of the course</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-mobile-gis-at-wnmu">9.14. Case Study: Mobile GIS at WNMU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treeplotter-and-field-maps">9.14.1. TreePlotter and Field Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guest-speaker-arica-scheetz-wnmu-arboretum">9.14.2. Guest speaker: Arica Scheetz, WNMU Arboretum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debrief-questions">9.14.3. Debrief questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-8-data-collection-with-arcgis-field-maps">9.15. Lab 8: Data Collection with ArcGIS Field Maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-tracks-for-part-c">9.15.1. Two tracks for Part C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-submit">9.15.2. What to submit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-notes-for-troubleshooting">9.15.3. Field notes for troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minute-discussion-breakout-or-whole-class">9.16. 5-Minute Discussion (breakout or whole-class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-exercise-plan-your-form">9.17. In-Class Exercise: Plan Your Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">9.18. Readings &amp; Resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
