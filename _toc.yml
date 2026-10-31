@@ -38,6 +38,7 @@ parts:
     chapters:
       - file: book/create/08_experience_builder
       - file: book/create/09_dashboards_arcade
+      - file: book/create/10_mobile_gis
   - caption: Labs
     numbered: false
     maxdepth: 2
