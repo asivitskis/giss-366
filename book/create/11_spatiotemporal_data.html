@@ -1,0 +1,2043 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Spatiotemporal Data &#8212; WebMapping &amp; Web GIS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/create/11_spatiotemporal_data';</script>
+    <link rel="canonical" href="https://asivitskis.github.io/giss-366/book/create/11_spatiotemporal_data.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Submission Instructions" href="../labs/instructions.html" />
+    <link rel="prev" title="9. Mobile GIS" href="10_mobile_gis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="WebMapping & Web GIS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="WebMapping & Web GIS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Software &amp; Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/arcgis_online.html">ArcGIS Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/github.html">Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/qgis.html">QGIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/leaflet.html">Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/maplibre.html">MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1 - WebGIS Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/01_what_is_webgis.html">1. What is Web GIS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/02_agol_publishing.html">2. ESRI and the ArcGIS Online Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/03_open_web_standards.html">3. Open Web Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/04_web_fundamentals.html">4. Web Language Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/05_javascript_leaflet.html">5. JavaScript &amp; Leaflet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/06_javascript_maplibre.html">6. MapLibre GL JS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2 - WebGIS Development</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08_experience_builder.html">7. ArcGIS Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_dashboards_arcade.html">8. ArcGIS Dashboards and Arcade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_mobile_gis.html">9. Mobile GIS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Spatiotemporal Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_00.html">Lab 0</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01_agol.html">Lab 1</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_02_geoserver.html">Lab 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_03_weblanguages.html">Lab 3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_04_javascript_leaflet.html">Lab 4</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_05_javascript_maplibre.html">Lab 5</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_06_experience_builder.html">Lab 6</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_07_dashboards_arcade.html">Lab 7</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../final-project/00-project-overview.html">Final Project: Public Web GIS Inquiry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/asivitskis/giss-366/main?urlpath=tree/book/create/11_spatiotemporal_data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/asivitskis/giss-366/blob/main/book/create/11_spatiotemporal_data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/edit/main/book/create/11_spatiotemporal_data.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/asivitskis/giss-366/issues/new?title=Issue%20on%20page%20%2Fbook/create/11_spatiotemporal_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/create/11_spatiotemporal_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spatiotemporal Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">10.1. Learning Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-week-at-a-glance">10.1.1. The Week at a Glance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">10.1.2. How to Use This Page</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-spatiotemporal-data">10.2. What Is Spatiotemporal Data?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archived-temporal-and-live">10.2.1. Archived, Temporal, and Live</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-tracking-record">10.2.2. Anatomy of a Tracking Record</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-recording-schedule-shapes-the-data">10.2.3. The Recording Schedule Shapes the Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatiotemporal-data-examples">10.3. Spatiotemporal Data Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-audubon-bird-migration-explorer">10.3.1. The Audubon Bird Migration Explorer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-the-scenes">10.3.2. Behind the Scenes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-time-enabled-map-in-arcgis-online">10.4. A Time-Enabled Map in ArcGIS Online</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-it">10.4.1. Explore It</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-time-lives">10.4.2. Where Time Lives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-idea-a-slider-is-a-filter">10.5. The Big Idea: A Slider Is a Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-crosswalk-one-idea-two-apps">10.5.1. The Crosswalk: One Idea, Two Apps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-it-in-esri-experience-builder">10.6. Build It in Esri: Experience Builder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-to-consider-for-your-chart">10.6.1. Fields to Consider for Your Chart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpret-with-care">10.6.2. Interpret with Care</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-idea-in-code-maplibre-and-chart-js">10.7. The Same Idea in Code: MapLibre and Chart.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-and-click-tour">10.7.1. Point-and-Click Tour</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-page-by-its-five-steps">10.7.2. Reading the Page by Its Five Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-config-block">10.7.3. The CONFIG Block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break-it-on-purpose">10.7.4. Break It on Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-esri-version-and-the-code-version-differ">10.7.5. Where the Esri Version and the Code Version Differ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chart-js">10.8. Chart.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-the-code-cells">10.8.1. How to Use the Code Cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-idea-one-config-object">10.8.2. The Big Idea: One Config Object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-1-change-the-type-and-the-title">10.8.2.1. Warm-Up Step 1: Change the Type and the Title</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-2-add-a-second-dataset">10.8.2.2. Warm-Up Step 2: Add a Second Dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-3-use-an-array-of-x-y-objects">10.8.2.3. Warm-Up Step 3: Use an Array of <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">}</span></code> Objects</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-4-filter-before-drawing">10.8.2.4. Warm-Up Step 4: Filter Before Drawing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-5-put-the-chart-in-a-function">10.8.2.5. Warm-Up Step 5: Put the Chart in a Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chartjs-examples">10.8.2.6. ChartJS Examples</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-chart-js-problems">10.8.2.7. Common Chart.js Problems</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further-with-chart-js">10.8.2.8. Going Further with Chart.js</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-owns-the-points">10.9. Who Owns the Points?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-source-and-license">10.9.1. Data Source and License</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-9-time-maps-and-charts">10.10. Lab 9: Time, Maps, and Charts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-notes-for-troubleshooting">10.10.1. Field Notes for Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">10.11. Readings &amp; Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-lab-9">10.11.1. For Lab 9</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-from-this-week">10.11.2. Examples from This Week</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-references">10.11.3. Code References</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spatiotemporal-data">
+<h1><span class="section-number">10. </span>Spatiotemporal Data<a class="headerlink" href="#spatiotemporal-data" title="Link to this heading">#</a></h1>
+<p><strong>Week 11 | Lecture + Lab 9: Time, Maps, and Charts</strong></p>
+<hr class="docutils" />
+<p>A map answers <em>where</em>. A chart answers <em>how much</em>. Time answers <em>when</em>, and it is the piece that ties them together. This week you add a time dimension to the data you already know how to map, using the tracks of golden eagles and the migration maps built by other people. You build a linked map, chart, and set of numbers in ArcGIS, then see the same idea rebuilt in code with MapLibre and Chart.js. You finish by comparing what low-code and code-based tools each do well with time data.</p>
+<section id="learning-objectives">
+<h2><span class="section-number">10.1. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Define spatiotemporal data as <em>where, when, and what</em>, and tell archived, temporal, and live data apart</p></li>
+<li><p>Describe a tracking record (animal ID, timestamp, longitude, latitude, optional attributes) and explain how a tag’s recording schedule shapes what the data can show</p></li>
+<li><p>Explain that <strong>a time slider is a filter on a timestamp field</strong>, and use three questions to diagnose a timeline that does nothing</p></li>
+<li><p>Find where time is set on a time-enabled hosted layer, and say which widgets in an Experience Builder app are listening to it</p></li>
+<li><p>Read a MapLibre and Chart.js page by its five numbered steps and match each part to its Esri counterpart</p></li>
+<li><p>Explain a Chart.js chart as one config object (<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">options</span></code>) that draws from the same filtered array as the map</p></li>
+<li><p>Compare what a map, a line chart, a pie chart, and a gauge each show and hide about the same tracking data</p></li>
+<li><p>Explain who owns animal tracking data and who should be able to see exact locations</p></li>
+</ul>
+<section id="the-week-at-a-glance">
+<h3><span class="section-number">10.1.1. </span>The Week at a Glance<a class="headerlink" href="#the-week-at-a-glance" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Meeting</p></th>
+<th class="head"><p>Focus</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Tuesday</strong></p></td>
+<td><p>Spatiotemporal data in the wild: the Audubon Bird Migration Explorer, then a time-enabled ArcGIS Online map built from a Movebank dataset, then a first look at a MapLibre and Chart.js page</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wednesday</strong></p></td>
+<td><p>Optional practice on your own time (ungraded): open the demo page and change the title and one color</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Thursday</strong></p></td>
+<td><p>Hands on with data and applications: the Lab 9 launch, building in Experience Builder, and reading, editing, and breaking the MapLibre page</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Lab 9</strong></p></td>
+<td><p>Time, Maps, and Charts: a time-enabled Experience Builder app (required), with an optional MapLibre and Chart.js build</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Guiding question for the week: How can one map show where, when, and what at the same time?</strong></p>
+</div></blockquote>
+<p>Three follow-up questions to carry through the week: What does a map show that a chart does not, and what does a chart show that a map does not? Who owns animal tracking data, and who decides how it is shared? What question would the dashboard for my final project help an audience answer?</p>
+</section>
+<section id="how-to-use-this-page">
+<h3><span class="section-number">10.1.2. </span>How to Use This Page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h3>
+<p>This page holds the concepts for the week. The step-by-step instructions for the lab live on the <strong>Lab 9 page</strong>. The final section of this page is a <strong>Chart.js reference</strong> with code you can edit and re-run, because we did not have time to explore Chart.js in depth in class. Come back to it whenever you want to learn more, especially if you choose a code-based tool for your final project.</p>
+<p>Two examples are embedded below so you can try them without leaving the page: the time-enabled eagle map in ArcGIS Online, and the MapLibre and Chart.js page from Thursday. Each one also has a direct link underneath it, for anyone reading a printed or PDF copy or whose browser blocks the embed.</p>
+<p>Where things live: this course website holds the content and notes, ArcGIS Online and GitHub are where you practice, and Canvas is for submission only.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-is-spatiotemporal-data">
+<h2><span class="section-number">10.2. </span>What Is Spatiotemporal Data?<a class="headerlink" href="#what-is-spatiotemporal-data" title="Link to this heading">#</a></h2>
+<p><strong>Spatiotemporal data</strong> answers three questions at once:</p>
+<ul class="simple">
+<li><p><strong>Where</strong> is it? (a location)</p></li>
+<li><p><strong>When</strong> was it there? (a timestamp)</p></li>
+<li><p><strong>What</strong> is it, or what was it doing? (attributes)</p></li>
+</ul>
+<p>A single GPS fix answers all three: <em>this eagle, at this place, at this time.</em> Many fixes in a row make a track, and a track lets you ask about movement, such as when an animal left, how far it went, and how fast it traveled.</p>
+<section id="archived-temporal-and-live">
+<h3><span class="section-number">10.2.1. </span>Archived, Temporal, and Live<a class="headerlink" href="#archived-temporal-and-live" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>What it is</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Static</strong></p></td>
+<td><p>A snapshot with no time dimension that matters</p></td>
+<td><p>A layer of campus buildings</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Temporal</strong></p></td>
+<td><p>Data that records when things happened. It can be archived and still be temporal</p></td>
+<td><p>The golden eagle tracks from 2002 to 2003</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Live</strong></p></td>
+<td><p>Temporal data that keeps arriving, so the app has to refresh on a timer or a connection</p></td>
+<td><p>A vehicle feed or a real-time sensor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The eagle data you use this week is <strong>archived</strong> and <strong>temporal</strong>. It is not live. Nothing in the page updates itself. A live version would add a refresh step, with a page that fetches new data on a timer, and we mention it as a direction without building it.</p>
+</section>
+<section id="anatomy-of-a-tracking-record">
+<h3><span class="section-number">10.2.2. </span>Anatomy of a Tracking Record<a class="headerlink" href="#anatomy-of-a-tracking-record" title="Link to this heading">#</a></h3>
+<p>A tracking record is small. The minimum is an animal ID, a timestamp, a longitude, and a latitude. Everything else is an optional attribute. The same record can be stored as a row in a CSV file or as a feature in a GeoJSON file.</p>
+<p>The values below are <strong>illustrative</strong>, made up to show the structure. They are not rows from the eagle layer.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>animal_id</p></th>
+<th class="head"><p>timestamp</p></th>
+<th class="head"><p>longitude</p></th>
+<th class="head"><p>latitude</p></th>
+<th class="head"><p>daily_km</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>37300a</p></td>
+<td><p>2002-10-14 06:00</p></td>
+<td><p>-105.20</p></td>
+<td><p>40.10</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>37300a</p></td>
+<td><p>2002-10-16 18:00</p></td>
+<td><p>-105.31</p></td>
+<td><p>39.72</p></td>
+<td><p>18.4</p></td>
+</tr>
+<tr class="row-even"><td><p>37300a</p></td>
+<td><p>2002-10-19 06:00</p></td>
+<td><p>-105.62</p></td>
+<td><p>39.15</p></td>
+<td><p>26.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>37301a</p></td>
+<td><p>2002-10-15 12:00</p></td>
+<td><p>-109.40</p></td>
+<td><p>44.80</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>37301a</p></td>
+<td><p>2002-10-18 00:00</p></td>
+<td><p>-109.52</p></td>
+<td><p>44.31</p></td>
+<td><p>15.9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The same kind of record as a GeoJSON feature:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">-105.31</span><span class="p">,</span><span class="w"> </span><span class="mf">39.72</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;animal_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;37300a&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2002-10-16T18:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;daily_km&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">18.4</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">daily_km</span></code> is empty for each animal’s first fix. It is calculated from the interval between two fixes, so the first fix has nothing to compare with. A missing value in a chart-ready field is a design fact to plan for, not an error.</p>
+</section>
+<section id="the-recording-schedule-shapes-the-data">
+<h3><span class="section-number">10.2.3. </span>The Recording Schedule Shapes the Data<a class="headerlink" href="#the-recording-schedule-shapes-the-data" title="Link to this heading">#</a></h3>
+<p>A GPS tag does not watch the animal continuously. It records a location on a schedule, and the schedule is a choice. The golden eagle layer holds <strong>359 Argos satellite fixes from four eagles</strong>, arriving about every 2 to 3 days between October 2002 and September 2003. That has consequences:</p>
+<ul class="simple">
+<li><p>A count of points reflects the recording schedule as well as the animal’s behavior. More points in a month does not mean the eagle spent more time there.</p></li>
+<li><p>A short time window may hold only a few points per eagle, so an average calculated from them can swing widely.</p></li>
+<li><p>Thinning the data (keeping fewer fixes) was a decision someone made. A different decision would change every count in the app.</p></li>
+</ul>
+<p><strong>Try it:</strong> a classmate says, “This eagle was way more active in March, because there are twice as many points.” What two questions would you ask before agreeing?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="spatiotemporal-data-examples">
+<h2><span class="section-number">10.3. </span>Spatiotemporal Data Examples<a class="headerlink" href="#spatiotemporal-data-examples" title="Link to this heading">#</a></h2>
+<section id="the-audubon-bird-migration-explorer">
+<h3><span class="section-number">10.3.1. </span>The Audubon Bird Migration Explorer<a class="headerlink" href="#the-audubon-bird-migration-explorer" title="Link to this heading">#</a></h3>
+<p>Before we name any vocabulary, look at a finished product built by other people. The <strong><a class="reference external" href="https://explorer.audubon.org/home?legend=collapse&amp;amp;layersPanel=collapse">Audubon Bird Migration Explorer</a></strong> shows where and when birds travel across the Western Hemisphere. Open it, choose a species, and spend five minutes with it.</p>
+<p>Use the where / when / what questions as you explore:</p>
+<ol class="arabic simple">
+<li><p>Where does this species spend each season?</p></li>
+<li><p>When does it move?</p></li>
+<li><p>Which control or view helped you see time?</p></li>
+<li><p>What would you want to know that this map does not show?</p></li>
+</ol>
+<p>Write one sentence that includes both a place and a time. If your sentence had only a place, you were looking at a static map.</p>
+</section>
+<section id="behind-the-scenes">
+<h3><span class="section-number">10.3.2. </span>Behind the Scenes<a class="headerlink" href="#behind-the-scenes" title="Link to this heading">#</a></h3>
+<p>The Explorer is built on ArcGIS Online. According to Esri’s write-up, <strong>283 institutions</strong> contributed data. The tracking data was combined in Movebank, and because individual scientists owned it, Audubon asked each one for permission to include it. Today’s dataset comes from the same ecosystem of shared tracking data.</p>
+<p><strong>Think about it:</strong> what would have changed about the Explorer if Audubon had skipped the permission step? Who would have been left out of the decision?</p>
+<ul class="simple">
+<li><p>Background: <a class="reference external" href="https://www.esri.com/about/newsroom/blog/audubon-bird-migration-explorer">Esri’s write-up of the Explorer</a></p></li>
+<li><p>Application development: <a class="reference external" href="https://blueraster.com/stories/national-audubon-societys-bird-migration-explorer/">Blue Raster on the Bird Migration Explorer</a> and its <a class="reference external" href="https://blueraster.com/stories/2026-bird-migration-explorer-updates/">2026 updates</a></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="a-time-enabled-map-in-arcgis-online">
+<h2><span class="section-number">10.4. </span>A Time-Enabled Map in ArcGIS Online<a class="headerlink" href="#a-time-enabled-map-in-arcgis-online" title="Link to this heading">#</a></h2>
+<p>The Explorer is a large product. The map below is a small one: four golden eagles from a Movebank study, tracked from October 2002 to September 2003, with the dataset’s license and citation attached. The points are colored by animal ID, and time is enabled on the layer.</p>
+<iframe src="https://arcg.is/1azLKr2" title="Golden Eagle time-enabled web map" width="100%" height="650" style="border:1px solid #999;" allowfullscreen></iframe>
+<p><em>Embedded: time-enabled Golden Eagle web map.</em> <strong><a class="reference external" href="https://arcg.is/1uXmD55">Open the map in its own tab</a></strong></p>
+<section id="explore-it">
+<h3><span class="section-number">10.4.1. </span>Explore It<a class="headerlink" href="#explore-it" title="Link to this heading">#</a></h3>
+<p>Turn on the time slider and work through these questions. They are the same ones from Tuesday’s breakout rooms.</p>
+<ol class="arabic simple">
+<li><p><strong>Describe one eagle’s movement.</strong> Use the time slider to follow one animal. Write two sentences that name a place and a time.</p></li>
+<li><p><strong>Filter to one animal.</strong> What changes on the map, and what stays the same?</p></li>
+<li><p><strong>Find a quiet stretch and a busy stretch.</strong> When does the animal move little, and when does it move a lot? What on the map tells you?</p></li>
+<li><p><strong>Compare counts.</strong> Compare the number of points for the full period with the number for one month. Does a higher count mean the animal spent more time there? What else could explain it?</p></li>
+</ol>
+<p>Question 4 is the one to carry through the rest of the week. A count of GPS fixes reflects the tag’s recording schedule as well as animal behavior.</p>
+</section>
+<section id="where-time-lives">
+<h3><span class="section-number">10.4.2. </span>Where Time Lives<a class="headerlink" href="#where-time-lives" title="Link to this heading">#</a></h3>
+<p>Before you build anything in Lab 9, find where the time setting lives. Open the layer’s settings and look for <strong>Time</strong>. You will find two things:</p>
+<ul class="simple">
+<li><p>A <strong>date field</strong> that holds the timestamp (in this layer, <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>)</p></li>
+<li><p>A setting that <strong>enables time</strong> on the layer, using that field</p></li>
+</ul>
+<p>If the field were stored as text, ArcGIS could not treat it as time, however sensible it looks to you.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-big-idea-a-slider-is-a-filter">
+<h2><span class="section-number">10.5. </span>The Big Idea: A Slider Is a Filter<a class="headerlink" href="#the-big-idea-a-slider-is-a-filter" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>A time slider is a filter on a timestamp field.</strong> Moving the slider changes a cutoff or a window, and everything connected to the data redraws to show only the records that pass.</p>
+</div></blockquote>
+<p>When time does not work, one of three things is wrong. Ask these in this order, in any tool:</p>
+<ol class="arabic simple">
+<li><p><strong>Is the timestamp a real date?</strong></p></li>
+<li><p><strong>Has the app been told to treat it as time?</strong></p></li>
+<li><p><strong>Which elements are listening to it?</strong></p></li>
+</ol>
+<section id="the-crosswalk-one-idea-two-apps">
+<h3><span class="section-number">10.5.1. </span>The Crosswalk: One Idea, Two Apps<a class="headerlink" href="#the-crosswalk-one-idea-two-apps" title="Link to this heading">#</a></h3>
+<p>The same three questions apply to ArcGIS and to code. Keep this table open when you read the code later on this page.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Question</strong></p></th>
+<th class="head"><p><strong>ArcGIS Online / Experience Builder</strong></p></th>
+<th class="head"><p><strong>MapLibre and Chart.js</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. Is the timestamp a real date?</strong></p></td>
+<td><p>The field is a date type in the layer, not text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Date.parse</span></code> in step 1 turns the timestamp into a number. A bad value gives <code class="docutils literal notranslate"><span class="pre">NaN</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2. Has the app been told to treat it as time?</strong></p></td>
+<td><p>Time is enabled on the layer, and the Timeline widget is connected to the Map</p></td>
+<td><p>The slider’s <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">step</span></code> are set from the first and last time in step 2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3. Which elements are listening?</strong></p></td>
+<td><p>The map, the Text widget, the Filter, and the Chart, if each is connected to the same time-enabled data source</p></td>
+<td><p>Everything that draws from <code class="docutils literal notranslate"><span class="pre">shown</span></code> in <code class="docutils literal notranslate"><span class="pre">update()</span></code>: the map, the count, and the chart</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Time slider</strong></p></td>
+<td><p>Timeline widget</p></td>
+<td><p>Date slider (<code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;range&quot;&gt;</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Indicator</strong></p></td>
+<td><p>Text widget with dynamic content (a count)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$(&quot;count&quot;).textContent</span> <span class="pre">=</span> <span class="pre">shown.length</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Chart</strong></p></td>
+<td><p>Chart widget</p></td>
+<td><p>Chart.js <code class="docutils literal notranslate"><span class="pre">drawChart</span></code> function</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Think about it:</strong> a timeline moves, but the map does not change. Which of the three questions would you check first, and why?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="build-it-in-esri-experience-builder">
+<h2><span class="section-number">10.6. </span>Build It in Esri: Experience Builder<a class="headerlink" href="#build-it-in-esri-experience-builder" title="Link to this heading">#</a></h2>
+<p>In Lab 9 you build a time-enabled app in ArcGIS Experience Builder, using the dashboard pattern from Lab 7. Name your experience <strong>Lab9_&lt;your initials&gt;</strong>. The build has four checkpoints, and each has a visible “you should see.”</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Checkpoint</p></th>
+<th class="head"><p>You should see</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. Map widget.</strong> Start from the Chronology template (or the one from class), with a web map that contains the hosted layer</p></td>
+<td><p>Eagle points, colored by animal ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2. Timeline widget.</strong> Configure it and connect it to the Map widget</p></td>
+<td><p>Dragging the timeline changes which points are on the map. If nothing happens, go back to Questions 1 and 2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3. Chart widget.</strong> Build a chart from the layer that helps a user learn something from the time-enabled data</p></td>
+<td><p>A chart you chose with a field and a statistic that suit the data. Note whether it also responds to the timeline</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4. Text box.</strong> Remove the template List and Views widgets, and add a text box above your chart that explains what it shows and poses a question or hypothesis</p></td>
+<td><p>A text box that gives your audience a direction for reading the app</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Your finished product should have the same layout as the reference demo but with your own intentional choices. Whether the Chart widget responds to the timeline depends on how it is connected and on the version of the tool, so test it in your own app and record what you see. It belongs in your reflection.</p>
+<section id="fields-to-consider-for-your-chart">
+<h3><span class="section-number">10.6.1. </span>Fields to Consider for Your Chart<a class="headerlink" href="#fields-to-consider-for-your-chart" title="Link to this heading">#</a></h3>
+<p>The layer has about 30 fields. These seven are the most useful for a chart that updates as the timeline moves.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>What it records</p></th>
+<th class="head"><p>Chart idea</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">animal_id</span></code></p></td>
+<td><p>ID of each tagged eagle (37300a, 37301a, 37303a, 37433a)</p></td>
+<td><p>One bar, line, or color per eagle</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
+<td><p>North-south position of each fix, about 30° to 53° N across the layer</p></td>
+<td><p>Mean latitude per eagle within the time window</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">month_label</span></code></p></td>
+<td><p>Month of the fix as text with the number first (for example, “10 Oct”), so months sort in calendar order</p></td>
+<td><p>Count of fixes per month, split by <code class="docutils literal notranslate"><span class="pre">animal_id</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">season</span></code></p></td>
+<td><p>Fall, Winter, Spring, or Summer, assigned by calendar month</p></td>
+<td><p>Mean <code class="docutils literal notranslate"><span class="pre">daily_km</span></code> by season</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">daily_km</span></code></p></td>
+<td><p>Estimated daily travel rate for the interval between two fixes. Empty for each eagle’s first fix</p></td>
+<td><p>Average or maximum per eagle</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">movement_class</span></code></p></td>
+<td><p>Start, Resident (under 10 km/day), Local (10 to 50), Moving (50 to 150), or Long distance (150 and up)</p></td>
+<td><p>Count of fixes by movement class in the window</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dist_from_start_km</span></code></p></td>
+<td><p>Straight-line distance from the eagle’s first recorded location</p></td>
+<td><p>Maximum or mean per eagle</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Three sample questions a chart could answer:</p>
+<ul class="simple">
+<li><p>Which eagle sits farthest north or south during the window you selected? (mean <code class="docutils literal notranslate"><span class="pre">latitude</span></code> by <code class="docutils literal notranslate"><span class="pre">animal_id</span></code>)</p></li>
+<li><p>Do eagles travel more per day in some seasons than others? (mean <code class="docutils literal notranslate"><span class="pre">daily_km</span></code> by <code class="docutils literal notranslate"><span class="pre">season</span></code>)</p></li>
+<li><p>When does each bird leave its starting area? (maximum <code class="docutils literal notranslate"><span class="pre">dist_from_start_km</span></code> by <code class="docutils literal notranslate"><span class="pre">animal_id</span></code>)</p></li>
+</ul>
+</section>
+<section id="interpret-with-care">
+<h3><span class="section-number">10.6.2. </span>Interpret with Care<a class="headerlink" href="#interpret-with-care" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fixes arrive about every 2 to 3 days, so a short time window may hold only a few points per eagle. Averages from a few points can swing widely.</p></li>
+<li><p>Eagle 37301a stops transmitting in early February 2003, so it has no spring or summer data. A viewer could mistake a silent tag for an eagle that stopped moving, or for one that died. The data does not say which.</p></li>
+<li><p>Argos locations carry error. About a third of fixes are accurate only to within 1 km or worse, or have no error estimate (see <code class="docutils literal notranslate"><span class="pre">location_accuracy</span></code>), and that error can inflate distance and speed values.</p></li>
+<li><p>Many charts sort categories alphabetically by default. Check the order of your categories, especially for <code class="docutils literal notranslate"><span class="pre">movement_class</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-same-idea-in-code-maplibre-and-chart-js">
+<h2><span class="section-number">10.7. </span>The Same Idea in Code: MapLibre and Chart.js<a class="headerlink" href="#the-same-idea-in-code-maplibre-and-chart-js" title="Link to this heading">#</a></h2>
+<p>Experience Builder is fast to assemble. Code gives you control over exactly what each element does. The page below is the code version of the same dashboard: a map of eagle tracks, a date slider, a count of locations, and a chart. Move the slider and the map, the count, and the chart all change together.</p>
+<iframe src="https://asivitskis.github.io/golden-eagle-migration-demo/" title="Golden Eagle Migration: MapLibre and Chart.js" width="100%" height="800" style="border:1px solid #999;" allowfullscreen></iframe>
+<p><em>Embedded: Golden Eagle Migration, MapLibre and Chart.js.</em> <strong><a class="reference external" href="https://asivitskis.github.io/golden-eagle-migration-demo/">Open the page in its own tab</a></strong></p>
+<section id="point-and-click-tour">
+<h3><span class="section-number">10.7.1. </span>Point-and-Click Tour<a class="headerlink" href="#point-and-click-tour" title="Link to this heading">#</a></h3>
+<p>Work through the page above before you read any code:</p>
+<ol class="arabic simple">
+<li><p><strong>Drag the date slider.</strong> Watch the map, the count, and the chart change together.</p></li>
+<li><p><strong>Click a point</strong> on the map. What does the popup tell you?</p></li>
+<li><p><strong>Look for the contrast.</strong> Which thing does the map show that the chart does not? Which thing does the chart show that the map does not?</p></li>
+<li><p><strong>Press <code class="docutils literal notranslate"><span class="pre">F12</span></code></strong> to open the browser Console. Leave it open. You will use it in a few minutes.</p></li>
+</ol>
+</section>
+<section id="reading-the-page-by-its-five-steps">
+<h3><span class="section-number">10.7.2. </span>Reading the Page by Its Five Steps<a class="headerlink" href="#reading-the-page-by-its-five-steps" title="Link to this heading">#</a></h3>
+<p>Everything on the page is drawn from <strong>one array called <code class="docutils literal notranslate"><span class="pre">shown</span></code></strong>: the locations up to the slider date. That is why the map, the count, and the chart always agree. The script is numbered 1 to 5.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>What it does</p></th>
+<th class="head"><p>Which question it answers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. Load the data</strong></p></td>
+<td><p>Reads <code class="docutils literal notranslate"><span class="pre">tracks.geojson</span></code> and turns each timestamp into a number with <code class="docutils literal notranslate"><span class="pre">Date.parse</span></code></p></td>
+<td><p>Question 1: is the timestamp a real date?</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2. Set up the page text and slider</strong></p></td>
+<td><p>Fills in the title and question, and sets the slider’s <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">step</span></code> from the first and last time</p></td>
+<td><p>Question 2: has the app been told to treat it as time?</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3. Build the map</strong></p></td>
+<td><p>Creates the MapLibre map and its point layer</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4. Draw the chart</strong></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">drawChart</span></code> function builds a Chart.js chart. This is where you choose your visualization</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>5. <code class="docutils literal notranslate"><span class="pre">update()</span></code></strong></p></td>
+<td><p>Runs every time the slider moves. Keeps the points where <code class="docutils literal notranslate"><span class="pre">p.time</span> <span class="pre">&lt;=</span> <span class="pre">cutoff</span></code>, then sends them to the map, the count, and the chart</p></td>
+<td><p>Question 3: which elements are listening?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A simplified sketch of the pattern in step 5 (the real template’s function names differ):</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">update</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cutoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">slider</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span><span class="w">                 </span><span class="c1">// where the slider is now</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">shown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">points</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">time</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">cutoff</span><span class="p">);</span><span class="w">  </span><span class="c1">// the one filter</span>
+<span class="w">  </span><span class="nx">drawMap</span><span class="p">(</span><span class="nx">shown</span><span class="p">);</span><span class="w">                                      </span><span class="c1">// map listens</span>
+<span class="w">  </span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">shown</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w">               </span><span class="c1">// count listens</span>
+<span class="w">  </span><span class="nx">drawChart</span><span class="p">(</span><span class="nx">shown</span><span class="p">);</span><span class="w">                                    </span><span class="c1">// chart listens</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-config-block">
+<h3><span class="section-number">10.7.3. </span>The CONFIG Block<a class="headerlink" href="#the-config-block" title="Link to this heading">#</a></h3>
+<p>At the top of the script is a block you edit without touching anything else. Change the title and the question to fit your own audience.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Golden Eagle Migration Patterns 2002-2003&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">question</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[you will enter your question here]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">dataUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data/tracks.geojson&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">idField</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;animal_id&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">timeField</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="break-it-on-purpose">
+<h3><span class="section-number">10.7.4. </span>Break It on Purpose<a class="headerlink" href="#break-it-on-purpose" title="Link to this heading">#</a></h3>
+<p>A deliberate error teaches you how to read the console. Change <code class="docutils literal notranslate"><span class="pre">timeField</span></code> to a misspelled name such as <code class="docutils literal notranslate"><span class="pre">&quot;timestamps&quot;</span></code> and refresh. The page stops working. Open the Console (<code class="docutils literal notranslate"><span class="pre">F12</span></code>) and find the red error. It will say something like <code class="docutils literal notranslate"><span class="pre">Invalid</span> <span class="pre">time</span> <span class="pre">value</span></code>.</p>
+<p>That error is a spatiotemporal data error. The app looked for a field that does not exist, got nothing back, and could not make a date out of it. Which of the three questions does that answer? Fix the spelling, confirm the page works again, and use this in your reflection.</p>
+</section>
+<section id="where-the-esri-version-and-the-code-version-differ">
+<h3><span class="section-number">10.7.5. </span>Where the Esri Version and the Code Version Differ<a class="headerlink" href="#where-the-esri-version-and-the-code-version-differ" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Experience Builder</strong></p></th>
+<th class="head"><p><strong>MapLibre and Chart.js</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Speed</strong></p></td>
+<td><p>Assembled in minutes with widgets and menus</p></td>
+<td><p>Starts from a template, and needs a code editor and a publishing step</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Control</strong></p></td>
+<td><p>The platform decides how a widget listens to time</p></td>
+<td><p>You decide exactly what each element draws, and from which array</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>When something fails</strong></p></td>
+<td><p>Check the layer’s time setting and each widget’s connection</p></td>
+<td><p>Check the Console for a red error</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Where it lives</strong></p></td>
+<td><p>ArcGIS Online, with sharing settings</p></td>
+<td><p>GitHub Pages, as public files</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cost</strong></p></td>
+<td><p>An ArcGIS account with the right role</p></td>
+<td><p>Free, and it costs skill and setup time</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The pattern is the same one from the Experience Builder week and from Mobile GIS: moving toward open source buys control and costs setup and skill, and moving toward Esri buys speed and integration and costs flexibility.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="chart-js">
+<h2><span class="section-number">10.8. </span>Chart.js<a class="headerlink" href="#chart-js" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>This section is a reference.</strong> In class we saw Chart.js in three ideas and pasted in a chart. This section goes further, using small examples you can change and re-run. You do not need it to finish the required part of Lab 9, and it is a good starting point if you choose a code-based tool for your final project.</p>
+</div></blockquote>
+<p><strong>Chart.js</strong> is a free, open source JavaScript library that draws charts in a web page. The <a class="reference external" href="https://www.w3schools.com/js/js_graphics_chartjs.asp">W3Schools Chart.js introduction</a> is a good place to start: it has a modifiable example with a <strong>Try it Yourself</strong> button. The warm-up below follows the same path as that example, in small steps.</p>
+<section id="how-to-use-the-code-cells">
+<h3><span class="section-number">10.8.1. </span>How to Use the Code Cells<a class="headerlink" href="#how-to-use-the-code-cells" title="Link to this heading">#</a></h3>
+<p>Each example below is a Python cell holding a block of JavaScript. <strong>Edit the JavaScript, then re-run the cell</strong> to see the chart change. The cells run in your browser, so you need an internet connection to load the Chart.js library. If something breaks, re-run the cell you started from.</p>
+<p>Run this cell first. It sets up a helper that draws a chart in a small frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">html</span> <span class="k">as</span> <span class="nn">_html</span>
+
+<span class="c1"># Chart.js is loaded from a CDN in each frame. The version is pinned so the</span>
+<span class="c1"># examples keep working. Change the number to test another version.</span>
+<span class="n">CHARTJS</span> <span class="o">=</span> <span class="s2">&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;</span>
+
+<span class="k">def</span> <span class="nf">chart_demo</span><span class="p">(</span><span class="n">js</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a Chart.js example in its own frame.</span>
+<span class="sd">    js   : the JavaScript to run. The canvas has id=&quot;myChart&quot;.</span>
+<span class="sd">    body : optional HTML placed above the canvas (for example, a slider).&quot;&quot;&quot;</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;</span>
+<span class="s2">&lt;style&gt;body</span><span class="se">{{</span><span class="s2">font-family:Georgia,serif;margin:10px;color:#1a3c5e</span><span class="se">}}</span>
+<span class="s2">#wrap</span><span class="se">{{</span><span class="s2">max-width:640px</span><span class="se">}}</span><span class="s2"> input[type=range]</span><span class="se">{{</span><span class="s2">width:100%;margin-bottom:8px</span><span class="se">}}</span><span class="s2">&lt;/style&gt;&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;</span>
+<span class="s2">&lt;script src=&quot;</span><span class="si">{</span><span class="n">CHARTJS</span><span class="si">}</span><span class="s2">&quot;&gt;&lt;/script&gt;</span>
+<span class="s2">&lt;script&gt;</span>
+<span class="si">{</span><span class="n">js</span><span class="si">}</span>
+<span class="s2">&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;&quot;&quot;&quot;</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">_html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;iframe srcdoc=&quot;</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s1">&quot; width=&quot;100%&quot; height=&quot;</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">&quot; &#39;</span>
+                 <span class="sa">f</span><span class="s1">&#39;style=&quot;border:1px solid #999;&quot;&gt;&lt;/iframe&gt;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-big-idea-one-config-object">
+<h3><span class="section-number">10.8.2. </span>The Big Idea: One Config Object<a class="headerlink" href="#the-big-idea-one-config-object" title="Link to this heading">#</a></h3>
+<p>A Chart.js chart is <strong>one config object with three parts</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Part</p></th>
+<th class="head"><p>What it controls</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">type</span></code></strong></p></td>
+<td><p>The kind of chart</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;line&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bar&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;pie&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;doughnut&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;scatter&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">data</span></code></strong></p></td>
+<td><p>What gets drawn: the labels and one or more datasets</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">labels</span></code>, <code class="docutils literal notranslate"><span class="pre">datasets</span></code>, each dataset’s <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code>, and colors</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">options</span></code></strong></p></td>
+<td><p>How it looks and behaves</p></td>
+<td><p>Title, legend, axis limits, tooltips</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The call has the same shape every time: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Chart(canvas,</span> <span class="pre">{</span> <span class="pre">type,</span> <span class="pre">data,</span> <span class="pre">options</span> <span class="pre">})</span></code>. The example below is a line chart of house prices against house size, the same one used in the W3Schools introduction. The comments mark the three parts.</p>
+<blockquote>
+<div><p><strong>Version note:</strong> Chart.js changed how options are written between version 2 and version 3. Older tutorials, including some W3Schools examples, may put <code class="docutils literal notranslate"><span class="pre">legend</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code> directly inside <code class="docutils literal notranslate"><span class="pre">options</span></code> and use <code class="docutils literal notranslate"><span class="pre">yAxes</span></code>. Current versions put them under <code class="docutils literal notranslate"><span class="pre">options.plugins</span></code> and use <code class="docutils literal notranslate"><span class="pre">scales.y</span></code>. This page uses a current version. If an example from another site does not behave, check the version in its <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag first.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">step0</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const sizes  = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];</span>
+<span class="s2">const prices = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];</span>
+
+<span class="s2">new Chart(document.getElementById(&quot;myChart&quot;), {</span>
+<span class="s2">  type: &quot;line&quot;,                          // PART 1: type</span>
+<span class="s2">  data: {                                // PART 2: data</span>
+<span class="s2">    labels: sizes,</span>
+<span class="s2">    datasets: [{ data: prices, borderColor: &quot;blue&quot;, backgroundColor: &quot;blue&quot; }]</span>
+<span class="s2">  },</span>
+<span class="s2">  options: {                             // PART 3: options</span>
+<span class="s2">    plugins: {</span>
+<span class="s2">      legend: { display: false },</span>
+<span class="s2">      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">step0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/giss-366/giss-366/.venv/lib/python3.12/site-packages/IPython/core/display.py:431: UserWarning: Consider using IPython.display.IFrame instead
+  warnings.warn(&quot;Consider using IPython.display.IFrame instead&quot;)
+</pre></div>
+</div>
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+const sizes  = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+const prices = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+
+new Chart(document.getElementById(&quot;myChart&quot;), {
+  type: &quot;line&quot;,                          // PART 1: type
+  data: {                                // PART 2: data
+    labels: sizes,
+    datasets: [{ data: prices, borderColor: &quot;blue&quot;, backgroundColor: &quot;blue&quot; }]
+  },
+  options: {                             // PART 3: options
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }
+    }
+  }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="400" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<section id="warm-up-step-1-change-the-type-and-the-title">
+<h4><span class="section-number">10.8.2.1. </span>Warm-Up Step 1: Change the Type and the Title<a class="headerlink" href="#warm-up-step-1-change-the-type-and-the-title" title="Link to this heading">#</a></h4>
+<p>Edit the cell above (or copy it), then re-run it.</p>
+<ol class="arabic simple">
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">&quot;line&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">&quot;bar&quot;</span></code> and run it. Change it back.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">options</span></code>, change the title <code class="docutils literal notranslate"><span class="pre">text</span></code> to something of your own.</p></li>
+</ol>
+<p><strong>You should see:</strong> the same data as bars, then your new title.</p>
+<p><strong>Answer for yourself:</strong> which of the three parts (<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">options</span></code>) did you edit in 1 and in 2?</p>
+</section>
+<section id="warm-up-step-2-add-a-second-dataset">
+<h4><span class="section-number">10.8.2.2. </span>Warm-Up Step 2: Add a Second Dataset<a class="headerlink" href="#warm-up-step-2-add-a-second-dataset" title="Link to this heading">#</a></h4>
+<p>Real charts compare things. A second dataset is a second object in the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> list. Here, the first dataset is suburban house prices and the second is city prices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">step2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const sizes = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];</span>
+
+<span class="s2">new Chart(document.getElementById(&quot;myChart&quot;), {</span>
+<span class="s2">  type: &quot;line&quot;,</span>
+<span class="s2">  data: {</span>
+<span class="s2">    labels: sizes,</span>
+<span class="s2">    datasets: [</span>
+<span class="s2">      {</span>
+<span class="s2">        label: &quot;Suburb&quot;,</span>
+<span class="s2">        data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15],</span>
+<span class="s2">        borderColor: &quot;#1b9e77&quot;,</span>
+<span class="s2">        backgroundColor: &quot;#1b9e77&quot;</span>
+<span class="s2">      },</span>
+<span class="s2">      {</span>
+<span class="s2">        label: &quot;City&quot;,</span>
+<span class="s2">        data: [9, 10, 10, 11, 12, 12, 13, 15, 17, 18, 20],</span>
+<span class="s2">        borderColor: &quot;#d95f02&quot;,</span>
+<span class="s2">        backgroundColor: &quot;#d95f02&quot;</span>
+<span class="s2">      }</span>
+<span class="s2">    ]</span>
+<span class="s2">  },</span>
+<span class="s2">  options: {</span>
+<span class="s2">    plugins: {</span>
+<span class="s2">      legend: { display: true },</span>
+<span class="s2">      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">step2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+const sizes = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+
+new Chart(document.getElementById(&quot;myChart&quot;), {
+  type: &quot;line&quot;,
+  data: {
+    labels: sizes,
+    datasets: [
+      {
+        label: &quot;Suburb&quot;,
+        data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15],
+        borderColor: &quot;#1b9e77&quot;,
+        backgroundColor: &quot;#1b9e77&quot;
+      },
+      {
+        label: &quot;City&quot;,
+        data: [9, 10, 10, 11, 12, 12, 13, 15, 17, 18, 20],
+        borderColor: &quot;#d95f02&quot;,
+        backgroundColor: &quot;#d95f02&quot;
+      }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: { display: true },
+      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }
+    }
+  }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="400" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<p><strong>You should see:</strong> two lines and a legend. Try changing <code class="docutils literal notranslate"><span class="pre">legend:</span> <span class="pre">{</span> <span class="pre">display:</span> <span class="pre">true</span> <span class="pre">}</span></code> back to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p><strong>Answer for yourself:</strong> where in the config does each new line of data live?</p>
+</section>
+<section id="warm-up-step-3-use-an-array-of-x-y-objects">
+<h4><span class="section-number">10.8.2.3. </span>Warm-Up Step 3: Use an Array of <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">}</span></code> Objects<a class="headerlink" href="#warm-up-step-3-use-an-array-of-x-y-objects" title="Link to this heading">#</a></h4>
+<p>So far the data was typed in as two lists. Real data usually arrives as <strong>a list of records</strong>, one object per row, like the rows of a tracking file. The code below starts from that shape and turns it into chart data.</p>
+<p>It also changes the chart <code class="docutils literal notranslate"><span class="pre">type</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;scatter&quot;</span></code> with <code class="docutils literal notranslate"><span class="pre">showLine:</span> <span class="pre">true</span></code>. A line chart places its labels at equal spacing, while a scatter chart places each point at its true <code class="docutils literal notranslate"><span class="pre">x</span></code> value. This matters for time: if fixes arrive every 2 days and then every 10 days, a time chart should show the gap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">step3</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const groups  = [&quot;Suburb&quot;, &quot;City&quot;];</span>
+<span class="s2">const colorOf = { Suburb: &quot;#1b9e77&quot;, City: &quot;#d95f02&quot; };</span>
+
+<span class="s2">const points = [</span>
+<span class="s2">  { group: &quot;Suburb&quot;, x: 50,  y: 7 },  { group: &quot;Suburb&quot;, x: 60,  y: 8 },</span>
+<span class="s2">  { group: &quot;Suburb&quot;, x: 100, y: 9 },  { group: &quot;Suburb&quot;, x: 150, y: 15 },</span>
+<span class="s2">  { group: &quot;City&quot;,   x: 50,  y: 9 },  { group: &quot;City&quot;,   x: 60,  y: 10 },</span>
+<span class="s2">  { group: &quot;City&quot;,   x: 100, y: 12 }, { group: &quot;City&quot;,   x: 150, y: 20 }</span>
+<span class="s2">];</span>
+
+<span class="s2">const ctx = document.getElementById(&quot;myChart&quot;);</span>
+
+<span class="s2">new Chart(ctx, {</span>
+<span class="s2">  type: &quot;scatter&quot;,</span>
+<span class="s2">  data: {</span>
+<span class="s2">    datasets: groups.map(g =&gt; ({</span>
+<span class="s2">      label: g,</span>
+<span class="s2">      data: points.filter(p =&gt; p.group === g).map(p =&gt; ({ x: p.x, y: p.y })),</span>
+<span class="s2">      borderColor: colorOf[g],</span>
+<span class="s2">      backgroundColor: colorOf[g],</span>
+<span class="s2">      showLine: true</span>
+<span class="s2">    }))</span>
+<span class="s2">  },</span>
+<span class="s2">  options: {</span>
+<span class="s2">    plugins: {</span>
+<span class="s2">      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }</span>
+<span class="s2">    },</span>
+<span class="s2">    scales: { x: { min: 50, max: 150 } }</span>
+<span class="s2">  }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">step3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+const groups  = [&quot;Suburb&quot;, &quot;City&quot;];
+const colorOf = { Suburb: &quot;#1b9e77&quot;, City: &quot;#d95f02&quot; };
+
+const points = [
+  { group: &quot;Suburb&quot;, x: 50,  y: 7 },  { group: &quot;Suburb&quot;, x: 60,  y: 8 },
+  { group: &quot;Suburb&quot;, x: 100, y: 9 },  { group: &quot;Suburb&quot;, x: 150, y: 15 },
+  { group: &quot;City&quot;,   x: 50,  y: 9 },  { group: &quot;City&quot;,   x: 60,  y: 10 },
+  { group: &quot;City&quot;,   x: 100, y: 12 }, { group: &quot;City&quot;,   x: 150, y: 20 }
+];
+
+const ctx = document.getElementById(&quot;myChart&quot;);
+
+new Chart(ctx, {
+  type: &quot;scatter&quot;,
+  data: {
+    datasets: groups.map(g =&gt; ({
+      label: g,
+      data: points.filter(p =&gt; p.group === g).map(p =&gt; ({ x: p.x, y: p.y })),
+      borderColor: colorOf[g],
+      backgroundColor: colorOf[g],
+      showLine: true
+    }))
+  },
+  options: {
+    plugins: {
+      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }
+    },
+    scales: { x: { min: 50, max: 150 } }
+  }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="400" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<p><strong>You should see:</strong> two lines with points at their true sizes (50, 60, 100, 150), so the gaps are uneven.</p>
+<p><strong>Answer for yourself:</strong> find the line that turns the list of objects into chart data. What does <code class="docutils literal notranslate"><span class="pre">.filter</span></code> do, and what does <code class="docutils literal notranslate"><span class="pre">.map</span></code> do?</p>
+<blockquote>
+<div><p><strong>The two methods to know.</strong> <code class="docutils literal notranslate"><span class="pre">.filter(test)</span></code> keeps only the items that pass a test and returns a shorter list. <code class="docutils literal notranslate"><span class="pre">.map(change)</span></code> returns a new list in which every item has been changed. Here, <code class="docutils literal notranslate"><span class="pre">.filter</span></code> picks out one group’s rows, and <code class="docutils literal notranslate"><span class="pre">.map</span></code> reshapes each row into the <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">}</span></code> object Chart.js wants. In the app, the same <code class="docutils literal notranslate"><span class="pre">.filter</span></code> call is how a slider works.</p>
+</div></blockquote>
+</section>
+<section id="warm-up-step-4-filter-before-drawing">
+<h4><span class="section-number">10.8.2.4. </span>Warm-Up Step 4: Filter Before Drawing<a class="headerlink" href="#warm-up-step-4-filter-before-drawing" title="Link to this heading">#</a></h4>
+<p>Now add a <strong>cutoff</strong>. Two new lines make a list called <code class="docutils literal notranslate"><span class="pre">shown</span></code>, holding only the points at or below the cutoff, and the chart draws from <code class="docutils literal notranslate"><span class="pre">shown</span></code> instead of <code class="docutils literal notranslate"><span class="pre">points</span></code>. This is the idea from the whole week in two lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">step4</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const groups  = [&quot;Suburb&quot;, &quot;City&quot;];</span>
+<span class="s2">const colorOf = { Suburb: &quot;#1b9e77&quot;, City: &quot;#d95f02&quot; };</span>
+
+<span class="s2">const points = [</span>
+<span class="s2">  { group: &quot;Suburb&quot;, x: 50,  y: 7 },  { group: &quot;Suburb&quot;, x: 60,  y: 8 },</span>
+<span class="s2">  { group: &quot;Suburb&quot;, x: 100, y: 9 },  { group: &quot;Suburb&quot;, x: 150, y: 15 },</span>
+<span class="s2">  { group: &quot;City&quot;,   x: 50,  y: 9 },  { group: &quot;City&quot;,   x: 60,  y: 10 },</span>
+<span class="s2">  { group: &quot;City&quot;,   x: 100, y: 12 }, { group: &quot;City&quot;,   x: 150, y: 20 }</span>
+<span class="s2">];</span>
+
+<span class="s2">const ctx = document.getElementById(&quot;myChart&quot;);</span>
+
+<span class="s2">const cutoff = 100;                                     // try 60, 100, 150</span>
+<span class="s2">const shown  = points.filter(p =&gt; p.x &lt;= cutoff);      // the filter</span>
+
+<span class="s2">new Chart(ctx, {</span>
+<span class="s2">  type: &quot;scatter&quot;,</span>
+<span class="s2">  data: {</span>
+<span class="s2">    datasets: groups.map(g =&gt; ({</span>
+<span class="s2">      label: g,</span>
+<span class="s2">      data: shown.filter(p =&gt; p.group === g).map(p =&gt; ({ x: p.x, y: p.y })),</span>
+<span class="s2">      borderColor: colorOf[g],</span>
+<span class="s2">      backgroundColor: colorOf[g],</span>
+<span class="s2">      showLine: true</span>
+<span class="s2">    }))</span>
+<span class="s2">  },</span>
+<span class="s2">  options: {</span>
+<span class="s2">    plugins: {</span>
+<span class="s2">      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }</span>
+<span class="s2">    },</span>
+<span class="s2">    scales: { x: { min: 50, max: 150 } }</span>
+<span class="s2">  }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">step4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+const groups  = [&quot;Suburb&quot;, &quot;City&quot;];
+const colorOf = { Suburb: &quot;#1b9e77&quot;, City: &quot;#d95f02&quot; };
+
+const points = [
+  { group: &quot;Suburb&quot;, x: 50,  y: 7 },  { group: &quot;Suburb&quot;, x: 60,  y: 8 },
+  { group: &quot;Suburb&quot;, x: 100, y: 9 },  { group: &quot;Suburb&quot;, x: 150, y: 15 },
+  { group: &quot;City&quot;,   x: 50,  y: 9 },  { group: &quot;City&quot;,   x: 60,  y: 10 },
+  { group: &quot;City&quot;,   x: 100, y: 12 }, { group: &quot;City&quot;,   x: 150, y: 20 }
+];
+
+const ctx = document.getElementById(&quot;myChart&quot;);
+
+const cutoff = 100;                                     // try 60, 100, 150
+const shown  = points.filter(p =&gt; p.x &lt;= cutoff);      // the filter
+
+new Chart(ctx, {
+  type: &quot;scatter&quot;,
+  data: {
+    datasets: groups.map(g =&gt; ({
+      label: g,
+      data: shown.filter(p =&gt; p.group === g).map(p =&gt; ({ x: p.x, y: p.y })),
+      borderColor: colorOf[g],
+      backgroundColor: colorOf[g],
+      showLine: true
+    }))
+  },
+  options: {
+    plugins: {
+      title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }
+    },
+    scales: { x: { min: 50, max: 150 } }
+  }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="400" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<p>Try cutoff values of 60, 100, and 150. In the eagle app, <code class="docutils literal notranslate"><span class="pre">x</span></code> is a time and the cutoff is the slider’s date.</p>
+<p><strong>You should see:</strong> only the points up to the cutoff.</p>
+<p><strong>Answer for yourself:</strong> what is <code class="docutils literal notranslate"><span class="pre">shown</span></code>, and what draws from it?</p>
+</section>
+<section id="warm-up-step-5-put-the-chart-in-a-function">
+<h4><span class="section-number">10.8.2.5. </span>Warm-Up Step 5: Put the Chart in a Function<a class="headerlink" href="#warm-up-step-5-put-the-chart-in-a-function" title="Link to this heading">#</a></h4>
+<p>A slider calls for a chart to be drawn <strong>many times</strong>, once per move. A function lets you do that. The new part is <code class="docutils literal notranslate"><span class="pre">chart.destroy()</span></code>, which removes the old chart before a new one is built.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">step5</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const groups  = [&quot;Suburb&quot;, &quot;City&quot;];</span>
+<span class="s2">const colorOf = { Suburb: &quot;#1b9e77&quot;, City: &quot;#d95f02&quot; };</span>
+
+<span class="s2">const points = [</span>
+<span class="s2">  { group: &quot;Suburb&quot;, x: 50,  y: 7 },  { group: &quot;Suburb&quot;, x: 60,  y: 8 },</span>
+<span class="s2">  { group: &quot;Suburb&quot;, x: 100, y: 9 },  { group: &quot;Suburb&quot;, x: 150, y: 15 },</span>
+<span class="s2">  { group: &quot;City&quot;,   x: 50,  y: 9 },  { group: &quot;City&quot;,   x: 60,  y: 10 },</span>
+<span class="s2">  { group: &quot;City&quot;,   x: 100, y: 12 }, { group: &quot;City&quot;,   x: 150, y: 20 }</span>
+<span class="s2">];</span>
+
+<span class="s2">const ctx = document.getElementById(&quot;myChart&quot;);</span>
+
+<span class="s2">let chart;                                   // remembers the current chart</span>
+
+<span class="s2">function drawChart(shown) {</span>
+<span class="s2">  if (chart) chart.destroy();                // remove the old chart first</span>
+<span class="s2">  chart = new Chart(ctx, {</span>
+<span class="s2">    type: &quot;scatter&quot;,</span>
+<span class="s2">    data: {</span>
+<span class="s2">      datasets: groups.map(g =&gt; ({</span>
+<span class="s2">        label: g,</span>
+<span class="s2">        data: shown.filter(p =&gt; p.group === g).map(p =&gt; ({ x: p.x, y: p.y })),</span>
+<span class="s2">        borderColor: colorOf[g],</span>
+<span class="s2">        backgroundColor: colorOf[g],</span>
+<span class="s2">        showLine: true</span>
+<span class="s2">      }))</span>
+<span class="s2">    },</span>
+<span class="s2">    options: {</span>
+<span class="s2">      plugins: {</span>
+<span class="s2">        title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }</span>
+<span class="s2">      },</span>
+<span class="s2">      scales: { x: { min: 50, max: 150 } }</span>
+<span class="s2">    }</span>
+<span class="s2">  });</span>
+<span class="s2">}</span>
+
+<span class="s2">const cutoff = 100;</span>
+<span class="s2">const shown  = points.filter(p =&gt; p.x &lt;= cutoff);</span>
+<span class="s2">drawChart(shown);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">step5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+const groups  = [&quot;Suburb&quot;, &quot;City&quot;];
+const colorOf = { Suburb: &quot;#1b9e77&quot;, City: &quot;#d95f02&quot; };
+
+const points = [
+  { group: &quot;Suburb&quot;, x: 50,  y: 7 },  { group: &quot;Suburb&quot;, x: 60,  y: 8 },
+  { group: &quot;Suburb&quot;, x: 100, y: 9 },  { group: &quot;Suburb&quot;, x: 150, y: 15 },
+  { group: &quot;City&quot;,   x: 50,  y: 9 },  { group: &quot;City&quot;,   x: 60,  y: 10 },
+  { group: &quot;City&quot;,   x: 100, y: 12 }, { group: &quot;City&quot;,   x: 150, y: 20 }
+];
+
+const ctx = document.getElementById(&quot;myChart&quot;);
+
+let chart;                                   // remembers the current chart
+
+function drawChart(shown) {
+  if (chart) chart.destroy();                // remove the old chart first
+  chart = new Chart(ctx, {
+    type: &quot;scatter&quot;,
+    data: {
+      datasets: groups.map(g =&gt; ({
+        label: g,
+        data: shown.filter(p =&gt; p.group === g).map(p =&gt; ({ x: p.x, y: p.y })),
+        borderColor: colorOf[g],
+        backgroundColor: colorOf[g],
+        showLine: true
+      }))
+    },
+    options: {
+      plugins: {
+        title: { display: true, text: &quot;House Prices vs. Size&quot;, font: { size: 16 } }
+      },
+      scales: { x: { min: 50, max: 150 } }
+    }
+  });
+}
+
+const cutoff = 100;
+const shown  = points.filter(p =&gt; p.x &lt;= cutoff);
+drawChart(shown);
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="400" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<p><strong>You should see:</strong> the same chart as Step 4.</p>
+<p><strong>Answer for yourself:</strong> why does the function start with <code class="docutils literal notranslate"><span class="pre">chart.destroy()</span></code>? (Hint: think about what happens each time a slider moves.)</p>
+</section>
+<section id="chartjs-examples">
+<h4><span class="section-number">10.8.2.6. </span>ChartJS Examples<a class="headerlink" href="#chartjs-examples" title="Link to this heading">#</a></h4>
+<p>Changing the <code class="docutils literal notranslate"><span class="pre">type</span></code> changes what a viewer can see. The lab offers three chart styles for the eagle data. Each answers a different kind of question.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Chart</p></th>
+<th class="head"><p>Type in Chart.js</p></th>
+<th class="head"><p>A question it can answer</p></th>
+<th class="head"><p>What it cannot show</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Line</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;line&quot;</span></code></p></td>
+<td><p>How does a value change over the time window? What is the average range of movement?</p></td>
+<td><p>Counts of categories, or where an animal is on the map</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pie (counts)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;pie&quot;</span></code></p></td>
+<td><p>For which bird do we have the most recorded observations?</p></td>
+<td><p>Change over time, or which fixes are closest to each other</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gauge (a modified doughnut)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;doughnut&quot;</span></code></p></td>
+<td><p>Where is an animal at ___% through the observation window?</p></td>
+<td><p>Anything beyond one number against a total</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The three cells below use <strong>made-up numbers</strong> so you can see the shapes. They are not the values in the eagle layer. Change <code class="docutils literal notranslate"><span class="pre">type</span></code> in the middle cell from <code class="docutils literal notranslate"><span class="pre">&quot;pie&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;doughnut&quot;</span></code> and see what happens: a pie becomes a ring with the same data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_js</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">new Chart(document.getElementById(&quot;myChart&quot;), {</span>
+<span class="s2">  type: &quot;line&quot;,</span>
+<span class="s2">  data: {</span>
+<span class="s2">    labels: [&quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;, &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;],</span>
+<span class="s2">    datasets: [{</span>
+<span class="s2">      label: &quot;Mean daily km (made-up numbers)&quot;,</span>
+<span class="s2">      data: [22, 30, 12, 9, 10, 41],</span>
+<span class="s2">      borderColor: &quot;#1b9e77&quot;, backgroundColor: &quot;#1b9e77&quot;</span>
+<span class="s2">    }]</span>
+<span class="s2">  },</span>
+<span class="s2">  options: { plugins: { title: { display: true, text: &quot;Line: change over time&quot; } } }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">line_js</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">370</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+new Chart(document.getElementById(&quot;myChart&quot;), {
+  type: &quot;line&quot;,
+  data: {
+    labels: [&quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;, &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;],
+    datasets: [{
+      label: &quot;Mean daily km (made-up numbers)&quot;,
+      data: [22, 30, 12, 9, 10, 41],
+      borderColor: &quot;#1b9e77&quot;, backgroundColor: &quot;#1b9e77&quot;
+    }]
+  },
+  options: { plugins: { title: { display: true, text: &quot;Line: change over time&quot; } } }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="370" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pie_js</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">new Chart(document.getElementById(&quot;myChart&quot;), {</span>
+<span class="s2">  type: &quot;pie&quot;,                  // try &quot;doughnut&quot;</span>
+<span class="s2">  data: {</span>
+<span class="s2">    labels: [&quot;37300a&quot;, &quot;37301a&quot;, &quot;37303a&quot;, &quot;37433a&quot;],</span>
+<span class="s2">    datasets: [{</span>
+<span class="s2">      data: [110, 52, 98, 99],</span>
+<span class="s2">      backgroundColor: [&quot;#1b9e77&quot;, &quot;#d95f02&quot;, &quot;#7570b3&quot;, &quot;#e6ab02&quot;]</span>
+<span class="s2">    }]</span>
+<span class="s2">  },</span>
+<span class="s2">  options: { plugins: { title: { display: true, text: &quot;Pie: share of fixes (made-up numbers)&quot; } } }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">pie_js</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">440</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+new Chart(document.getElementById(&quot;myChart&quot;), {
+  type: &quot;pie&quot;,                  // try &quot;doughnut&quot;
+  data: {
+    labels: [&quot;37300a&quot;, &quot;37301a&quot;, &quot;37303a&quot;, &quot;37433a&quot;],
+    datasets: [{
+      data: [110, 52, 98, 99],
+      backgroundColor: [&quot;#1b9e77&quot;, &quot;#d95f02&quot;, &quot;#7570b3&quot;, &quot;#e6ab02&quot;]
+    }]
+  },
+  options: { plugins: { title: { display: true, text: &quot;Pie: share of fixes (made-up numbers)&quot; } } }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="440" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauge_js</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const done = 62;                // percent through the observation window</span>
+
+<span class="s2">new Chart(document.getElementById(&quot;myChart&quot;), {</span>
+<span class="s2">  type: &quot;doughnut&quot;,</span>
+<span class="s2">  data: {</span>
+<span class="s2">    labels: [&quot;Elapsed&quot;, &quot;Remaining&quot;],</span>
+<span class="s2">    datasets: [{</span>
+<span class="s2">      data: [done, 100 - done],</span>
+<span class="s2">      backgroundColor: [&quot;#1b9e77&quot;, &quot;#dddddd&quot;]</span>
+<span class="s2">    }]</span>
+<span class="s2">  },</span>
+<span class="s2">  options: {</span>
+<span class="s2">    rotation: -90,              // start on the left</span>
+<span class="s2">    circumference: 180,         // draw only the top half</span>
+<span class="s2">    plugins: { title: { display: true, text: &quot;Gauge: &quot; + done + &quot;% through the window&quot; } }</span>
+<span class="s2">  }</span>
+<span class="s2">});</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">chart_demo</span><span class="p">(</span><span class="n">gauge_js</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">330</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;body{font-family:Georgia,serif;margin:10px;color:#1a3c5e}
+#wrap{max-width:640px} input[type=range]{width:100%;margin-bottom:8px}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div id=&quot;wrap&quot;&gt;&lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+const done = 62;                // percent through the observation window
+
+new Chart(document.getElementById(&quot;myChart&quot;), {
+  type: &quot;doughnut&quot;,
+  data: {
+    labels: [&quot;Elapsed&quot;, &quot;Remaining&quot;],
+    datasets: [{
+      data: [done, 100 - done],
+      backgroundColor: [&quot;#1b9e77&quot;, &quot;#dddddd&quot;]
+    }]
+  },
+  options: {
+    rotation: -90,              // start on the left
+    circumference: 180,         // draw only the top half
+    plugins: { title: { display: true, text: &quot;Gauge: &quot; + done + &quot;% through the window&quot; } }
+  }
+});
+
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" width="100%" height="330" style="border:1px solid #999;"></iframe></div></div>
+</div>
+<p>A gauge is a doughnut with two settings changed. It shows how far an eagle has come in its observation window, one number against a total. That is a good choice for a single indicator and a poor one for comparing four birds.</p>
+<p><strong>Think about it:</strong> choosing a chart is choosing what a viewer will notice. Which of the three would you add beside the eagle map to help an audience answer <em>your</em> question? What might a viewer wrongly conclude from it?</p>
+</section>
+<section id="common-chart-js-problems">
+<h4><span class="section-number">10.8.2.7. </span>Common Chart.js Problems<a class="headerlink" href="#common-chart-js-problems" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>What you see</p></th>
+<th class="head"><p>Likely cause</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Nothing appears, and the Console says <code class="docutils literal notranslate"><span class="pre">Chart</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code></p></td>
+<td><p>The Chart.js <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag is missing, misspelled, or loads after your code</p></td>
+</tr>
+<tr class="row-odd"><td><p>The console says the canvas is already in use</p></td>
+<td><p>A new chart was built on the same canvas without <code class="docutils literal notranslate"><span class="pre">chart.destroy()</span></code> first</p></td>
+</tr>
+<tr class="row-even"><td><p>Your title or legend options are ignored</p></td>
+<td><p>The options are written for another version. Current versions use <code class="docutils literal notranslate"><span class="pre">options.plugins.title</span></code> and <code class="docutils literal notranslate"><span class="pre">options.plugins.legend</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>The x-axis spacing looks even, but the times are not</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">&quot;line&quot;</span></code> chart spaces its labels equally. Use <code class="docutils literal notranslate"><span class="pre">&quot;scatter&quot;</span></code> with numeric <code class="docutils literal notranslate"><span class="pre">x</span></code> values (or a time scale) to show true gaps</p></td>
+</tr>
+<tr class="row-even"><td><p>Numbers sort or add as text (“10” before “9”)</p></td>
+<td><p>The values are strings. Convert them with <code class="docutils literal notranslate"><span class="pre">Number(...)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Categories appear in the wrong order</p></td>
+<td><p>The chart uses the order of your labels. Sort the labels yourself, or put a number first, as <code class="docutils literal notranslate"><span class="pre">month_label</span></code> does (“10 Oct”)</p></td>
+</tr>
+<tr class="row-even"><td><p>The chart is a blank box</p></td>
+<td><p>The canvas has no room. Put it in a container with a width, or check that the data list is not empty</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data and labels do not line up</p></td>
+<td><p>The lists have different lengths, or <code class="docutils literal notranslate"><span class="pre">labels</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code> came from different filters</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="going-further-with-chart-js">
+<h4><span class="section-number">10.8.2.8. </span>Going Further with Chart.js<a class="headerlink" href="#going-further-with-chart-js" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>: the full list of chart types and options</p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/js/js_graphics_chartjs.asp">W3Schools: Chart.js introduction</a>: a gentle start with modifiable examples</p></li>
+<li><p><a class="reference external" href="https://handsondataviz.org/chartcode.html">Hands-On Data Visualization: Chart Templates</a>: chart code you can adapt</p></li>
+<li><p><a class="reference external" href="https://www.freecodecamp.org/news/how-to-use-chart-js-for-interactive-data-visualization/">freeCodeCamp: How to Use Chart.js for Interactive Data Visualization</a></p></li>
+<li><p><a class="reference external" href="https://developers.arcgis.com/esri-leaflet/samples/dynamic-chart/">Esri Leaflet sample: dynamic chart</a>: a map and a chart updating together, built with open source libraries</p></li>
+<li><p>Esri Community discussions on <a class="reference external" href="https://community.esri.com/en/discussion/901299/using-third-party-graphing-libraries-with-the-4-x-javascript-api">using third-party charting libraries with the 4.x JavaScript API</a> and on <a class="reference external" href="https://community.esri.com/en/discussion/1136418/integrating-chart-js-chart-zoom-and-pan">Chart.js zoom and pan</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="who-owns-the-points">
+<h2><span class="section-number">10.9. </span>Who Owns the Points?<a class="headerlink" href="#who-owns-the-points" title="Link to this heading">#</a></h2>
+<p>The tracks on this page look like clean coordinates. Each one is the result of choices made by people.</p>
+<ul class="simple">
+<li><p><strong>Ownership and permission.</strong> The eagle tracks were collected by scientists and shared through Movebank with a license and a citation attached. The Audubon Explorer exists because Audubon asked each data owner for permission. A public data platform depends on people choosing to share.</p></li>
+<li><p><strong>Resolution.</strong> The data in this lab is thinned. A different choice about how many fixes to keep would change the story. How often a tag records, and how many fixes are shared, are design decisions.</p></li>
+<li><p><strong>Risk.</strong> Exact locations of animals can put them at risk, especially for threatened species or at nests and roosts. Who sees a point, and at what level of detail, is a decision for the person building the map.</p></li>
+<li><p><strong>Whose knowledge.</strong> A migration platform shows what instruments recorded. It leaves out what local communities know about the same animals.</p></li>
+</ul>
+<p>These questions connect to the GeoEthics and data sovereignty threads from earlier in the course.</p>
+<p><strong>Think about it:</strong> if the eagle data were from a threatened species, what would you change in your app? Would you keep exact points, show a coarser area, delay the dates, or not publish it? Who should decide?</p>
+<section id="data-source-and-license">
+<h3><span class="section-number">10.9.1. </span>Data Source and License<a class="headerlink" href="#data-source-and-license" title="Link to this heading">#</a></h3>
+<p>The data is a thinned Movebank GPS track of golden eagles, October 2002 to September 2003, from the Movebank Data Repository, released under a CC0 1.0 license (Smith JP, 2019). The citation and license are shown in the footer of the MapLibre page. When you publish a map or chart built from shared data, keep the citation with it.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lab-9-time-maps-and-charts">
+<h2><span class="section-number">10.10. </span>Lab 9: Time, Maps, and Charts<a class="headerlink" href="#lab-9-time-maps-and-charts" title="Link to this heading">#</a></h2>
+<p>In Lab 9 you build a time-enabled dashboard in ArcGIS Experience Builder (required). You may also adapt the MapLibre and Chart.js page and publish it to GitHub Pages (optional). The guiding question for the week is the lab’s question too.</p>
+<section id="field-notes-for-troubleshooting">
+<h3><span class="section-number">10.10.1. </span>Field Notes for Troubleshooting<a class="headerlink" href="#field-notes-for-troubleshooting" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>The timeline does nothing.</strong> Go back to the three questions. Check that the field is a date type, that time is enabled on the layer, and that the widgets are connected to the same time-enabled data source.</p></li>
+<li><p><strong>The chart does not change when the timeline moves.</strong> This may be how the widget is connected, or how it works in your version. Test it and record what you see.</p></li>
+<li><p><strong>The MapLibre page is blank.</strong> Open the Console (<code class="docutils literal notranslate"><span class="pre">F12</span></code>). Most problems appear there as red errors. Use Live Preview in VS Code, and do not double-click the HTML file.</p></li>
+<li><p><strong>The Console says <code class="docutils literal notranslate"><span class="pre">Invalid</span> <span class="pre">time</span> <span class="pre">value</span></code>.</strong> The <code class="docutils literal notranslate"><span class="pre">timeField</span></code> or <code class="docutils literal notranslate"><span class="pre">idField</span></code> in <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> does not match the property name in <code class="docutils literal notranslate"><span class="pre">tracks.geojson</span></code>. Property names are case-sensitive.</p></li>
+<li><p><strong>The Console says <code class="docutils literal notranslate"><span class="pre">Chart</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code>.</strong> A script tag was deleted or mistyped at the bottom of the page.</p></li>
+<li><p><strong>The chart did not change after you pasted.</strong> Make sure you pasted over the old <code class="docutils literal notranslate"><span class="pre">drawChart</span></code> function and did not add a second one, and that no braces were left over.</p></li>
+<li><p><strong>Everything works locally, but the live page is blank.</strong> Check the Pages settings on GitHub and the Console on the live URL.</p></li>
+<li><p><strong>Test your sharing</strong> in a private browser window or on a second device.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="readings-resources">
+<h2><span class="section-number">10.11. </span>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<section id="for-lab-9">
+<h3><span class="section-number">10.11.1. </span>For Lab 9<a class="headerlink" href="#for-lab-9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The Lab 9 page on the course website: instructions, rubric, and due date</p></li>
+<li><p><a class="reference external" href="https://github.com/asivitskis/giss366-lab09-template">Lab 9 template repository</a>: <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, <code class="docutils literal notranslate"><span class="pre">chart-examples.js</span></code>, and <code class="docutils literal notranslate"><span class="pre">data/tracks.geojson</span></code></p></li>
+<li><p><a class="reference external" href="https://arcg.is/1uXmD55">Time-enabled Golden Eagle web map</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/visualizing-time-in-map-viewer">Esri blog: Visualizing time in Map Viewer</a>: more examples of time on a map</p></li>
+<li><p>Your Lab 7 and Lab 8 pages, for dashboard and Experience Builder skills</p></li>
+</ul>
+</section>
+<section id="examples-from-this-week">
+<h3><span class="section-number">10.11.2. </span>Examples from This Week<a class="headerlink" href="#examples-from-this-week" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://explorer.audubon.org/home?legend=collapse&amp;amp;layersPanel=collapse">Audubon Bird Migration Explorer</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/about/newsroom/blog/audubon-bird-migration-explorer">Esri’s write-up of the Explorer</a></p></li>
+<li><p><a class="reference external" href="https://asivitskis.github.io/golden-eagle-migration-demo/">Finished MapLibre and Chart.js example</a></p></li>
+<li><p><a class="reference external" href="https://www.movebank.org/">Movebank</a> (data source) and the <a class="reference external" href="https://datarepository.movebank.org/home">Movebank Data Repository</a></p></li>
+</ul>
+</section>
+<section id="code-references">
+<h3><span class="section-number">10.11.3. </span>Code References<a class="headerlink" href="#code-references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/js/js_graphics_chartjs.asp">W3Schools: Chart.js introduction</a></p></li>
+<li><p><a class="reference external" href="https://maplibre.org/maplibre-gl-js/docs/">MapLibre GL JS documentation</a></p></li>
+<li><p>The Chart.js links from the “Going Further” list above</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Attribution: This page summarizes ideas from Esri documentation and blog posts, the Audubon Bird Migration Explorer write-up, and the Chart.js and MapLibre documentation, and points to them for the full explanations. The golden eagle data comes from the Movebank Data Repository under a CC0 1.0 license. The house-price examples follow the pattern of the W3Schools Chart.js introduction and are written for this course. This page is an independent teaching resource and is not affiliated with or endorsed by Esri, Audubon, Movebank, W3Schools, or the Chart.js project. ArcGIS and Experience Builder are trademarks of Esri.</em></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "asivitskis/giss-366",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/create"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10_mobile_gis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Mobile GIS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../labs/instructions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Submission Instructions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">10.1. Learning Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-week-at-a-glance">10.1.1. The Week at a Glance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">10.1.2. How to Use This Page</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-spatiotemporal-data">10.2. What Is Spatiotemporal Data?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archived-temporal-and-live">10.2.1. Archived, Temporal, and Live</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-tracking-record">10.2.2. Anatomy of a Tracking Record</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-recording-schedule-shapes-the-data">10.2.3. The Recording Schedule Shapes the Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatiotemporal-data-examples">10.3. Spatiotemporal Data Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-audubon-bird-migration-explorer">10.3.1. The Audubon Bird Migration Explorer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-the-scenes">10.3.2. Behind the Scenes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-time-enabled-map-in-arcgis-online">10.4. A Time-Enabled Map in ArcGIS Online</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-it">10.4.1. Explore It</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-time-lives">10.4.2. Where Time Lives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-idea-a-slider-is-a-filter">10.5. The Big Idea: A Slider Is a Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-crosswalk-one-idea-two-apps">10.5.1. The Crosswalk: One Idea, Two Apps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-it-in-esri-experience-builder">10.6. Build It in Esri: Experience Builder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-to-consider-for-your-chart">10.6.1. Fields to Consider for Your Chart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpret-with-care">10.6.2. Interpret with Care</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-idea-in-code-maplibre-and-chart-js">10.7. The Same Idea in Code: MapLibre and Chart.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-and-click-tour">10.7.1. Point-and-Click Tour</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-page-by-its-five-steps">10.7.2. Reading the Page by Its Five Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-config-block">10.7.3. The CONFIG Block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break-it-on-purpose">10.7.4. Break It on Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-esri-version-and-the-code-version-differ">10.7.5. Where the Esri Version and the Code Version Differ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chart-js">10.8. Chart.js</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-the-code-cells">10.8.1. How to Use the Code Cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-idea-one-config-object">10.8.2. The Big Idea: One Config Object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-1-change-the-type-and-the-title">10.8.2.1. Warm-Up Step 1: Change the Type and the Title</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-2-add-a-second-dataset">10.8.2.2. Warm-Up Step 2: Add a Second Dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-3-use-an-array-of-x-y-objects">10.8.2.3. Warm-Up Step 3: Use an Array of <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">}</span></code> Objects</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-4-filter-before-drawing">10.8.2.4. Warm-Up Step 4: Filter Before Drawing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up-step-5-put-the-chart-in-a-function">10.8.2.5. Warm-Up Step 5: Put the Chart in a Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chartjs-examples">10.8.2.6. ChartJS Examples</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-chart-js-problems">10.8.2.7. Common Chart.js Problems</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further-with-chart-js">10.8.2.8. Going Further with Chart.js</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-owns-the-points">10.9. Who Owns the Points?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-source-and-license">10.9.1. Data Source and License</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-9-time-maps-and-charts">10.10. Lab 9: Time, Maps, and Charts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-notes-for-troubleshooting">10.10.1. Field Notes for Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">10.11. Readings &amp; Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-lab-9">10.11.1. For Lab 9</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-from-this-week">10.11.2. Examples from This Week</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-references">10.11.3. Code References</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alex Sivitskis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
